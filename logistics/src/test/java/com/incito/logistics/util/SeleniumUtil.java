@@ -29,9 +29,8 @@ import org.testng.ITestResult;
 import com.netease.qa.testng.TestResultListener;
 
 public class SeleniumUtil {
-	// 使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息
-	public static Logger logger = Logger
-			.getLogger(SeleniumUtil.class.getName());
+	/**使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息*/
+	public static Logger logger = Logger.getLogger(SeleniumUtil.class.getName());
 	public ITestResult it= null;
 	public WebDriver driver = null;
 	public WebDriver window = null;
