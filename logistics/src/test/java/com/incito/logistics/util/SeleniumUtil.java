@@ -167,8 +167,13 @@ public class SeleniumUtil {
 	 * 判断文本是不是相同
 	 * **/
 	public void isTextEquals(String actual, String expected) {
-
+	try{
 		Assert.assertEquals(actual, expected);
+	}catch(AssertionError e){
+		logger.error(e);
+    	new TestResultListener().onTestFailure(it);
+    	quit();
+	}
 
 	}
 
