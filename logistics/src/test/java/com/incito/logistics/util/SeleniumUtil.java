@@ -89,7 +89,7 @@ public class SeleniumUtil {
 		element.click();
 		
 		}catch(StaleElementReferenceException e){
-			logger.error("The element you clicked:["+element.getText()+"]is no longer exist!");
+			logger.error("The element you clicked:["+element.getText()+"] is no longer exist!");
 			
 		}
 	}
@@ -133,7 +133,7 @@ public class SeleniumUtil {
 						}
 					});
 		}catch(TimeoutException e){
-		logger.error("Time Out!! "+timeOut+" seconds passed and ["+By.toString()+" ] has not found yet!");
+		logger.error("Time Out!! "+timeOut+" seconds passed and ["+By.toString()+" (element)] was not find!");
 		new TestResultListener().onTestFailure(it);
 		quit();
 		}
