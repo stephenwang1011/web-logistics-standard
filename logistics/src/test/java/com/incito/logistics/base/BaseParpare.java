@@ -10,13 +10,14 @@ import com.incito.logistics.util.SeleniumUtil;
 public class BaseParpare {
 	static Logger logger = Logger.getLogger(BaseParpare.class.getName());
 	protected SeleniumUtil seleniumUtil = null;
-	/*添加成员变量来获取beforeClass传入的context参数*/
+	//添加成员变量来获取beforeClass传入的context参数
 	protected ITestContext testContext = null;
 
 	@BeforeClass
-	public void beforeClass(ITestContext context) {
+	/**启动浏览器并打开测试页面*/
+	public void startTest(ITestContext context) {
 		seleniumUtil = new SeleniumUtil();
-		  //这里得到了context值
+		 //这里得到了context值
 		this.testContext = context;  
 		String browserName = context.getCurrentXmlTest().getParameter(
 				"browserName");
@@ -29,12 +30,13 @@ public class BaseParpare {
 		logger.info("Staring brower failed!!");
 		seleniumUtil.quit();
 	}
-	//设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
+		//设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
 		testContext.setAttribute("SELENIUM_DRIVER",seleniumUtil.driver);  
 	}
 
 	@AfterClass
-	public void afterClass() {
+	/**结束测试关闭浏览器*/
+	public void endTest() {
 		seleniumUtil.quit();
 	}
 
