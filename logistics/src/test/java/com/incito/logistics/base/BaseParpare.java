@@ -1,5 +1,9 @@
 package com.incito.logistics.base;
-
+/**
+ * @author xy-incito-wy
+ * @Description 测试开始 和 测试结束 的操作
+ * 
+ * */
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
