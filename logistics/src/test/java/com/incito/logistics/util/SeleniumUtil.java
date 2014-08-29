@@ -1,7 +1,8 @@
 package com.incito.logistics.util;
 
 /**
- * 包装所有selenium的操作，简化用例中代码量
+ * @author xy-incito-wy
+ * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
  * */
 import java.util.Iterator;
 import java.util.List;
