@@ -31,6 +31,12 @@
 	<parameter name="incorrectpasscode" value="12345" />
 	
 		 <!--测试用例按照包名来建立test  -->
+	<test name="注册" preserve-order="true" >
+		<packages>
+	  			<package name = "com.incito.logistics.testcase.register" />
+		</packages>
+	 </test> 
+	 
 	<test name="首页" preserve-order="true" >
 		<packages>
 	  			<package name = "com.incito.logistics.testcase.home" />
