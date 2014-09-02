@@ -134,7 +134,7 @@ public class SeleniumUtil {
 						}
 					});
 		}catch(TimeoutException e){
-		logger.error("Time Out!! "+timeOut+" seconds passed and ["+By.toString()+" (element)] was not find!");
+		logger.info("Time Out!! "+timeOut+" seconds passed and ["+By.toString()+" (element)] was not find!");
 		new TestResultListener().onTestFailure(it);
 		quit();
 		}
