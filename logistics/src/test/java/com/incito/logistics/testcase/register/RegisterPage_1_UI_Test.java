@@ -13,8 +13,8 @@ import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 
 public class RegisterPage_1_UI_Test extends BaseParpare {
-	@Test(description="注册页面上的文本检查")
-	public void uiTest(ITestContext context){
+	@Test
+	public void registerPageUiTest(ITestContext context){
 		  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 
 			  HomePageHelper.waitHomePageToLoad(timeOut,seleniumUtil);
