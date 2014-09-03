@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -66,6 +67,16 @@ public class SeleniumUtil {
 	 * */
 	public void maxWindow() {
 		driver.manage().window().maximize();
+	}
+	
+	/**
+	 * 设定浏览器窗口大小：
+	 * 设置浏览器窗口的大小有下面两个比较常见的用途：
+	 * 1、在统一的浏览器大小下运行用例，可以比较容易的跟一些基于图像比对的工具进行结合，提升测试的灵活性及普遍适用性。比如可以跟sikuli结合，使用sikuli操作flash；
+	 * 2、在不同的浏览器大小下访问测试站点，对测试页面截图并保存，然后观察或使用图像比对工具对被测页面的前端样式进行评测。比如可以将浏览器设置成移动端大小(320x480)，然后访问移动站点，对其样式进行评估；
+	 * */
+	public void setBrowserSize(int width, int height){
+		 driver.manage().window().setSize(new Dimension(width,height));
 	}
 
 	/**
