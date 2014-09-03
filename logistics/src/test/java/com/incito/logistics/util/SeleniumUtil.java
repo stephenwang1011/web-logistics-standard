@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -126,12 +127,26 @@ public class SeleniumUtil {
 	}
 
 	/**
-	 * 包装sendkeys()
+	 * 向输入框输入内容
 	 * */
 	public void sendKeys(WebElement element, String key) {
 		element.sendKeys(key);
 		logger.info("sended:" + key);
 	}
+	
+	/**
+	 * 模拟键盘操作的,比如Ctrl+A,Ctrl+C等 
+	 * 参数详解：
+	 * 1、WebElement element - 要被操作的元素
+	 * 2、Keys key - 键盘上的功能键 比如ctrl ,alt等
+	 * 3、String keyword - 键盘上的字母 
+	 * */
+	public void sendKeysByKeyboard(WebElement element ,Keys key,String keyword) {
+
+		element.sendKeys(Keys.chord( key, keyword));
+	}
+	
+	
 
 	/**
 	 * 在给定的时间内去查找元素，如果没找到则超时
