@@ -8,6 +8,7 @@ import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.pageshelper.AlertPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.util.GetTestData;
 /**
  *@author  xy-incito
  *@Description 登陆失败-只输入用户名不输入密码 点击登陆会提示“请输入密码”
@@ -16,7 +17,8 @@ public class LoginPage_4_Fail_Username_Test extends BaseParpare{
     
   @Test
   public void loginFailTest_Username(ITestContext context) {
-	  String username = context.getCurrentXmlTest().getParameter("username");
+	  String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+	  String username = GetTestData.getTestData(configFilePath, "username");
 	  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 	  int waitMillisecondsForAlert =Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 

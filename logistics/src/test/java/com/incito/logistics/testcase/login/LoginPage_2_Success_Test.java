@@ -18,14 +18,14 @@ public class LoginPage_2_Success_Test extends BaseParpare{
   public void loginSuccessTest(ITestContext context) {
 	  String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
 	  String username = GetTestData.getTestData(configFilePath, "username");
-	  String passcode = GetTestData.getTestData(configFilePath, "passcode");
+	  String password = GetTestData.getTestData(configFilePath, "password");
 	  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 	  int sleepTime =Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 	  
 	  HomePageHelper.waitHomePageToLoad(timeOut,seleniumUtil);
 	  HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 	  LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-	  LoginPageHelper.login(seleniumUtil, username, passcode);
+	  LoginPageHelper.login(seleniumUtil, username, password);
 	  LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
   }
   

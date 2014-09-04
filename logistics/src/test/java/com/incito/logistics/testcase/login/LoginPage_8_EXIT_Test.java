@@ -10,13 +10,15 @@ import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.util.GetTestData;
 
 public class LoginPage_8_EXIT_Test extends BaseParpare{
 	
   @Test
   public void exitLoginTest(ITestContext context) {
-	  String username = context.getCurrentXmlTest().getParameter("username");
-	  String passcode = context.getCurrentXmlTest().getParameter("passcode");
+	  String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+	  String username = GetTestData.getTestData(configFilePath, "username");
+	  String password = GetTestData.getTestData(configFilePath, "password");
 	  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 	  int sleepTime =Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
@@ -24,7 +26,7 @@ public class LoginPage_8_EXIT_Test extends BaseParpare{
 	  HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 	  LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 	  LoginPageHelper.checkLoginPageText(seleniumUtil);
-	  LoginPageHelper.login(seleniumUtil, username, passcode);
+	  LoginPageHelper.login(seleniumUtil, username, password);
 	  LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 	  seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_EXIT));
   }
