@@ -10,13 +10,15 @@ import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.util.GetTestData;
 
 public class LoginPage_2_Success_Test extends BaseParpare{
 	
   @Test
   public void loginSuccessTest(ITestContext context) {
-	  String username = context.getCurrentXmlTest().getParameter("username");
-	  String passcode = context.getCurrentXmlTest().getParameter("passcode");
+	  String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+	  String username = GetTestData.getTestData(configFilePath, "username");
+	  String passcode = GetTestData.getTestData(configFilePath, "passcode");
 	  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 	  int sleepTime =Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 	  
