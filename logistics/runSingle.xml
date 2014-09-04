@@ -13,6 +13,8 @@
 	<parameter name="iedriver" value="./extral/driver/ie/iedriver.exe" />
 	<!-- 定义测试的站点地址 -->	
 	<parameter name="testurl" value="http://192.168.11.134:8080/web/index" />
+	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
+	<parameter name="userInfoPath" value="config/user.properties" />
 
 
 	<!-- 页面元素30秒不出现超时时间 -->
@@ -25,15 +27,12 @@
 	<parameter name="setScriptTime" value="10" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
-	<parameter name="username" value="wangyang" />
-	<parameter name="passcode" value="123456" />
 	<parameter name="sleepTime" value="1000" />
-	<parameter name="incorrectname" value="AG00000998" />
-	<parameter name="incorrectpasscode" value="12345" />
+
 	
   <test name="singleTest" preserve-order="true" >
 	<classes>
-		<class name="com.incito.logistics.testcase.register.RegisterPage_1_UI_Test" />
+		<class name="com.incito.logistics.testcase.login.LoginPage_2_Success_Test" />
 	</classes>
   </test> 
   
