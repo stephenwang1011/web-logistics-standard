@@ -5,14 +5,18 @@
     <!-- 设置系统平台:win/linux/mac -->
     <parameter name="platform" value="win" />
     <!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" /> 
+	<parameter name="browserName" value="ie" /> 
     <!-- windows平台chrome和ie driver -->
-	<parameter name="chromedriver_win" value="./extral/driver/chrome/win/chromedriver.exe" />
-	<parameter name="chomedriver_linux" value="./extral/driver/chrome/linux/chromedriver" />
-	<parameter name="chomedriver_mac" value="./extral/driver/chrome/mac/chromedriver" />
-	<parameter name="iedriver" value="./extral/driver/ie/iedriver.exe" />
+	<parameter name="chromedriver_win" value="extral/driver/chrome/win/chromedriver.exe" />
+	<parameter name="chomedriver_linux" value="extral/driver/chrome/linux/chromedriver" />
+	<parameter name="chomedriver_mac" value="extral/driver/chrome/mac/chromedriver" />
+	<parameter name="iedriver" value="extral/driver/ie/iedriver.exe" />
+	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
+	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- 定义测试的站点地址 -->	
 	<parameter name="testurl" value="http://192.168.11.134:8080/web/index" />
+	<!-- 进程等待1秒中的控制时间 -->
+	<parameter name="sleepTime" value="1000" />
 	<!-- 页面元素30秒不出现超时时间 -->
 	<parameter name="timeOut" value="30" />
 	<!-- 等待页面完全加载完全的时间 -->
@@ -23,9 +27,6 @@
 	<parameter name="setScriptTime" value="10" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
-	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
-	<parameter name="userInfoPath" value="config/user.properties" />
-	<parameter name="sleepTime" value="1000" />
 
 	
 	<!--测试用例按照包名来建立test  -->
