@@ -15,8 +15,8 @@ import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 public class RegisterPage_1_UI_Test extends BaseParpare {
 	@Test
 	public void registerPageUiTest(ITestContext context){
-		  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-
+			  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+			  
 			  HomePageHelper.waitHomePageToLoad(timeOut,seleniumUtil);
 			  HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 			  RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
