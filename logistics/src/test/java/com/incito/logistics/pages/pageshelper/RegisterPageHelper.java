@@ -24,7 +24,7 @@ public class RegisterPageHelper {
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD).getAttribute("placeholder"),"请再次输入登录密码");
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER).getText(),"注册");
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK).getText(),"返回");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_FOOTER).getText(),"联系我们 | 关于我们 | 帮助中心"+"\n"+"灵动信息技术有限公司 版权所有 鄂ICP备13016476号"+"\n"+"客服热线 ：400-860-3060");
+		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_FOOTER).getText(),"联系我们 | 关于我们 | 帮助中心"+"\n"+"@2014 灵动信息技术有限公司 版权所有 鄂ICP备13016476号"+"\n"+"公司联系邮箱：wuliu@incito.com.cn | 客服热线：400-860-3060");
 			
 	}
 	
