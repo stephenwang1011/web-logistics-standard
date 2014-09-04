@@ -23,14 +23,12 @@
 	<parameter name="setScriptTime" value="10" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
-	<!-- 下面是测试站点的用户名密码 -->
-	<parameter name="username" value="wangyang" />
-	<parameter name="passcode" value="123456" />
+	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
+	<parameter name="userInfoPath" value="config/user.properties" />
 	<parameter name="sleepTime" value="1000" />
-	<parameter name="incorrectname" value="AG00000998" />
-	<parameter name="incorrectpasscode" value="12345" />
+
 	
-		 <!--测试用例按照包名来建立test  -->
+	<!--测试用例按照包名来建立test  -->
 	<test name="注册" preserve-order="true" >
 		<packages>
 	  			<package name = "com.incito.logistics.testcase.register" />

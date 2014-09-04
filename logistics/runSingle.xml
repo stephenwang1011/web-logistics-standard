@@ -16,7 +16,6 @@
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 
-
 	<!-- 页面元素30秒不出现超时时间 -->
 	<parameter name="timeOut" value="30" />
 	<!-- 等待页面完全加载完全的时间 -->
@@ -32,7 +31,7 @@
 	
   <test name="singleTest" preserve-order="true" >
 	<classes>
-		<class name="com.incito.logistics.testcase.login.LoginPage_2_Success_Test" />
+		<class name="com.incito.logistics.testcase.login.LoginPage_6_Fail_Incorrect_Username_Test" />
 	</classes>
   </test> 
   
