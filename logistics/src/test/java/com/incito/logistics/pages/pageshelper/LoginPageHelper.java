@@ -55,7 +55,7 @@ public class LoginPageHelper {
 	public static void checkUserInfo(int timeOut,int sleepTime,SeleniumUtil seleniumUtil,String username){
 		seleniumUtil.sleep(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_TEXT_USERINFO);
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username+" | 退出");
+		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
 	}
 	
 	
