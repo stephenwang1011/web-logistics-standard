@@ -37,9 +37,9 @@ public class HomePage {
 	/**首页上的《找车源》上的查询按钮*/
 	public static final By HP_BUTTON_SEARCH2= By.id("Fcar");
 	/**登陆成功之后 用户名 区域*/
-	public static final By HP_TEXT_USERINFO = By.xpath("//*[@id='holder']/header/nav/ul/li[1]");
+	public static final By HP_TEXT_USERINFO = By.className("dropdown");
 	/**左上角的商标文字*/
-	public static final By HP_LEFT_TITLE = By.className("f-left");
+	public static final By HP_LEFT_TITLE = By.className("navbar-left");
 	/**首页上的换一批 2个*/
 	//public static final By HP_LINK_CHANGEANOTHER = By.linkText("换一批");
 	/**底部footer文字*/
