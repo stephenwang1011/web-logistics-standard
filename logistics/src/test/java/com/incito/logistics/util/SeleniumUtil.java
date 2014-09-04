@@ -74,7 +74,8 @@ public class SeleniumUtil {
 	 * 设定浏览器窗口大小：
 	 * 设置浏览器窗口的大小有下面两个比较常见的用途：
 	 * 1、在统一的浏览器大小下运行用例，可以比较容易的跟一些基于图像比对的工具进行结合，提升测试的灵活性及普遍适用性。比如可以跟sikuli结合，使用sikuli操作flash；
-	 * 2、在不同的浏览器大小下访问测试站点，对测试页面截图并保存，然后观察或使用图像比对工具对被测页面的前端样式进行评测。比如可以将浏览器设置成移动端大小(320x480)，然后访问移动站点，对其样式进行评估；
+	 * 2、在不同的浏览器大小下访问测试站点，对测试页面截图并保存，然后观察或使用图像比对工具对被测页面的前端样式进行评测。
+	 * 		比如可以将浏览器设置成移动端大小(320x480)，然后访问移动站点，对其样式进行评估；
 	 * */
 	public void setBrowserSize(int width, int height){
 		 driver.manage().window().setSize(new Dimension(width,height));
@@ -152,21 +153,17 @@ public class SeleniumUtil {
 	 * 在给定的时间内去查找元素，如果没找到则超时
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
-		try{
+
 			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
 						public Boolean apply(WebDriver driver) {
 							return driver.findElement(By).isDisplayed();
 						}
 					});
-		}catch(TimeoutException e){
-		logger.info("Time Out!! "+timeOut+" seconds passed and ["+By.toString()+" (element)] was not find!");
-		new TestResultListener().onTestFailure(it);
-		quit();
 		}
 	
 
-	}
+	
 	/**
 	 * 当jquery正在读取或处理比较大的json文件的时候，怎样判断它的读取活动已经完成
 	 */
@@ -194,13 +191,9 @@ public class SeleniumUtil {
 	 * 判断文本是不是相同
 	 * **/
 	public void isTextEquals(String actual, String expected) {
-	try{
+	
 		Assert.assertEquals(actual, expected);
-	}catch(AssertionError e){
-		logger.error(e);
-    	new TestResultListener().onTestFailure(it);
-    	quit();
-	}
+
 
 	}
 
@@ -460,6 +453,7 @@ public class SeleniumUtil {
 				.pageLoadTimeout(pageLoadTime, TimeUnit.SECONDS);
 
 	}
+
 	
 	
 
