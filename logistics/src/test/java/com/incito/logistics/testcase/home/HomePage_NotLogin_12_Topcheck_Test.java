@@ -39,9 +39,8 @@ public class HomePage_NotLogin_12_Topcheck_Test extends BaseParpare {
 	
     //检查web页面上的文本内容是不是和需求文档定义的一致LP_INPUT_AUTO
 	public void isContainInFrame(){
-		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"今天");
-		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"明天");
-		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"后天");
+		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"今");
+		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"明");
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_CITY).getText(), "襄阳");
 		
 	}
