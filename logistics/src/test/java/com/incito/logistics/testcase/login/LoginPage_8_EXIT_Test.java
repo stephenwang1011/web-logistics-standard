@@ -28,6 +28,7 @@ public class LoginPage_8_EXIT_Test extends BaseParpare{
 	  LoginPageHelper.checkLoginPageText(seleniumUtil);
 	  LoginPageHelper.login(seleniumUtil, username, password);
 	  LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
+	  HomePageHelper.enterPage(seleniumUtil, HomePage.HP_TEXT_USERINFO);
 	  seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_EXIT));
   }
   
