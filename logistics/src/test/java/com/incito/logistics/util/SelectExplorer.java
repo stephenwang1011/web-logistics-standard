@@ -17,11 +17,12 @@ public class SelectExplorer {
 	static Logger logger = Logger.getLogger(SelectExplorer.class.getName());
 	
 	public WebDriver  selectExplorerByName(String browser,ITestContext context,String platform ){
+		 String driverConfgFilePath= context.getCurrentXmlTest().getParameter("driverConfgFilePath");
 		/**声明好驱动的路径*/
-		 String chromedriver_win= context.getCurrentXmlTest().getParameter("chromedriver_win");
-		 String chromedriver_linux= context.getCurrentXmlTest().getParameter("chromedriver_linux");
-		 String chromedriver_mac= context.getCurrentXmlTest().getParameter("chromedriver_mac");
-		 String iedriver= context.getCurrentXmlTest().getParameter("iedriver");
+		 String chromedriver_win= GetTestData.getTestData(driverConfgFilePath, "chromedriver_win");
+		 String chromedriver_linux= GetTestData.getTestData(driverConfgFilePath, "chromedriver_linux");
+		 String chromedriver_mac= GetTestData.getTestData(driverConfgFilePath, "chromedriver_mac");
+		 String iedriver= GetTestData.getTestData(driverConfgFilePath, "iedriver");
 
 		 Properties props=System.getProperties(); //获得系统属性集  
 		 String osName = props.getProperty("os.name"); //操作系统名称  
