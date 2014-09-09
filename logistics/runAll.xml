@@ -5,14 +5,11 @@
     <!-- 设置系统平台:win/linux/mac -->
     <parameter name="platform" value="win" />
     <!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="ie" /> 
-    <!-- windows平台chrome和ie driver -->
-	<parameter name="chromedriver_win" value="extral/driver/chrome/win/chromedriver.exe" />
-	<parameter name="chomedriver_linux" value="extral/driver/chrome/linux/chromedriver" />
-	<parameter name="chomedriver_mac" value="extral/driver/chrome/mac/chromedriver" />
-	<parameter name="iedriver" value="extral/driver/ie/iedriver.exe" />
+	<parameter name="browserName" value="chrome" /> 
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
+	<!-- driver的属性配置文件保存路径 -->
+	<parameter name="driverConfgFilePath" value="config/driver.properties" />
 	<!-- 定义测试的站点地址 -->	
 	<parameter name="testurl" value="http://192.168.11.134:8080/web/index" />
 	<!-- 进程等待1秒中的控制时间 -->
@@ -56,9 +53,5 @@
 			
 	  </listeners>
 	  
-	      <!-- 用来禁止TestNg产生报告  
-    <usedefaultlisteners name="false" />
-			 -->
-  
 </suite> 
 
