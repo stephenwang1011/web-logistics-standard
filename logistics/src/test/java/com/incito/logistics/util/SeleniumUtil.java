@@ -45,14 +45,14 @@ public class SeleniumUtil {
 			String platform) {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
-		int waitPageLoadTime = Integer.valueOf(context.getCurrentXmlTest()
-				.getParameter("waitPageLoadTime"));
+		int timeOut = Integer.valueOf(context.getCurrentXmlTest()
+				.getParameter("timeOut"));
 		SelectExplorer select = new SelectExplorer();
 		logger.info("Starting:[" + browserName + "]");
 		driver = select.selectExplorerByName(browserName, context, platform);
 		// 等待waitPageLoadTime秒后如果没有页面还是没有刷出来 就跑出异常
 		try {
-			hasLoadPageSucceeded(waitPageLoadTime);
+			hasLoadPageSucceeded(timeOut);
 			get(webUrl);
 			logger.info("Opening the test page:[" + webUrl + "]");
 			maxWindow();
@@ -431,15 +431,15 @@ public class SeleniumUtil {
 
 	// webdriver中可以设置很多的超时时间
 	/** implicitlyWait。识别对象时的超时时间。过了这个时间如果对象还没找到的话就会抛出NoSuchElement异常 */
-	public void implicitlyWait(int implicitlyWaitTime) {
+	public void implicitlyWait(int timeOut) {
 		driver.manage().timeouts()
-				.implicitlyWait(implicitlyWaitTime, TimeUnit.SECONDS);
+				.implicitlyWait(timeOut, TimeUnit.SECONDS);
 	}
 
 	/** setScriptTimeout。异步脚本的超时时间。webdriver可以异步执行脚本，这个是设置异步执行脚本脚本返回结果的超时时间 */
-	public void setScriptTimeout(int setScriptTime) {
+	public void setScriptTimeout(int timeOut) {
 		driver.manage().timeouts()
-				.setScriptTimeout(setScriptTime, TimeUnit.SECONDS);
+				.setScriptTimeout(timeOut, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -449,8 +449,7 @@ public class SeleniumUtil {
 
 	public void hasLoadPageSucceeded(int pageLoadTime) {
 
-		driver.manage().timeouts()
-				.pageLoadTimeout(pageLoadTime, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(pageLoadTime, TimeUnit.SECONDS);
 
 	}
 
