@@ -31,20 +31,20 @@ public class HomePageHelper {
 	
 	/**检查首页上的文本*/
 	public static void checkHomePageText(SeleniumUtil seleniumUtil){
-		seleniumUtil.isTextEquals( seleniumUtil.getTitle(), "logistics - 物流管理");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(),"登录");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(),"注册");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_BUTTON_FREESEND).getText(),"免费发布货源");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TAB_FINDCARS).getText(),"找车源");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TAB_TRACKGOODS).getText(),"物流跟踪");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LEFT_TITLE).getText(),"智慧物流"+"\n"+"全球领先的物流信息平台");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_HOME).getText(),"首页");
-		//seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_PERSONCEN).getText(),"个人中心");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDCARDS).getText(),"找车源");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDGOODS).getText(),"找货源");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER).getText(),"我的订单");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(),"我的货源");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(),"我的车队");
+		seleniumUtil.isTextCorrect( seleniumUtil.getTitle(), "logistics - 物流管理");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(),"登录");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(),"注册");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_FREESEND).getText(),"免费发布货源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_FINDCARS).getText(),"找车源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_TRACKGOODS).getText(),"物流跟踪");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LEFT_TITLE).getText(),"智慧物流"+"\n"+"全球领先的物流信息平台");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_HOME).getText(),"首页");
+		//seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_PERSONCEN).getText(),"个人中心");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDCARDS).getText(),"找车源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDGOODS).getText(),"找货源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER).getText(),"我的订单");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(),"我的货源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(),"我的车队");
 		FooterPageHelper.checkRegisterPageText(seleniumUtil);
 			
 	}

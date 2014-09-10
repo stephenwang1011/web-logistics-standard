@@ -30,10 +30,10 @@ public class LoginPageHelper {
 	
 	/**检查该页面上的文本*/
 	public static void checkLoginPageText(SeleniumUtil seleniumUtil){
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("placeholder"),"用户名");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("placeholder"),"密码");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN).getText(),"登录");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_LABEL_AUTO).getText(),"下次自动登录");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("placeholder"),"用户名");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("placeholder"),"密码");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN).getText(),"登录");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_LABEL_AUTO).getText(),"下次自动登录");
 		
 		
 	}
@@ -43,11 +43,11 @@ public class LoginPageHelper {
 		//设置用户名
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
 		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), "AG00005");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("value"),"AG00005");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("value"),"AG00005");
 		//设置密码
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
 		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), "123456");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("value"),"123456");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("value"),"123456");
 		
 	}
 	
@@ -55,7 +55,7 @@ public class LoginPageHelper {
 	public static void checkUserInfo(int timeOut,int sleepTime,SeleniumUtil seleniumUtil,String username){
 		seleniumUtil.sleep(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_TEXT_USERINFO);
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
 	}
 	
 	

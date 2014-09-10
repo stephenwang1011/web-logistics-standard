@@ -188,9 +188,9 @@ public class SeleniumUtil {
 	}
 
 	/**
-	 * 判断文本是不是相同
+	 * 判断文本是不是和需求要求的文本一致
 	 * **/
-	public void isTextEquals(String actual, String expected) {
+	public void isTextCorrect(String actual, String expected) {
 	
 		Assert.assertEquals(actual, expected);
 

@@ -41,7 +41,7 @@ public class HomePage_NotLogin_12_Topcheck_Test extends BaseParpare {
 	public void isContainInFrame(){
 		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"今");
 		seleniumUtil.assertTrue(seleniumUtil.findElementBy(HomePage.HP_TEXT_WEATHER),"明");
-		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(HomePage.HP_TEXT_CITY).getText(), "襄阳");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_CITY).getText(), "襄阳");
 		
 	}
 	

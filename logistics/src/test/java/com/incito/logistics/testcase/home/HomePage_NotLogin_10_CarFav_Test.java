@@ -32,7 +32,7 @@ public class HomePage_NotLogin_10_CarFav_Test extends BaseParpare {
 	//通过获得css的值background-color来判断背景颜色是不是变了 粉色的背景演示是rgba(255, 238, 229, 1)
 	public void isBcolorChange(){
 	seleniumUtil.sleep(800);
-	seleniumUtil.isTextEquals(seleniumUtil.getCSSValue(seleniumUtil.findElementBy(HomePage.HP_AREAR_CARS1),"background-color"),"rgba(255, 238, 229, 1)");
+	seleniumUtil.isTextCorrect(seleniumUtil.getCSSValue(seleniumUtil.findElementBy(HomePage.HP_AREAR_CARS1),"background-color"),"rgba(255, 238, 229, 1)");
 	}
 
 }

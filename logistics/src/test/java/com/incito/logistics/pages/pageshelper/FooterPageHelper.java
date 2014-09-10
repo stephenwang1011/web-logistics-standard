@@ -9,7 +9,7 @@ public class FooterPageHelper {
 	public static void checkRegisterPageText(SeleniumUtil seleniumUtil) {
 
 		seleniumUtil
-				.isTextEquals(
+				.isTextCorrect(
 						seleniumUtil.findElementBy(HomePage.HP_TEXT_FOOTER)
 								.getText(),
 						"联系我们 | 关于我们 | 帮助中心"
