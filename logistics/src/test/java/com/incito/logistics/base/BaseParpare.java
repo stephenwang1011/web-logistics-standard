@@ -4,6 +4,8 @@ package com.incito.logistics.base;
  * @Description 测试开始 和 测试结束 的操作
  * 
  * */
+import junit.framework.Assert;
+
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
@@ -33,6 +35,7 @@ public class BaseParpare {
 	}catch(Exception e){;
 		seleniumUtil.quit();
 		logger.error("Staring brower failed!!");
+		Assert.fail("Staring brower failed!!");
 	}
 		//设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
 		testContext.setAttribute("SELENIUM_DRIVER",seleniumUtil.driver);  
