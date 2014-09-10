@@ -28,7 +28,7 @@
 	
   <test name="singleTest" preserve-order="true" >
 	<classes>
-		<class name="com.incito.logistics.testcase.login.LoginPage_8_EXIT_Test" />
+		<class name="com.incito.logistics.testcase.register.RegisterPage_2_Success_Test" />
 	</classes>
   </test> 
    
