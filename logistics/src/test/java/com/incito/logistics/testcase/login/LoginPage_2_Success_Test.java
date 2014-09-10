@@ -16,9 +16,9 @@ public class LoginPage_2_Success_Test extends BaseParpare{
 	
   @Test
   public void loginSuccessTest(ITestContext context) {
-	  String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-	  String username = GetTestData.getTestData(configFilePath, "username");
-	  String password = GetTestData.getTestData(configFilePath, "password");
+	  String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
+	  String username = GetTestData.getTestData(userInfoPath, "username");
+	  String password = GetTestData.getTestData(userInfoPath, "password");
 	  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 	  int sleepTime =Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 	  
