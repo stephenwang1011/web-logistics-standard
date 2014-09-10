@@ -6,7 +6,7 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class HomePageHelper {
-	/**等待页面上某个重要元素显示出来*/
+	/**等待页面上某些重要元素显示出来*/
 	public static void  waitHomePageToLoad(int timeOut,SeleniumUtil seleniumUtil){
 		seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_BUTTON_LOGIN);
 		seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_BUTTON_REG);
