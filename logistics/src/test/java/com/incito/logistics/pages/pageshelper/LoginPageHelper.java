@@ -8,9 +8,9 @@ public class LoginPageHelper {
 	/**登录操作*/
 	public static void login(SeleniumUtil seleniumUtil,String username, String password) {
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
-		seleniumUtil.sendKeys(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
+		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
-		seleniumUtil.sendKeys(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), password);
+		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), password);
 		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
 
 	}
@@ -42,11 +42,11 @@ public class LoginPageHelper {
 	public static void checkInputData(SeleniumUtil seleniumUtil){
 		//设置用户名
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
-		seleniumUtil.sendKeys(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), "AG00005");
+		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), "AG00005");
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("value"),"AG00005");
 		//设置密码
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
-		seleniumUtil.sendKeys(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), "123456");
+		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), "123456");
 		seleniumUtil.isTextEquals(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("value"),"123456");
 		
 	}

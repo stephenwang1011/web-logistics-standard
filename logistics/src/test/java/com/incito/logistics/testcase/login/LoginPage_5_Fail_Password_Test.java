@@ -26,7 +26,7 @@ public class LoginPage_5_Fail_Password_Test extends BaseParpare{
 	  HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 	  LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 	  seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
-	  seleniumUtil.sendKeys(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), password);
+	  seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), password);
 	  seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
 	  AlertPageHelper.checkAlertInfo(seleniumUtil, waitMillisecondsForAlert);
   }

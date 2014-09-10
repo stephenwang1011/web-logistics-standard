@@ -31,7 +31,7 @@ public class RegisterPageHelper {
 	/**向注册输入框注入信息*/
 	public static void sendRegisterInfo(By by,String key,SeleniumUtil seleniumUtil){
 		
-		  seleniumUtil.sendKeys(seleniumUtil.findElementBy(by), key);
+		  seleniumUtil.type(seleniumUtil.findElementBy(by), key);
 		
 	}
 	

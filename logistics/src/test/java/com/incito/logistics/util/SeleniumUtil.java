@@ -130,7 +130,7 @@ public class SeleniumUtil {
 	/**
 	 * 向输入框输入内容
 	 * */
-	public void sendKeys(WebElement element, String key) {
+	public void type(WebElement element, String key) {
 		element.sendKeys(key);
 		logger.info("sended:" + key);
 	}
@@ -142,7 +142,7 @@ public class SeleniumUtil {
 	 * 2、Keys key - 键盘上的功能键 比如ctrl ,alt等
 	 * 3、String keyword - 键盘上的字母 
 	 * */
-	public void sendKeysByKeyboard(WebElement element ,Keys key,String keyword) {
+	public void pressKeysOnKeyboard(WebElement element ,Keys key,String keyword) {
 
 		element.sendKeys(Keys.chord( key, keyword));
 	}
