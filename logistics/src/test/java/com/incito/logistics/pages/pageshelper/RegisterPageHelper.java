@@ -1,5 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
+import org.openqa.selenium.By;
+
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.util.SeleniumUtil;
 
@@ -26,5 +28,16 @@ public class RegisterPageHelper {
 		FooterPageHelper.checkRegisterPageText(seleniumUtil);
 	}
 	
-
+	/**向注册输入框注入信息*/
+	public static void sendRegisterInfo(By by,String key,SeleniumUtil seleniumUtil){
+		
+		  seleniumUtil.sendKeys(seleniumUtil.findElementBy(by), key);
+		
+	}
+	
+	/**从注册进入指定的页面-根据元素定位来确定什么页面*/
+	public static void enterPage(SeleniumUtil seleniumUtil,By elementLocator){
+		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
+		
+	}
 }
