@@ -30,9 +30,9 @@ public class BaseParpare {
 
 	try{
 			seleniumUtil.launchBrower(browserName,context,platform);
-	}catch(Exception e){
-		logger.info("Staring brower failed!!");
+	}catch(Exception e){;
 		seleniumUtil.quit();
+		logger.error("Staring brower failed!!");
 	}
 		//设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
 		testContext.setAttribute("SELENIUM_DRIVER",seleniumUtil.driver);  
@@ -41,7 +41,9 @@ public class BaseParpare {
 	@AfterClass
 	/**结束测试关闭浏览器*/
 	public void endTest() {
+		if(seleniumUtil!=null){
 		seleniumUtil.quit();
+		}
 	}
 
 }
