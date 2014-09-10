@@ -150,7 +150,7 @@ public class SeleniumUtil {
 	
 
 	/**
-	 * 在给定的时间内去查找元素，如果没找到则超时
+	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
 
