@@ -101,11 +101,11 @@ public class SeleniumUtil {
 			element.click();
 
 		} catch (StaleElementReferenceException e) {
-			logger.error("The element you clicked:[" + element+ "] is no longer exist!");
+			logger.error("the element you clicked:[" + getLocatorByElement(element,">") + "] is no longer exist!");
 		} catch (Exception e) {
-			logger.error("Failed to click " + element);
+			logger.error("failed to click [" + getLocatorByElement(element,">")+"]");
 		}
-		logger.info("Clicked " + element);
+		logger.info("clicked [" + getLocatorByElement(element,">")+"]");
 	}
 
 	/**
@@ -121,9 +121,12 @@ public class SeleniumUtil {
 	 * 包装清除操作
 	 * */
 	public void clear(WebElement element) {
-
-		element.clear();
-
+		try {
+			element.clear();
+		} catch (Exception e) {
+			logger.error("failed to clear [" +  getLocatorByElement(element,">") + "] contents!");
+		}
+		logger.info("cleared the contents on [" +  getLocatorByElement(element,">")+"]");
 	}
 
 	/**
@@ -134,9 +137,9 @@ public class SeleniumUtil {
 			element.sendKeys(key);
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.warn("Failed to type the " + key + " to " + element);
+			logger.warn("failed to type the [" + key + "] to [" +  getLocatorByElement(element,">")+"]");
 		}
-		logger.info("typed：" + key + " to " + element);
+		logger.info("typed：[" + key + "] to [" +  getLocatorByElement(element,">")+"]");
 	}
 
 	/**
@@ -238,7 +241,7 @@ public class SeleniumUtil {
 	 * */
 	public void sleep(int sleepTime) {
 		try {
-			logger.info("The process sleep" + sleepTime / 1000 + "seconds");
+			logger.info("The process sleep " + sleepTime + " millisecond");
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -442,6 +445,22 @@ public class SeleniumUtil {
 
 		driver.manage().timeouts().pageLoadTimeout(pageLoadTime, TimeUnit.SECONDS);
 
+	}
+
+	/** 根据元素来获取此元素的定位值 */
+	public String getLocatorByElement(WebElement element, String expectText) {
+		String text = element.toString();
+		String expect = null;
+		try {
+			expect = text.substring(text.indexOf(expectText) + 1,text.length()-1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("failed to find the string [" + expectText+"]");
+
+		}
+		logger.info("found the string ["+expectText+"]");
+		return expect;
+		
 	}
 
 }
