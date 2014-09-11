@@ -36,7 +36,7 @@ public class RegisterPage_2_Success_Test extends BaseParpare {
 		for (int i = 0; i < keys.length; i++) {
 			RegisterPageHelper.registerUserInfo(seleniumUtil, bys[i], keys[i]);
 		}
-		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
+		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
 		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, register_username);
 
 	}

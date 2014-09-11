@@ -23,8 +23,8 @@ public class RegisterPage_3_Fail_All_Empty_Test extends BaseParpare {
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
-		RegisterPageHelper.checkRegisterPagePoint(timeOut, seleniumUtil);
+		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
+		RegisterPageHelper.checkRegisterPagePrompt(timeOut, seleniumUtil);
 
 	}
 }
