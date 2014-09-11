@@ -43,7 +43,7 @@ public class HomePage_Login_14_AllTabClick_Test extends BaseParpare {
 
 	// 检查用户名确认登录成功
 	public void verifyUserInfo(int timeOut, int sleepTime) {
-		seleniumUtil.sleep(sleepTime);
+		seleniumUtil.pause(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_USERINFO);
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), "incito | 退出");
 	}

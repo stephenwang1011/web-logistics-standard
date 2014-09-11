@@ -209,7 +209,7 @@ public class SeleniumUtil {
 	 * 等待alert出现
 	 * */
 	public Alert switchToPromptedAlertAfterWait(long waitMillisecondsForAlert) throws NoAlertPresentException {
-		final long ONE_ROUND_WAIT = 100;
+		final int ONE_ROUND_WAIT = 100;
 		NoAlertPresentException lastException = null;
 
 		long endTime = System.currentTimeMillis() + waitMillisecondsForAlert;
@@ -222,7 +222,7 @@ public class SeleniumUtil {
 			} catch (NoAlertPresentException e) {
 				lastException = e;
 			}
-			sleep(ONE_ROUND_WAIT);
+			pause(ONE_ROUND_WAIT);
 
 			if (System.currentTimeMillis() > endTime) {
 				break;
@@ -239,7 +239,7 @@ public class SeleniumUtil {
 			return;
 		}
 		try {
-			logger.info("The process sleep " + sleepTime + " millisecond");
+			logger.info("The process pause " + sleepTime + " millisecond");
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -247,17 +247,6 @@ public class SeleniumUtil {
 	}
 	
 	
-
-	/**
-	 * 让线程休眠 long
-	 * */
-	public void sleep(long sleepTime) {
-		try {
-			Thread.sleep(sleepTime);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 退出
@@ -321,10 +310,10 @@ public class SeleniumUtil {
 	/**
 	 * 取得弹窗
 	 * */
-	public void switchWindow(By by) {
+	public void switchWindow(By by, int sleepTime) {
 		String currentWindows = driver.getWindowHandle();
 		driver.findElement(by).click();
-		sleep(800);
+		pause(sleepTime);
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		while (it.hasNext()) {
@@ -388,8 +377,8 @@ public class SeleniumUtil {
 	/**
 	 * 添加cookies,做自动登陆的必要方法
 	 * */
-	public void addCookies() {
-		sleep(1000);
+	public void addCookies(int sleepTime) {
+		pause(sleepTime);
 		Set<Cookie> cookies = driver.manage().getCookies();
 		for (Cookie c : cookies) {
 			System.out.println(c.getName() + "->" + c.getValue());
