@@ -11,7 +11,7 @@ import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.util.GetTestData;
 
 /**
- * @author xy-incito
+ * @author xy-incito-wangkai
  * @Description 注册失败：只输入用户名不输入密码 点击登陆会提示“密码长度为6-20个字符”
  * */
 public class RegisterPage_4_Fail_Username_Test extends BaseParpare {
@@ -28,7 +28,7 @@ public class RegisterPage_4_Fail_Username_Test extends BaseParpare {
 		seleniumUtil.clear(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME));
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
 		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
-		RegisterPageHelper.checkRegisterPagePoint(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt(timeOut, seleniumUtil);
 	}
 
 }
