@@ -4,6 +4,8 @@ package com.incito.logistics.util;
  * @author xy-incito-wy
  * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
  * */
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -451,5 +453,20 @@ public class SeleniumUtil {
 		return expect;
 		
 	}
+	
+	/**
+	 * 利用ExcelDataProvider读取指定的excel表（表名是和类名一样）<br>
+	 * 使用方法：<br>
+	 * 1、在测试用例中写入：    @DataProvider(name = "dp")<br>
+	 * 2、然后在接着引入此方法<br>
+	 * 3、最后在测试用例的@Test处进行处理下<br>
+	 * 	  	@Test(dataProvider = "dp" )<br>
+     *		public void search(Map<String,String> data) {  <br>
+     *       这里去数据 用data.get("") ""中是excel中的列名<br>
+     *						}<br>
+	 * */
+    public Iterator<Object[]> dataFortestMethod(Method method) throws IOException {
+        return new ExcelDataProvider(this.getClass().getName(),method.getName());
+    }
 
 }
