@@ -32,21 +32,19 @@ import org.testng.ITestResult;
 import com.netease.qa.testng.TestResultListener;
 
 public class SeleniumUtil {
-	/**使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息*/
+	/** 使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息 */
 	public static Logger logger = Logger.getLogger(SeleniumUtil.class.getName());
-	public ITestResult it= null;
+	public ITestResult it = null;
 	public WebDriver driver = null;
 	public WebDriver window = null;
 
 	/***
 	 * 启动浏览器并打开页面
 	 * */
-	public void launchBrower(String browserName, ITestContext context,
-			String platform) {
+	public void launchBrower(String browserName, ITestContext context, String platform) {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest()
-				.getParameter("timeOut"));
+		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		SelectExplorer select = new SelectExplorer();
 		logger.info("Starting:[" + browserName + "]");
 		driver = select.selectExplorerByName(browserName, context, platform);
@@ -69,16 +67,16 @@ public class SeleniumUtil {
 	public void maxWindow() {
 		driver.manage().window().maximize();
 	}
-	
+
 	/**
-	 * 设定浏览器窗口大小：
-	 * 设置浏览器窗口的大小有下面两个比较常见的用途：
-	 * 1、在统一的浏览器大小下运行用例，可以比较容易的跟一些基于图像比对的工具进行结合，提升测试的灵活性及普遍适用性。比如可以跟sikuli结合，使用sikuli操作flash；
+	 * 设定浏览器窗口大小： 设置浏览器窗口的大小有下面两个比较常见的用途：
+	 * 1、在统一的浏览器大小下运行用例，可以比较容易的跟一些基于图像比对的工具进行结合
+	 * ，提升测试的灵活性及普遍适用性。比如可以跟sikuli结合，使用sikuli操作flash；
 	 * 2、在不同的浏览器大小下访问测试站点，对测试页面截图并保存，然后观察或使用图像比对工具对被测页面的前端样式进行评测。
-	 * 		比如可以将浏览器设置成移动端大小(320x480)，然后访问移动站点，对其样式进行评估；
+	 * 比如可以将浏览器设置成移动端大小(320x480)，然后访问移动站点，对其样式进行评估；
 	 * */
-	public void setBrowserSize(int width, int height){
-		 driver.manage().window().setSize(new Dimension(width,height));
+	public void setBrowserSize(int width, int height) {
+		driver.manage().window().setSize(new Dimension(width, height));
 	}
 
 	/**
@@ -99,15 +97,14 @@ public class SeleniumUtil {
 	 * 包装点击操作
 	 * */
 	public void click(WebElement element) {
-		try{
-		element.click();
-		
-		}catch(StaleElementReferenceException e){
-			logger.error("The element you clicked:["+element.getText()+"] is no longer exist!");
-			
+		try {
+			element.click();
+
+		} catch (StaleElementReferenceException e) {
+			logger.error("The element you clicked:[" + element.getText() + "] is no longer exist!");
+
 		}
 	}
-	
 
 	/**
 	 * 获得页面的标题
@@ -134,66 +131,57 @@ public class SeleniumUtil {
 		element.sendKeys(key);
 		logger.info("sended:" + key);
 	}
-	
-	/**
-	 * 模拟键盘操作的,比如Ctrl+A,Ctrl+C等 
-	 * 参数详解：
-	 * 1、WebElement element - 要被操作的元素
-	 * 2、Keys key - 键盘上的功能键 比如ctrl ,alt等
-	 * 3、String keyword - 键盘上的字母 
-	 * */
-	public void pressKeysOnKeyboard(WebElement element ,Keys key,String keyword) {
 
-		element.sendKeys(Keys.chord( key, keyword));
+	/**
+	 * 模拟键盘操作的,比如Ctrl+A,Ctrl+C等 参数详解： 1、WebElement element - 要被操作的元素 2、Keys key
+	 * - 键盘上的功能键 比如ctrl ,alt等 3、String keyword - 键盘上的字母
+	 * */
+	public void pressKeysOnKeyboard(WebElement element, Keys key, String keyword) {
+
+		element.sendKeys(Keys.chord(key, keyword));
 	}
-	
-	
 
 	/**
 	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
 
-			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
+		(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
-						public Boolean apply(WebDriver driver) {
-							return driver.findElement(By).isDisplayed();
-						}
-					});
-		}
-	
+			public Boolean apply(WebDriver driver) {
+				return driver.findElement(By).isDisplayed();
+			}
+		});
+	}
 
-	
 	/**
 	 * 当jquery正在读取或处理比较大的json文件的时候，怎样判断它的读取活动已经完成
 	 */
-	
-	public void waitForAjaxDone(int timeOut){
-		try{
-    (new WebDriverWait(driver, timeOut))
-            .until(new ExpectedCondition<Boolean>() {
-                @Override
-                public Boolean apply(WebDriver d) { 
-                    JavascriptExecutor js = (JavascriptExecutor)d;
-                    return (Boolean)js.executeScript("return jQuery.active == 0");  //Jquery.active=0表示ajax活动已经完成
-                }
-            });
-    }catch(TimeoutException e){
-    	logger.error("Time out!! "+timeOut+" seconds passed and the jquery satate ：[!=0]" );
-    	new TestResultListener().onTestFailure(it);
-    	quit();
-    	
-    }
-	
+
+	public void waitForAjaxDone(int timeOut) {
+		try {
+			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
+				@Override
+				public Boolean apply(WebDriver d) {
+					JavascriptExecutor js = (JavascriptExecutor) d;
+					return (Boolean) js.executeScript("return jQuery.active == 0"); // Jquery.active=0表示ajax活动已经完成
+				}
+			});
+		} catch (TimeoutException e) {
+			logger.error("Time out!! " + timeOut + " seconds passed and the jquery satate ：[!=0]");
+			new TestResultListener().onTestFailure(it);
+			quit();
+
+		}
+
 	}
 
 	/**
 	 * 判断文本是不是和需求要求的文本一致
 	 * **/
 	public void isTextCorrect(String actual, String expected) {
-	
-		Assert.assertEquals(actual, expected);
 
+		Assert.assertEquals(actual, expected);
 
 	}
 
@@ -215,8 +203,7 @@ public class SeleniumUtil {
 	/**
 	 * 等待alert出现
 	 * */
-	public Alert switchToPromptedAlertAfterWait(long waitMillisecondsForAlert)
-			throws NoAlertPresentException {
+	public Alert switchToPromptedAlertAfterWait(long waitMillisecondsForAlert) throws NoAlertPresentException {
 		final long ONE_ROUND_WAIT = 100;
 		NoAlertPresentException lastException = null;
 
@@ -344,7 +331,6 @@ public class SeleniumUtil {
 
 	}
 
-
 	/**
 	 * get方法包装
 	 * */
@@ -432,14 +418,12 @@ public class SeleniumUtil {
 	// webdriver中可以设置很多的超时时间
 	/** implicitlyWait。识别对象时的超时时间。过了这个时间如果对象还没找到的话就会抛出NoSuchElement异常 */
 	public void implicitlyWait(int timeOut) {
-		driver.manage().timeouts()
-				.implicitlyWait(timeOut, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
 	}
 
 	/** setScriptTimeout。异步脚本的超时时间。webdriver可以异步执行脚本，这个是设置异步执行脚本脚本返回结果的超时时间 */
 	public void setScriptTimeout(int timeOut) {
-		driver.manage().timeouts()
-				.setScriptTimeout(timeOut, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(timeOut, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -452,11 +436,5 @@ public class SeleniumUtil {
 		driver.manage().timeouts().pageLoadTimeout(pageLoadTime, TimeUnit.SECONDS);
 
 	}
-
-	
-	
-
-
-	
 
 }

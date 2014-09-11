@@ -10,12 +10,13 @@ import com.netease.qa.testng.utils.ConfigReader;
 
 /**
  * TestNG retry Analyzer.
+ * 
  * @author kevinkong
- *
+ * 
  */
 public class TestngRetry implements IRetryAnalyzer {
-	static{
-	PropertyConfigurator.configure("./config/log4j.properties");
+	static {
+		PropertyConfigurator.configure("./config/log4j.properties");
 	}
 	private static Logger logger = Logger.getLogger(TestngRetry.class);
 	private int retryCount = 1;
@@ -31,8 +32,7 @@ public class TestngRetry implements IRetryAnalyzer {
 
 	public boolean retry(ITestResult result) {
 		if (retryCount <= maxRetryCount) {
-			String message = "Retry for： [" + result.getName() + "] on class [" + result.getTestClass().getName() + "] retry "
-					+ retryCount + " times";
+			String message = "Retry for： [" + result.getName() + "] on class [" + result.getTestClass().getName() + "] retry " + retryCount + " times";
 			logger.info(message);
 			Reporter.setCurrentTestResult(result);
 			Reporter.log("RunCount=" + (retryCount + 1));
@@ -45,9 +45,9 @@ public class TestngRetry implements IRetryAnalyzer {
 	public static int getMaxRetryCount() {
 		return maxRetryCount;
 	}
-	
+
 	public int getRetryCount() {
 		return retryCount;
 	}
-	
+
 }

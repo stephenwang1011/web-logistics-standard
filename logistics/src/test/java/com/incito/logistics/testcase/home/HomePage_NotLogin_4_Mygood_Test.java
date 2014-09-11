@@ -1,4 +1,5 @@
 package com.incito.logistics.testcase.home;
+
 /**
  *@author xy-incito
  *@Description 主页未登录的情况下 点击“我的货源” 应该弹出登陆界面
@@ -15,14 +16,14 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
 public class HomePage_NotLogin_4_Mygood_Test extends BaseParpare {
 	@Test
-	public void myGoods(ITestContext context){
-		  int timeOut =Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		  HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		  HomePageHelper.checkHomePageText(seleniumUtil);
-		  seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS));
-		  LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		  LoginPageHelper.checkLoginPageText(seleniumUtil);
-		  seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_CLOSE));
-	
+	public void myGoods(ITestContext context) {
+		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
+		HomePageHelper.checkHomePageText(seleniumUtil);
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS));
+		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
+		LoginPageHelper.checkLoginPageText(seleniumUtil);
+		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_CLOSE));
+
 	}
 }

@@ -20,17 +20,16 @@ import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
 /**
- * @author netease_arrow
- * 描述：来自网易的截图插件
+ * @author netease_arrow 描述：来自网易的截图插件
  * 
  */
 public class TestResultListener extends TestListenerAdapter {
 
 	private static Logger logger = Logger.getLogger(TestResultListener.class.getName());
-    protected ITestContext testContext = null; //这里也是新加的
-	
+	protected ITestContext testContext = null; // 这里也是新加的
+
 	@Override
-	public void onStart(ITestContext testContext) {   //这里也是新加的，用于对context进行统一
+	public void onStart(ITestContext testContext) { // 这里也是新加的，用于对context进行统一
 		this.testContext = testContext;
 		super.onStart(testContext);
 	}
@@ -39,17 +38,17 @@ public class TestResultListener extends TestListenerAdapter {
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
 		logger.info(tr.getName() + " test case runs failed!");
-		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER");  //这里就是取driver
-		saveScreenShot(tr,webDriver);
+		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER"); // 这里就是取driver
+		saveScreenShot(tr, webDriver);
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER");
-		logger.info(tr.getName() + " test case was skipped");	
-		saveScreenShot(tr,webDriver);
-	
+		logger.info(tr.getName() + " test case was skipped");
+		saveScreenShot(tr, webDriver);
+
 	}
 
 	@Override
@@ -90,7 +89,7 @@ public class TestResultListener extends TestListenerAdapter {
 				skipTestIds.add(skipTestId);
 			}
 		}
-		
+
 		// Eliminate the repeat failed methods
 		Set<Integer> failedTestIds = new HashSet<Integer>();
 		for (ITestResult failedTest : testContext.getFailedTests().getAllResults()) {
@@ -102,16 +101,12 @@ public class TestResultListener extends TestListenerAdapter {
 			// deleted
 			// or delete this failed test if there is at least one passed
 			// version
-			if (failedTestIds.contains(failedTestId) || passedTestIds.contains(failedTestId) ||
-					skipTestIds.contains(failedTestId)) {
+			if (failedTestIds.contains(failedTestId) || passedTestIds.contains(failedTestId) || skipTestIds.contains(failedTestId)) {
 				testsToBeRemoved.add(failedTest);
 			} else {
 				failedTestIds.add(failedTestId);
 			}
 		}
-		
-
-		
 
 		// finally delete all tests that are marked
 		for (Iterator<ITestResult> iterator = testContext.getFailedTests().getAllResults().iterator(); iterator.hasNext();) {
@@ -130,30 +125,31 @@ public class TestResultListener extends TestListenerAdapter {
 		id = id + (result.getParameters() != null ? Arrays.hashCode(result.getParameters()) : 0);
 		return id;
 	}
-    private void saveScreenShot(ITestResult tr,WebDriver driver) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-        String mDateTime = formatter.format(new Date());
-        String fileName = mDateTime + "_" + tr.getName();
-        String filePath = "";
-        try {
-            //这里可以调用不同框架的截图功能
-            File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            filePath = "result/screenshot/" + fileName + ".jpg";
-            File destFile = new File(filePath);
-            FileUtils.copyFile(screenshot, destFile);
-            logger.info(fileName+" screenshot successfully，saved："+"[ "+filePath+" ]");
 
-        } catch (Exception e) {
-                filePath = fileName + " ,screenshot failed，the reason:" + e.getMessage();
-                logger.error(filePath);
-        }
+	private void saveScreenShot(ITestResult tr, WebDriver driver) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		String mDateTime = formatter.format(new Date());
+		String fileName = mDateTime + "_" + tr.getName();
+		String filePath = "";
+		try {
+			// 这里可以调用不同框架的截图功能
+			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			filePath = "result/screenshot/" + fileName + ".jpg";
+			File destFile = new File(filePath);
+			FileUtils.copyFile(screenshot, destFile);
+			logger.info(fileName + " screenshot successfully，saved：" + "[ " + filePath + " ]");
 
-        if (!"".equals(filePath)) {
-             Reporter.setCurrentTestResult(tr);
-             Reporter.log(filePath);
-             //把截图写入到Html报告中方便查看
-             Reporter.log("<img src=\"../../" + filePath + "\"/>");
-        }
- }
+		} catch (Exception e) {
+			filePath = fileName + " ,screenshot failed，the reason:" + e.getMessage();
+			logger.error(filePath);
+		}
+
+		if (!"".equals(filePath)) {
+			Reporter.setCurrentTestResult(tr);
+			Reporter.log(filePath);
+			// 把截图写入到Html报告中方便查看
+			Reporter.log("<img src=\"../../" + filePath + "\"/>");
+		}
+	}
 
 }
