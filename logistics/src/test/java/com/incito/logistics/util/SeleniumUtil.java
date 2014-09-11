@@ -103,9 +103,9 @@ public class SeleniumUtil {
 		} catch (StaleElementReferenceException e) {
 			logger.error("the element you clicked:[" + getLocatorByElement(element,">") + "] is no longer exist!");
 		} catch (Exception e) {
-			logger.error("failed to click [" + getLocatorByElement(element,">")+"]");
+			logger.error("failed to click element [" + getLocatorByElement(element,">")+"]");
 		}
-		logger.info("clicked [" + getLocatorByElement(element,">")+"]");
+		logger.info("clicked element [" + getLocatorByElement(element,">")+"]");
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class SeleniumUtil {
 
 			public Boolean apply(WebDriver driver) {
 				WebElement element = driver.findElement(By);
-				logger.info("found the ["+getLocatorByElement(element,">")+"]");
+				logger.info("found the element ["+getLocatorByElement(element,">")+"]");
 				return element.isDisplayed();
 			}
 		});
@@ -232,9 +232,12 @@ public class SeleniumUtil {
 	}
 
 	/**
-	 * 让线程休眠 int
+	 * 暂停当前用例的执行，暂停的时间为：sleepTime
 	 * */
-	public void sleep(int sleepTime) {
+	public void pause(int sleepTime) {
+		if (sleepTime <= 0) {
+			return;
+		}
 		try {
 			logger.info("The process sleep " + sleepTime + " millisecond");
 			Thread.sleep(sleepTime);
@@ -242,6 +245,8 @@ public class SeleniumUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	/**
 	 * 让线程休眠 long
