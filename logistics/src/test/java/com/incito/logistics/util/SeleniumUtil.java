@@ -99,6 +99,7 @@ public class SeleniumUtil {
 	public void click(WebElement element) {
 		try {
 			element.click();
+			logger.info("Clicked "+element);
 
 		} catch (StaleElementReferenceException e) {
 			logger.error("The element you clicked:[" + element.getText() + "] is no longer exist!");
@@ -128,8 +129,13 @@ public class SeleniumUtil {
 	 * 向输入框输入内容
 	 * */
 	public void type(WebElement element, String key) {
+		try{
 		element.sendKeys(key);
-		logger.info("sended:" + key);
+		}catch(Exception e){
+			e.printStackTrace();
+			Assert.fail("Failed to type the "+key +" to "+element);
+		}
+		logger.info("typed：" + key +" to "+element);
 	}
 
 	/**
