@@ -34,7 +34,7 @@ public class RegisterPage_7_Fail_UsernameAndPassword_Test extends BaseParpare {
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_repasswd(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_UsernameAndPassword(timeOut, seleniumUtil);
 	}
 
 }
