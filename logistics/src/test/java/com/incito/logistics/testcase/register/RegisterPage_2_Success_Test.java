@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
@@ -28,6 +27,7 @@ public class RegisterPage_2_Success_Test extends BaseParpare {
 		By bys[] = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
@@ -37,6 +37,7 @@ public class RegisterPage_2_Success_Test extends BaseParpare {
 			RegisterPageHelper.registerUserInfo(seleniumUtil, bys[i], keys[i]);
 		}
 		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
+		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, register_username);
 
 	}
 
