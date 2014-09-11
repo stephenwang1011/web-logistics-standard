@@ -27,7 +27,7 @@ public class RegisterPage_4_Fail_Username_Test extends BaseParpare {
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
 		seleniumUtil.clear(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME));
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
-		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
+		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
 		RegisterPageHelper.checkRegisterPagePrompt(timeOut, seleniumUtil);
 	}
 
