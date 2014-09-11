@@ -159,7 +159,9 @@ public class SeleniumUtil {
 		(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
 			public Boolean apply(WebDriver driver) {
-				return driver.findElement(By).isDisplayed();
+				WebElement element = driver.findElement(By);
+				logger.info("found the ["+getLocatorByElement(element,">")+"]");
+				return element.isDisplayed();
 			}
 		});
 	}
@@ -202,13 +204,6 @@ public class SeleniumUtil {
 
 	}
 
-	/**
-	 * 获取alert
-	 * */
-	public Alert getAlert() {
-
-		return driver.switchTo().alert();
-	}
 
 	/**
 	 * 等待alert出现
@@ -458,7 +453,7 @@ public class SeleniumUtil {
 			logger.error("failed to find the string [" + expectText+"]");
 
 		}
-		logger.info("found the string ["+expectText+"]");
+
 		return expect;
 		
 	}
