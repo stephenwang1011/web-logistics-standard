@@ -99,12 +99,13 @@ public class SeleniumUtil {
 	public void click(WebElement element) {
 		try {
 			element.click();
-			logger.info("Clicked "+element);
 
 		} catch (StaleElementReferenceException e) {
-			logger.error("The element you clicked:[" + element.getText() + "] is no longer exist!");
-
+			logger.error("The element you clicked:[" + element+ "] is no longer exist!");
+		} catch (Exception e) {
+			logger.error("Failed to click " + element);
 		}
+		logger.info("Clicked " + element);
 	}
 
 	/**
@@ -129,13 +130,13 @@ public class SeleniumUtil {
 	 * 向输入框输入内容
 	 * */
 	public void type(WebElement element, String key) {
-		try{
-		element.sendKeys(key);
-		}catch(Exception e){
+		try {
+			element.sendKeys(key);
+		} catch (Exception e) {
 			e.printStackTrace();
-			Assert.fail("Failed to type the "+key +" to "+element);
+			logger.warn("Failed to type the " + key + " to " + element);
 		}
-		logger.info("typed：" + key +" to "+element);
+		logger.info("typed：" + key + " to " + element);
 	}
 
 	/**
