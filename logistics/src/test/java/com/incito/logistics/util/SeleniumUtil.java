@@ -4,6 +4,8 @@ package com.incito.logistics.util;
  * @author xy-incito-wy
  * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
  * */
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -103,9 +105,9 @@ public class SeleniumUtil {
 		} catch (StaleElementReferenceException e) {
 			logger.error("the element you clicked:[" + getLocatorByElement(element,">") + "] is no longer exist!");
 		} catch (Exception e) {
-			logger.error("failed to click [" + getLocatorByElement(element,">")+"]");
+			logger.error("failed to click element [" + getLocatorByElement(element,">")+"]");
 		}
-		logger.info("clicked [" + getLocatorByElement(element,">")+"]");
+		logger.info("clicked element [" + getLocatorByElement(element,">")+"]");
 	}
 
 	/**
@@ -160,7 +162,7 @@ public class SeleniumUtil {
 
 			public Boolean apply(WebDriver driver) {
 				WebElement element = driver.findElement(By);
-				logger.info("found the ["+getLocatorByElement(element,">")+"]");
+				logger.info("found the element ["+getLocatorByElement(element,">")+"]");
 				return element.isDisplayed();
 			}
 		});
@@ -209,7 +211,7 @@ public class SeleniumUtil {
 	 * 等待alert出现
 	 * */
 	public Alert switchToPromptedAlertAfterWait(long waitMillisecondsForAlert) throws NoAlertPresentException {
-		final long ONE_ROUND_WAIT = 100;
+		final int ONE_ROUND_WAIT = 100;
 		NoAlertPresentException lastException = null;
 
 		long endTime = System.currentTimeMillis() + waitMillisecondsForAlert;
@@ -222,7 +224,7 @@ public class SeleniumUtil {
 			} catch (NoAlertPresentException e) {
 				lastException = e;
 			}
-			sleep(ONE_ROUND_WAIT);
+			pause(ONE_ROUND_WAIT);
 
 			if (System.currentTimeMillis() > endTime) {
 				break;
@@ -232,27 +234,21 @@ public class SeleniumUtil {
 	}
 
 	/**
-	 * 让线程休眠 int
+	 * 暂停当前用例的执行，暂停的时间为：sleepTime
 	 * */
-	public void sleep(int sleepTime) {
+	public void pause(int sleepTime) {
+		if (sleepTime <= 0) {
+			return;
+		}
 		try {
-			logger.info("The process sleep " + sleepTime + " millisecond");
+			logger.info("The process pause " + sleepTime + " millisecond");
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 让线程休眠 long
-	 * */
-	public void sleep(long sleepTime) {
-		try {
-			Thread.sleep(sleepTime);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+	
+	
 
 	/**
 	 * 退出
@@ -316,10 +312,10 @@ public class SeleniumUtil {
 	/**
 	 * 取得弹窗
 	 * */
-	public void switchWindow(By by) {
+	public void switchWindow(By by, int sleepTime) {
 		String currentWindows = driver.getWindowHandle();
 		driver.findElement(by).click();
-		sleep(800);
+		pause(sleepTime);
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		while (it.hasNext()) {
@@ -383,8 +379,8 @@ public class SeleniumUtil {
 	/**
 	 * 添加cookies,做自动登陆的必要方法
 	 * */
-	public void addCookies() {
-		sleep(1000);
+	public void addCookies(int sleepTime) {
+		pause(sleepTime);
 		Set<Cookie> cookies = driver.manage().getCookies();
 		for (Cookie c : cookies) {
 			System.out.println(c.getName() + "->" + c.getValue());
@@ -457,5 +453,20 @@ public class SeleniumUtil {
 		return expect;
 		
 	}
+	
+	/**
+	 * 利用ExcelDataProvider读取指定的excel表（表名是和类名一样）<br>
+	 * 使用方法：<br>
+	 * 1、在测试用例中写入：    @DataProvider(name = "dp")<br>
+	 * 2、然后在接着引入此方法<br>
+	 * 3、最后在测试用例的@Test处进行处理下<br>
+	 * 	  	@Test(dataProvider = "dp" )<br>
+     *		public void search(Map<String,String> data) {  <br>
+     *       这里去数据 用data.get("") ""中是excel中的列名<br>
+     *						}<br>
+	 * */
+    public Iterator<Object[]> dataFortestMethod(Method method) throws IOException {
+        return new ExcelDataProvider(this.getClass().getName(),method.getName());
+    }
 
 }

@@ -38,7 +38,7 @@ public class RegisterPageHelper {
 
 	/** 检查注册成功后自动登录是否正确登录 */
 	public static void checkUserInfo(int timeOut, int sleepTime, SeleniumUtil seleniumUtil, String username) {
-		seleniumUtil.sleep(sleepTime);
+		seleniumUtil.pause(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_USERINFO);
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
 	}

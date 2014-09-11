@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!-- thread-count 定义同时启动的浏览器数 、parallel="tests" 表明每个test都是平级的 -->
-<suite name="物流货代web自动化测试报告" parallel="tests" thread-count="3" >
-    <!-- 设置系统平台:win/linux/mac -->
-    <parameter name="platform" value="win" />
-    <!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" /> 
+<suite name="物流货代web自动化测试报告" parallel="tests" thread-count="3">
+	<!-- 设置系统平台:win/linux/mac -->
+	<parameter name="platform" value="win" />
+	<!-- chrome,firefox和ie不区分大小写 -->
+	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
 	<parameter name="driverConfgFilePath" value="config/driver.properties" />
-	<!-- 定义测试的站点地址 -->	
+	<!-- 定义测试的站点地址 -->
 	<parameter name="testurl" value="http://192.168.11.134:8080/web/index" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
@@ -19,33 +19,33 @@
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
 
-	
-	<!--测试用例按照包名来建立test  -->
-	<test name="注册" preserve-order="true" >
-		<packages>
-	  			<package name = "com.incito.logistics.testcase.register" />
-		</packages>
-	 </test> 
-	 
-	<test name="首页" preserve-order="true" >
-		<packages>
-	  			<package name = "com.incito.logistics.testcase.home" />
-		</packages>
-	 </test> 
 
- 	<test name="登录" preserve-order="true" >
+	<!--测试用例按照包名来建立test -->
+	<test name="注册" preserve-order="true">
 		<packages>
-	   			<package name = "com.incito.logistics.testcase.login" />
+			<package name="com.incito.logistics.testcase.register" />
 		</packages>
-  	</test> 
-   
-	  <listeners>
-	    <!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
-			<listener class-name="com.netease.qa.testng.TestResultListener" />
-			<listener class-name="com.netease.qa.testng.RetryListener" />
-			<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
-			
-	  </listeners>
-	  
+	</test>
+
+	<test name="首页" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.home" />
+		</packages>
+	</test>
+
+	<test name="登录" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.login" />
+		</packages>
+	</test>
+
+	<listeners>
+		<!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
+		<listener class-name="com.netease.qa.testng.TestResultListener" />
+		<listener class-name="com.netease.qa.testng.RetryListener" />
+		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
+
+	</listeners>
+
 </suite> 
 

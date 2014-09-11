@@ -50,7 +50,7 @@ public class LoginPageHelper {
 
 	/** 检查登陆成功后用户信息是不是正确的 */
 	public static void checkUserInfo(int timeOut, int sleepTime, SeleniumUtil seleniumUtil, String username) {
-		seleniumUtil.sleep(sleepTime);
+		seleniumUtil.pause(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_USERINFO);
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
 	}
