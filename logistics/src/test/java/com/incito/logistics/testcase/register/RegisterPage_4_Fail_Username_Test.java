@@ -1,5 +1,6 @@
 package com.incito.logistics.testcase.register;
 
+import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -21,11 +22,15 @@ public class RegisterPage_4_Fail_Username_Test extends BaseParpare {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String register_username = GetTestData.getTestData(configFilePath, "register_username");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.clear(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME));
+		RegisterPageHelper.checkRegisterPageText(seleniumUtil);
+		for (By by : bys) {
+			seleniumUtil.clear(seleniumUtil.findElementBy(by));
+		}
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
 		RegisterPageHelper.checkRegisterPagePrompt(timeOut, seleniumUtil);

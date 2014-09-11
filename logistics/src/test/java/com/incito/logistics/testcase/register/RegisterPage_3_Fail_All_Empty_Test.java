@@ -1,5 +1,6 @@
 package com.incito.logistics.testcase.register;
 
+import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -18,11 +19,15 @@ public class RegisterPage_3_Fail_All_Empty_Test extends BaseParpare {
 	@Test
 	public void registerFailTest_All_Empty(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		
+		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPageText(seleniumUtil);
+		for (By by : bys) {
+			seleniumUtil.clear(seleniumUtil.findElementBy(by));
+		}
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
 		RegisterPageHelper.checkRegisterPagePrompt(timeOut, seleniumUtil);
 
