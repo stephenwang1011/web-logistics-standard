@@ -7,14 +7,7 @@ import org.openqa.selenium.By;
  * */
 public class PersonCenterPage {
 
-	/**目前正在建设中*/
-	public static final  By PCP_TEXT_BODY = By.id("body");
-	
-	
-	
-	
-	
-	
+	/** 目前正在建设中 */
+	public static final By PCP_TEXT_BODY = By.id("body");
+
 }
-
-

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!-- thread-count 定义同时启动的浏览器数 -->
-<suite name="LogisticsAutoTest" parallel="classes" thread-count="2">
-	<!-- 设置系统平台:win/linux/mac -->
-	<parameter name="platform" value="win" />
-	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" />
+<suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
+    <!-- 设置系统平台:win/linux/mac -->
+    <parameter name="platform" value="win" />
+    <!-- chrome,firefox和ie不区分大小写 -->
+	<parameter name="browserName" value="chrome" /> 
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
@@ -13,31 +13,24 @@
 	<!-- 定义测试的站点地址 -->
 	<parameter name="testurl" value="http://192.168.11.134:8080/web/index" />
 	<!-- 进程等待1秒中的控制时间 -->
-	<parameter name="sleepTime" value="1000" />
+	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素30秒不出现超时时间 -->
 	<parameter name="timeOut" value="15" />
-	<!-- 等待页面完全加载完全的时间 -->
-	<parameter name="waitPageLoadTime" value="15" />
-	<!-- 识别对象时的超时时间。过了这个时间如果对象还没找到的话就会抛出NoSuchElement异常 -->
-	<parameter name="implicitlyWaitTime" value="10" />
-	<!-- 异步脚本的超时时间。webdriver可以异步执行脚本，这个是设置异步执行脚本脚本返回结果的超时时间 -->
-	<parameter name="setScriptTime" value="10" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
-
-
-	<test name="singleTest" preserve-order="true">
-		<classes>
-			<class
-				name="com.incito.logistics.testcase.register.RegisterPage_3_Fail_All_Empty_Test" />
-		</classes>
-	</test>
-
-	<listeners>
-		<!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
-		<listener class-name="com.netease.qa.testng.TestResultListener" />
-		<listener class-name="com.netease.qa.testng.RetryListener" />
-		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
-	</listeners>
-
+	
+  <test name="singleTest" preserve-order="true" >
+	<classes>
+		<class name="com.incito.logistics.testcase.register.RegisterPage_2_Success_Test" />
+	</classes>
+  </test> 
+   
+	  <listeners>
+	    <!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
+			<listener class-name="com.netease.qa.testng.TestResultListener" />
+			<listener class-name="com.netease.qa.testng.RetryListener" />
+			<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
+			
+	  </listeners>
+	  
 </suite> 

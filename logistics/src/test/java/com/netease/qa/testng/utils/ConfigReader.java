@@ -29,29 +29,29 @@ public class ConfigReader {
 	private ConfigReader() {
 		readConfig(CONFIGFILE);
 	}
-	
+
 	public static ConfigReader getInstance() {
-		if(cr == null) {
+		if (cr == null) {
 			cr = new ConfigReader();
 		}
 		return cr;
 	}
-	
+
 	private void readConfig(String fileName) {
 		Properties properties = getConfig(fileName);
 		if (properties != null) {
 			String sRetryCount = null;
-			
+
 			Enumeration<?> en = properties.propertyNames();
 			while (en.hasMoreElements()) {
 				String key = (String) en.nextElement();
-				if(key.toLowerCase().equals(RETRYCOUNT)) {
+				if (key.toLowerCase().equals(RETRYCOUNT)) {
 					sRetryCount = properties.getProperty(key);
 				}
-				if(key.toLowerCase().equals(SOURCEDIR)) {
+				if (key.toLowerCase().equals(SOURCEDIR)) {
 					sourceCodeDir = properties.getProperty(key);
 				}
-				if(key.toLowerCase().equals(SOURCEENCODING)) {
+				if (key.toLowerCase().equals(SOURCEENCODING)) {
 					sourceCodeEncoding = properties.getProperty(key);
 				}
 			}
@@ -69,7 +69,7 @@ public class ConfigReader {
 	public int getRetryCount() {
 		return retryCount;
 	}
-	
+
 	public String getSourceCodeDir() {
 		return this.sourceCodeDir;
 	}

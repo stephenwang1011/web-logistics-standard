@@ -107,13 +107,13 @@ public class PowerEmailableReporter implements IReporter {
 				ITestContext testContext = r2.getTestContext();
 				String testName = testContext.getName();
 				m_testIndex = testIndex;
-				
+
 				resultSummary(suite, testContext.getSkippedConfigurations(), testName, "skipped", " (configuration methods)");
 				resultSummary(suite, testContext.getSkippedTests(), testName, "skipped", "");
 				resultSummary(suite, testContext.getFailedConfigurations(), testName, "failed", " (configuration methods)");
 				resultSummary(suite, testContext.getFailedTests(), testName, "failed", "");
 				resultSummary(suite, testContext.getPassedTests(), testName, "passed", "");
-				
+
 				testIndex++;
 			}
 		}
@@ -151,7 +151,7 @@ public class PowerEmailableReporter implements IReporter {
 			Set<String> setMethods = new HashSet<String>();
 			for (ITestNGMethod method : getMethodSet(tests, suite)) {
 				m_row += 1;
-				
+
 				ITestClass testClass = method.getTestClass();
 				String className = testClass.getName();
 				if (mq == 0) {
@@ -189,7 +189,8 @@ public class PowerEmailableReporter implements IReporter {
 				}
 				String description = method.getDescription();
 				String testInstanceName = resultSet.toArray(new ITestResult[] {})[0].getTestName();
-				// Calculate each test run times, the result shown in the html report.
+				// Calculate each test run times, the result shown in the html
+				// report.
 				ITestResult[] results = resultSet.toArray(new ITestResult[] {});
 				String methodName = method.getMethodName();
 				if (setMethods.contains(methodName)) {
@@ -219,19 +220,13 @@ public class PowerEmailableReporter implements IReporter {
 						}
 					}
 				}
-				
-				
+
 				int methodId = method.getTestClass().getName().hashCode();
 				methodId = methodId + method.getMethodName().hashCode();
-				if(result != null)
+				if (result != null)
 					methodId = methodId + (result.getParameters() != null ? Arrays.hashCode(result.getParameters()) : 0);
-				
-				
-				buff.append("<td><a href=\"#m" + methodId + "\">" + qualifiedName(method) + " "
-						+ (description != null && description.length() > 0 ? "(\"" + description + "\")" : "") + "</a>"
-						+ (null == testInstanceName ? "" : "<br>(" + testInstanceName + ")") + "</td><td>" + this.getAuthors(className, method)
-						+ "</td><td class=\"numi\">" + resultSet.size() + "</td>" + "<td>" + (count == 0 ? "" : count) + "</td>" + "<td>"
-						+ parameterString + "</td>"	+ "<td>" + start + "</td>" + "<td class=\"numi\">" + (end - start) + "</td>" + "</tr>");
+
+				buff.append("<td><a href=\"#m" + methodId + "\">" + qualifiedName(method) + " " + (description != null && description.length() > 0 ? "(\"" + description + "\")" : "") + "</a>" + (null == testInstanceName ? "" : "<br>(" + testInstanceName + ")") + "</td><td>" + this.getAuthors(className, method) + "</td><td class=\"numi\">" + resultSet.size() + "</td>" + "<td>" + (count == 0 ? "" : count) + "</td>" + "<td>" + parameterString + "</td>" + "<td>" + start + "</td>" + "<td class=\"numi\">" + (end - start) + "</td>" + "</tr>");
 			}
 			if (mq > 0) {
 				cq += 1;
@@ -247,8 +242,7 @@ public class PowerEmailableReporter implements IReporter {
 	/** Starts and defines columns result summary table */
 	private void startResultSummaryTable(String style) {
 		tableStart(style, "summary");
-		m_out.println("<tr><th>Class</th><th>Method</th><th>Authors</th><th># of<br/>Scenarios</th><th>Running Counts</th>"
-				+ "<th>Parameters</th><th>Start</th><th>Time<br/>(ms)</th></tr>");
+		m_out.println("<tr><th>Class</th><th>Method</th><th>Authors</th><th># of<br/>Scenarios</th><th>Running Counts</th>" + "<th>Parameters</th><th>Start</th><th>Time<br/>(ms)</th></tr>");
 		m_row = 0;
 	}
 
@@ -273,9 +267,9 @@ public class PowerEmailableReporter implements IReporter {
 	private void resultDetail(IResultMap tests) {
 		for (ITestResult result : tests.getAllResults()) {
 			ITestNGMethod method = result.getMethod();
-	
+
 			int methodId = getId(result);
-			
+
 			String cname = method.getTestClass().getName();
 			m_out.println("<h2 id=\"m" + methodId + "\" name=\"m" + methodId + "\" >" + cname + ":" + method.getMethodName() + "</h2>");
 			Set<ITestResult> resultSet = tests.getResults(method);
@@ -354,7 +348,7 @@ public class PowerEmailableReporter implements IReporter {
 	private Collection<ITestNGMethod> getMethodSet(IResultMap tests, ISuite suite) {
 		List<IInvokedMethod> r = Lists.newArrayList();
 		List<IInvokedMethod> invokedMethods = suite.getAllInvokedMethods();
-		
+
 		// Eliminate the repeat retry methods
 		for (IInvokedMethod im : invokedMethods) {
 			if (tests.getAllMethods().contains(im.getTestMethod())) {
@@ -375,24 +369,21 @@ public class PowerEmailableReporter implements IReporter {
 
 		// Add all the methods that weren't invoked (e.g. skipped) that we
 		// haven't added yet
-//		for (ITestNGMethod m : tests.getAllMethods()) {
-//			if (!result.contains(m)) {
-//				result.add(m);
-//			}
-//		}
-		
-		
+		// for (ITestNGMethod m : tests.getAllMethods()) {
+		// if (!result.contains(m)) {
+		// result.add(m);
+		// }
+		// }
+
 		for (ITestResult allResult : tests.getAllResults()) {
 			int testId = getId(allResult);
 			if (!testIds.contains(testId)) {
 				result.add(allResult.getMethod());
 			}
 		}
-		
+
 		return result;
 	}
-
-	
 
 	public void generateSuiteSummaryReport(List<ISuite> suites) {
 		tableStart("testOverview", null);
@@ -432,19 +423,18 @@ public class PowerEmailableReporter implements IReporter {
 				q = overview.getPassedTests().size();
 				qty_pass_s += q;
 				summaryCell(q, Integer.MAX_VALUE);
-				
+
 				q = getMethodSet(overview.getSkippedTests(), suite).size();
 				qty_skip += q;
 				summaryCell(q, 0);
-				
+
 				q = getMethodSet(overview.getFailedTests(), suite).size();
 				qty_fail += q;
 				summaryCell(q, 0);
-				
+
 				time_start = Math.min(overview.getStartDate().getTime(), time_start);
 				time_end = Math.max(overview.getEndDate().getTime(), time_end);
-				summaryCell(formatter.format((overview.getEndDate().getTime() - overview.getStartDate().getTime()) / 1000.) + " seconds",
-						true);
+				summaryCell(formatter.format((overview.getEndDate().getTime() - overview.getStartDate().getTime()) / 1000.) + " seconds", true);
 				summaryCell(overview.getIncludedGroups());
 				summaryCell(overview.getExcludedGroups());
 				m_out.println("</tr>");
@@ -477,8 +467,7 @@ public class PowerEmailableReporter implements IReporter {
 
 	private void startSummaryRow(String label) {
 		m_row += 1;
-		m_out.print("<tr" + (m_row % 2 == 0 ? " class=\"stripe\"" : "") + "><td style=\"text-align:left;padding-right:2em\"><a href=\"#t"
-				+ m_testIndex + "\">" + label + "</a>" + "</td>");
+		m_out.print("<tr" + (m_row % 2 == 0 ? " class=\"stripe\"" : "") + "><td style=\"text-align:left;padding-right:2em\"><a href=\"#t" + m_testIndex + "\">" + label + "</a>" + "</td>");
 	}
 
 	private void summaryCell(int v, int maxexpected) {
@@ -486,9 +475,7 @@ public class PowerEmailableReporter implements IReporter {
 	}
 
 	private void tableStart(String cssclass, String id) {
-		m_out.println("<table cellspacing=\"0\" cellpadding=\"0\""
-				+ (cssclass != null ? " class=\"" + cssclass + "\"" : " style=\"padding-bottom:2em\"")
-				+ (id != null ? " id=\"" + id + "\"" : "") + ">");
+		m_out.println("<table cellspacing=\"0\" cellpadding=\"0\"" + (cssclass != null ? " class=\"" + cssclass + "\"" : " style=\"padding-bottom:2em\"") + (id != null ? " id=\"" + id + "\"" : "") + ">");
 		m_row = 0;
 	}
 
@@ -563,10 +550,11 @@ public class PowerEmailableReporter implements IReporter {
 		}
 	}
 
-	// ~ JavaDoc-specific Methods --------------------------------------------------------
+	// ~ JavaDoc-specific Methods
+	// --------------------------------------------------------
 	/**
-	 * Get ITestNGMethod author(s) string, or class author(s) if no method author is present.
-	 * Default return value is "unknown".
+	 * Get ITestNGMethod author(s) string, or class author(s) if no method
+	 * author is present. Default return value is "unknown".
 	 * 
 	 * @param className
 	 * @param method
@@ -581,9 +569,9 @@ public class PowerEmailableReporter implements IReporter {
 		if (authors.length == 0) {
 			allAuthors = "unknown";
 		} else {
-	        for (DocletTag author : authors) {
-	        	allAuthors += author.getValue() + " ";
-	        }
+			for (DocletTag author : authors) {
+				allAuthors += author.getValue() + " ";
+			}
 		}
 		// get method author name
 		JavaMethod[] mtds = cls.getMethods();
@@ -593,8 +581,8 @@ public class PowerEmailableReporter implements IReporter {
 				if (authors.length != 0) {
 					allAuthors = "";
 					for (DocletTag author : authors) {
-			            allAuthors += author.getValue() + " ";
-			        }
+						allAuthors += author.getValue() + " ";
+					}
 				}
 				break;
 			}
@@ -604,6 +592,7 @@ public class PowerEmailableReporter implements IReporter {
 
 	/**
 	 * Get comment string of Java class.
+	 * 
 	 * @param className
 	 * @return
 	 * @author hzjingcheng
@@ -616,6 +605,7 @@ public class PowerEmailableReporter implements IReporter {
 
 	/**
 	 * Get ITestResult id by class + method + parameters hash code.
+	 * 
 	 * @param result
 	 * @return
 	 * @author kevinkong
@@ -629,6 +619,7 @@ public class PowerEmailableReporter implements IReporter {
 
 	/**
 	 * Get All tests id by class + method + parameters hash code.
+	 * 
 	 * @param context
 	 * @param suite
 	 * @author kevinkong
