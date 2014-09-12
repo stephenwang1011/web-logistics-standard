@@ -5,7 +5,7 @@
 	<!-- 设置系统平台:win/linux/mac -->
 	<parameter name="platform" value="win" />
 	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chroe" />
+	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
