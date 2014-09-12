@@ -6,14 +6,19 @@ package com.incito.logistics.util;
  * 
  * */
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.ITestContext;
-
+/**
+ * @author xy-incito-wangyang
+ * @decription 在不同的平台上选择对应的浏览器
+ * */
 public class SelectExplorer {
 	static Logger logger = Logger.getLogger(SelectExplorer.class.getName());
 
@@ -44,7 +49,8 @@ public class SelectExplorer {
 
 			} else {
 
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 
 			}
 			break;
@@ -57,7 +63,8 @@ public class SelectExplorer {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 			}
 			break;
 
@@ -69,12 +76,14 @@ public class SelectExplorer {
 				return new FirefoxDriver();
 
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 			}
 			break;
 
 		default:
 			logger.error("The platfrom that you selected" + " [" + platform + "] " + "was not supported!");
+			Assert.fail("The platfrom that you selected" + " [" + platform + "] " + "was not supported!");
 			break;
 		}
 
