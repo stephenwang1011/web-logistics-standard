@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!-- thread-count 定义同时启动的浏览器数 -->
 <suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
-    <!-- 设置系统平台:win/linux/mac -->
-    <parameter name="platform" value="win" />
-    <!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" /> 
+	<!-- 设置系统平台:win/linux/mac -->
+	<parameter name="platform" value="win" />
+	<!-- chrome,firefox和ie不区分大小写 -->
+	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
@@ -18,19 +18,19 @@
 	<parameter name="timeOut" value="15" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
-	
-  <test name="singleTest" preserve-order="true" >
-	<classes>
-		<class name="com.incito.logistics.testcase.register.RegisterPage_2_Success_Test" />
-	</classes>
-  </test> 
-   
-	  <listeners>
-	    <!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
-			<listener class-name="com.netease.qa.testng.TestResultListener" />
-			<listener class-name="com.netease.qa.testng.RetryListener" />
-			<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
-			
-	  </listeners>
-	  
+
+	<test name="singleTest" preserve-order="true">
+		<classes>
+			<class name="com.incito.logistics.testcase.login.LoginPage_1_UI_Test" />
+		</classes>
+	</test>
+
+	<listeners>
+		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->
+		<listener class-name="com.incito.arrow.TestResultListener" />
+		<listener class-name="com.incito.arrow.RetryListener" />
+		<listener class-name="com.incito.arrow.PowerEmailableReporter" />
+
+	</listeners>
+
 </suite> 

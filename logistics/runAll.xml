@@ -40,10 +40,10 @@
 	</test>
 
 	<listeners>
-		<!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
-		<listener class-name="com.netease.qa.testng.TestResultListener" />
-		<listener class-name="com.netease.qa.testng.RetryListener" />
-		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
+		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->
+		<listener class-name="com.incito.arrow.TestResultListener" />
+		<listener class-name="com.incito.arrow.RetryListener" />
+		<listener class-name="com.incito.arrow.PowerEmailableReporter" />
 
 	</listeners>
 
