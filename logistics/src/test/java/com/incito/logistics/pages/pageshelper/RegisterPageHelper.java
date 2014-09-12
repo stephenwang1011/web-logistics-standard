@@ -111,4 +111,10 @@ public class RegisterPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_P).getText(), "两次密码输入不一致，请重新输入");
 		FooterPageHelper.checkRegisterPageText(seleniumUtil);
 	}
+	
+	/** 检查注册页面上的输入“用户名称”与不相同“密码1”和“密码2”的提示语 */
+	public static void checkRegisterPagePrompt_UssernameAndPasswordDifRepassword(int timeOut, SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_P).getText(), "两次密码输入不一致，请重新输入");
+		FooterPageHelper.checkRegisterPageText(seleniumUtil);
+	}
 }
