@@ -157,7 +157,7 @@ public class SeleniumUtil {
 	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
-
+		try{
 		(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
 			public Boolean apply(WebDriver driver) {
@@ -165,7 +165,12 @@ public class SeleniumUtil {
 				logger.info("found the element ["+getLocatorByElement(element,">")+"]");
 				return element.isDisplayed();
 			}
-		});
+		});  }catch(TimeoutException e){
+			logger.error("TIME OUT!! "+timeOut+" second(s) has passed,but did not find element ["+By+"]");
+			Assert.fail("TIME OUT!! "+timeOut+" second(s) has passed,but did not find element ["+By+"]");
+			
+		}
+		
 	}
 
 	/**
@@ -194,8 +199,13 @@ public class SeleniumUtil {
 	 * 判断文本是不是和需求要求的文本一致
 	 * **/
 	public void isTextCorrect(String actual, String expected) {
-
+		try{
 		Assert.assertEquals(actual, expected);
+		}catch(AssertionError e){
+			logger.info("the expected text is ["+expected+"] but found ["+actual+"]");
+			Assert.fail("the expected text is [" + expected + "] but found [" + actual + "]");
+			
+		}
 
 	}
 
