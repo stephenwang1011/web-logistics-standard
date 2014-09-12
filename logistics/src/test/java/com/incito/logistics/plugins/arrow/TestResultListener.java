@@ -1,4 +1,4 @@
-package com.netease.qa.testng;
+package com.incito.logistics.plugins.arrow;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

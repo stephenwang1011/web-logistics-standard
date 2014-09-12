@@ -1,4 +1,4 @@
-package com.netease.qa.testng;
+package com.incito.logistics.plugins.arrow;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -6,7 +6,7 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.netease.qa.testng.utils.ConfigReader;
+import com.incito.logistics.plugins.arrow.utils.ConfigReader;
 
 /**
  * TestNG retry Analyzer.

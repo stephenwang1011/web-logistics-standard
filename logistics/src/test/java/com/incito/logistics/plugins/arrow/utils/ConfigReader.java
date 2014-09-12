@@ -1,4 +1,4 @@
-package com.netease.qa.testng.utils;
+package com.incito.logistics.plugins.arrow.utils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

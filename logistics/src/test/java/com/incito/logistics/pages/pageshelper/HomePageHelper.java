@@ -1,13 +1,16 @@
 package com.incito.logistics.pages.pageshelper;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class HomePageHelper {
+	public static Logger logger = Logger.getLogger(HomePageHelper.class.getName());
 	/** 等待页面上某些重要元素显示出来 */
 	public static void waitHomePageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
+		logger.info("start checking home page elements");
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_LOGIN);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_REG);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
@@ -27,10 +30,12 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_FOOTER);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_AREAR_CARS1);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MORE);
+		logger.info("check home page elements completed");
 	}
 
 	/** 检查首页上的文本 */
 	public static void checkHomePageText(SeleniumUtil seleniumUtil) {
+		logger.info("start checking home page text");
 		seleniumUtil.isTextCorrect(seleniumUtil.getTitle(), "logistics - 物流管理");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(), "注册");
@@ -46,6 +51,7 @@ public class HomePageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(), "我的货源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(), "我的车队");
 		FooterPageHelper.checkRegisterPageText(seleniumUtil);
+		logger.info("check home page text completed");
 
 	}
 

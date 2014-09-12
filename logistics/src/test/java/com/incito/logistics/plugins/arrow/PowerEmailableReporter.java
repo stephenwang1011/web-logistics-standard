@@ -1,4 +1,4 @@
-package com.netease.qa.testng;
+package com.incito.logistics.plugins.arrow;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -36,7 +36,7 @@ import com.thoughtworks.qdox.JavaDocBuilder;
 import com.thoughtworks.qdox.model.DocletTag;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaMethod;
-import com.netease.qa.testng.utils.ConfigReader;
+import com.incito.logistics.plugins.arrow.utils.ConfigReader;
 
 /**
  * Reported designed to render self-contained HTML top down view of a testing

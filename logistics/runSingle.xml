@@ -19,28 +19,17 @@
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
 
-<!-- 	
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.register" />
+			<class name="com.incito.logistics.testcase.login.LoginPage_1_UI_Test" />
 		</classes>
-	</test> 
--->
-
-	<test name="singleTest" preserve-order="true">
-		<packages>
-			<package name="com.incito.logistics.testcase.register" />
-		</packages>
 	</test>
 
-
-
-
 	<listeners>
-		<!-- 网易arrow插件实现用例失败重跑以及生成测试报告 -->
-		<listener class-name="com.netease.qa.testng.TestResultListener" />
-		<listener class-name="com.netease.qa.testng.RetryListener" />
-		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
+		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->
+		<listener class-name="com.incito.logistics.plugins.arrow.TestResultListener" />
+		<listener class-name="com.incito.logistics.plugins.arrow.RetryListener" />
+		<listener class-name="com.incito.logistics.plugins.arrow.PowerEmailableReporter" />
 
 	</listeners>
 

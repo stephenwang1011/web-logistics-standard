@@ -1,4 +1,4 @@
-package com.netease.qa.testng;
+package com.incito.logistics.plugins.arrow;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
