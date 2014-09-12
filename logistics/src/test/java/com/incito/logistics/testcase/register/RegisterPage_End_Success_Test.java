@@ -13,16 +13,16 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
-import com.incito.logistics.util.GetTestData;
+import com.incito.logistics.util.PropertiesDataProvider;
 
 public class RegisterPage_End_Success_Test extends BaseParpare {
 
 	@Test
 	public void RegisterSuccessTest(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_username = GetTestData.getTestData(configFilePath, "register_username");
-		String register_password = GetTestData.getTestData(configFilePath, "register_password");
-		String register_repassword = GetTestData.getTestData(configFilePath, "register_repassword");
+		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
+		String register_password = PropertiesDataProvider.getTestData(configFilePath, "register_password");
+		String register_repassword = PropertiesDataProvider.getTestData(configFilePath, "register_repassword");
 		String keys[] = { register_username, register_password, register_repassword };
 		By bys[] = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 

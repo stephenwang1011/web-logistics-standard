@@ -20,10 +20,10 @@ public class SelectExplorer {
 	public WebDriver selectExplorerByName(String browser, ITestContext context, String platform) {
 		String driverConfgFilePath = context.getCurrentXmlTest().getParameter("driverConfgFilePath");
 		/** 声明好驱动的路径 */
-		String chromedriver_win = GetTestData.getTestData(driverConfgFilePath, "chromedriver_win");
-		String chromedriver_linux = GetTestData.getTestData(driverConfgFilePath, "chromedriver_linux");
-		String chromedriver_mac = GetTestData.getTestData(driverConfgFilePath, "chromedriver_mac");
-		String iedriver = GetTestData.getTestData(driverConfgFilePath, "iedriver");
+		String chromedriver_win = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_win");
+		String chromedriver_linux = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_linux");
+		String chromedriver_mac = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_mac");
+		String iedriver = PropertiesDataProvider.getTestData(driverConfgFilePath, "iedriver");
 
 		Properties props = System.getProperties(); // 获得系统属性集
 		String osName = props.getProperty("os.name"); // 操作系统名称

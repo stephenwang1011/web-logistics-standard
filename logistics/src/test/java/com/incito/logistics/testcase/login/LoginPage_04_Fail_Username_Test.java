@@ -9,7 +9,7 @@ import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.pageshelper.AlertPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.util.GetTestData;
+import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito
@@ -20,7 +20,7 @@ public class LoginPage_04_Fail_Username_Test extends BaseParpare {
 	@Test
 	public void loginFailTest_Username(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String username = GetTestData.getTestData(configFilePath, "username");
+		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 

@@ -9,7 +9,7 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
-import com.incito.logistics.util.GetTestData;
+import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wangkai
@@ -20,8 +20,8 @@ public class RegisterPage_06_Fail_UsernameAndPassword_Test extends BaseParpare {
 	@Test
 	public void registerFailTest_UsernameAndPassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_username = GetTestData.getTestData(configFilePath, "register_username");
-		String register_password = GetTestData.getTestData(configFilePath, "register_password");
+		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
+		String register_password = PropertiesDataProvider.getTestData(configFilePath, "register_password");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
