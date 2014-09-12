@@ -1,15 +1,18 @@
 package com.incito.logistics.pages.pageshelper;
 
+import org.apache.log4j.Logger;
+
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class LoginPageHelper {
+	public static Logger logger = Logger.getLogger(LoginPageHelper.class.getName());
 
 	/** 登录操作 */
 	public static void login(SeleniumUtil seleniumUtil, String username, String password) {
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
-		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username); 
+		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
 		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), password);
 		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
@@ -18,20 +21,24 @@ public class LoginPageHelper {
 
 	/** 待页面元素加载出来 */
 	public static void waitLoginPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
+		logger.info("start checking login page elements");
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_CHECKBOX_AUTO);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_INPUT_USERNAME);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_INPUT_PASSCODE);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_BUTTON_LOGIN);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_LABEL_AUTO);
+		logger.info("check login page elements completed");
 
 	}
 
 	/** 检查该页面上的文本 */
 	public static void checkLoginPageText(SeleniumUtil seleniumUtil) {
+		logger.info("start checking login page text");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).getAttribute("placeholder"), "用户名");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("placeholder"), "密码");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_LABEL_AUTO).getText(), "下次自动登录");
+		logger.info("check login page text completed");
 
 	}
 
