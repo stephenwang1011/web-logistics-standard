@@ -5,7 +5,7 @@
 	<!-- 设置系统平台:win/linux/mac -->
 	<parameter name="platform" value="win" />
 	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" />
+	<parameter name="browserName" value="chroe" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
@@ -21,7 +21,7 @@
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.login.LoginPage_1_UI_Test" />
+			<class name="com.incito.logistics.testcase.login.LoginPage_01_UI_Test" />
 		</classes>
 	</test>
 
