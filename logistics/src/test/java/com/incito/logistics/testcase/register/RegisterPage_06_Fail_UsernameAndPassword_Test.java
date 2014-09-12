@@ -13,14 +13,14 @@ import com.incito.logistics.util.GetTestData;
 
 /**
  * @author xy-incito-wangkai
- * @Description 注册失败：不输入用户名，只输入密码1，点击登陆提示 请输入用户名（但是实际中只提示：用户名称不能全部为数字。后期进行更改）
+ * @Description 注册失败：只输入用户名和密码1
  * */
-// 后期需要更改该测试用例中提示语
-public class RegisterPage_5_Fail_Password_Test extends BaseParpare {
+public class RegisterPage_06_Fail_UsernameAndPassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_Password(ITestContext context) {
+	public void registerFailTest_UsernameAndPassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+		String register_username = GetTestData.getTestData(configFilePath, "register_username");
 		String register_password = GetTestData.getTestData(configFilePath, "register_password");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
@@ -31,9 +31,10 @@ public class RegisterPage_5_Fail_Password_Test extends BaseParpare {
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_passwd(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_UsernameAndPassword(timeOut, seleniumUtil);
 	}
 
 }

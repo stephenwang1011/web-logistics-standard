@@ -15,7 +15,7 @@ import com.incito.logistics.util.GetTestData;
  * @author xy-incito-wangkai
  * @Description 注册失败：只输入用户名和密码2
  * */
-public class RegisterPage_8_Fail_UsernameAndRepassword_Test extends BaseParpare {
+public class RegisterPage_07_Fail_UsernameAndRepassword_Test extends BaseParpare {
 
 	@Test
 	public void registerFailTest_UsernameAndRepassword(ITestContext context) {

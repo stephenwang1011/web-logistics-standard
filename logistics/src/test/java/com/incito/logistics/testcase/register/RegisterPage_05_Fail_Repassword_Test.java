@@ -13,15 +13,14 @@ import com.incito.logistics.util.GetTestData;
 
 /**
  * @author xy-incito-wangkai
- * @Description 注册失败：输入不相同的密码1和密码2
+ * @Description 注册失败：不输入用户名，只输入密码2
  * */
-public class RegisterPage_10_Fail_PasswordDifRepassword_Test extends BaseParpare {
+public class RegisterPage_05_Fail_Repassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_PasswordDifRepassword(ITestContext context) {
+	public void registerFailTest_Repassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_password = GetTestData.getTestData(configFilePath, "register_password");
-		String register_repassword2 = GetTestData.getTestData(configFilePath, "register_repassword2");
+		String register_repassword = GetTestData.getTestData(configFilePath, "register_repassword");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
@@ -31,10 +30,9 @@ public class RegisterPage_10_Fail_PasswordDifRepassword_Test extends BaseParpare
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword2);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_PasswordDifRepassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_repasswd(timeOut, seleniumUtil);
 	}
 
 }

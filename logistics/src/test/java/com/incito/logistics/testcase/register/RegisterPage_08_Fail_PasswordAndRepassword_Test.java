@@ -13,27 +13,28 @@ import com.incito.logistics.util.GetTestData;
 
 /**
  * @author xy-incito-wangkai
- * @Description 注册失败：只输入用户名不输入密码 点击登陆会提示“密码长度为6-20个字符”
+ * @Description 注册失败：输入相同的密码1和密码2
  * */
-public class RegisterPage_4_Fail_Username_Test extends BaseParpare {
+public class RegisterPage_08_Fail_PasswordAndRepassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_Username(ITestContext context) {
+	public void registerFailTest_PasswordAndRepassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_username = GetTestData.getTestData(configFilePath, "register_username");
+		String register_password = GetTestData.getTestData(configFilePath, "register_password");
+		String register_repassword = GetTestData.getTestData(configFilePath, "register_repassword");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
-		RegisterPageHelper.checkRegisterPageText(seleniumUtil);
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_username(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_PasswordAndRepassword(timeOut, seleniumUtil);
 	}
 
 }
