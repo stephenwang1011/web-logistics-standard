@@ -31,7 +31,7 @@ import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
-import com.netease.qa.testng.TestResultListener;
+import com.incito.arrow.TestResultListener;
 
 public class SeleniumUtil {
 	/** 使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息 */
