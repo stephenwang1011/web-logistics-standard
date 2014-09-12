@@ -32,7 +32,10 @@ public class SelectExplorer {
 
 		Properties props = System.getProperties(); // 获得系统属性集
 		String osName = props.getProperty("os.name"); // 操作系统名称
-
+//		if(osName!=platform.toLowerCase()){
+//			logger.error("The platform you selected is ["+platform+"] and conflict with current ["+osName+"] os,please change the platform in testng xml");
+//			Assert.fail("The platform you selected is ["+platform+"] and conflict with current ["+osName+"] os,please change the platform in testng xml");
+//		}
 		switch (platform.toLowerCase()) {
 
 		case "win":
@@ -62,7 +65,11 @@ public class SelectExplorer {
 
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
-			} else {
+			}else if(browser.equalsIgnoreCase("ie")){
+				logger.error( "iexplorer does not apply to  " + platform + " OS");
+				Assert.fail( "iexplorer does not apply to  " + platform + " OS");
+			} 
+			else {
 				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 			}
@@ -74,7 +81,9 @@ public class SelectExplorer {
 				return new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
-
+			}else if(browser.equalsIgnoreCase("ie")){
+				logger.error( "iexplorer does not apply to  " + platform + " OS");
+				Assert.fail( "iexplorer does not apply to  " + platform + " OS");
 			} else {
 				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
