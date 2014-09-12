@@ -14,7 +14,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
  * @author xy-incito
  * @Description 登陆失败：用户名和密码都不填写
  * */
-public class LoginPage_3_Fail_All_Empty_Test extends BaseParpare {
+public class LoginPage_03_Fail_All_Empty_Test extends BaseParpare {
 
 	@Test
 	public void loginFailTest_All_Empty(ITestContext context) {

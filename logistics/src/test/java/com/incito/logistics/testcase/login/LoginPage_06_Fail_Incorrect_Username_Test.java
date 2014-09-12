@@ -15,7 +15,7 @@ import com.incito.logistics.util.GetTestData;
  * @author xy-incito
  * @Description 登陆失败-输入不正确的用户，正确密码点击登陆，提示：“用户名或密码错误,请重新登录!”
  * */
-public class LoginPage_6_Fail_Incorrect_Username_Test extends BaseParpare {
+public class LoginPage_06_Fail_Incorrect_Username_Test extends BaseParpare {
 
 	@Test
 	public void loginFailTest_incorrectUsername(ITestContext context) {

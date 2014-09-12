@@ -13,7 +13,7 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
-public class LoginPage_1_UI_Test extends BaseParpare {
+public class LoginPage_01_UI_Test extends BaseParpare {
 	@Test
 	public void uiTest(ITestContext context) {
 		// 从testng的配置文件（xml）中读取等待页面超时的时间
