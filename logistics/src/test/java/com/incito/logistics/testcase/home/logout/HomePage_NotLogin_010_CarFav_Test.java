@@ -1,4 +1,4 @@
-package com.incito.logistics.testcase.home;
+package com.incito.logistics.testcase.home.logout;
 
 /**
  *@author  xy-incito
@@ -13,7 +13,7 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
-public class HomePage_NotLogin_10_CarFav_Test extends BaseParpare {
+public class HomePage_NotLogin_010_CarFav_Test extends BaseParpare {
 	@Test
 	public void clickFav(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));

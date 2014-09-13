@@ -1,8 +1,8 @@
-package com.incito.logistics.testcase.home;
+package com.incito.logistics.testcase.home.logout;
 
 /**
  *@author  xy-incito
- *@Description 测试用例：未登录情况下点击公共车源的定位按钮 弹出登陆页面
+ *@Description 测试用例：未登录情况下点击"更多" 弹出登陆页面
  *
  * */
 import org.testng.ITestContext;
@@ -13,13 +13,12 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
-public class HomePage_NotLogin_11_Loc_Test extends BaseParpare {
+public class HomePage_NotLogin_009_More_Test extends BaseParpare {
 	@Test
-	public void clickLoc(ITestContext context) {
+	public void clickMore(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.mouseMoveToElement(HomePage.HP_AREAR_CARS1);
-		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_CARS1_LOC));
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_MORE));
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 

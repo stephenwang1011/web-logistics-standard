@@ -21,15 +21,17 @@
 
 
 	<!--测试用例按照包名来建立test -->
+	
 	<test name="注册" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.register" />
 		</packages>
 	</test>
-
+ 
 	<test name="首页" preserve-order="true">
 		<packages>
-			<package name="com.incito.logistics.testcase.home" />
+			<package name="com.incito.logistics.testcase.home.logout" />
+			<package name="com.incito.logistics.testcase.home.login" />
 		</packages>
 	</test>
 
@@ -38,7 +40,7 @@
 			<package name="com.incito.logistics.testcase.login" />
 		</packages>
 	</test>
-
+ 
 	<listeners>
 		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->
 		<listener class-name="com.incito.logistics.plugins.arrow.TestResultListener" />

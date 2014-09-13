@@ -6,28 +6,36 @@ package com.incito.logistics.util;
  * 
  * */
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.ITestContext;
-
+/**
+ * @author xy-incito-wangyang
+ * @decription 在不同的平台上选择对应的浏览器
+ * */
 public class SelectExplorer {
 	static Logger logger = Logger.getLogger(SelectExplorer.class.getName());
 
 	public WebDriver selectExplorerByName(String browser, ITestContext context, String platform) {
 		String driverConfgFilePath = context.getCurrentXmlTest().getParameter("driverConfgFilePath");
 		/** 声明好驱动的路径 */
-		String chromedriver_win = GetTestData.getTestData(driverConfgFilePath, "chromedriver_win");
-		String chromedriver_linux = GetTestData.getTestData(driverConfgFilePath, "chromedriver_linux");
-		String chromedriver_mac = GetTestData.getTestData(driverConfgFilePath, "chromedriver_mac");
-		String iedriver = GetTestData.getTestData(driverConfgFilePath, "iedriver");
+		String chromedriver_win = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_win");
+		String chromedriver_linux = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_linux");
+		String chromedriver_mac = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_mac");
+		String iedriver = PropertiesDataProvider.getTestData(driverConfgFilePath, "iedriver");
 
 		Properties props = System.getProperties(); // 获得系统属性集
 		String osName = props.getProperty("os.name"); // 操作系统名称
-
+//		if(osName!=platform.toLowerCase()){
+//			logger.error("The platform you selected is ["+platform+"] and conflict with current ["+osName+"] os,please change the platform in testng xml");
+//			Assert.fail("The platform you selected is ["+platform+"] and conflict with current ["+osName+"] os,please change the platform in testng xml");
+//		}
 		switch (platform.toLowerCase()) {
 
 		case "win":
@@ -44,7 +52,8 @@ public class SelectExplorer {
 
 			} else {
 
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 
 			}
 			break;
@@ -56,8 +65,13 @@ public class SelectExplorer {
 
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
-			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+			}else if(browser.equalsIgnoreCase("ie")){
+				logger.error( "iexplorer does not apply to  " + platform + " OS");
+				Assert.fail( "iexplorer does not apply to  " + platform + " OS");
+			} 
+			else {
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 			}
 			break;
 
@@ -67,14 +81,18 @@ public class SelectExplorer {
 				return new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
-
+			}else if(browser.equalsIgnoreCase("ie")){
+				logger.error( "iexplorer does not apply to  " + platform + " OS");
+				Assert.fail( "iexplorer does not apply to  " + platform + " OS");
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + "OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + osName + " OS");
 			}
 			break;
 
 		default:
 			logger.error("The platfrom that you selected" + " [" + platform + "] " + "was not supported!");
+			Assert.fail("The platfrom that you selected" + " [" + platform + "] " + "was not supported!");
 			break;
 		}
 

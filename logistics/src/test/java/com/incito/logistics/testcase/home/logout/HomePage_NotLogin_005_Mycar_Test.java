@@ -1,8 +1,8 @@
-package com.incito.logistics.testcase.home;
+package com.incito.logistics.testcase.home.logout;
 
 /**
- *@author xy-incito
- *@Description 主页未登录的情况下 点击“我的订单” 应该弹出登陆界面
+ *@author  xy-incito
+ *@Description 主页未登录的情况下 点击“我的车队” 应该弹出登陆界面
  *
  * */
 import org.testng.ITestContext;
@@ -14,13 +14,13 @@ import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
-public class HomePage_NotLogin_3_Myorder_Test extends BaseParpare {
+public class HomePage_NotLogin_005_Mycar_Test extends BaseParpare {
 	@Test
-	public void myOdders(ITestContext context) {
+	public void myCars(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.checkHomePageText(seleniumUtil);
-		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER));
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS));
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_CLOSE));

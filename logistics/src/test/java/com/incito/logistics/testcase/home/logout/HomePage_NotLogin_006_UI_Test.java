@@ -1,4 +1,4 @@
-package com.incito.logistics.testcase.home;
+package com.incito.logistics.testcase.home.logout;
 
 /**
  *@author  xy-incito
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 
-public class HomePage_NotLogin_6_UI_Test extends BaseParpare {
+public class HomePage_NotLogin_006_UI_Test extends BaseParpare {
 	@Test
 	public void uiTest(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));

@@ -11,13 +11,13 @@ import org.testng.Assert;
 import jxl.*;
 
 /**
+ * @author xy-incito-wangyang
+ *  @description: 读取Excel数据<br>
+ * 说明：<br>
  * Excel放在Data文件夹下<br>
  * Excel命名方式：测试类名.xls<br>
  * Excel的sheet命名方式：测试方法名<br>
  * Excel第一行为Map键值<br>
- * @ClassName: ExcelDataProvider<br>
- * @Description: 读取Excel数据<br>
- * @author xy-incito-wangyang<br>
  */
 public class ExcelDataProvider implements Iterator<Object[]> {
 

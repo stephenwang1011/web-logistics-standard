@@ -1,4 +1,4 @@
-package com.incito.logistics.testcase.home;
+package com.incito.logistics.testcase.home.login;
 
 /**
  *@author  xy-incito
@@ -15,7 +15,7 @@ import com.incito.logistics.pages.pageshelper.FindCarsPagerHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 
-public class HomePage_Login_14_AllTabClick_Test extends BaseParpare {
+public class HomePage_Login_001_AllTabClick_Test extends BaseParpare {
 
 	@Test
 	public void loginSuccessTest(ITestContext context) {
