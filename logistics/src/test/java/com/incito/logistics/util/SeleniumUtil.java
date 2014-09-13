@@ -1,9 +1,5 @@
 package com.incito.logistics.util;
 
-/**
- * @author xy-incito-wy
- * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
- * */
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -32,7 +28,10 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 
 import com.incito.logistics.plugins.arrow.TestResultListener;
-
+/**
+ * @author xy-incito-wy
+ * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
+ * */
 public class SeleniumUtil {
 	/** 使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息 */
 	public static Logger logger = Logger.getLogger(SeleniumUtil.class.getName());
