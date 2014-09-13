@@ -21,7 +21,7 @@
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.login.LoginPage_1_UI_Test" />
+			<class name="com.incito.logistics.testcase.register.RegisterPage_08_Fail_PasswordAndRepassword_Test" />
 		</classes>
 	</test>
 
