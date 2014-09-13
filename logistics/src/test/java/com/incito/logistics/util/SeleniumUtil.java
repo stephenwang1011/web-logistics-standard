@@ -43,14 +43,12 @@ public class SeleniumUtil {
 	/***
 	 * 启动浏览器并打开页面
 	 * */
-	public void launchBrower(String browserName, ITestContext context, String platform) {
+	public void launchBrowser(String browserName, ITestContext context ) {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		SelectExplorer select = new SelectExplorer();
-		logger.info("Starting:[" + browserName + "]");
-		driver = select.selectExplorerByName(browserName, context, platform);
-		// 等待waitPageLoadTime秒后如果没有页面还是没有刷出来 就跑出异常
+		driver = select.selectExplorerByName(browserName, context);
 		try {
 			hasLoadPageSucceeded(timeOut);
 			get(webUrl);
