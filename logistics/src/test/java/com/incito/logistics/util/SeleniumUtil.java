@@ -47,7 +47,7 @@ public class SeleniumUtil {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		SelectExplorer select = new SelectExplorer();
+		SelectBrowser select = new SelectBrowser();
 		driver = select.selectExplorerByName(browserName, context);
 		try {
 			hasLoadPageSucceeded(timeOut);
