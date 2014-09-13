@@ -2,8 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!-- thread-count 定义同时启动的浏览器数 -->
 <suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
-	<!-- 设置系统平台:win/linux/mac -->
-	<parameter name="platform" value="win" />
 	<!-- chrome,firefox和ie不区分大小写 -->
 	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
