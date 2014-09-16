@@ -9,7 +9,7 @@ import com.incito.logistics.util.SeleniumUtil;
 
 public class RegisterPageHelper {
 
-	/** 等待页面上某个重要元素显示出来 */
+	/** 等待注册上某个重要元素显示出来 */
 	public static void waitRegisterPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_INPUT_USERNAME);
 		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_INPUT_PASSWD);
