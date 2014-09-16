@@ -23,28 +23,19 @@ public class SelectBrowser {
 		String currentPlatform = props.getProperty("os.name"); // 操作系统名称
 		logger.info("The current OS is [" + currentPlatform + "]");
 		logger.info("Starting test browser [" + browser + "]");
-		String driverConfgFilePath = context.getCurrentXmlTest().getParameter(
-				"driverConfgFilePath");
+		String driverConfgFilePath = context.getCurrentXmlTest().getParameter("driverConfgFilePath");
 		/** 声明好驱动的路径 */
-		String chromedriver_win = PropertiesDataProvider.getTestData(
-				driverConfgFilePath, "chromedriver_win");
-		String chromedriver_linux = PropertiesDataProvider.getTestData(
-				driverConfgFilePath, "chromedriver_linux");
-		String chromedriver_mac = PropertiesDataProvider.getTestData(
-				driverConfgFilePath, "chromedriver_mac");
-		String iedriver = PropertiesDataProvider.getTestData(
-				driverConfgFilePath, "iedriver");
+		String chromedriver_win = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_win");
+		String chromedriver_linux = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_linux");
+		String chromedriver_mac = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_mac");
+		String iedriver = PropertiesDataProvider.getTestData(driverConfgFilePath, "iedriver");
 
 		if (currentPlatform.toLowerCase().contains("win")) {
 
 			if (browser.equalsIgnoreCase("ie")) {
 				System.setProperty("webdriver.ie.driver", iedriver);
-				DesiredCapabilities ieCapabilities = DesiredCapabilities
-						.internetExplorer();
-				ieCapabilities
-						.setCapability(
-								InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
-								true);
+				DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+				ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 				return new InternetExplorerDriver(ieCapabilities);
 			} else if (browser.equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver", chromedriver_win);
@@ -54,31 +45,22 @@ public class SelectBrowser {
 
 			} else {
 
-				logger.error("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
-				Assert.fail("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
 
 			}
 
 		} else if (currentPlatform.toLowerCase().contains("linux")) {
 
 			if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver",
-						chromedriver_linux);
+				System.setProperty("webdriver.chrome.driver", chromedriver_linux);
 				return new ChromeDriver();
 
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
-				Assert.fail("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
 			}
 
 		} else if (currentPlatform.toLowerCase().contains("mac")) {
@@ -88,21 +70,13 @@ public class SelectBrowser {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
-				Assert.fail("[" + browser + "]"
-						+ " explorer does not apply to  " + currentPlatform
-						+ " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
 			}
 
 		} else
-			logger.error("The "
-					+ currentPlatform
-					+ " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
-		Assert.fail("The "
-				+ currentPlatform
-				+ " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
+			logger.error("The " + currentPlatform + " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
+			Assert.fail("The " + currentPlatform + " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
 
 		return null;
 
