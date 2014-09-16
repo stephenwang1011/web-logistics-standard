@@ -45,8 +45,8 @@ public class SelectBrowser {
 
 			} else {
 
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
-				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 
 			}
 
@@ -59,8 +59,8 @@ public class SelectBrowser {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
-				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 			}
 
 		} else if (currentPlatform.toLowerCase().contains("mac")) {
@@ -70,14 +70,15 @@ public class SelectBrowser {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
-				Assert.fail("[" + browser + "]" + " explorer does not apply to  " + currentPlatform + " OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 			}
 
 		} else
-			logger.error("The " + currentPlatform + " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
-			Assert.fail("The " + currentPlatform + " is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
-
+			logger.error("The [" + currentPlatform + "] is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
+			Assert.fail("The [" + currentPlatform + "] is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
+		
+		
 		return null;
 
 	}
