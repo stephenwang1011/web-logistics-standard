@@ -45,7 +45,7 @@ public class SelectBrowser {
 
 			} else {
 
-				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 
 			}
@@ -59,7 +59,7 @@ public class SelectBrowser {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 			}
 
@@ -70,7 +70,7 @@ public class SelectBrowser {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 			} else {
-				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "[ OS");
+				logger.error("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 				Assert.fail("[" + browser + "]" + " explorer does not apply to  [" + currentPlatform + "] OS");
 			}
 
