@@ -1,12 +1,14 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.openqa.selenium.By;
-
 import com.incito.logistics.pages.HomePage;
-
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.util.SeleniumUtil;
-
+/**
+ * @author xy-incito-wangkai 
+ * @description 注册页面上的方法
+ * 
+ * */
 public class RegisterPageHelper {
 
 	/** 等待注册上某个重要元素显示出来 */
