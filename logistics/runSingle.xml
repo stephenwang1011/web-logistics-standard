@@ -30,7 +30,7 @@
 		<listener class-name="com.incito.logistics.plugins.arrow.TestResultListener" />
 		<listener class-name="com.incito.logistics.plugins.arrow.RetryListener" />
 		<listener class-name="com.incito.logistics.plugins.arrow.PowerEmailableReporter" />
-
+		
 	</listeners>
 
 </suite> 
