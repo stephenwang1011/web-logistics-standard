@@ -37,7 +37,7 @@ public class TestResultListener extends TestListenerAdapter {
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
-		logger.info(tr.getName() + " test case runs failed!");
+		logger.warn(tr.getName() + " test case runs failed!");
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER"); // 这里就是取driver
 		saveScreenShot(tr, webDriver);
 	}
@@ -46,7 +46,7 @@ public class TestResultListener extends TestListenerAdapter {
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER");
-		logger.info(tr.getName() + " test case was skipped");
+		logger.warn(tr.getName() + " test case was skipped");
 		saveScreenShot(tr, webDriver);
 
 	}
@@ -137,10 +137,10 @@ public class TestResultListener extends TestListenerAdapter {
 			filePath = "result/screenshot/" + fileName + ".jpg";
 			File destFile = new File(filePath);
 			FileUtils.copyFile(screenshot, destFile);
-			logger.info(fileName + " screenshot successfully，saved：" + "[ " + filePath + " ]");
+			logger.info("["+fileName + "] screenshot successfully，saved：" + "[ " + filePath + " ]");
 
 		} catch (Exception e) {
-			filePath = fileName + " ,screenshot failed，the reason:" + e.getMessage();
+			filePath = "["+fileName+"]" + " ,screenshot failed，the reason:" + e.getMessage();
 			logger.error(filePath);
 		}
 
