@@ -1,9 +1,5 @@
 package com.incito.logistics.util;
 
-/**
- * @author xy-incito-wy
- * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
- * */
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -32,7 +28,10 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 
 import com.incito.logistics.plugins.arrow.TestResultListener;
-
+/**
+ * @author xy-incito-wy
+ * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
+ * */
 public class SeleniumUtil {
 	/** 使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息 */
 	public static Logger logger = Logger.getLogger(SeleniumUtil.class.getName());
@@ -43,14 +42,12 @@ public class SeleniumUtil {
 	/***
 	 * 启动浏览器并打开页面
 	 * */
-	public void launchBrower(String browserName, ITestContext context, String platform) {
+	public void launchBrowser(String browserName, ITestContext context ) {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		SelectExplorer select = new SelectExplorer();
-		logger.info("Starting:[" + browserName + "]");
-		driver = select.selectExplorerByName(browserName, context, platform);
-		// 等待waitPageLoadTime秒后如果没有页面还是没有刷出来 就跑出异常
+		SelectBrowser select = new SelectBrowser();
+		driver = select.selectExplorerByName(browserName, context);
 		try {
 			hasLoadPageSucceeded(timeOut);
 			get(webUrl);

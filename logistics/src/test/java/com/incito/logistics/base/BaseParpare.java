@@ -27,10 +27,9 @@ public class BaseParpare {
 		// 这里得到了context值
 		this.testContext = context;
 		String browserName = context.getCurrentXmlTest().getParameter("browserName");
-		String platform = context.getCurrentXmlTest().getParameter("platform");
 
 		try {
-			seleniumUtil.launchBrower(browserName, context, platform);
+			seleniumUtil.launchBrowser(browserName, context);
 		} catch (Exception e) {
 			;
 			seleniumUtil.quit();
