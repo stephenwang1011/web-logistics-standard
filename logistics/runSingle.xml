@@ -19,7 +19,7 @@
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.register.RegisterPage_08_Fail_PasswordAndRepassword_Test" />
+			<class name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_01_UI_Test" />
 		</classes>
 	</test>
 
