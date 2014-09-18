@@ -16,10 +16,16 @@
 	<parameter name="timeOut" value="15" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
+	<!-- 相同元素中的index值 for goods -->
+	<parameter name="indexGoods" value="0" />
+	<!-- 相同元素中的index值 for cars -->
+	<parameter name="indexCars" value="8" />
+
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_01_UI_Test" />
+			<class
+				name="com.incito.logistics.testcase.home.logout.HomePage_NotLogin_013_CarFav_Test" />
 		</classes>
 	</test>
 
@@ -28,7 +34,7 @@
 		<listener class-name="com.incito.logistics.plugins.arrow.TestResultListener" />
 		<listener class-name="com.incito.logistics.plugins.arrow.RetryListener" />
 		<listener class-name="com.incito.logistics.plugins.arrow.PowerEmailableReporter" />
-		
+
 	</listeners>
 
 </suite> 

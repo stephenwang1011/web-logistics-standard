@@ -16,16 +16,21 @@
 	<parameter name="timeOut" value="15" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
+	<!-- 相同元素中的index值 for goods -->
+	<parameter name="indexGoods" value="0" />
+	<!-- 相同元素中的index值 for cars -->
+	<parameter name="indexCars" value="8" />
+
 
 
 	<!--测试用例按照包名来建立test -->
-	
+
 	<test name="注册" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.register" />
 		</packages>
 	</test>
- 
+
 	<test name="首页" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.home.logout" />
@@ -38,7 +43,7 @@
 			<package name="com.incito.logistics.testcase.login" />
 		</packages>
 	</test>
- 
+
 	<listeners>
 		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->
 		<listener class-name="com.incito.logistics.plugins.arrow.TestResultListener" />
