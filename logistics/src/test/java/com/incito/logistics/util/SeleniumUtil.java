@@ -126,7 +126,7 @@ public class SeleniumUtil {
 		} catch (Exception e) {
 			logger.error("Failed to clear [" + getLocatorByElement(element, ">") + "] contents!");
 		}
-			logger.info("Cleared the contents on [" + getLocatorByElement(element, ">") + "]");
+		logger.info("Cleared the contents on [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
@@ -139,14 +139,14 @@ public class SeleniumUtil {
 			e.printStackTrace();
 			logger.warn("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 		}
-			logger.info("Typed：[" + key + "] to [" + getLocatorByElement(element, ">") + "]");
+		logger.info("Typed：[" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
-	 *    模拟键盘操作的,比如Ctrl+A,Ctrl+C等 参数详解：<br>
-	 *    1、WebElement element - 要被操作的元素 <br>
-	 *    2、Keys key- 键盘上的功能键 比如ctrl ,alt等 <br>
-	 *    3、String keyword - 键盘上的字母
+	 * 模拟键盘操作的,比如Ctrl+A,Ctrl+C等 参数详解：<br>
+	 * 1、WebElement element - 要被操作的元素 <br>
+	 * 2、Keys key- 键盘上的功能键 比如ctrl ,alt等 <br>
+	 * 3、String keyword - 键盘上的字母
 	 * */
 	public void pressKeysOnKeyboard(WebElement element, Keys key, String keyword) {
 
@@ -476,6 +476,13 @@ public class SeleniumUtil {
 	 * */
 	public Iterator<Object[]> dataFortestMethod(Method method) throws IOException {
 		return new ExcelDataProvider(this.getClass().getName(), method.getName());
+	}
+
+	/**
+	 * 这是一堆相同的elements中 选择 其中方的 一个 然后在这个选定的中 继续定位
+	 * */
+	public WebElement getOneElement(By bys, By by, int index) {
+		return findElementsBy(bys).get(index).findElement(by);
 	}
 
 }
