@@ -28,6 +28,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 
 import com.incito.logistics.plugins.arrow.TestResultListener;
+
 /**
  * @author xy-incito-wy
  * @Description 包装所有selenium的操作以及通用方法，简化用例中代码量
@@ -42,7 +43,7 @@ public class SeleniumUtil {
 	/***
 	 * 启动浏览器并打开页面
 	 * */
-	public void launchBrowser(String browserName, ITestContext context ) {
+	public void launchBrowser(String browserName, ITestContext context) {
 
 		String webUrl = context.getCurrentXmlTest().getParameter("testurl");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
@@ -100,11 +101,13 @@ public class SeleniumUtil {
 			element.click();
 
 		} catch (StaleElementReferenceException e) {
-			logger.error("the element you clicked:[" + getLocatorByElement(element,">") + "] is no longer exist!");
+			logger.error("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
+			Assert.fail("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 		} catch (Exception e) {
-			logger.error("failed to click element [" + getLocatorByElement(element,">")+"]");
+			logger.error("Failed to click element [" + getLocatorByElement(element, ">") + "]", e);
+			Assert.fail("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 		}
-		logger.info("clicked element [" + getLocatorByElement(element,">")+"]");
+		logger.info("Clicked element [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
@@ -123,9 +126,9 @@ public class SeleniumUtil {
 		try {
 			element.clear();
 		} catch (Exception e) {
-			logger.error("failed to clear [" +  getLocatorByElement(element,">") + "] contents!");
+			logger.error("Failed to clear [" + getLocatorByElement(element, ">") + "] contents!");
 		}
-		logger.info("cleared the contents on [" +  getLocatorByElement(element,">")+"]");
+			logger.info("Cleared the contents on [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
@@ -136,9 +139,9 @@ public class SeleniumUtil {
 			element.sendKeys(key);
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.warn("failed to type the [" + key + "] to [" +  getLocatorByElement(element,">")+"]");
+			logger.warn("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 		}
-		logger.info("typed：[" + key + "] to [" +  getLocatorByElement(element,">")+"]");
+			logger.info("Typed：[" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
@@ -154,20 +157,20 @@ public class SeleniumUtil {
 	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
-		try{
-		(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
+		try {
+			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
-			public Boolean apply(WebDriver driver) {
-				WebElement element = driver.findElement(By);
-				logger.info("found the element ["+getLocatorByElement(element,">")+"]");
-				return element.isDisplayed();
-			}
-		});  }catch(TimeoutException e){
-			logger.error("TIME OUT!! "+timeOut+" second(s) has passed,but did not find element ["+By+"]");
-			Assert.fail("TIME OUT!! "+timeOut+" second(s) has passed,but did not find element ["+By+"]");
-			
+				public Boolean apply(WebDriver driver) {
+					WebElement element = driver.findElement(By);
+					return element.isDisplayed();
+				}
+			});
+		} catch (TimeoutException e) {
+			logger.error("TIME OUT!! " + timeOut + " second(s) has passed,but did not find element [" + By + "]");
+			Assert.fail("TIME OUT!! " + timeOut + " second(s) has passed,but did not find element [" + By + "]");
+
 		}
-		
+		logger.info("Found the element [" + By + "]");
 	}
 
 	/**
@@ -196,13 +199,14 @@ public class SeleniumUtil {
 	 * 判断文本是不是和需求要求的文本一致
 	 * **/
 	public void isTextCorrect(String actual, String expected) {
-		try{
-		Assert.assertEquals(actual, expected);
-		}catch(AssertionError e){
-			logger.info("the expected text is ["+expected+"] but found ["+actual+"]");
-			Assert.fail("the expected text is [" + expected + "] but found [" + actual + "]");
-			
+		try {
+			Assert.assertEquals(actual, expected);
+		} catch (AssertionError e) {
+			logger.error("The expected text is [" + expected + "] but found [" + actual + "]");
+			Assert.fail("The expected text is [" + expected + "] but found [" + actual + "]");
+
 		}
+		logger.info("Found the expected string: [" + expected + "]");
 
 	}
 
@@ -212,7 +216,6 @@ public class SeleniumUtil {
 	public void isInputEdit(WebElement element) {
 
 	}
-
 
 	/**
 	 * 等待alert出现
@@ -254,8 +257,6 @@ public class SeleniumUtil {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	/**
 	 * 退出
@@ -450,30 +451,31 @@ public class SeleniumUtil {
 		String text = element.toString();
 		String expect = null;
 		try {
-			expect = text.substring(text.indexOf(expectText) + 1,text.length()-1);
+			expect = text.substring(text.indexOf(expectText) + 1, text.length() - 1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("failed to find the string [" + expectText+"]");
+			logger.error("failed to find the string [" + expectText + "]");
 
 		}
 
 		return expect;
-		
+
 	}
-	
+
 	/**
 	 * 利用ExcelDataProvider读取指定的excel表（表名是和类名一样）<br>
 	 * 使用方法：<br>
-	 * 1、在测试用例中写入：    @DataProvider(name = "dp")<br>
+	 * 1、在测试用例中写入： @DataProvider(name = "dp")<br>
 	 * 2、然后在接着引入此方法<br>
 	 * 3、最后在测试用例的@Test处进行处理下<br>
-	 * 	  	@Test(dataProvider = "dp" )<br>
-     *		public void search(Map<String,String> data) {  <br>
-     *       这里去数据 用data.get("") ""中是excel中的列名<br>
-     *						}<br>
+	 * 
+	 * @Test(dataProvider = "dp" )<br>
+	 *                    public void search(Map<String,String> data) { <br>
+	 *                    这里去数据 用data.get("") ""中是excel中的列名<br>
+	 *                    }<br>
 	 * */
-    public Iterator<Object[]> dataFortestMethod(Method method) throws IOException {
-        return new ExcelDataProvider(this.getClass().getName(),method.getName());
-    }
+	public Iterator<Object[]> dataFortestMethod(Method method) throws IOException {
+		return new ExcelDataProvider(this.getClass().getName(), method.getName());
+	}
 
 }
