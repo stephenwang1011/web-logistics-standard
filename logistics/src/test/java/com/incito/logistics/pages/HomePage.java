@@ -58,10 +58,6 @@ public class HomePage {
 	public static final By HP_BUTTON_FAV =  By.xpath("//*[text()='收藏']");
 	/**公共货源上的定位按钮*/
 	public static final By HP_BUTTON_LOC =  By.xpath("//*[text()='定位']");
-
-	
-	
-	
 	/** 首页顶部日期 */
 	public static final By HP_TEXT_DATE = By.id("currentTimeDiv");
 	/** 首页中的frame */
@@ -70,14 +66,5 @@ public class HomePage {
 	public static final By HP_TEXT_CITY = By.id("city");
 	/** 首页顶部天气 */
 	public static final By HP_TEXT_WEATHER = By.id("wea-items");
-
-	/** 公共货源上的一个货源 */
-	public static final By HP_ARERA_GOODS1 = By.xpath("//*[@id='goodsList']/div[1]");
-	/** 首页上公共货源的第一个货源上的收藏按钮 */
-	public static final By HP_GOODS1_FAV = By.xpath("//*[@id='goodsList']/*/div[2]/img");
-	/** 公共车源标题 */
-	public static final By HP_TITLE_PUBLICCARS = By.xpath("//*[@id='body']/div[2]/div");
-	/** 公共货源标题 */
-	public static final By HP_TITLE_PUBLICGOODS = By.xpath("//*[@id='body']/div[4]/div");
 
 }
