@@ -13,15 +13,15 @@ public class HomePage {
 	public static final By HP_BUTTON_REG = By.linkText("注册");
 	/** 首页登陆上的退出按钮 */
 	public static final By HP_BUTTON_EXIT = By.linkText("退出");
-	/**tab首页 */
+	/** tab首页 */
 	public static final By HP_LINK_HOME = By.linkText("首页");
-	/**tab找车源*/
+	/** tab找车源 */
 	public static final By HP_LINK_FINDCARDS = By.linkText("找车源");
-	/**tab找货源*/
+	/** tab找货源 */
 	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
-	/**tab我的订单*/
+	/** tab我的订单 */
 	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
-	/**我的货源*/
+	/** 我的货源 */
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
 
 	/** 首页上的 免费发布货源 按钮 */
@@ -50,14 +50,14 @@ public class HomePage {
 	public static final By HP_LINK_MORE = By.linkText("更多>>");
 	/**
 	 * 公共车源和公共和货源 每个小模块<br>
-	 *	通过findByElements 拆分:<br>
-	 *	前8个是 公共货源的 数据，后八个是公共车源的数据<br>
+	 * 通过findByElements 拆分:<br>
+	 * 前8个是 公共货源的 数据，后八个是公共车源的数据<br>
 	 * */
 	public static final By HP_ARERA_CARDSANDGOODS = By.xpath("//*[@class='index-infobox']");
-	/**公共车源或者公共货源 上的收藏按钮*/
-	public static final By HP_BUTTON_FAV =  By.xpath("//*[text()='收藏']");
-	/**公共货源上的定位按钮*/
-	public static final By HP_BUTTON_LOC =  By.xpath("//*[text()='定位']");
+	/** 公共车源或者公共货源 上的收藏按钮 */
+	public static final By HP_BUTTON_FAV = By.xpath("//*[text()='收藏']");
+	/** 公共货源上的定位按钮 */
+	public static final By HP_BUTTON_LOC = By.xpath("//*[text()='定位']");
 	/** 首页顶部日期 */
 	public static final By HP_TEXT_DATE = By.id("currentTimeDiv");
 	/** 首页中的frame */
@@ -66,5 +66,13 @@ public class HomePage {
 	public static final By HP_TEXT_CITY = By.id("city");
 	/** 首页顶部天气 */
 	public static final By HP_TEXT_WEATHER = By.id("wea-items");
+	/** 关于我们链接 */
+	public static final By HP_LINK_ABOUT = By.xpath("//[text()='关于我们']");
+	/** 关于我们链接 */
+	public static final By HP_LINK_ABOUTUS = By.xpath("//[text()='关于我们']");
+	/** 联系我们链接 */
+	public static final By HP_LINK_CONTACTUS = By.xpath("//[text()='联系我们']");
+	/** 联系我们链接 */
+	public static final By HP_LINK_HELP = By.xpath("//[text()='帮助中心']");
 
 }
