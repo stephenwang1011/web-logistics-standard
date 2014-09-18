@@ -13,14 +13,16 @@ public class HomePage {
 	public static final By HP_BUTTON_REG = By.linkText("注册");
 	/** 首页登陆上的退出按钮 */
 	public static final By HP_BUTTON_EXIT = By.linkText("退出");
-	/** 首页几个tab：首页，个人中心，我的货源，我的订单.... */
+	/**tab首页 */
 	public static final By HP_LINK_HOME = By.linkText("首页");
-	// public static final By HP_LINK_PERSONCEN = By.linkText("个人中心");
+	/**tab找车源*/
 	public static final By HP_LINK_FINDCARDS = By.linkText("找车源");
+	/**tab找货源*/
 	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
+	/**tab我的订单*/
 	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
+	/**我的货源*/
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
-	public static final By HP_LINK_MYCARDS = By.linkText("我的车队");
 
 	/** 首页上的 免费发布货源 按钮 */
 	public static final By HP_BUTTON_FREESEND = By.linkText("免费发布货源");
@@ -42,18 +44,24 @@ public class HomePage {
 	public static final By HP_TEXT_USERINFO = By.className("dropdown");
 	/** 左上角的商标文字 */
 	public static final By HP_LEFT_TITLE = By.className("navbar-left");
-	/** 首页上的换一批 2个 */
-	// public static final By HP_LINK_CHANGEANOTHER = By.linkText("换一批");
 	/** 底部footer文字 */
-	public static final By HP_TEXT_FOOTER = By.xpath("//*[@id='holder']/footer");
+	public static final By HP_TEXT_FOOTER = By.className("in-footer");
 	/** 首页上的更多按钮 */
 	public static final By HP_LINK_MORE = By.linkText("更多>>");
-	/** 首页上公共车源 上的第一个车源 */
-	public static final By HP_AREAR_CARS1 = By.xpath("//*[@id='carList']/div[1]");
-	/** 首页上公共车源的第一个车源上的收藏按钮 */
-	public static final By HP_CARS1_FAV = By.xpath("//*[@id='carList']/div[1]/div[3]/img");
-	/** 首页上公共车源的第一个车源上的定位按钮 */
-	public static final By HP_CARS1_LOC = By.xpath("//*[@id='carList']/div[1]/div[2]/img");
+	/**
+	 * 公共车源和公共和货源 每个小模块<br>
+	 *	通过findByElements 拆分:<br>
+	 *	前8个是 公共货源的 数据，后八个是公共车源的数据<br>
+	 * */
+	public static final By HP_ARERA_CARDSANDGOODS = By.xpath("//*[@class='index-infobox']");
+	/**公共车源或者公共货源 上的收藏按钮*/
+	public static final By HP_BUTTON_FAV =  By.xpath("//*[text()='收藏']");
+	/**公共货源上的定位按钮*/
+	public static final By HP_BUTTON_LOC =  By.xpath("//*[text()='定位']");
+
+	
+	
+	
 	/** 首页顶部日期 */
 	public static final By HP_TEXT_DATE = By.id("currentTimeDiv");
 	/** 首页中的frame */
