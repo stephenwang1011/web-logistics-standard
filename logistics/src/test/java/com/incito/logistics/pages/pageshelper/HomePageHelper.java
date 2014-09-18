@@ -28,7 +28,7 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LEFT_TITLE);
 		// seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_LINK_CHANGEANOTHER);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_FOOTER);
-		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_AREAR_CARS1);
+		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_ARERA_CARDSANDGOODS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MORE);
 		logger.info("Check home page elements completed");
 	}
@@ -60,5 +60,12 @@ public class HomePageHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 
 	}
+	
+	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
+	public static void enterPage(SeleniumUtil seleniumUtil, By bys,By by,int index) {
+		seleniumUtil.click(seleniumUtil.getOneElement(bys, by, index));
+	}
+	
+
 
 }
