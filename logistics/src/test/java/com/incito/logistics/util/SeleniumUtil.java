@@ -104,7 +104,7 @@ public class SeleniumUtil {
 			logger.error("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 			Assert.fail("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 		} catch (Exception e) {
-			logger.error("Failed to click element [" + getLocatorByElement(element, ">") + "]", e);
+			logger.error("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 			Assert.fail("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 		}
 		logger.info("Clicked element [" + getLocatorByElement(element, ">") + "]");
@@ -112,8 +112,6 @@ public class SeleniumUtil {
 
 	/**
 	 * 获得页面的标题
-	 * 
-	 * @return
 	 * */
 	public String getTitle() {
 		return driver.getTitle();
@@ -145,8 +143,10 @@ public class SeleniumUtil {
 	}
 
 	/**
-	 * 模拟键盘操作的,比如Ctrl+A,Ctrl+C等 参数详解： 1、WebElement element - 要被操作的元素 2、Keys key
-	 * - 键盘上的功能键 比如ctrl ,alt等 3、String keyword - 键盘上的字母
+	 *    模拟键盘操作的,比如Ctrl+A,Ctrl+C等 参数详解：<br>
+	 *    1、WebElement element - 要被操作的元素 <br>
+	 *    2、Keys key- 键盘上的功能键 比如ctrl ,alt等 <br>
+	 *    3、String keyword - 键盘上的字母
 	 * */
 	public void pressKeysOnKeyboard(WebElement element, Keys key, String keyword) {
 
