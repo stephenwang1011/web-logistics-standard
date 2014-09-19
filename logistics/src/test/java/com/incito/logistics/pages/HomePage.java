@@ -46,8 +46,6 @@ public class HomePage {
 	public static final By HP_LEFT_TITLE = By.className("navbar-left");
 	/** 底部footer文字 */
 	public static final By HP_TEXT_FOOTER = By.className("in-footer");
-	/** 首页上的更多按钮 */
-	public static final By HP_LINK_MORE = By.linkText("更多>>");
 	/**
 	 * 公共车源和公共和货源 每个小模块<br>
 	 * 通过findByElements 拆分:<br>
@@ -74,5 +72,9 @@ public class HomePage {
 	public static final By HP_LINK_CONTACTUS = By.xpath("//[text()='联系我们']");
 	/** 联系我们链接 */
 	public static final By HP_LINK_HELP = By.xpath("//[text()='帮助中心']");
+	/** 两个 更多>> */
+	public static final By HP_LINK_MORE = By.xpath("	//*[text()='更多>>']");
+	
+
 
 }
