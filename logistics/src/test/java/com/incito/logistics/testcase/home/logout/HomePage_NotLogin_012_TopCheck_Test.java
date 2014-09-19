@@ -1,7 +1,7 @@
 package com.incito.logistics.testcase.home.logout;
 
 /**
- *@author  xy-incito
+ *@author  xy-incito-wy
  *@Description 测试用例：顶部天气，城市，日期检查点
  *
  * */
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
 
-public class HomePage_NotLogin_012_Topcheck_Test extends BaseParpare {
+public class HomePage_NotLogin_012_TopCheck_Test extends BaseParpare {
 	@Test
 	public void topCheck(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
