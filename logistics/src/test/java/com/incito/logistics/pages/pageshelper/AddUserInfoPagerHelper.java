@@ -108,7 +108,7 @@ public class AddUserInfoPagerHelper {
 	}
 
 	/** 检查完善信息页面：只填写公司名称的提示语 */
-	//是个bug现在还没有修复
+	// 是个bug现在还没有修复
 	public static void checkAddUserInfoPrompt_Company(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
 
@@ -120,7 +120,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面：只填写公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_Address(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -132,7 +132,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面:填写了姓名和联系方式的提示语 */
 	public static void checkAddUserInfoPrompt_NameTel(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -143,7 +143,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面:填写了姓名和身份证号的提示语 */
 	public static void checkAddUserInfoPrompt_NameIdcard(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -154,7 +154,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面:填写了姓名和公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_NameCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -165,7 +165,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面:填写了姓名和公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_NameAdress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -176,6 +176,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式和身份证号的提示语 */
 	public static void checkAddUserInfoPrompt_TelIdcard(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -186,6 +187,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式和公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_TelCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -196,6 +198,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式和公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_TelAdress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -206,6 +209,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了身份证号和公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_IdcardCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -216,6 +220,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了身份证号和公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_IdcardAdress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -226,6 +231,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了公司名称和公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_CompanyAdress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -236,7 +242,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
+
 	/** 检查完善信息页面:填写了姓名，联系方式，身份证号的提示语 */
 	public static void checkAddUserInfoPrompt_NameTelIdcard(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -246,6 +252,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了姓名，联系方式，公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_NameTelCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -255,6 +262,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了姓名，联系方式，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_NameTelAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -264,6 +272,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了姓名，身份证号，公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_NameIdcardCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -273,6 +282,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了姓名，身份证号，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_NameIdcardAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -282,6 +292,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了姓名，公司名称，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_NameCompanyAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -291,6 +302,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式，身份证号，公司名称的提示语 */
 	public static void checkAddUserInfoPrompt_TelIdcardCompany(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -300,6 +312,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式，身份证号，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_TelIdcardAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -309,6 +322,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了联系方式，公司名称，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_TelCompanyAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
@@ -318,6 +332,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+
 	/** 检查完善信息页面:填写了身份证号，公司名称，公司地址的提示语 */
 	public static void checkAddUserInfoPrompt_IdcardCompanyAddress(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
