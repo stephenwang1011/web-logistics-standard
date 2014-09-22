@@ -11,6 +11,7 @@ public class LoginPageHelper {
 
 	/** 登录操作 */
 	public static void login(SeleniumUtil seleniumUtil, String username, String password) {
+
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
 		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
