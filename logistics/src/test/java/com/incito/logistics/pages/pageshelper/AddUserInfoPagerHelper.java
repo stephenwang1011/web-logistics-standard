@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
 import com.incito.logistics.pages.AddUserInfoPage;
-import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.util.SeleniumUtil;
 
 /**
