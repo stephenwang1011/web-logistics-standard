@@ -157,6 +157,7 @@ public class SeleniumUtil {
 	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
+		logger.info("Start finding the element [" + By + "]");
 		try {
 			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
@@ -283,7 +284,14 @@ public class SeleniumUtil {
 	 * 切换frame - 根据页面元素定位
 	 * */
 	public void switchFrame(WebElement element) {
-		driver.switchTo().frame(element);
+		try {
+			logger.info("Start switching to frame [" + getLocatorByElement(element, ">") + "]");
+			driver.switchTo().frame(element);
+		} catch (Exception e) {
+			logger.info("Switch to frame [" + getLocatorByElement(element, ">") + "] failed");
+			Assert.fail("Switch to frame [" + getLocatorByElement(element, ">") + "] failed");
+		}
+		logger.info("Switch to frame [" + getLocatorByElement(element, ">") + "] successed");
 	}
 
 	/**
