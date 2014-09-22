@@ -13,15 +13,15 @@ public class AddUserInfoPage {
 	public static final By AUIP_INPUT_TEL = By.name("tel");
 	/**身份证输入框*/
 	public static final By AUIP_INPUT_COMPANY = By.name("company");
-	/**身份证输入框*/
+	/**公司名称输入框*/
 	public static final By AUIP_INPUT_IDCARD = By.name("icard");
-	/**身份证输入框*/
+	/**公司地址：“省”下拉列表*/
 	public static final By AUIP_SELECT_PROVINCE = By.id("province");
-	/**身份证输入框*/
-	public static final By AUIP_INPUT_CITY = By.id("city");
-	/**身份证输入框*/
-	public static final By AUIP_INPUT_REGION = By.id("region");
-	/**身份证输入框*/
+	/**公司地址：“市”下拉列表*/
+	public static final By AUIP_SELECT_CITY = By.id("city");
+	/**公司地址：“区/县”下拉列表*/
+	public static final By AUIP_SELECT_REGION = By.id("region");
+	/**公司地址：“街道地址”文本框*/
 	public static final By AUIP_INPUT_ADDRESS = By.id("address");	
 	/**上传图片按钮1*/
 	public static final By AUIP_INPUT_UPLOAD1 = By.className("fileinput-new");
@@ -43,10 +43,16 @@ public class AddUserInfoPage {
 	public static final By AUIP_TEXT_COMPANY = By.xpath("//label[text()='公司名称：']");
 	/**证件照片文本*/
 	public static final By AUIP_TEXT_PHOTO = By.xpath("//label[text()='证件照片：']");
-
-	
-	
-	
+	/**姓名错误提示语：*/
+	public static final By AUIP_INPUT_NAME_P = By.id("name_tip");
+	/**联系电话错误提示语：*/
+	public static final By AUIP_INPUT_TEL_P = By.id("tel_tip");
+	/**身份证错误提示语：*/
+	public static final By AUIP_INPUT_IDCARD_P = By.id("idcard_tip");
+	/**公司名称错误提示语：*/
+	public static final By AUIP_INPUT_COMPANY_P = By.id("");//公司名称提示语没有
+	/**公司地址错误提示语：*/
+	public static final By AUIP_INPUT_ADDRESS_P = By.id("address_tip");	
 	
 
 }
