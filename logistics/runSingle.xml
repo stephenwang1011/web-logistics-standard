@@ -25,7 +25,7 @@
 	<test name="singleTest" preserve-order="true">
 		<classes>
 			<class
-				name="com.incito.logistics.testcase.home.logout.HomePage_NotLogin_013_CarsFav_Test" />
+				name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_07_Fail_Address_Text" />
 		</classes>
 	</test>
 
