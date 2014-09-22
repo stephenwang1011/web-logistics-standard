@@ -1,4 +1,5 @@
 package com.incito.logistics.testcase.adduserinfo;
+
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -9,20 +10,21 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
+
 /**
- *@author  xy-incito-wk
- *@Description 填写姓名，联系方式，公司名称点击提交
+ * @author xy-incito-wk
+ * @Description 填写姓名，联系方式，公司名称点击提交
  *
  * */
 public class AddUserInfoPage_20_Fail_NameTelAddress_Text extends BaseParpare {
 	@Test
-	public void addUserInfoPageFailAllTest(ITestContext context) {
+	public void addUserInfoPageFailNameTelAddress(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil); 
+		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, register_username, password);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);

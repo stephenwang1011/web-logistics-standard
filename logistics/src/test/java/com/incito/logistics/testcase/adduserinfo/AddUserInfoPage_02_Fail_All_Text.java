@@ -1,4 +1,5 @@
 package com.incito.logistics.testcase.adduserinfo;
+
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -9,9 +10,10 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
+
 /**
- *@author  xy-incito-wk
- *@Description 填写信息全为空直接提交
+ * @author xy-incito-wk
+ * @Description 填写信息全为空直接提交
  *
  * */
 public class AddUserInfoPage_02_Fail_All_Text extends BaseParpare {
@@ -22,7 +24,7 @@ public class AddUserInfoPage_02_Fail_All_Text extends BaseParpare {
 		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil); 
+		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, register_username, password);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
