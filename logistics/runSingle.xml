@@ -25,7 +25,7 @@
 	<test name="singleTest" preserve-order="true">
 		<classes>
 			<class
-				name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_07_Fail_Address_Text" />
+				name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_01_UI_Test" />
 		</classes>
 	</test>
 
