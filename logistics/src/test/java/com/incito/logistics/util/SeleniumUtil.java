@@ -50,10 +50,11 @@ public class SeleniumUtil {
 		SelectBrowser select = new SelectBrowser();
 		driver = select.selectExplorerByName(browserName, context);
 		try {
+			maxWindow();
 			hasLoadPageSucceeded(timeOut);
 			get(webUrl);
 			logger.info("Opening the test page:[" + webUrl + "]");
-			maxWindow();
+			
 		} catch (Exception e) {
 			refresh();
 			logger.info("Web page was refreshed successfully");
@@ -65,6 +66,7 @@ public class SeleniumUtil {
 	 * 最大化浏览器操作
 	 * */
 	public void maxWindow() {
+		logger.info("Maximize the browser");
 		driver.manage().window().maximize();
 	}
 
