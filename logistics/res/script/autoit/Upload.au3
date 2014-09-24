@@ -6,10 +6,12 @@ If $CmdLine[0]<2 Then Exit EndIf
  Func handleUpload($browser, $uploadfile)
 	 Dim $title                          ;declare a variable
             ;specify the upload window title according to the browser
-            If $browser="IE" Then                  ; stands for IE;
- 	      $title="选择要加载的文件"
-            Else                                 ; stands for chrome
-	       $title="打开"
+            If $browser="ie" Then                  		; stands for IE;
+				  $title="选择要加载的文件"
+			ElseIf $browser="chrome" Then               ; stands for chrome
+				 $title="打开"
+			ElseIf	$browser="firefox" Then 			; stands for firefox
+				  $title="文件上传"
             EndIf
 
             if WinWait($title,"",4) Then ;wait for window withtitle attribute for 4 seconds;
