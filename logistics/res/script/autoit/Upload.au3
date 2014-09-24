@@ -7,8 +7,8 @@ If $CmdLine[0]<2 Then Exit EndIf
 	 Dim $title                          ;declare a variable
             ;specify the upload window title according to the browser
             If $browser="IE" Then                  ; stands for IE;
- 	      $title="选择要上载的文件，通过：wenku.baidu.com"
-            Else                                 ; stands for Firefox
+ 	      $title="选择要加载的文件"
+            Else                                 ; stands for chrome
 	       $title="打开"
             EndIf
 
