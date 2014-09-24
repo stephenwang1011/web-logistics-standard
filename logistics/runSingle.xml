@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<!-- thread-count 定义同时启动的浏览器数 -->
+<!-- thread-count 定义同时启动的浏览器数 paralle选择平行模式 -->
 <suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
 	<!-- chrome,firefox和ie不区分大小写 -->
 	<parameter name="browserName" value="chrome" />
