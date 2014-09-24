@@ -11,9 +11,9 @@ public class AddUserInfoPage {
 	public static final By AUIP_INPUT_NAME = By.name("name");
 	/**联系电话输入框*/
 	public static final By AUIP_INPUT_TEL = By.name("tel");
-	/**身份证输入框*/
-	public static final By AUIP_INPUT_COMPANY = By.name("company");
 	/**公司名称输入框*/
+	public static final By AUIP_INPUT_COMPANY = By.name("company");
+	/**身份证输入框*/
 	public static final By AUIP_INPUT_IDCARD = By.name("icard");
 	/**公司地址：“省”下拉列表*/
 	public static final By AUIP_SELECT_PROVINCE = By.id("province");
@@ -52,7 +52,8 @@ public class AddUserInfoPage {
 	/**公司名称错误提示语：*/
 	public static final By AUIP_INPUT_COMPANY_P = By.id("");//公司名称提示语没有
 	/**公司地址错误提示语：*/
-	public static final By AUIP_INPUT_ADDRESS_P = By.id("address_tip");	
-	
+	public static final By AUIP_INPUT_ADDRESS_P = By.id("address_tip");
+	/**完成信息成功弹出框提示语*/
+	public static final By AUIP_POPUP_TRUE = By.xpath("//label[text()='您已成功提交个人信息，我们将在24小时内完成审核，您可以先发货了！如需优先认证，请致电']");	
 
 }
