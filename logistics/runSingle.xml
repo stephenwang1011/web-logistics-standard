@@ -24,9 +24,10 @@
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.home.login.HomePage_Login_001_TopCheck_Test" />
+			<class
+				name="com.incito.logistics.testcase.home.login.HomePage_Login_001_TopCheck_Test" />
 		</classes>
-	</test> 
+	</test>
 
 
 	<listeners>
