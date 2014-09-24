@@ -1,5 +1,6 @@
 package com.incito.logistics.testcase.adduserinfo;
 
+import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -23,6 +24,8 @@ public class AddUserInfoPage_04_Fail_Tel_Text extends BaseParpare {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
+		String add_tel = PropertiesDataProvider.getTestData(configFilePath, "add_tel");
+		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
@@ -30,6 +33,11 @@ public class AddUserInfoPage_04_Fail_Tel_Text extends BaseParpare {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
+		for (By by : bys) {
+			seleniumUtil.clear(seleniumUtil.findElementBy(by));
+		}
+		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
+		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TEL), add_tel);
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		AddUserInfoPagerHelper.checkAddUserInfoPrompt_Tel(timeOut, seleniumUtil);
 

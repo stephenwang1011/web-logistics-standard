@@ -393,4 +393,12 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+	/** 检查完善信息页面:必填项全部填写 */
+	public static void checkAddUserInfoPrompt_All(int timeOut, SeleniumUtil seleniumUtil) {
+		logger.info("Start checking checkAddUserInfoPrompt page text");
+
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_POPUP_TRUE).getText(), "您已成功提交个人信息，我们将在24小时内完成审核，您可以先发货了！如需优先认证，请致电");
+
+		logger.info("Check checkAddUserInfoPrompt page text completed");
+	}
 }
