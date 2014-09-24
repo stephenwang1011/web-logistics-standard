@@ -51,7 +51,7 @@ public class AddUserInfoPage_34_end_AllPic_Text extends BaseParpare {
 //		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_REGION, "180602");
 //		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS), add_address);
 //		seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_UPLOAD1).sendKeys("res/img/agentinfo/1.jpg");
-		seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_UPLOAD1).sendKeys('E:\\git\automation\logistics\res\img\agentinfo\1.jpg');
+//		seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_UPLOAD1).sendKeys('E:\\git\automation\logistics\res\img\agentinfo\1.jpg');
 		seleniumUtil.pause(5000);
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		AddUserInfoPagerHelper.checkAddUserInfoPrompt_All(timeOut, seleniumUtil);
