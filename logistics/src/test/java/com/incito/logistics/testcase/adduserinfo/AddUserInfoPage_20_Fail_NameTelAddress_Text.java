@@ -26,7 +26,7 @@ public class AddUserInfoPage_20_Fail_NameTelAddress_Text extends BaseParpare {
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };
 		String add_name = PropertiesDataProvider.getTestData(configFilePath, "add_name");
-		String add_tel = PropertiesDataProvider.getTestData(configFilePath, "add_Tel");
+		String add_tel = PropertiesDataProvider.getTestData(configFilePath, "add_tel");
 		String add_address = PropertiesDataProvider.getTestData(configFilePath, "add_address");
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
@@ -41,7 +41,7 @@ public class AddUserInfoPage_20_Fail_NameTelAddress_Text extends BaseParpare {
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 		
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_NAME), add_name);
-		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TEL), add_tel);		
+		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL), add_tel);		
 		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_PROVINCE, "1800");
 		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_CITY, "1806");
 		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_REGION, "180602");

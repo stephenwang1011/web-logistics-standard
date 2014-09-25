@@ -26,7 +26,7 @@ public class AddUserInfoPage_30_Fail_NameTelCompanyAddress_Text extends BaseParp
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };
 		String add_name = PropertiesDataProvider.getTestData(configFilePath, "add_name");
-		String add_tel = PropertiesDataProvider.getTestData(configFilePath, "add_Tel");
+		String add_tel = PropertiesDataProvider.getTestData(configFilePath, "add_tel");
 		String add_company = PropertiesDataProvider.getTestData(configFilePath, "add_company");
 		String add_address = PropertiesDataProvider.getTestData(configFilePath, "add_address");
 
@@ -42,13 +42,9 @@ public class AddUserInfoPage_30_Fail_NameTelCompanyAddress_Text extends BaseParp
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 		
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_NAME), add_name);
-		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TEL), add_tel);		
+		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL), add_tel);		
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY), add_company);		
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_PROVINCE, "1800");
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_CITY, "1806");
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_REGION, "180602");
-		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS), add_address);
-
+		seleniumUtil.address(AddUserInfoPage.AUIP_SELECT_PROVINCE, "1800", AddUserInfoPage.AUIP_SELECT_CITY, "1806", AddUserInfoPage.AUIP_SELECT_REGION, "180602", AddUserInfoPage.AUIP_INPUT_ADDRESS, add_address);
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		AddUserInfoPagerHelper.checkAddUserInfoPrompt_NameTelCompanyAddress(timeOut, seleniumUtil);
 	}

@@ -37,7 +37,7 @@ public class AddUserInfoPage_04_Fail_Tel_Text extends BaseParpare {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
-		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TEL), add_tel);
+		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL), add_tel);
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		AddUserInfoPagerHelper.checkAddUserInfoPrompt_Tel(timeOut, seleniumUtil);
 
