@@ -514,7 +514,23 @@ public class SeleniumUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	/**
+	 * 填写详细地址
+	 * @param elementProvince 省下拉列表
+	 * @param province 根据序号定位省
+	 * @param elementCity 市下拉列表
+	 * @param city 根据序号定位市
+	 * @param elementRegion 区下拉列表
+	 * @param region 根据序号定位区
+	 * @param elementAddress 详细地址文本框元素
+	 * @param address 填写详细地址镇与街道
+	 */
+	public void address(By elementProvince, String province, By elementCity, String city, By elementRegion, String region, By elementAddress, String address) {		
+		selectByValue(elementProvince, province);
+		selectByValue(elementCity, city);
+		selectByValue(elementRegion, region);
+		type(findElementBy(elementAddress), address);
+	}
 }
