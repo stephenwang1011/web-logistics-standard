@@ -25,7 +25,7 @@ public class AddUserInfoPagerHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_SELECT_REGION);
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_INPUT_TEL);
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_SELECT_PROVINCE);
-		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_INPUT_UPLOAD1);
+		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_INPUT_UPLOAD);
 
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_BUTTON_BACK);
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_BUTTON_SUBMIT);

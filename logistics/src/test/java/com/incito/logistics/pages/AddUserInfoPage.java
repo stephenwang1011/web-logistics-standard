@@ -23,8 +23,8 @@ public class AddUserInfoPage {
 	public static final By AUIP_SELECT_REGION = By.id("region");
 	/**公司地址：“街道地址”文本框*/
 	public static final By AUIP_INPUT_ADDRESS = By.id("address");	
-	/**上传图片按钮1*/
-	public static final By AUIP_INPUT_UPLOAD1 = By.className("fileinput-new");
+	/**上传图片按钮*/
+	public static final By AUIP_INPUT_UPLOAD = By.xpath("//span/span[1]");
 	/**提交按钮*/
 	public static final By AUIP_BUTTON_SUBMIT = By.xpath("//button[text()='提交']");
 	/**返回按钮*/
