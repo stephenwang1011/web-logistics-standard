@@ -25,7 +25,7 @@
 	<test name="singleTest" preserve-order="true">
 		<classes>
 			<class
-				name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_34_end_AllPic_Text" />
+				name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_33_end_All_Text" />
 		</classes>
 	</test>
 
