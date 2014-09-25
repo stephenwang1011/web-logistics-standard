@@ -40,10 +40,7 @@ public class AddUserInfoPage_11_Fail_NameAddress_Text extends BaseParpare {
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 		
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_NAME), add_name);
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_PROVINCE, "1800");
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_CITY, "1806");
-		seleniumUtil.selectByValue(AddUserInfoPage.AUIP_SELECT_REGION, "180602");
-		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS), add_address);
+		seleniumUtil.address(AddUserInfoPage.AUIP_SELECT_PROVINCE, "1800", AddUserInfoPage.AUIP_SELECT_CITY, "1806", AddUserInfoPage.AUIP_SELECT_REGION, "180602", AddUserInfoPage.AUIP_INPUT_ADDRESS, add_address);
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		AddUserInfoPagerHelper.checkAddUserInfoPrompt_NameAdress(timeOut, seleniumUtil);
 
