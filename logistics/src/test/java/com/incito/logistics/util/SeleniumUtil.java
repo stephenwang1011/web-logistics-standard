@@ -1,5 +1,6 @@
 package com.incito.logistics.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -54,7 +55,7 @@ public class SeleniumUtil {
 			hasLoadPageSucceeded(timeOut);
 			get(webUrl);
 			logger.info("Opening the test page:[" + webUrl + "]");
-			
+
 		} catch (Exception e) {
 			refresh();
 			logger.info("Web page was refreshed successfully");
@@ -493,6 +494,27 @@ public class SeleniumUtil {
 	 * */
 	public WebElement getOneElement(By bys, By by, int index) {
 		return findElementsBy(bys).get(index).findElement(by);
+	}
+
+	/**
+	 * 上传文件
+	 * 
+	 * @param brower
+	 *            使用的浏览器名称
+	 * @param file
+	 *            需要上传的文件及文件名
+	 */
+	public void handleUpload(String browser, File file) {
+		String filePath = file.getAbsolutePath();
+		String executeFile = "res/script/autoit/Upload.exe";
+		String cmd = "\"" + executeFile + "\"" + " " + "\"" + browser + "\"" + " " + "\"" + filePath + "\"";
+		try {
+			Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
