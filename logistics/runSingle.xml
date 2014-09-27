@@ -24,7 +24,7 @@
 
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<classname="com.incito.logistics.testcase.login.Fail_Password_Empty_Test" />
+			<class name="com.incito.logistics.testcase.login.Fail_Password_Empty_Test" />
 		</classes>
 	</test>
 
