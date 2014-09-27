@@ -19,7 +19,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @Description 填写所有，加上传一张照片点击提交
  *
  * */
-public class AddUserInfoPage_34_end_AllPic_Text extends BaseParpare {
+public class AddUserInfoPage_end_AllPic_Text extends BaseParpare {
 	@Test
 	public void addUserInfoPageFailTelIdcardCompanyAddress(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));

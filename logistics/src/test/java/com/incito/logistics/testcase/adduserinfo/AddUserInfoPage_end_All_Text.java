@@ -17,7 +17,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @Description 填写所有点击提交
  *
  * */
-public class AddUserInfoPage_33_end_All_Text extends BaseParpare {
+public class AddUserInfoPage_end_All_Text extends BaseParpare {
 	@Test
 	public void addUserInfoPageFailTelIdcardCompanyAddress(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
