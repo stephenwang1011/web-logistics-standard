@@ -50,7 +50,7 @@ public class HomePageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER).getText(), "我的订单");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(), "我的货源");
 	//	seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(), "我的车队");
-		FooterPageHelper.checkRegisterPageText(seleniumUtil);
+		FooterPageHelper.checkFooterPageText(seleniumUtil);
 		logger.info("Check home page text completed");
 
 	}
