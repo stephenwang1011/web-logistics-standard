@@ -28,7 +28,7 @@ public class ExcelDataProvider implements Iterator<Object[]> {
     private int      columnNum    = 0;
     private String[] columnnName;
 
-    public ExcelDataProvider(String classname, String methodname) {
+    public ExcelDataProvider(String classname, String funnctionFolder) {
 
         try {
 
@@ -39,7 +39,7 @@ public class ExcelDataProvider implements Iterator<Object[]> {
                         classname.length());
             }
 
-            String path = "data/" + classname + ".xls";
+            String path = "data/"+funnctionFolder+"/" + classname + ".xls";
             InputStream inputStream = new FileInputStream(path);
 
             book = Workbook.getWorkbook(inputStream);
