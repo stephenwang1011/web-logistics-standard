@@ -88,7 +88,7 @@ public class ExcelDataProvider implements Iterator<Object[]> {
 	public Object[] next() {
 
 		Cell[] c = sheet.getRow(this.currentRowNo);
-		System.out.println(this.currentRowNo);
+
 		Map<String, String> data = new HashMap<String, String>();
 		// List<String> list = new ArrayList<String>();
 
