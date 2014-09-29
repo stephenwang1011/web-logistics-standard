@@ -1,5 +1,8 @@
 ;first make sure the number of arguments passed into the scripts is more than 1
-If $CmdLine[0]<2 Then Exit EndIf
+If $CmdLine[0]<2 Then Exit EndIf ;if parmas num <2 ,then break
+;$CmdLine[0] ;参数的数量
+;$CmdLine[1] ;第一个参数 (脚本名称后面)
+;$CmdLine[2] ;第二个参数
  handleUpload($CmdLine[1],$CmdLine[2])
 
 ;define a function to handle upload
