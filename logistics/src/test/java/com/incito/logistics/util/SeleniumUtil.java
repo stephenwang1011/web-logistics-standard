@@ -533,4 +533,13 @@ public class SeleniumUtil {
 		selectByValue(elementRegion, region);
 		type(findElementBy(elementAddress), address);
 	}
+	
+	/**
+	 * @Description 	对于windows GUI弹出框，要求输入用户名和密码时，
+	 * 							seleniumm不能直接操作，需要借助http://username:password@yoururl  这种方法
+	 * 
+	 * */
+	public void loginOnWinGUI(String username,String password,String url){
+		driver.get(username+":"+password+"@"+url);
+	}
 }
