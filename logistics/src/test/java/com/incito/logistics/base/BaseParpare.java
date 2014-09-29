@@ -31,7 +31,6 @@ public class BaseParpare {
 		try {
 			seleniumUtil.launchBrowser(browserName, context);
 		} catch (Exception e) {
-			;
 			seleniumUtil.quit();
 			logger.error("Staring brower failed!!");
 			Assert.fail("Staring brower failed!!");
@@ -43,7 +42,7 @@ public class BaseParpare {
 	@AfterClass
 	/**结束测试关闭浏览器*/
 	public void endTest() {
-		if (seleniumUtil != null) {
+		if (seleniumUtil.driver != null) {
 			seleniumUtil.quit();
 		}
 	}
