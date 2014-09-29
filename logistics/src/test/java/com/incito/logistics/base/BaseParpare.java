@@ -44,6 +44,10 @@ public class BaseParpare {
 	public void endTest() {
 		if (seleniumUtil.driver != null) {
 			seleniumUtil.quit();
+		}else{
+			logger.error("The driver  is null,quit failed");
+			Assert.fail("The driver  is null,quit failed");
+			
 		}
 	}
 
