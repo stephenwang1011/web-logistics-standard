@@ -518,28 +518,37 @@ public class SeleniumUtil {
 
 	/**
 	 * 填写详细地址
-	 * @param elementProvince 省下拉列表
-	 * @param province 根据序号定位省
-	 * @param elementCity 市下拉列表
-	 * @param city 根据序号定位市
-	 * @param elementRegion 区下拉列表
-	 * @param region 根据序号定位区
-	 * @param elementAddress 详细地址文本框元素
-	 * @param address 填写详细地址镇与街道
+	 * 
+	 * @param elementProvince
+	 *            省下拉列表
+	 * @param province
+	 *            根据序号定位省
+	 * @param elementCity
+	 *            市下拉列表
+	 * @param city
+	 *            根据序号定位市
+	 * @param elementRegion
+	 *            区下拉列表
+	 * @param region
+	 *            根据序号定位区
+	 * @param elementAddress
+	 *            详细地址文本框元素
+	 * @param address
+	 *            填写详细地址镇与街道
 	 */
-	public void address(By elementProvince, String province, By elementCity, String city, By elementRegion, String region, By elementAddress, String address) {		
+	public void address(By elementProvince, String province, By elementCity, String city, By elementRegion, String region, By elementAddress, String address) {
 		selectByValue(elementProvince, province);
 		selectByValue(elementCity, city);
 		selectByValue(elementRegion, region);
 		type(findElementBy(elementAddress), address);
 	}
-	
+
 	/**
-	 * @Description 	对于windows GUI弹出框，要求输入用户名和密码时，
-	 * 							seleniumm不能直接操作，需要借助http://username:password@yoururl  这种方法
+	 * @Description 对于windows GUI弹出框，要求输入用户名和密码时，
+	 *              seleniumm不能直接操作，需要借助http://username:password@yoururl 这种方法
 	 * 
 	 * */
-	public void loginOnWinGUI(String username,String password,String url){
-		driver.get(username+":"+password+"@"+url);
+	public void loginOnWinGUI(String username, String password, String url) {
+		driver.get(username + ":" + password + "@" + url);
 	}
 }

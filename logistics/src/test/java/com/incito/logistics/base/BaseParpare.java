@@ -8,6 +8,7 @@ package com.incito.logistics.base;
 import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriverException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,10 +31,10 @@ public class BaseParpare {
 
 		try {
 			seleniumUtil.launchBrowser(browserName, context);
-		} catch (Exception e) {
+		} catch (WebDriverException e) {
 			seleniumUtil.quit();
-			logger.error("Staring brower failed!!");
-			Assert.fail("Staring brower failed!!");
+			logger.error("Chrome not reachable,it maybe closed by user");
+			Assert.fail("Chrome not reachable,it maybe closed by user");
 		}
 		// 设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
 		testContext.setAttribute("SELENIUM_DRIVER", seleniumUtil.driver);
@@ -44,10 +45,10 @@ public class BaseParpare {
 	public void endTest() {
 		if (seleniumUtil.driver != null) {
 			seleniumUtil.quit();
-		}else{
+		} else {
 			logger.error("The driver  is null,quit failed");
 			Assert.fail("The driver  is null,quit failed");
-			
+
 		}
 	}
 
