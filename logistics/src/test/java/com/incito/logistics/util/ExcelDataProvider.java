@@ -44,11 +44,11 @@ public class ExcelDataProvider implements Iterator<Object[]> {
 
             book = Workbook.getWorkbook(inputStream);
             // sheet = book.getSheet(methodname);
-            sheet = book.getSheet(0);
-            rowNum = sheet.getRows();
-            Cell[] cell = sheet.getRow(0);
-            columnNum = cell.length;
-            columnnName = new String[cell.length];
+            sheet = book.getSheet(0);//获取第一个table（sheet）
+            rowNum = sheet.getRows();//获取所有的行
+            Cell[] cell = sheet.getRow(0);//获取所有的列
+            columnNum = cell.length;//获取列的总数
+            columnnName = new String[cell.length];//定义一个列数组(定义了几行)
 
             for (int i = 0; i < cell.length; i++) {
                 columnnName[i] = cell[i].getContents().toString();
