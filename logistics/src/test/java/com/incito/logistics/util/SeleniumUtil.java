@@ -471,7 +471,6 @@ public class SeleniumUtil {
 
 	}
 
-
 	/**
 	 * 这是一堆相同的elements中 选择 其中方的 一个 然后在这个选定的中 继续定位
 	 * */
@@ -535,3 +534,4 @@ public class SeleniumUtil {
 		driver.get(username + ":" + password + "@" + url);
 	}
 }
+
