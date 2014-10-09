@@ -13,15 +13,15 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wangkai
- * @Description 注册失败：只输入用户名和密码2
+ * @Description 注册失败：输入不相同的密码1和密码2
  * */
-public class RegisterPage_07_Fail_UsernameAndRepassword_Test extends BaseParpare {
+public class RegisterPage_009_Fail_PasswordDifRepassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_UsernameAndRepassword(ITestContext context) {
+	public void registerFailTest_PasswordDifRepassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
-		String register_repassword = PropertiesDataProvider.getTestData(configFilePath, "register_repassword");
+		String register_password = PropertiesDataProvider.getTestData(configFilePath, "register_password");
+		String register_repassword2 = PropertiesDataProvider.getTestData(configFilePath, "register_repassword2");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
@@ -31,10 +31,10 @@ public class RegisterPage_07_Fail_UsernameAndRepassword_Test extends BaseParpare
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword2);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_UsernameAndRepassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_PasswordDifRepassword(timeOut, seleniumUtil);
 	}
 
 }

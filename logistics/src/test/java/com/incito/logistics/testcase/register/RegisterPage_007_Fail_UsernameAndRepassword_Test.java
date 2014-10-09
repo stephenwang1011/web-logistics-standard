@@ -13,13 +13,14 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wangkai
- * @Description 注册失败：不输入用户名，只输入密码2
+ * @Description 注册失败：只输入用户名和密码2
  * */
-public class RegisterPage_05_Fail_Repassword_Test extends BaseParpare {
+public class RegisterPage_007_Fail_UsernameAndRepassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_Repassword(ITestContext context) {
+	public void registerFailTest_UsernameAndRepassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
 		String register_repassword = PropertiesDataProvider.getTestData(configFilePath, "register_repassword");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
@@ -30,9 +31,10 @@ public class RegisterPage_05_Fail_Repassword_Test extends BaseParpare {
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME), register_username);
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_repasswd(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_UsernameAndRepassword(timeOut, seleniumUtil);
 	}
 
 }

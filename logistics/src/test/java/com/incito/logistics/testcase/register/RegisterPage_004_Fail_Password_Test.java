@@ -1,9 +1,5 @@
 package com.incito.logistics.testcase.register;
 
-/**
- *@author  xy-incito
- *@Description 测试用例：成功注册
- * */
 import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
@@ -15,33 +11,29 @@ import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class RegisterPage_End_Success_Test extends BaseParpare {
+/**
+ * @author xy-incito-wangkai
+ * @Description 注册失败：不输入用户名，只输入密码1，点击登陆提示 请输入用户名（但是实际中只提示：用户名称不能全部为数字。后期进行更改）
+ * */
+// 后期需要更改该测试用例中提示语
+public class RegisterPage_004_Fail_Password_Test extends BaseParpare {
 
 	@Test
-	public void RegisterSuccessTest(ITestContext context) {
+	public void registerFailTest_Password(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_username = PropertiesDataProvider.getTestData(configFilePath, "register_username");
 		String register_password = PropertiesDataProvider.getTestData(configFilePath, "register_password");
-		String register_repassword = PropertiesDataProvider.getTestData(configFilePath, "register_repassword");
-		String keys[] = { register_username, register_password, register_repassword };
-		By bys[] = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
-
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
-		RegisterPageHelper.checkRegisterPageText(seleniumUtil);
 		for (By by : bys) {
 			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
-		for (int i = 0; i < keys.length; i++) {
-			RegisterPageHelper.registerUserInfo(seleniumUtil, bys[i], keys[i]);
-		}
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, register_username);
-
+		RegisterPageHelper.checkRegisterPagePrompt_passwd(timeOut, seleniumUtil);
 	}
 
 }

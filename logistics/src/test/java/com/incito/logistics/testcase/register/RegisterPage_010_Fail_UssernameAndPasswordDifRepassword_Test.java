@@ -15,7 +15,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wangkai
  * @Description 注册失败：输入用户名与不相同的密码1和密码2
  * */
-public class RegisterPage_10_Fail_UssernameAndPasswordDifRepassword_Test extends BaseParpare {
+public class RegisterPage_010_Fail_UssernameAndPasswordDifRepassword_Test extends BaseParpare {
 
 	@Test
 	public void registerFailTest_PasswordDifRepassword(ITestContext context) {

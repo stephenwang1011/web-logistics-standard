@@ -15,7 +15,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wangkai
  * @Description 注册失败：只输入用户名和密码1
  * */
-public class RegisterPage_06_Fail_UsernameAndPassword_Test extends BaseParpare {
+public class RegisterPage_006_Fail_UsernameAndPassword_Test extends BaseParpare {
 
 	@Test
 	public void registerFailTest_UsernameAndPassword(ITestContext context) {

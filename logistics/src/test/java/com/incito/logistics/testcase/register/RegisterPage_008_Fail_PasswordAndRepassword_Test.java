@@ -15,7 +15,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wangkai
  * @Description 注册失败：输入相同的密码1和密码2
  * */
-public class RegisterPage_08_Fail_PasswordAndRepassword_Test extends BaseParpare {
+public class RegisterPage_008_Fail_PasswordAndRepassword_Test extends BaseParpare {
 
 	@Test
 	public void registerFailTest_PasswordAndRepassword(ITestContext context) {
