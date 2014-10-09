@@ -33,38 +33,39 @@ public class ExcelDataProvider implements Iterator<Object[]> {
 	private String[] columnnName;
 	private String path = null;
 	public static Logger logger = Logger.getLogger(ExcelDataProvider.class.getName());
-	public ExcelDataProvider(String classname, String funnctionFolder) {
+
+	/*
+	 * @description 
+	 * 2个参数：<br>
+	 * moduleName - 模块的名称
+	 * caseNum - 测试用例编号
+	 **/
+	public ExcelDataProvider(String moduleName, String caseNum) {
 
 		try {
-
-			int dotIndexNum = classname.indexOf(".");
-			if (dotIndexNum > 0) {
-				classname = classname.substring(classname.lastIndexOf(".") + 1, classname.length());
-			}
-
-			path = "data/" + funnctionFolder + "/" + classname + ".xls";
+			path = "data/" + moduleName + ".xls";
 			InputStream inputStream = new FileInputStream(path);
 
 			book = Workbook.getWorkbook(inputStream);
 			// sheet = book.getSheet(methodname);
-			sheet = book.getSheet(0); //读取第一个sheet
-			rowNum = sheet.getRows(); //获得该sheet的 所有行
-			Cell[] cell = sheet.getRow(0);//获得第一行的所有单元格
-			columnNum = cell.length;  //单元格的个数 值 赋给  列数
-			columnnName = new String[cell.length];//开辟 列名的大小
+			sheet = book.getSheet(caseNum); // 读取第一个sheet
+			rowNum = sheet.getRows(); // 获得该sheet的 所有行
+			Cell[] cell = sheet.getRow(0);// 获得第一行的所有单元格
+			columnNum = cell.length; // 单元格的个数 值 赋给 列数
+			columnnName = new String[cell.length];// 开辟 列名的大小
 
 			for (int i = 0; i < cell.length; i++) {
-				columnnName[i] = cell[i].getContents().toString(); //第一行的值 被赋予为列名
+				columnnName[i] = cell[i].getContents().toString(); // 第一行的值
+																	// 被赋予为列名
 			}
 			this.currentRowNo++;
 
-
 		} catch (FileNotFoundException e) {
-			logger.error("Not found the file:"+"["+path+"]" );
-			Assert.fail("Not found the file:"+"["+path+"]" );
-		}catch(Exception e){
-			logger.error("Unable to read ["+path+"]");
-			Assert.fail("Unable to read ["+path+"]");
+			logger.error("Not found the file:" + "[" + path + "]");
+			Assert.fail("Not found the file:" + "[" + path + "]");
+		} catch (Exception e) {
+			logger.error("Unable to read [" + path + "]");
+			Assert.fail("Unable to read [" + path + "]");
 		}
 	}
 
