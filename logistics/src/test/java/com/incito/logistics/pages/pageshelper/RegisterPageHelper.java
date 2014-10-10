@@ -33,7 +33,7 @@ public class RegisterPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD).getAttribute("placeholder"), data.get("RP_INPUT_REPASSWD"));
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER).getText(), data.get("RP_BUTTON_REGISTER"));
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK).getText(), data.get("RP_BUTTON_BACK"));
-	
+		//此处不从excel中取数据
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
@@ -64,9 +64,9 @@ public class RegisterPageHelper {
 	/** 检查注册页面上的输入框全为空的提示语 */
 	// 能否使用数组来表示后面的是提示语，然后再数组中添加各种提示语；
 	// 但是存在一个问题就是该处不能使用一个方法来进行表示，比如说密码全为空只含有两个提示语，当“确认密码”填写了字符时，该处就会出现三个提示语；及检查关系能否为“与”的关系
-	public static void checkRegisterPagePrompt(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_P).getText(), "用户名称不能全部为数字");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD_P).getText(), "密码长度为6-20个字符");
+	public static void checkRegisterPagePrompt(int timeOut, SeleniumUtil seleniumUtil,Map<String,String> data) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_P).getText(), data.get("RP_INPUT_USERNAME_P"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD_P).getText(), data.get("RP_INPUT_PASSWD_P"));
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
