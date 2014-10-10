@@ -1,6 +1,9 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.util.Map;
+
 import org.openqa.selenium.By;
+
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -22,14 +25,15 @@ public class RegisterPageHelper {
 	}
 
 	/** 检查注册页面上的文本 */
-	public static void checkRegisterPageText(SeleniumUtil seleniumUtil) {
+	public static void checkRegisterPageText(SeleniumUtil seleniumUtil,Map<String, String> data) {
 
-		seleniumUtil.isTextCorrect(seleniumUtil.getTitle(), "logistics - 物流管理");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME).getAttribute("placeholder"), "至少输入4个字符");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD).getAttribute("placeholder"), "至少输入6个字符");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD).getAttribute("placeholder"), "请再次输入登录密码");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER).getText(), "注册");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK).getText(), "返回");
+		seleniumUtil.isTextCorrect(seleniumUtil.getTitle(), data.get("TITLE"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME).getAttribute("placeholder"), data.get("RP_INPUT_USERNAME"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD).getAttribute("placeholder"), data.get("RP_INPUT_PASSWD"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD).getAttribute("placeholder"), data.get("RP_INPUT_REPASSWD"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER).getText(), data.get("RP_BUTTON_REGISTER"));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK).getText(), data.get("RP_BUTTON_BACK"));
+	
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
