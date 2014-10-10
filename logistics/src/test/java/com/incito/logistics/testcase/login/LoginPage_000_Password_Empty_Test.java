@@ -34,6 +34,9 @@ public class LoginPage_000_Password_Empty_Test extends BaseParpare {
 		seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME).sendKeys(data.get("PASSWORD"));
 		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
 		seleniumUtil.isTextCorrect(seleniumUtil.switchToPromptedAlertAfterWait(waitMillisecondsForAlert).getText(), data.get("EXPECT"));
+		seleniumUtil.switchToPromptedAlertAfterWait(waitMillisecondsForAlert).accept();
+		seleniumUtil.findElementBy(LoginPage.LP_BUTTON_CLOSE).click();
+		seleniumUtil.pause(2000);
 
 	}
 
