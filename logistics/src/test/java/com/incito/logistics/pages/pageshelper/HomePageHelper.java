@@ -8,6 +8,7 @@ import com.incito.logistics.util.SeleniumUtil;
 
 public class HomePageHelper {
 	public static Logger logger = Logger.getLogger(HomePageHelper.class.getName());
+
 	/** 等待首页上元素显示出来 */
 	public static void waitHomePageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page elements");
@@ -21,7 +22,7 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDGOODS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYORDER);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYGOODS);
-		//seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYCARDS);
+		// seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYCARDS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TAB_TRACKGOODS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TAB_FINDCARS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_INPUT_ORDERNO);
@@ -32,7 +33,7 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MORE);
 		logger.info("Check home page elements completed");
 	}
-	
+
 	/** 检查首页上的文本 */
 	public static void checkHomePageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page text");
@@ -49,7 +50,8 @@ public class HomePageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDGOODS).getText(), "找货源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER).getText(), "我的订单");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(), "我的货源");
-	//	seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(), "我的车队");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYCARDS).getText(),
+		// "我的车队");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 		logger.info("Check home page text completed");
 
@@ -60,12 +62,16 @@ public class HomePageHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 
 	}
-	
+
 	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
-	public static void enterPage(SeleniumUtil seleniumUtil, By bys,By by,int index) {
+	public static void enterPage(SeleniumUtil seleniumUtil, By bys, By by, int index) {
 		seleniumUtil.click(seleniumUtil.getOneElement(bys, by, index));
 	}
-	
 
+	/** 在首页暂停一会儿 */
+	public static void holdOn(SeleniumUtil seleniumUtil, int sleepTime) {
+		seleniumUtil.pause(sleepTime);
+
+	}
 
 }
