@@ -1,7 +1,7 @@
 package com.incito.logistics.testcase.login;
 
 /**
- *@author  xy-incito
+ *@author  xy-incito-wy
  *@Description 测试用例：成功登陆
  * */
 import org.testng.ITestContext;
@@ -13,7 +13,7 @@ import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class LoginPage_02_Success_Test extends BaseParpare {
+public class LoginPage_002_Login_Success_Test extends BaseParpare {
 
 	@Test
 	public void loginSuccessTest(ITestContext context) {
