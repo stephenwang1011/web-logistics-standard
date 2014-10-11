@@ -12,27 +12,22 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito
- * @Description 登陆失败-输入正确用户名，密码输入错误,提示“用户名或密码错误,请重新登录!”
+ * @author xy-incito-wy
+ * @Description 登陆失败-不输入用户名，只输入密码
  * */
-public class LoginPage_07_Fail_Incorrect_Password_Test extends BaseParpare {
+public class LoginPage_005_Fail_Only_Password_Test extends BaseParpare {
 
 	@Test
-	public void loginFailTest_incorrectPassword(ITestContext context) {
+	public void loginFailTest_Password(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
-		String incorrectpassword = PropertiesDataProvider.getTestData(configFilePath, "incorrectpassword");
+		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
-		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
-		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE));
-		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE), incorrectpassword);
-		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
+		LoginPageHelper.login(seleniumUtil, password, LoginPage.LP_INPUT_PASSCODE);
 		AlertPageHelper.checkAlertInfo(seleniumUtil, waitMillisecondsForAlert);
 	}
 

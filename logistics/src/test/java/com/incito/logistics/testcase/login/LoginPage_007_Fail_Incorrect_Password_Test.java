@@ -1,36 +1,34 @@
 package com.incito.logistics.testcase.login;
 
-/**
- *@author  xy-incito
- *@Description 测试用例：退出登陆操作
- * */
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
+import com.incito.logistics.pages.pageshelper.AlertPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class LoginPage_08_EXIT_Test extends BaseParpare {
+/**
+ * @author xy-incito-wy
+ * @Description 登陆失败-输入正确用户名，密码输入错误,提示“用户名或密码错误,请重新登录!”
+ * */
+public class LoginPage_007_Fail_Incorrect_Password_Test extends BaseParpare {
 
 	@Test
-	public void exitLoginTest(ITestContext context) {
+	public void loginFailTest_incorrectPassword(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
-		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
+		String incorrectpassword = PropertiesDataProvider.getTestData(configFilePath, "incorrectpassword");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		int waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		LoginPageHelper.checkLoginPageText(seleniumUtil);
-		LoginPageHelper.login(seleniumUtil, username, password);
-		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_TEXT_USERINFO);
-		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_EXIT));
+		LoginPageHelper.login(seleniumUtil, username, incorrectpassword);
+		AlertPageHelper.checkAlertInfo(seleniumUtil, waitMillisecondsForAlert);
 	}
 
 }
