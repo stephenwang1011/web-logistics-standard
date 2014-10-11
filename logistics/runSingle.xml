@@ -21,10 +21,10 @@
 	<!-- 相同元素中的index值 for cars -->
 	<parameter name="indexCars" value="8" />
 
-
+	
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.register.RegisterPage_001_UI_Test" />
+			<class name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_033_Success_All_Test" />
 		</classes>
 	</test>
 
