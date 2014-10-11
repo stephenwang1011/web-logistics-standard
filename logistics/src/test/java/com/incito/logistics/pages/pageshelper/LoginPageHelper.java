@@ -1,6 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.LoginPage;
@@ -9,7 +10,7 @@ import com.incito.logistics.util.SeleniumUtil;
 public class LoginPageHelper {
 	public static Logger logger = Logger.getLogger(LoginPageHelper.class.getName());
 
-	/** 登录操作 */
+	/** 登录操作 密码和用户名都书写 */
 	public static void login(SeleniumUtil seleniumUtil, String username, String password) {
 
 		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
@@ -20,6 +21,14 @@ public class LoginPageHelper {
 
 	}
 
+	/** 登录操作 按照输入的条件来选择登录 */
+	public static void login(SeleniumUtil seleniumUtil, String loginInfo, By loginElement) {
+
+		seleniumUtil.clear(seleniumUtil.findElementBy(loginElement));
+		seleniumUtil.type(seleniumUtil.findElementBy(loginElement), loginInfo);
+		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
+
+	}
 	/** 待页面元素加载出来 */
 	public static void waitLoginPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("start checking login page elements");
@@ -61,6 +70,13 @@ public class LoginPageHelper {
 		seleniumUtil.pause(sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_USERINFO);
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_USERINFO).getText(), username);
+	}
+	
+	/**从登陆页面上做的一些点击擦操作*/
+	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator){
+		
+		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
+		
 	}
 
 }
