@@ -9,28 +9,23 @@ import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.pageshelper.AlertPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito
- * @Description 登陆失败-只输入用户名不输入密码 点击登陆会提示“请输入密码”
+ * @author xy-incito-wy
+ * @Description 登陆失败：用户名和密码都不填写
  * */
-public class LoginPage_04_Fail_Username_Test extends BaseParpare {
+public class LoginPage_003_Fail_All_Empty_Test extends BaseParpare {
 
 	@Test
-	public void loginFailTest_Username(ITestContext context) {
-		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
+	public void loginFailTest_All_Empty(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.clear(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME));
-		seleniumUtil.type(seleniumUtil.findElementBy(LoginPage.LP_INPUT_USERNAME), username);
 		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
 		AlertPageHelper.checkAlertInfo(seleniumUtil, waitMillisecondsForAlert);
-	}
 
+	}
 }

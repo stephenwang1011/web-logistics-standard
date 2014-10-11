@@ -9,23 +9,26 @@ import com.incito.logistics.pages.LoginPage;
 import com.incito.logistics.pages.pageshelper.AlertPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito
- * @Description 登陆失败：用户名和密码都不填写
+ * @author xy-incito-wy
+ * @Description 登陆失败-只输入用户名不输入密码
  * */
-public class LoginPage_03_Fail_All_Empty_Test extends BaseParpare {
+public class LoginPage_004_Fail_Only_Username_Test extends BaseParpare {
 
 	@Test
-	public void loginFailTest_All_Empty(ITestContext context) {
+	public void loginFailTest_Username(ITestContext context) {
+		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		seleniumUtil.click(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN));
+		LoginPageHelper.login(seleniumUtil, username, LoginPage.LP_INPUT_USERNAME);
 		AlertPageHelper.checkAlertInfo(seleniumUtil, waitMillisecondsForAlert);
-
 	}
+
 }
