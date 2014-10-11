@@ -504,24 +504,24 @@ public class SeleniumUtil {
 	 * @param elementProvince
 	 *            省下拉列表
 	 * @param province
-	 *            根据序号定位省
+	 *            写出省的名称
 	 * @param elementCity
 	 *            市下拉列表
 	 * @param city
-	 *            根据序号定位市
+	 *            写出市的名称
 	 * @param elementRegion
 	 *            区下拉列表
 	 * @param region
-	 *            根据序号定位区
+	 *            写出市的名称
 	 * @param elementAddress
 	 *            详细地址文本框元素
 	 * @param address
 	 *            填写详细地址镇与街道
 	 */
 	public void address(By elementProvince, String province, By elementCity, String city, By elementRegion, String region, By elementAddress, String address) {
-		selectByValue(elementProvince, province);
-		selectByValue(elementCity, city);
-		selectByValue(elementRegion, region);
+		selectByText(elementProvince, province);
+		selectByText(elementCity, city);
+		selectByText(elementRegion, region);
 		type(findElementBy(elementAddress), address);
 	}
 
@@ -534,4 +534,3 @@ public class SeleniumUtil {
 		driver.get(username + ":" + password + "@" + url);
 	}
 }
-
