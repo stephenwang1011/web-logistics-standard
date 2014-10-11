@@ -37,11 +37,6 @@ public class RegisterPageHelper {
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
-	/** 注册页面上面输入用户名和密码 */
-	public static void registerUserInfo(SeleniumUtil seleniumUtil, By by, String key) {
-		seleniumUtil.type(seleniumUtil.findElementBy(by), key);
-	}
-	
 	/** 注册页面上面输入注册信息 */
 	public static void typeRegisterUserInfo(SeleniumUtil seleniumUtil, By by,Map<String, String> data,String excelKey) {
 		seleniumUtil.type(seleniumUtil.findElementBy(by), data.get(excelKey));
