@@ -12,16 +12,16 @@ import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito-wangkai
- * @Description 注册失败：输入不相同的密码1和密码2
+ * @author xy-incito-wk
+ * @Description 注册失败：不输入用户名，只输入密码1，点击登陆提示 请输入用户名（但是实际中只提示：用户名称不能全部为数字。后期进行更改）
  * */
-public class RegisterPage_009_Fail_PasswordDifRepassword_Test extends BaseParpare {
+// 后期需要更改该测试用例中提示语
+public class RegisterPage_004_Fail_OnlyPassword_Test extends BaseParpare {
 
 	@Test
-	public void registerFailTest_PasswordDifRepassword(ITestContext context) {
+	public void registerFailTest_Password(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String register_password = PropertiesDataProvider.getTestData(configFilePath, "register_password");
-		String register_repassword2 = PropertiesDataProvider.getTestData(configFilePath, "register_repassword2");
+		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
 
@@ -29,12 +29,11 @@ public class RegisterPage_009_Fail_PasswordDifRepassword_Test extends BaseParpar
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
 		for (By by : bys) {
-			seleniumUtil.clear(seleniumUtil.findElementBy(by));
+			RegisterPageHelper.clearText(seleniumUtil, by);
 		}
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), register_password);
-		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD), register_repassword2);
+		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), password);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_PasswordDifRepassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegisterPagePrompt_Passwd(timeOut, seleniumUtil);
 	}
 
 }
