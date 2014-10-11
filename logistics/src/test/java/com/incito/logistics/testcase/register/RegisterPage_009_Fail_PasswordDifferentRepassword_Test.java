@@ -1,34 +1,44 @@
 package com.incito.logistics.testcase.register;
 
-/**
- *@author  xy-incito-wy
- *@Description 注册页面上的文本检查
- *
- * */
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
+import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 
-public class RegisterPage_001_UI_Test extends BaseParpare {
-	@Test(dataProvider = "data")
-	public void registerPageUiTest(ITestContext context,Map<String, String> data) {
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+/**
+ * @author xy-incito-wk
+ * @Description 注册失败：密码和确认密码不同
+ * */
+public class RegisterPage_009_Fail_PasswordDifferentRepassword_Test extends BaseParpare {
 
+	@Test(dataProvider="data")
+	public void registerFailTest_PasswordDifRepassword(ITestContext context,Map<String,String> data) {
+		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		By[] bys = { RegisterPage.RP_INPUT_USERNAME, RegisterPage.RP_INPUT_PASSWD, RegisterPage.RP_INPUT_REPASSWD };
+		final String PASSWORD="PASSWORD";
+		final String REPASSWORD="REPASSWORD";
+		
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
-		RegisterPageHelper.checkRegisterPageText(seleniumUtil,data);
-
+		for (By by : bys) {
+			RegisterPageHelper.clearText(seleniumUtil, by);
+		}
+		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_USERNAME, data, PASSWORD);
+		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_PASSWD, data, REPASSWORD);
+		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
+		RegisterPageHelper.checkRegisterPagePrompt_PasswordAndRepassword(timeOut, seleniumUtil);
 	}
 	
 	@DataProvider(name = "data")

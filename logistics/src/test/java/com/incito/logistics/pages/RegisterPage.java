@@ -18,10 +18,10 @@ public class RegisterPage {
 	/** 注册页面上的返回按钮 */
 	public static final By RP_BUTTON_BACK = By.xpath("//*[text()='返回']");
 	/** 注册页面上的用户名不符合规格的提示语 */
-	public static final By RP_INPUT_USERNAME_P = By.id("username_p");
+	public static final By RP_INPUT_USERNAME_PROMPT = By.id("username_p");
 	/** 注册页面上的密码不符合规格的提示语 */
-	public static final By RP_INPUT_PASSWD_P = By.id("pwd1_p");
+	public static final By RP_INPUT_PASSWD_PROMPT = By.id("pwd1_p");
 	/** 注册页面上的密码不一致提示的提示语 */
-	public static final By RP_INPUT_REPASSWD_P = By.id("pwd2_p");
+	public static final By RP_INPUT_REPASSWD_PROMPT = By.id("pwd2_p");
 
 }
