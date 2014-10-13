@@ -46,7 +46,7 @@ public class AddUserInfoPage_005_Fail_Idcard_Test extends BaseParpare {
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_IDCARD), data.get("ADD_IDCARD"));
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil, data);
+		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil);
 	}
 
 	@DataProvider(name = "data")

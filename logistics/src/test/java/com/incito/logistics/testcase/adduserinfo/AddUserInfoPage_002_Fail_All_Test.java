@@ -24,27 +24,8 @@ import com.incito.logistics.util.PropertiesDataProvider;
  *
  * */
 public class AddUserInfoPage_002_Fail_All_Test extends BaseParpare {
-	@DataProvider(name = "data")
-	public Iterator<Object[]> dataFortestMethod() throws IOException {
-		String moduleName = null; // 模块的名字
-		String caseNum = null; // 用例编号
-		String className = this.getClass().getName();
-		int dotIndexNum = className.indexOf("."); // 取得第一个.的index
-		int underlineIndexNum = className.indexOf("_"); // 取得第一个_的index
-
-		if (dotIndexNum > 0) {
-			moduleName = className.substring(30, className.lastIndexOf(".")); // 取到模块的名称
-		}
-
-		if (underlineIndexNum > 0) {
-			caseNum = className.substring(underlineIndexNum + 1, underlineIndexNum + 4); // 取到用例编号
-		}
-		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
-		return new ExcelDataProvider(moduleName, caseNum);
-	}
-	
-	@Test(dataProvider = "data")
-	public void addUserInfoPageFailAllTest(ITestContext context, Map<String, String> data) {
+	@Test
+	public void addUserInfoPageFailAllTest(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -65,6 +46,6 @@ public class AddUserInfoPage_002_Fail_All_Test extends BaseParpare {
 		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil, data);
+		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil);
 	}
 }

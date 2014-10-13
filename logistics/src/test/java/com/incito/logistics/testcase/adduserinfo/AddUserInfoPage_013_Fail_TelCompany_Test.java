@@ -48,7 +48,7 @@ public class AddUserInfoPage_013_Fail_TelCompany_Test extends BaseParpare {
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL), data.get("ADD_TEL"));		
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY), data.get("ADD_COMPANY"));
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil, data);
+		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil);
 	}
 
 	@DataProvider(name = "data")
