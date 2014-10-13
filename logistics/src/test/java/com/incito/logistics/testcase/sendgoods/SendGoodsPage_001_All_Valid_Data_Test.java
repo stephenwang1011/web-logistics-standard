@@ -14,6 +14,7 @@ import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
+import com.incito.logistics.pages.pageshelper.SendGoodsSuccessPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
@@ -44,6 +45,8 @@ public class SendGoodsPage_001_All_Valid_Data_Test extends BaseParpare {
 				data.get("SGP_INPUT_WEIGHT"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
 				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
+		SendGoodsSuccessPageHelper.waitSendGoodsSuccessPageToLoad(timeOut, seleniumUtil);
+		SendGoodsSuccessPageHelper.checkSendGoodsPageText(seleniumUtil);
 		
 		
 		
