@@ -67,8 +67,12 @@ public class SendGoodsPageHelper {
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(goodsName);
 		//货物详细名称
 		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_GOODSDETAILS), info[3].toString());
-		//货物重量
+		//货物重量 or 体积
+		if(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_DEVICEGOODS).isSelected()||seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_HEAVYGOODS).isSelected()){
 		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_WEIGHT), info[4].toString());
+		}else if(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_LIGHTGOODS).isSelected()){
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_VOLUME), info[4].toString());	
+		}
 		//货物件数
 		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_COUNT), info[5].toString());
 		//车长要求
