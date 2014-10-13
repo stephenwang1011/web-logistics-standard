@@ -20,9 +20,9 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：发布货源，所有的输入合法有效，然后点击发布按钮确认是否发布成功
+ * @Description 测试用例：发布货源，所有的输入合法有效，然后点击发布按钮确认是否发布成功(重量)
  * */
-public class SendGoodsPage_001_All_Valid_Data_Test extends BaseParpare {
+public class SendGoodsPage_001_All_Valid_Data_For_Weight_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
 	public void sendValidDataGoodsSuccessTest(ITestContext context, Map<String, String> data) {
