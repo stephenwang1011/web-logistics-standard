@@ -60,7 +60,7 @@ public class AddUserInfoPagerHelper {
 
 	/** 检查完善信息页面:全为空的提示语 */
 	// 公司名称提示语没有，待修改之后在修复该自动化脚本，因为不知道该提示语为什么！
-	public static void checkAddUserInfoPrompt(int timeOut, SeleniumUtil seleniumUtil, Map<String, String> data) {
+	public static void checkAddUserInfoPrompt(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
 
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE).getText(), "请完善您的个人信息");
