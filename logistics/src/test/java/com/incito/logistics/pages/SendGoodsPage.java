@@ -36,8 +36,13 @@ public class SendGoodsPage {
 	public final static By SGP_INPUT_DECLAREVALUE = By.id("declaredvalue");
 	/** 信息费 */
 	public final static By SGP_INPUT_INFOFARE = By.id("infofare");
-	/** 有效期3,5,7天 */
-	public final static By SGP_BUTTON_GOODSDATE = By.name("fetchdate");
+	/** 有效期3天 */
+	public final static By SGP_BUTTON_GOODSDATE3 = By.xpath("//*[@name='fetchdate' and @value='3']");
+	/** 有效期5天 */
+	public final static By SGP_BUTTON_GOODSDATE5 = By.xpath("//*[@name='fetchdate' and @value='5']");
+	/** 有效期7天 */
+	public final static By SGP_BUTTON_GOODSDATE7 = By.xpath("//*[@name='fetchdate' and @value='7']");
+	
 	/** 发布按钮 */
 	public final static By SGP_BUTTON_SEND = By.xpath("//*[text()='发布']");
 	/** 清空按钮 */
