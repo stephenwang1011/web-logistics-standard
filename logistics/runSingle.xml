@@ -24,7 +24,7 @@
 	
 	<test name="singleTest" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.adduserinfo.AddUserInfoPage_033_Success_All_Test" />
+			<class name="com.incito.logistics.testcase.database.start.DatabaseBackup" />
 		</classes>
 	</test>
 
