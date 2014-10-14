@@ -1,6 +1,5 @@
 package com.incito.logistics.util;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,17 +15,14 @@ import java.io.UnsupportedEncodingException;
 
 import org.apache.log4j.Logger;
 
-import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-
 /**
  * 
- * @author xy-incito-wk
- * MySQL数据库的备份与恢复 
+ * @author xy-incito-wk MySQL数据库的备份与恢复
  *
  */
 public class Database {
 	public static Logger logger = Logger.getLogger(Database.class.getName());
-	
+
 	/** MySQL安装目录的Bin目录的绝对路径 */
 	private String mysqlBinPath;
 	/** 访问MySQL数据库的用户名 */
@@ -64,10 +60,10 @@ public class Database {
 
 	public Database(String mysqlBinPath, String username, String password) {
 		super();
-/*		//当使用系统本地的时候mysql可以用来做判断
-		if (!mysqlBinPath.endsWith(File.separator)) {
-			mysqlBinPath = mysqlBinPath + File.separator;
-		}*/
+		/*
+		 * //当使用系统本地的时候mysql可以用来做判断 if (!mysqlBinPath.endsWith(File.separator))
+		 * { mysqlBinPath = mysqlBinPath + File.separator; }
+		 */
 		this.mysqlBinPath = mysqlBinPath;
 		this.username = username;
 		this.password = password;
@@ -82,8 +78,8 @@ public class Database {
 	 *            要备份的数据库名
 	 */
 	public void backup(OutputStream output, String dbname) {
-		String command = "cmd /c mysqldump -h " + mysqlBinPath + " -u" + username + " -p" + password + " --default-character-set=utf8 " + dbname;
-//		System.out.println(command);
+		String command = "cmd /c mysqldump -h " + mysqlBinPath + " -u" + username + " -p" + password + " " + dbname + " --default-character-set=utf8";
+		System.out.println(command);
 		PrintWriter p = null;
 		BufferedReader reader = null;
 		try {
@@ -143,7 +139,8 @@ public class Database {
 	 *            数据库名
 	 */
 	public void restore(InputStream input, String dbname) {
-		String command = "cmd /c " + mysqlBinPath + "mysql -u" + username + " -p" + password + " " + dbname;
+		String command = "cmd /c mysqldump -h " + mysqlBinPath + " -u" + username + " -p" + password + " " + dbname + " --default-character-set=utf8";
+		System.out.println(command);
 		try {
 			Process process = Runtime.getRuntime().exec(command);
 			OutputStream out = process.getOutputStream();
