@@ -49,4 +49,16 @@ public class SendGoodsPage {
 	public final static By SGP_BUTTON_RESET = By.xpath("//*[text()='清空']");
 	/**货源说明输入框*/
 	public final static By SGP_INPUT_INSTRUCTION = By.id("memo");	
+	/**发布货源失败以后 发货地的的标示：必填字段*/
+	public final static By SGP_TEXT_ORIGINALCITYERROR = By.xpath("//label[@class='error' and @for='originalcity']");
+	/**发布货源失败以后 收货地的的标示：必填字段*/
+	public final static By SGP_TEXT_RECEIPTCITYERROR = By.xpath("//label[@class='error' and @for='receiptcity']");
+	/**发布货源失败以后 货物名称的的标示：必填字段*/
+	public final static By SGP_TEXT_GOODSNAMEERROR = By.xpath("//label[@class='error' and @for='goodsname']");
+	/**发布货源失败以后 重量的标示：必填字段*/
+	public final static By SGP_TEXT_WEIGHTERROR = By.xpath("//label[@class='error' and @for='weight']");
+	/**发布货源失败以后 体积的标示：必填字段*/
+	public final static By SGP_TEXT_VOLUMEERROR = By.xpath("//label[@class='error' and @for='volume']");
+	
+	
 }
