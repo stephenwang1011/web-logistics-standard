@@ -13,8 +13,8 @@ import com.incito.logistics.util.Database;
 public class DatabaseBackup extends Database {
 	@Test
 	public void DatabaseBackup_start() {
-		Database bak = new Database("192.168.11.140", "root", "p@ssw0rd");
-		bak.backup(new File("res/db/backup/testback.sql"), "smartdbtest");// 1.备份数据的路径及文件名称；2.需要备份的数据库名称
-		bak.restore(new File("res/db/restore/autoRestore.sql"), "smartdbtest");// 1.还原那个版本的数据库脚本；2.还原数据库的名称
+		Database bak = new Database("192.168.11.136", "root", "passw0rd");
+//		bak.backup(new File("res/db/backup/testback.sql"), "smartdb");// 1.备份数据的路径及文件名称；2.需要备份的数据库名称
+		bak.restore(new File("res/db/restore/autoRestore.sql"), "smartdb");// 1.还原那个版本的数据库脚本；2.还原数据库的名称
 	}
 }
