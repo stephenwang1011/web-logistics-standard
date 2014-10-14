@@ -139,7 +139,7 @@ public class Database {
 	 *            数据库名
 	 */
 	public void restore(InputStream input, String dbname) {
-		String command = "cmd /c mysqldump -h " + mysqlBinPath + " -u" + username + " -p" + password + " " + dbname + " --default-character-set=utf8";
+		String command = "cmd /c mysql -h " + mysqlBinPath + " -u" + username + " -p" + password + " " + dbname + " --default-character-set=utf8";
 		System.out.println(command);
 		try {
 			Process process = Runtime.getRuntime().exec(command);
@@ -155,7 +155,7 @@ public class Database {
 
 			OutputStreamWriter writer = new OutputStreamWriter(out, "utf8");
 			writer.write(outStr);
-			writer.flush();
+			writer.flush();	
 			out.close();
 			br.close();
 			writer.close();
