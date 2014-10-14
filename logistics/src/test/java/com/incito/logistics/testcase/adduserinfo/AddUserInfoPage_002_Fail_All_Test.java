@@ -1,12 +1,7 @@
 package com.incito.logistics.testcase.adduserinfo;
 
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.testng.ITestContext;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
@@ -15,7 +10,6 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
