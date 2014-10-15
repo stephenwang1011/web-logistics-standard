@@ -8,7 +8,7 @@ public class JdbcUpdate extends Jdbc_CURD {
 	@Test
 	public void jdbcUpdate() {
 		String sql = "UPDATE smartdbtest.agent SET name = NULL, tel = NULL, icard = NULL, company = NULL, province = NULL, city = NULL, region = NULL, address = NULL, status = 1 WHERE  username = 'wangkai'";
-		Jdbc_CURD.update(sql);
+		update(sql);
 	}
 
 }
