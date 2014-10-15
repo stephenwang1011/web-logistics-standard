@@ -22,7 +22,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 测试用例：发布货源，不输入任何内容点击发布按钮(针对 是重货的情况下)
  * */
-public class SendGoodsPage_006_All_Empty_Data_Fail_Weight_HEAVY_Test extends BaseParpare {
+public class SendGoodsPage_006_All_Empty_Data_Fail_Weight_Heavy_Test extends BaseParpare {
 
 	@Test(dataProvider="data")
 	public void sendAllEmptyDataFailTest(ITestContext context,Map<String, String> data) {
