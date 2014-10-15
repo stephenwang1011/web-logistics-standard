@@ -45,7 +45,7 @@ public class SendGoodsPage_005_All_Empty_Data_Fail_Weight_Device_Test extends Ba
 				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
 				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
-		SendGoodsPageHelper.checkSendGoodsFailedStatus(seleniumUtil);
+		SendGoodsPageHelper.checkSendGoodsAllEmptyFailedStatus(seleniumUtil);
 		
 	}
 	
