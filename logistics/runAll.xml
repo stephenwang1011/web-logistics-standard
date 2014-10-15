@@ -25,11 +25,8 @@
 
 
 	<!--测试用例按照包名来建立test -->
-<!-- 	<test name="数据库备份开始" preserve-order="true">
-		<packages>
-			<package name="com.incito.logistics.testcase.database.start" />
-		</packages>
-	</test> -->
+	<!-- <test name="数据库备份开始" preserve-order="true"> <packages> <package name="com.incito.logistics.testcase.database.start" 
+		/> </packages> </test> -->
 
 	<test name="注册" preserve-order="true">
 		<packages>
@@ -41,7 +38,7 @@
 		<packages>
 			<package name="com.incito.logistics.testcase.adduserinfo" />
 		</packages>
-	</test> 
+	</test>
 
 	<test name="登录" preserve-order="true">
 		<packages>
@@ -53,18 +50,20 @@
 		<packages>
 			<package name="com.incito.logistics.testcase.home" />
 		</packages>
-	</test> 
-		<test name="发布货源" preserve-order="true">
+	</test>
+	<test name="发布货源" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.sendgoods" />
 		</packages>
-	</test> 
-<!-- 
-	<test name="数据库备份结束" preserve-order="true">
+	</test>
+
+	<test name="数据库还原" preserve-order="true">
 		<packages>
-			<package name="com.incito.logistics.testcase.database.end" />
+			<package name="com.incito.logistics.testcase.database.jdbc" />
 		</packages>
-	</test> -->
+	</test>
+	<!-- <test name="数据库备份结束" preserve-order="true"> <packages> <package name="com.incito.logistics.testcase.database.end" 
+		/> </packages> </test> -->
 
 
 	<listeners>
