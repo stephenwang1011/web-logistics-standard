@@ -533,4 +533,14 @@ public class SeleniumUtil {
 	public void loginOnWinGUI(String username, String password, String url) {
 		driver.get(username + ":" + password + "@" + url);
 	}
+	/**检查元素是否显示*/
+	public void isDisplayed(WebElement element){
+		if(element.isDisplayed()==true){
+			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is displayed");
+		}else
+			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");	
+			Assert.fail("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");
+	}
+	
+	
 }

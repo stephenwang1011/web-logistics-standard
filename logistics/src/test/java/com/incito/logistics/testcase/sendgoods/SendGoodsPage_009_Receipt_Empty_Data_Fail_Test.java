@@ -20,12 +20,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：发布货源，不输入任何内容点击发布按钮(针对 是设备的情况下)
+ * @Description 测试用例：发布货源界面，不输入收货地，其他都输入，点击发布货源按钮不能发布成功
  * */
-public class SendGoodsPage_007_All_Empty_Data_Fail_Volume_Test extends BaseParpare {
+public class SendGoodsPage_009_Receipt_Empty_Data_Fail_Test extends BaseParpare {
 
 	@Test(dataProvider="data")
-	public void sendAllEmptyDataFailTest(ITestContext context,Map<String, String> data) {
+	public void sendReceiptEmptyDataFailTest(ITestContext context,Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -40,12 +40,12 @@ public class SendGoodsPage_007_All_Empty_Data_Fail_Volume_Test extends BaseParpa
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
 		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
-		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_DEVICEGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE5, 
+		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_HEAVYGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE7, 
 				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_GOODSNAME"), data.get("SGP_INPUT_GOODSDETAILS"),
 				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
 				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
-		SendGoodsPageHelper.checkSendGoodsAllEmptyFailedStatus(seleniumUtil);
+		SendGoodsPageHelper.checkSendStatus(seleniumUtil);
 		
 	}
 	
