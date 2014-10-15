@@ -106,8 +106,16 @@ public class SendGoodsPageHelper {
 		logger.info("Starting checking sendgoods page error text");
 		seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_ORIGINALCITYERROR);
 		seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_GOODSNAMEERROR);
-//		seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_VOLUMEERROR);
-//		seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_WEIGHTERROR);
+		if(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_DEVICEGOODS).isSelected()||seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_HEAVYGOODS).isSelected())
+		{
+			seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_WEIGHTERROR);
+		}
+		if(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_LIGHTGOODS).isSelected())
+		{
+			seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_VOLUMEERROR);
+		}
+	
+	
 		
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_ORIGINALCITYERROR).getText(), "必填字段");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_GOODSNAMEERROR).getText(), "必填字段");

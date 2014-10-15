@@ -25,7 +25,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class SendGoodsPage_006_All_Empty_Data_Fail_Weight_Heavy_Test extends BaseParpare {
 
 	@Test(dataProvider="data")
-	public void sendAllEmptyDataFailTest(ITestContext context,Map<String, String> data) {
+	public void sendAllEmptyDataFailWeightForHeavyTest(ITestContext context,Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
