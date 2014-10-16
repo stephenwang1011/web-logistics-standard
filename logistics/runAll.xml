@@ -57,11 +57,6 @@
 		</packages>
 	</test>
 
-	<test name="数据库还原" preserve-order="true">
-		<packages>
-			<package name="com.incito.logistics.testcase.database.jdbc" />
-		</packages>
-	</test>
 	<!-- <test name="数据库备份结束" preserve-order="true"> <packages> <package name="com.incito.logistics.testcase.database.end" 
 		/> </packages> </test> -->
 
