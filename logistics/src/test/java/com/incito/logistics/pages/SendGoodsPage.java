@@ -59,6 +59,14 @@ public class SendGoodsPage {
 	public final static By SGP_TEXT_WEIGHTERROR = By.xpath("//label[@class='error' and @for='weight']");
 	/**发布货源失败以后 体积的标示：必填字段*/
 	public final static By SGP_TEXT_VOLUMEERROR = By.xpath("//label[@class='error' and @for='volume']");
+	/**货物的预留的几十个名称*/
+	public final static By SGP_TEXT_GOODSNAMECHOICE = By.id("goodsnamechoice");
+	/**车型的预留的几十个名称*/
+	public final static By SGP_TEXT_CARTYPE = By.xpath("//*[@id='publishForm']/div[4]/div[2]/table");
+	/**车长的预留的几十个名称*/
+	public final static By SGP_TEXT_CARLENGTH = By.xpath("//*[@id='publishForm']/div[4]/div[1]/table");
+	
+	
 	
 	
 }
