@@ -135,5 +135,14 @@ public class SendGoodsPageHelper {
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_RESET));
 		logger.info("Checking send goods status complete");
 	}
+	
+	/**检查货物名称、车型、车长所有的文本*/
+	public static void checkReserveText(SeleniumUtil seleniumUtil,int timeOut,By elementLocator,String expect){
+		logger.info("Start checking reserve text ");
+		seleniumUtil.waitForElementToLoad(timeOut, elementLocator);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(elementLocator).getText(),expect);
+		logger.info("Checking reserve text complete");
+
+	}
 
 }
