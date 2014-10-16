@@ -537,10 +537,12 @@ public class SeleniumUtil {
 	public void isDisplayed(WebElement element){
 		if(element.isDisplayed()==true){
 			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is displayed");
-		}else
+		}else if(element.isDisplayed()==false){
 			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");	
 			Assert.fail("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");
+		}
 	}
+
 	
 	
 }
