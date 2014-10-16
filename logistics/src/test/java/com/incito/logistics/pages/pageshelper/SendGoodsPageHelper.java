@@ -130,10 +130,10 @@ public class SendGoodsPageHelper {
 
 	/** 检查发布货源失败-其中某一个或者某个必填项没有填写，我们只用检查，发布按钮是不是还存在，来判断是不是发布成功 */
 	public static void checkSendStatus(SeleniumUtil seleniumUtil) {
-		logger.info("Start checking sendgoods page [发布] and [清空] button are exist or not ");
+		logger.info("Start checking send goods status");
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_SEND));
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_RESET));
-		logger.info("Checking sendgoods page [发布] and [清空] button are exist or not complete");
+		logger.info("Checking send goods status complete");
 	}
 
 }
