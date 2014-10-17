@@ -1,6 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 
 import com.incito.logistics.pages.SendGoodsSuccessPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -26,6 +27,12 @@ public class SendGoodsSuccessPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsSuccessPage.SGSP_BUTTON_CHECK).getText(), "查看发布的货源");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 		logger.info("Checking sendgoods page text completed");
+	}
+	
+	/**从发布货源失败页面上点击相应的按钮进入相应的页面*/
+	public static void enterPage(SeleniumUtil seleniumUtil,By elementLocator,int timeOut){
+		seleniumUtil.waitForElementToLoad(timeOut, elementLocator);
+		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 	}
 
 }
