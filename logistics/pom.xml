@@ -16,31 +16,13 @@
 
 		<dependency>
 			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-slides-api</artifactId>
+			<artifactId>sikuli-api</artifactId>
 			<version>LATEST</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-java</artifactId>
-			<version>LATEST</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.sikuli</groupId>
 			<artifactId>sikuli-core</artifactId>
-			<version>LATEST</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-api</artifactId>
-			<version>LATEST</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-webdriver</artifactId>
 			<version>LATEST</version>
 		</dependency>
 
