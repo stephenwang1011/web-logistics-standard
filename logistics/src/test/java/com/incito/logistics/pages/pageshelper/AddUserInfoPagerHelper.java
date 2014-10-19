@@ -72,6 +72,7 @@ public class AddUserInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+	
 
 	/** 检查完善信息页面：只填写姓名的提示语 */
 	public static void checkAddUserInfoPrompt_Name(int timeOut, SeleniumUtil seleniumUtil, Map<String, String> data) {

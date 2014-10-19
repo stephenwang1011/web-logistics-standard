@@ -18,7 +18,7 @@ public class HomePage {
 	/** tab找车源 */
 	public static final By HP_LINK_FINDCARDS = By.linkText("找车源");
 	/** tab找货源 */
-	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
+	public static final By HP_LINK_FINDGOODS = By.id("link_standard_goods");
 	/** tab我的订单 */
 	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
 	/** 我的货源 */

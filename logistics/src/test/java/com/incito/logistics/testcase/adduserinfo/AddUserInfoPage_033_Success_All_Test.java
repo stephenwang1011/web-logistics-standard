@@ -51,7 +51,8 @@ public class AddUserInfoPage_033_Success_All_Test extends BaseParpare {
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY), data.get("ADD_COMPANY"));
 		seleniumUtil.address(AddUserInfoPage.AUIP_SELECT_PROVINCE, data.get("ADD_PROVINCE"), AddUserInfoPage.AUIP_SELECT_CITY, data.get("ADD_CITY"), AddUserInfoPage.AUIP_SELECT_REGION, data.get("ADD_REGION"), AddUserInfoPage.AUIP_INPUT_ADDRESS, data.get("ADD_ADDRESS"));
 		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt_All(timeOut, seleniumUtil);
+		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_BUTTON_CONFIRM);
+		AddUserInfoPagerHelper.enterPage(seleniumUtil,AddUserInfoPage.AUIP_BUTTON_CONFIRM );
 	}
 
 	@DataProvider(name = "data")
