@@ -144,5 +144,19 @@ public class SendGoodsPageHelper {
 		logger.info("Checking reserve text complete");
 
 	}
+	
+	/**检查货物说明字数统计是不是正确*/
+	public static void checkRemainText(SeleniumUtil seleniumUtil,String comment){
+		char ch[] = comment.toCharArray();
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_MEMOREMAIN).getText(),"50");
+		for (int i = 0; i < ch.length; i++) {
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INSTRUCTION), String.valueOf(ch[i]));
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_MEMOREMAIN).getText(),String.valueOf(ch.length-i-1));
+	
+		}
+		
+		
+		
+	}
 
 }

@@ -1,0 +1,8 @@
+1、在pom.xml文件中加入依赖
+	<dependency>
+		<groupId>com.sikulix</groupId>
+		<artifactId>sikulixapi</artifactId>
+		<version>1.1.0</version>
+	</dependency>
+2、更新maven之后，把此jar包放入"你的本地仓库\com\sikulix\sikulixapi\1.1.0"目录下即可
+3、强制更新下maven 即可使用

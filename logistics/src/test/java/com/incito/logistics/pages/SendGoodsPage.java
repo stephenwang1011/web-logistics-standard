@@ -66,7 +66,10 @@ public class SendGoodsPage {
 	/**车长的预留的几十个名称*/
 	public final static By SGP_TEXT_CARLENGTH = By.xpath("//*[@id='publishForm']/div[4]/div[1]/table");
 	
-	
+	/**货物说明 输入框的 统计字符区域*/
+	public final static By SGP_TEXT_MEMEOCOUNT = By.className("publishInfo-memo");
+	/**货物说明数字统计*/
+	public final static By SGP_TEXT_MEMOREMAIN = By.id("remain");
 	
 	
 }
