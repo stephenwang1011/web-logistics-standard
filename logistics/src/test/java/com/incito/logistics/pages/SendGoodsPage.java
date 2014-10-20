@@ -70,6 +70,13 @@ public class SendGoodsPage {
 	public final static By SGP_TEXT_MEMEOCOUNT = By.className("publishInfo-memo");
 	/**货物说明数字统计*/
 	public final static By SGP_TEXT_MEMOREMAIN = By.id("remain");
+	/**货物重量，超过重量提示语*/
+	public final static By SGP_TEXT_WEIGHTPROMPT = By.xpath("//*[@id='input_weight']/label");
+	/**货物体积，超过体积提示语*/
+	public final static By SGP_TEXT_VOLUMEPROMPT = By.xpath("//*[@id='input_volume']/label");
+	/**货物重量，超过重量提示语*/
+	public final static By SGP_TEXT_COUNTPROMPT = By.xpath("//*[@for='count']");
+
 	
 	
 }
