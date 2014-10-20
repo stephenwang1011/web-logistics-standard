@@ -16,7 +16,7 @@ public class Jdbc_CURD {
 
 	public static Connection getConnection() {
 		String jdbc_url = "jdbc:mysql://192.168.11.159:3306/";
-		String jdbc_db = "smartdbtest";
+		String jdbc_db = "smartdb";
 		String jdbc_driver = "com.mysql.jdbc.Driver";
 		String jdbc_name = "root";
 		String jdbc_password = "p@ssw0rd";
