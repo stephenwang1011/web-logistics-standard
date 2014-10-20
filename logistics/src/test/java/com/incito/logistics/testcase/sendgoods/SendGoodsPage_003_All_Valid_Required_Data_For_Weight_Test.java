@@ -47,9 +47,7 @@ public class SendGoodsPage_003_All_Valid_Required_Data_For_Weight_Test extends B
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
 		SendGoodsSuccessPageHelper.waitSendGoodsSuccessPageToLoad(timeOut, seleniumUtil);
 		SendGoodsSuccessPageHelper.checkSendGoodsPageText(seleniumUtil);
-		
-		
-		
+	
 	}
 	
 
