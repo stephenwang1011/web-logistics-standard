@@ -58,3 +58,4 @@ public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare
 		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
 		return new ExcelDataProvider(moduleName, caseNum);
 }
+}
