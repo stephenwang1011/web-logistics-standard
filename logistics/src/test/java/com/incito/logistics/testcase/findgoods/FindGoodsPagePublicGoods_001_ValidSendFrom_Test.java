@@ -34,12 +34,13 @@ public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 
-		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"));
+		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
+				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
-		
-		
+		FindGoodsPageHelper.checkFindGoodsPrompt_Location(seleniumUtil, data);
+
 	}
-	
+
 	@DataProvider(name = "data")
 	public Iterator<Object[]> dataFortestMethod() throws IOException {
 		String moduleName = null; // 模块的名字
@@ -57,4 +58,5 @@ public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare
 		}
 		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
 		return new ExcelDataProvider(moduleName, caseNum);
+	}
 }
