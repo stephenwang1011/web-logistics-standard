@@ -548,7 +548,7 @@ public class SeleniumUtil {
 	 * @param actual 实际文本
 	 * @param expect 期望文本
 	 */
-	public void assertTrue(String actual,String expect){
+	public void isContains(String actual,String expect){
 		try {
 			Assert.assertTrue(actual.contains(expect));
 		} catch (Exception e) {
