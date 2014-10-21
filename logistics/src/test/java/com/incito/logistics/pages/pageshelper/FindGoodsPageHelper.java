@@ -7,9 +7,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
-import com.incito.logistics.pages.AddUserInfoPage;
 import com.incito.logistics.pages.FindGoodsPage;
-import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.util.SeleniumUtil;
 
 /**
