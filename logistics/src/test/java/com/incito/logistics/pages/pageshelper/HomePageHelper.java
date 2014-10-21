@@ -37,7 +37,7 @@ public class HomePageHelper {
 	/** 检查首页上的文本 */
 	public static void checkHomePageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page text");
-		seleniumUtil.isTextCorrect(seleniumUtil.getTitle(), "logistics - 物流管理");
+	
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(), "注册");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_FREESEND).getText(), "免费发布货源");
