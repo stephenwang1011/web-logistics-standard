@@ -85,9 +85,9 @@ public class FindGoodsPageHelper {
 		}
 		String need = info5.substring(0, info5.length() - 1);
 
-		int carlong = Integer.parseInt(need);
-		int startcarlong = Integer.parseInt(data.get("FGP_INPUT_STARTCARLONG"));
-		if (startcarlong < carlong) {
+		Float carlong = Float.valueOf(need);
+		Float startcarlong = Float.valueOf(data.get("FGP_INPUT_STARTCARLONG"));
+		if (startcarlong <= carlong) {
 			System.out.println("搜索的车长满足最小要求");
 		}
 		logger.info("Check checkFindGoodsPrompt_CarLong page text completed");
