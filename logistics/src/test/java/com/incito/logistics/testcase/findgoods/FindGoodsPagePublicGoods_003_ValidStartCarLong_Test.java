@@ -37,6 +37,7 @@ public class FindGoodsPagePublicGoods_003_ValidStartCarLong_Test extends BasePar
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
+		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_SECOND_INFO);
 		FindGoodsPageHelper.checkFindGoodsPrompt_CarLong(seleniumUtil, data);
 	}
 

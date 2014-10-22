@@ -37,6 +37,7 @@ public class FindGoodsPagePublicGoods_002_ValidSendTo_Test extends BaseParpare {
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
+		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_DISPLAY_SEARCH);
 		FindGoodsPageHelper.checkFindGoodsPrompt_Location(seleniumUtil, data);
 
 	}
