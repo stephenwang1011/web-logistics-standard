@@ -70,28 +70,31 @@ public class RegisterPageHelper {
 	 * 检查注册页面上的输入框全为空的提示语<br>
 	 *  */
 	public static void checkRegisterPagePrompt_AllEmpty(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(),"用户名不能为空");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(),"用户名长度为4-20个字符");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD_PROMPT).getText(), "密码长度为6-20个字符");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
+		//seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
 	/** 检查注册页面上只输入“用户名称”的的提示语 */
 	public static void checkRegisterPagePrompt_OnlyUsername(int timeOut, SeleniumUtil seleniumUtil) {
+		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD));
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD_PROMPT).getText(), "密码长度为6-20个字符");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
+		//seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 	/** 检查注册页面上的只输入“密码”的提示语 */
 	public static void checkRegisterPagePrompt_Passwd(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名不能为空");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
+		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD));
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名长度为4-20个字符");
+		//seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "密码长度为6-20个字符");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 	
 	/** 检查注册页面上的只输入“确认密码”的提示语 */
 	public static void checkRegisterPagePrompt_Repasswd(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名不能为空");
+		
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名长度为4-20个字符");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD_PROMPT).getText(), "密码长度为6-20个字符");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "两次密码输入不一致，请重新输入");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
@@ -113,13 +116,13 @@ public class RegisterPageHelper {
 	
 	/** 检查注册页面上的输入相同的密码和确认密码的提示语 */
 	public static void checkRegisterPagePrompt_PasswordAndRepassword(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名不能为空");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名长度为4-20个字符");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 	
 	/** 检查注册页面上的输入不相同密码和确认密码的提示语 */
 	public static void checkRegisterPagePrompt_PasswordDifRepassword(int timeOut, SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名不能为空");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_USERNAME_PROMPT).getText(), "用户名长度为4-20个字符");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "两次密码输入不一致，请重新输入");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
@@ -129,4 +132,11 @@ public class RegisterPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD_PROMPT).getText(), "两次密码输入不一致，请重新输入");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
+	
+	/**由于需求的没有把注册页面上的相关提示语设计出来，故不做提示语检测，如果注册页面上还有注册和返回按钮就认为注册不成功*/
+	public static void checkRegistStatus(SeleniumUtil seleniumUtil){
+		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK));
+		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
+	}
+	
 }
