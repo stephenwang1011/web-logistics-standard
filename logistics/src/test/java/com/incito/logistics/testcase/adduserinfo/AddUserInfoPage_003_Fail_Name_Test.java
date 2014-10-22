@@ -55,7 +55,7 @@ public class AddUserInfoPage_003_Fail_Name_Test extends BaseParpare {
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, registered_username, registered_password);
-		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
+
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
