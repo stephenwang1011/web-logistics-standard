@@ -21,10 +21,10 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 测试用例：所有条件输入查询
  * */
-public class MyGoodsPage_002_All_Test extends BaseParpare {
+public class MyGoodsPage_002_AllDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void allInput(ITestContext context, Map<String, String> data) {
+	public void AllDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
