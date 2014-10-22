@@ -38,7 +38,6 @@ public class AddUserInfoPage_013_Fail_TelCompany_Test extends BaseParpare {
 		LoginPageHelper.login(seleniumUtil, registered_username, registered_password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
-
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
 		for (By by : bys) {

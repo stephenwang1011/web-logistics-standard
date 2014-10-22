@@ -36,7 +36,6 @@ public class AddUserInfoPage_014_Fail_TelAddress_Test extends BaseParpare {
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, registered_username, registered_password);
-
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_FREESEND);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
