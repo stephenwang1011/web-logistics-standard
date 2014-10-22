@@ -549,14 +549,7 @@ public class SeleniumUtil {
 	 * @param expect 期望文本
 	 */
 	public void isContains(String actual,String expect){
-		try {
-			Assert.assertTrue(actual.contains(expect));
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("The expected text is [" + expect + "] but found [" + actual + "]");
-			Assert.fail("The expected text is [" + expect + "] but found [" + actual + "]");
-		}
-		logger.info("Found the expected string: [" + expect + "]");
-	}
-
+		Assert.assertTrue(actual.contains(expect),"The expected text is [" + expect + "] but found [" + actual + "]");
+}
+	
 }
