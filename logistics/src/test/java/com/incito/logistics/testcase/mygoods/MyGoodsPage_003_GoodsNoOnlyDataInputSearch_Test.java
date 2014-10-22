@@ -19,12 +19,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：所有条件输入查询
+ * @Description 测试用例：查找我的货源-只输入货源编号
  * */
-public class MyGoodsPage_002_AllDataInputSearch_Test extends BaseParpare {
+public class MyGoodsPage_003_GoodsNoOnlyDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void allDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void goodsNoOnlyDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -42,7 +42,7 @@ public class MyGoodsPage_002_AllDataInputSearch_Test extends BaseParpare {
 		MyGoodsPageHelper.typeGoodsInfo(seleniumUtil, data.get("MGP_INPUT_GOODSNO"),data.get("MGP_INPUT_ORIGINALCITY"),
 				data.get("MGP_INPUT_TARGETCITY"),data.get("MGP_INPUT_GOODSNAME"),data.get("MGP_WEIGHT_VOLUME"),
 				data.get("MGP_START_WEIGHT_VOLUME"),data.get("MGP_END_WEIGHT_VOLUME"),data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
-		MyGoodsPageHelper.checkGoodsAddress(seleniumUtil, MyGoodsPage.MGP_SPAN_ADDRESS, data.get("ADDRESS"));
+		MyGoodsPageHelper.checkGoodsAddress(seleniumUtil, MyGoodsPage.MGP_SPAN_ADDRESS, data.get("ORIGINAL_ADDRESS"),data.get("TARGET_ADDRESS"));
 		
 	}
 	

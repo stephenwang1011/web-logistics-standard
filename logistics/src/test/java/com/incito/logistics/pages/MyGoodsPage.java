@@ -42,6 +42,8 @@ public class MyGoodsPage {
 	public static final By MGP_RADIOBOX_GOODSTYPE = By.xpath("//label[@class='radio-inline']/input");
 	/**判断每页条数的关键元素*/
 	public static final By MGP_ITEM_GOODS = By.xpath("//*[@class='mygoods-inbox']");
+	/**每条货源上的货物收发地址*/
+	public static final By MGP_SPAN_ADDRESS = By.className("span-addr");
 	
 
 }

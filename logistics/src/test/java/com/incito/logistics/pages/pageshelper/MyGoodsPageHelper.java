@@ -78,5 +78,14 @@ public class MyGoodsPageHelper {
 		
 	}
 	
+	/**检查货源的第一行的数据：发货地和收货地*/
+	public static void checkGoodsAddress(SeleniumUtil seleniumUtil,By by,String ...goodsAdd){
+		String address = seleniumUtil.findElementBy(by).getAttribute("title");
+					address = address.replaceAll(" ", "");
+		String add[] = address.split("至");
+		String original = add[0],targetcity = add[1];
+		seleniumUtil.isContains(original, goodsAdd[0]);
+		seleniumUtil.isContains(targetcity, goodsAdd[1]);
+	}
 	
 }
