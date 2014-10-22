@@ -20,7 +20,14 @@ public class FindGoodsPage {
 	/** 车长结束输入文本框 */
 	public static final By FGP_INPUT_ENDTCARLONG = By.name("endcarlong");
 	/** 搜索按钮 */
-	public static final By FGP_BUTTON_SEARCH = By.className("btn btn-major");
+	public static final By FGP_BUTTON_SEARCH = By.xpath("//*[@id='goodsform']/div[2]/div[5]/button[1]");
 	/** 高级搜索按钮 */
 	public static final By FGP_BUTTON_ADVANCESEARCH = By.id("btn btn-major");
+	
+	/** 搜索之后的结果 */
+	public static final By FGP_DISPLAY_SEARCH = By.className("goods-row1-city");
+	/** 搜索之后,地址下方的第二排信息*/
+	public static final By FGP_SECOND_INFO = By.className("goods-info-row2 row");
+	/** 搜索无结果提示语 */
+	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
 }

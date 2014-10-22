@@ -17,9 +17,9 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare {
+public class FindGoodsPagePublicGoods_002_ValidSendTo_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsValidSendFrom(ITestContext context, Map<String, String> data) {
+	public void FindGoodsPagePublicGoodsValidSendTo(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));

@@ -17,9 +17,9 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare {
+public class FindGoodsPagePublicGoods_003_ValidStartCarLong_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsValidSendFrom(ITestContext context, Map<String, String> data) {
+	public void FindGoodsPagePublicGoodsValidStartCarLong(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -37,8 +37,7 @@ public class FindGoodsPagePublicGoods_001_ValidSendFrom_Test extends BaseParpare
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
-		FindGoodsPageHelper.checkFindGoodsPrompt_Location(seleniumUtil, data);
-
+		FindGoodsPageHelper.checkFindGoodsPrompt_CarLong(seleniumUtil, data);
 	}
 
 	@DataProvider(name = "data")

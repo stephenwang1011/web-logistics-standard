@@ -542,7 +542,21 @@ public class SeleniumUtil {
 			Assert.fail("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");
 		}
 	}
+	
+	/**
+	 * 判断实际文本时候包含期望文本
+	 * @param actual 实际文本
+	 * @param expect 期望文本
+	 */
+	public void isContains(String actual,String expect){
+		try {
+			Assert.assertTrue(actual.contains(expect));
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("The expected text is [" + expect + "] but found [" + actual + "]");
+			Assert.fail("The expected text is [" + expect + "] but found [" + actual + "]");
+		}
+		logger.info("Found the expected string: [" + expect + "]");
+	}
 
-	
-	
 }
