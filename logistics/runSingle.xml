@@ -24,10 +24,10 @@
 	<parameter name="indexCars" value="8" />
 
 	
-	<test name="singleTest" preserve-order="true">
-		<classes>
-			<class name="com.incito.logistics.testcase.database.jdbc.JdbcUpdate" />
-		</classes>
+	<test name="完善用户信息" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.adduserinfo" />
+		</packages>
 	</test>
 
 
