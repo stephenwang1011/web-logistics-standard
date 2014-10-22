@@ -18,7 +18,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class MyGoodsPage_001_UITextCheck_Test extends BaseParpare {
 
 	@Test
-	public void myGoodsPageUITextCheck(ITestContext context) {
+	public void uITextCheck(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
