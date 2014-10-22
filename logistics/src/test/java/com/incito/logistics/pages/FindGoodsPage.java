@@ -27,7 +27,7 @@ public class FindGoodsPage {
 	/** 搜索之后的结果 */
 	public static final By FGP_DISPLAY_SEARCH = By.className("goods-row1-city");
 	/** 搜索之后,地址下方的第二排信息*/
-	public static final By FGP_SECOND_INFO = By.className("goods-info-row2 row");
+	public static final By FGP_SECOND_INFO = By.cssSelector("div.goods-info-row2");
 	/** 搜索无结果提示语 */
 	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
 }
