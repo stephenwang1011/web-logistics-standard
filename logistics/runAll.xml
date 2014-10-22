@@ -55,7 +55,18 @@
 		<packages>
 			<package name="com.incito.logistics.testcase.sendgoods" />
 		</packages>
+	</test>	
+	<test name="我的货源" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.mygoods" />
+		</packages>
 	</test>
+	<test name="找货源" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.findgoods" />
+		</packages>
+	</test>
+	
 
 	<!-- <test name="数据库备份结束" preserve-order="true"> <packages> <package name="com.incito.logistics.testcase.database.end" 
 		/> </packages> </test> -->
