@@ -25,7 +25,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class SendGoodsPage_019_All_Valid_Data_For_SpecialZone_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void sendAllValidDataForWeightSuccessTest(ITestContext context, Map<String, String> data) {
+	public void sendAllValidDataForSpecialZoneTest(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
