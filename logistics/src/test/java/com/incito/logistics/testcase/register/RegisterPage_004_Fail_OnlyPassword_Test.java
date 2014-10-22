@@ -33,7 +33,7 @@ public class RegisterPage_004_Fail_OnlyPassword_Test extends BaseParpare {
 		}
 		seleniumUtil.type(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_PASSWD), password);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_Passwd(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
 
 }

@@ -29,7 +29,7 @@ public class RegisterPage_002_Fail_All_Empty_Test extends BaseParpare {
 			RegisterPageHelper.clearText(seleniumUtil, by);
 		}
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_AllEmpty(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 
 	}
 

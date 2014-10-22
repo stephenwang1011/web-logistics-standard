@@ -39,7 +39,7 @@ public class RegisterPage_006_Fail_UsernameAndPassword_Test extends BaseParpare 
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_PASSWD, data, PASSWORD);
 
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_UsernameAndPassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
 	@DataProvider(name = "data")
 	public  Iterator<Object[]> dataFortestMethod() throws IOException {

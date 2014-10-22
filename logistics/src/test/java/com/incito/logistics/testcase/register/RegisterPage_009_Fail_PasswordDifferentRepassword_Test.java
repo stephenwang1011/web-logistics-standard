@@ -38,7 +38,7 @@ public class RegisterPage_009_Fail_PasswordDifferentRepassword_Test extends Base
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_USERNAME, data, PASSWORD);
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_PASSWD, data, REPASSWORD);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_PasswordAndRepassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
 	
 	@DataProvider(name = "data")

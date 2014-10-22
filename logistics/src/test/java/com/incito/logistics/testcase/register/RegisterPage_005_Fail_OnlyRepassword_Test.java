@@ -36,7 +36,7 @@ public class RegisterPage_005_Fail_OnlyRepassword_Test extends BaseParpare {
 		}
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_REPASSWD, data, PASSWORD);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_Repasswd(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
 	
 	@DataProvider(name = "data")

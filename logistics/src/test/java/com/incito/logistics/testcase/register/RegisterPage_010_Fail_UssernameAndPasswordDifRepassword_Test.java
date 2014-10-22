@@ -41,7 +41,7 @@ public class RegisterPage_010_Fail_UssernameAndPasswordDifRepassword_Test extend
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_REPASSWD, data, REPASSWORD);
 
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
-		RegisterPageHelper.checkRegisterPagePrompt_UssernameAndPasswordDifRepassword(timeOut, seleniumUtil);
+		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
 
 	@DataProvider(name = "data")
