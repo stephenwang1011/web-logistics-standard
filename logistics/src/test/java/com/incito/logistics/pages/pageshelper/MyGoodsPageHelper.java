@@ -50,8 +50,7 @@ public class MyGoodsPageHelper {
 		seleniumUtil.executeJS(goodsName);
 		//体积还是重量
 		seleniumUtil.selectByText(MyGoodsPage.MGP_SELECT_GOODSUNIT,  info[4].toString());
-		if(info[4].toString().equals("体积")){
-		
+		if(info[4].toString().equals("体积")){		
 			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[5].toString());
 			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_ENDVOLUME), info[6].toString());
 		}else if(info[4].toString().equals("重量")){

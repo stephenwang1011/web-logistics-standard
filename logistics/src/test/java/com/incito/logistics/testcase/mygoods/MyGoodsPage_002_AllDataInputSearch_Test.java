@@ -42,7 +42,7 @@ public class MyGoodsPage_002_AllDataInputSearch_Test extends BaseParpare {
 		MyGoodsPageHelper.typeGoodsInfo(seleniumUtil, data.get("MGP_INPUT_GOODSNO"),data.get("MGP_INPUT_ORIGINALCITY"),
 				data.get("MGP_INPUT_TARGETCITY"),data.get("MGP_INPUT_GOODSNAME"),data.get("MGP_WEIGHT_VOLUME"),
 				data.get("MGP_START_WEIGHT_VOLUME"),data.get("MGP_END_WEIGHT_VOLUME"),data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
-		MyGoodsPageHelper.checkGoodsAddress(seleniumUtil, MyGoodsPage.MGP_SPAN_ADDRESS, data.get("ADDRESS"));
+		MyGoodsPageHelper.checkGoodsAddress(seleniumUtil, MyGoodsPage.MGP_SPAN_ADDRESS, data.get("ORIGINAL_ADDRESS"),data.get("TARGET_ADDRESS"));
 		
 	}
 	
