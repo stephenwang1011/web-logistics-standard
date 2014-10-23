@@ -84,7 +84,9 @@ public class MyGoodsPageHelper {
 					address = address.replaceAll(" ", "");
 		String add[] = address.split("至");
 		String original = add[0],targetcity = add[1];
+		if(goodsAdd[0].equals("")==false){
 		seleniumUtil.isContains(original, goodsAdd[0]);
+		}
 		if(goodsAdd[1].equals("")==false){
 			seleniumUtil.isContains(targetcity, goodsAdd[1]);
 					}

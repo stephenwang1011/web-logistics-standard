@@ -9,6 +9,7 @@ import com.incito.logistics.util.SeleniumUtil;
 public class HomePageHelper {
 	public static Logger logger = Logger.getLogger(HomePageHelper.class.getName());
 
+
 	/** 等待首页上元素显示出来 */
 	public static void waitHomePageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page elements");
@@ -34,6 +35,7 @@ public class HomePageHelper {
 		logger.info("Check home page elements completed");
 	}
 
+	
 	/** 检查首页上的文本 */
 	public static void checkHomePageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page text");
