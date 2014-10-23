@@ -41,7 +41,7 @@ public class HomePage {
 	/** 首页上的《找车源》上的查询按钮 */
 	public static final By HP_BUTTON_SEARCH2 = By.id("Fcar");
 	/** 登陆成功之后 用户名 区域 */
-	public static final By HP_TEXT_USERINFO = By.className("dropdown");
+	public static final By HP_TEXT_USERINFO = By.cssSelector("a.dropdown-toggle");
 	/** 左上角的商标文字 */
 	public static final By HP_LEFT_TITLE = By.className("navbar-left");
 	/** 底部footer文字 */
