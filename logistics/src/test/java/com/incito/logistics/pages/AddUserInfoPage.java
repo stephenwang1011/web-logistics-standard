@@ -56,5 +56,5 @@ public class AddUserInfoPage {
 	/** 完成信息成功弹出框提示语 */
 	public static final By AUIP_POPUP_TRUE = By.xpath("//label[text()='您已成功提交个人信息，我们将在24小时内完成审核，您可以先发货了！如需优先认证，请致电']");
 	/** 完成信息成功弹出框下方确定按钮 */
-	public static final By AUIP_BUTTON_CONFIRM = By.xpath("//button[text()='确定']");
+	public static final By AUIP_BUTTON_CONFIRM = By.xpath("//*[@id='authenticating']/div/div/div/div/button");
 }
