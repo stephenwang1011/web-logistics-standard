@@ -25,7 +25,7 @@ public class HomePage {
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
 
 	/** 首页上的 免费发布货源 按钮 */
-	public static final By HP_BUTTON_FREESEND = By.linkText("免费发布货源");
+	public static final By HP_BUTTON_FREESEND = By.xpath("//*[@id='freepub_']");
 	/** 首页上：物流跟踪 tab */
 	public static final By HP_TAB_TRACKGOODS = By.linkText("物流跟踪");
 	/** 首页上：找车源 tab */
