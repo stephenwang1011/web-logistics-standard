@@ -42,7 +42,6 @@ public class HomePageHelper {
 	
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(), "注册");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_FREESEND).getText(), "免费发布货源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_FINDCARS).getText(), "找车源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_TRACKGOODS).getText(), "物流跟踪");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LEFT_TITLE).getText(), "智慧物流" + "\n" + "全球领先的物流信息平台");
