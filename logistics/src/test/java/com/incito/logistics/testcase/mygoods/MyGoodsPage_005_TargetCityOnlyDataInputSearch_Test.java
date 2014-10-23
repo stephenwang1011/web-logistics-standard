@@ -19,12 +19,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：所有条件输入查询
+ * @Description 测试用例：查找我的货源-只输入收货地
  * */
-public class MyGoodsPage_002_AllDataInputSearch_Test extends BaseParpare {
+public class MyGoodsPage_005_TargetCityOnlyDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void allDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void originalCityOnlyDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

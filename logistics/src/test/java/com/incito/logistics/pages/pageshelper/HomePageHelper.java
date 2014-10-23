@@ -9,6 +9,7 @@ import com.incito.logistics.util.SeleniumUtil;
 public class HomePageHelper {
 	public static Logger logger = Logger.getLogger(HomePageHelper.class.getName());
 
+
 	/** 等待首页上元素显示出来 */
 	public static void waitHomePageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page elements");
@@ -34,13 +35,13 @@ public class HomePageHelper {
 		logger.info("Check home page elements completed");
 	}
 
+	
 	/** 检查首页上的文本 */
 	public static void checkHomePageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking home page text");
 	
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_REG).getText(), "注册");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_BUTTON_FREESEND).getText(), "免费发布货源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_FINDCARS).getText(), "找车源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TAB_TRACKGOODS).getText(), "物流跟踪");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LEFT_TITLE).getText(), "智慧物流" + "\n" + "全球领先的物流信息平台");
