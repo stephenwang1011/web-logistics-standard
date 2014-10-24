@@ -3,6 +3,7 @@ package com.incito.logistics.pages.pageshelper;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
 import com.incito.logistics.pages.MyGoodsPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -79,6 +80,10 @@ public class MyGoodsPageHelper {
 
 	/** 检查货源的第一行的数据：发货地和收货地 */
 	public static void checkGoodsAddress(SeleniumUtil seleniumUtil, By by, String... goodsAdd) {
+		if( seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")){
+			logger.warn("No data found with this filters!");
+			return;
+		}
 		String address = seleniumUtil.findElementBy(by).getAttribute("title");
 		address = address.replaceAll(" ", "");
 		String add[] = address.split("至");
@@ -92,23 +97,112 @@ public class MyGoodsPageHelper {
 
 	}
 
-	/** 检查货源信息的第二行信息:货物名称*/
+	/** 检查货源信息的第二行信息:货物名称 */
 	public static void checkGoodsName(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
-		int items = seleniumUtil.findElementsBy(by).size(); //这个items指的是查询出来有多少条货源
-		for (int i = 0; i < items; i++) {//循环每个货源
+		int items = seleniumUtil.findElementsBy(by).size(); // 这个items指的是查询出来有多少条货源
+		if( seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")){
+			logger.warn("No data found with this filters!");
+			return;
+		}
+		for (int i = 0; i < items; i++) {// 循环每个货源
 			String goodsname = null;
-			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText();  //取得第二行的货源信息
-			String[] secondArray= second.split("，");
+			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
+			String[] secondArray = second.split("，");
 			int temp = secondArray[0].indexOf("（");
-			System.out.println("打印出："+temp);
-			if(temp!=-1){
-				goodsname =secondArray[0].substring(0, secondArray[0].indexOf("（")-1);
-			}else{
-				
-				goodsname =secondArray[0].substring(0, secondArray[0].indexOf(" "));
+			if (temp != -1) {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf("（") - 1);
+			} else {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf(" "));
 			}
-			seleniumUtil.isContains(secondInfos[0],goodsname);
+			seleniumUtil.isContains(secondInfos[0], goodsname);
 
+		}
+
+	}
+
+	/** 检查货源信息的第二行信息:吨位或者体积 */
+	public static void checkGoodsWeightOrVolume(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
+
+		int items = seleniumUtil.findElementsBy(by).size(); // 这个items指的是查询出来有多少条货源
+		if( seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")){
+			logger.warn("No data found with this filters!");
+			return;
+		}
+
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			double goodsWorV = 0; // 重量或者体积
+			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
+			String[] secondArray = second.split("，");
+			if (secondInfos[0].equals("重量")) {
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("吨", ""));//取得每个货源的重量数
+				if(secondInfos[1].equals("")&&secondInfos[2]!=""){
+					try{
+					Assert.assertTrue(goodsWorV<=Double.parseDouble(secondInfos[2]));
+					}catch(AssertionError e){
+						logger.error("Found the weight in web page is ["+goodsWorV+"] and is bigger than input weight num ["+secondInfos[2]+"] T");
+						Assert.fail("Found the weight in web page is ["+goodsWorV+"] and is bigger than input weight num ["+secondInfos[2]+"] T");				
+					}
+					logger.info("The weight of the "+(i+1)+"th goods info is ["+goodsWorV+"] T");
+				}
+				
+				if(secondInfos[1]!=""&&secondInfos[2].equals("")){				
+					try{
+					Assert.assertTrue(goodsWorV>=Double.parseDouble(secondInfos[1]));
+					}catch(AssertionError e){
+						logger.error("Found the weight in web page is ["+goodsWorV+"] and is smaller than input weight num ["+secondInfos[1]+"] T");
+						Assert.fail("Found the weight in web page is ["+goodsWorV+"] and is smaller than input weight num ["+secondInfos[1]+"] T");				
+					}
+					logger.info("The weight of the "+(i+1)+"th goods info is ["+goodsWorV+"] T");
+				}
+				
+				if(secondInfos[1]!=""&&secondInfos[2]!=""){		
+					try{
+					Assert.assertTrue(goodsWorV>=Double.parseDouble(secondInfos[1])&&goodsWorV<=Double.parseDouble(secondInfos[2]));
+					}catch(AssertionError e){
+						logger.error("Found the weight in web page is ["+goodsWorV+"] and is not in the  input weight num ["+secondInfos[1]+"] and ["+secondInfos[2]+"] T");
+						Assert.fail("Found the weight in web page is ["+goodsWorV+"] and is smaller than input weight num ["+secondInfos[1]+"] and ["+secondInfos[2]+"] T");				
+				}	
+					logger.info("The weight of the "+(i+1)+"th goods info is ["+goodsWorV+"] T");
+			}
+				
+			}
+			
+			if (secondInfos[0].equals("体积")) {
+				
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("方", ""));//取得每个货源的重量数
+				if(secondInfos[1].equals("")&&secondInfos[2]!=""){
+					try{
+					Assert.assertTrue(goodsWorV<=Double.parseDouble(secondInfos[2]));
+					}catch(AssertionError e){
+						logger.error("Found the volume in web page is ["+goodsWorV+"] and is bigger than input volume num ["+secondInfos[2]+"] m³");
+						Assert.fail("Found the volume in web page is ["+goodsWorV+"] and is bigger than input volume num ["+secondInfos[2]+"] m³");				
+					}
+					logger.info("The volume of the "+(i+1)+"th goods info is ["+goodsWorV+"] m³");
+				}
+				
+				if(secondInfos[1]!=""&&secondInfos[2].equals("")){				
+					try{
+					Assert.assertTrue(goodsWorV>=Double.parseDouble(secondInfos[1]));
+					}catch(AssertionError e){
+						logger.error("Found the volume in web page is ["+goodsWorV+"] and is smaller than input volume num ["+secondInfos[1]+"] m³");
+						Assert.fail("Found the volume in web page is ["+goodsWorV+"] and is smaller than input volume num ["+secondInfos[1]+"] m³");				
+					}
+					logger.info("The volume of the "+(i+1)+"th goods info is ["+goodsWorV+"] m³");
+				}
+				
+				if(secondInfos[1]!=""&&secondInfos[2]!=""){		
+					try{
+					Assert.assertTrue(goodsWorV>=Double.parseDouble(secondInfos[1])&&goodsWorV<=Integer.valueOf(secondInfos[2]));
+					}catch(AssertionError e){
+						logger.error("Found the volume in web page is ["+goodsWorV+"] and is not in the  input volume num ["+secondInfos[1]+"] and ["+secondInfos[2]+"] m³");
+						Assert.fail("Found the volume in web page is ["+goodsWorV+"] and is smaller than input volume num ["+secondInfos[1]+"] and ["+secondInfos[2]+"] m³");				
+				}	
+					logger.info("The volume of the "+(i+1)+"th goods info is ["+goodsWorV+"] m³");
+			}
+				
+				
+			}
+			
 		}
 
 	}
