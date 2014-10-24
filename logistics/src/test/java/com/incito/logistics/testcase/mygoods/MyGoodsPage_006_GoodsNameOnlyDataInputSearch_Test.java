@@ -42,8 +42,7 @@ public class MyGoodsPage_006_GoodsNameOnlyDataInputSearch_Test extends BaseParpa
 		MyGoodsPageHelper.typeGoodsInfo(seleniumUtil, data.get("MGP_INPUT_GOODSNO"),data.get("MGP_INPUT_ORIGINALCITY"),
 				data.get("MGP_INPUT_TARGETCITY"),data.get("MGP_INPUT_GOODSNAME"),data.get("MGP_WEIGHT_VOLUME"),
 				data.get("MGP_START_WEIGHT_VOLUME"),data.get("MGP_END_WEIGHT_VOLUME"),data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
-		MyGoodsPageHelper.checkGoodsSecondInfo(seleniumUtil,MyGoodsPage.MGP_ITEM_GOODS,data.get("GOODSNAME"),data.get("GOODSTYPE"),
-				data.get("VOLUMEORWEIGHT"),data.get("GOODSCOUNT"),data.get("CARLENGTH"),data.get("CARTYPE"));
+		MyGoodsPageHelper.checkGoodsName(seleniumUtil,MyGoodsPage.MGP_ITEM_GOODS,data.get("MGP_INPUT_GOODSNAME"));
 		
 	}
 	
