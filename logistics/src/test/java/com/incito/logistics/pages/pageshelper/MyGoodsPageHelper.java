@@ -92,18 +92,22 @@ public class MyGoodsPageHelper {
 
 	}
 
-	/** 检查货源信息的第二行信息，货物名称，体积重量和车长要求等信息 */
-	public static void checkGoodsSecondInfo(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
+	/** 检查货源信息的第二行信息:货物名称*/
+	public static void checkGoodsName(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
 		int items = seleniumUtil.findElementsBy(by).size(); //这个items指的是查询出来有多少条货源
 		for (int i = 0; i < items; i++) {//循环每个货源
+			String goodsname = null;
 			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText();  //取得第二行的货源信息
-			for (int j = 0; j < secondInfos.length; j++) {
-				if(secondInfos[j]==""){
-					break;
-				}
-				seleniumUtil.isContains(second, secondInfos[j]);
+			String[] secondArray= second.split("，");
+			int temp = secondArray[0].indexOf("（");
+			System.out.println("打印出："+temp);
+			if(temp!=-1){
+				goodsname =secondArray[0].substring(0, secondArray[0].indexOf("（")-1);
+			}else{
 				
+				goodsname =secondArray[0].substring(0, secondArray[0].indexOf(" "));
 			}
+			seleniumUtil.isContains(secondInfos[0],goodsname);
 
 		}
 
