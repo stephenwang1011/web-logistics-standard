@@ -21,10 +21,10 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 测试用例：查找我的货源-只输入开始货物重量
  * */
-public class MyGoodsPage_007_WeightOnlyDataInputSearch_Test extends BaseParpare {
+public class MyGoodsPage_007_StartWeightOnlyDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void weightOnlyDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void startWeightOnlyDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
