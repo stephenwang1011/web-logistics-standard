@@ -1,6 +1,9 @@
 package com.incito.logistics.util;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -558,5 +561,26 @@ public class SeleniumUtil {
 		logger.info("The ["+actual+"] is contains ["+expect+"]");
 }
 	
+/**比较2个时间大小方法*/
+	public void compareDate(String date1,String date2){
+	     DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	        try {
+	            Date dt1 = df.parse(date1);
+	            Date dt2 = df.parse(date2);
+	            if (dt1.getTime() > dt2.getTime()) {
+	                System.out.println("dt1 在dt2前");
+	   
+	            } else if (dt1.getTime() < dt2.getTime()) {
+	                System.out.println("dt1在dt2后");
+	        
+	            } else {
+	            	 System.out.println("dt1==dt2");
+	            }
+	        } catch (Exception exception) {
+	            exception.printStackTrace();
+	        }
 
-}
+	    }
+		
+	}
+

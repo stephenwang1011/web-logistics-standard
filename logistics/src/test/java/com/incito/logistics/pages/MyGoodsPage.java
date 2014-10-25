@@ -44,8 +44,11 @@ public class MyGoodsPage {
 	public static final By MGP_ITEM_GOODS = By.xpath("//*[@class='mygoods-inbox']");
 	/**每条货源上的货物收发地址*/
 	public static final By MGP_SPAN_ADDRESS = By.className("span-addr");
-	/**我的货源筛选界面上数据为空的*/
-	public static final By MGP_DIV_EMPTYGOOGS = By.xpath("//div/b");
+	/**每条货源上的顶部信息：货源剩余时间和发布时间等*/
+	public static final By MGP_DIV_GOODSHEADER = By.className("mygoods-header");
+	
+	
+	
 	
 
 }
