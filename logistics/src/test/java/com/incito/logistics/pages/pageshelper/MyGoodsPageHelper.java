@@ -225,13 +225,32 @@ public class MyGoodsPageHelper {
 			// 取得发布时间的 字符串
 			header = header.substring(header.indexOf("：") + 1, header.length());
 			if (headInfos[0].equals("") && headInfos[1] != "") {
+				try{
 				Assert.assertTrue(formater.parse(headInfos[1]).getTime()>=formater.parse(header).getTime());	
+				}catch(AssertionError e){
+					logger.error("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在您的筛选条件时间内");
+					Assert.fail("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在您的筛选条件时间内");
+				}
+				logger.info("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间符合筛选条件");
 			}
 			if (headInfos[1].equals("") && headInfos[0] != "") {
+				try{
 				Assert.assertTrue(formater.parse(headInfos[0]).getTime()<=formater.parse(header).getTime());	
+				}catch(AssertionError e){
+					logger.error("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间小于您的筛选条件时间");
+					Assert.fail("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间小于您的筛选条件时间");
+				}
+				logger.info("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间符合筛选条件");
 			}
 			if (headInfos[0]!="" && headInfos[1] != "") {
+				try{
 				Assert.assertTrue(formater.parse(headInfos[0]).getTime()<=formater.parse(header).getTime()&&formater.parse(headInfos[1]).getTime()>=formater.parse(header).getTime());	
+				}catch(AssertionError e){
+					logger.error("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在开始和结束时间之间");
+					Assert.fail("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在开始和结束时间之间");
+				}
+				logger.info("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间在开始和结束时间之间");
+			
 			}
 
 		}
