@@ -42,7 +42,7 @@ public class MyGoodsPage_013_StartDateDataOnlyInputSearch_Test extends BaseParpa
 		MyGoodsPageHelper.typeGoodsInfo(seleniumUtil, data.get("MGP_INPUT_GOODSNO"),data.get("MGP_INPUT_ORIGINALCITY"),
 				data.get("MGP_INPUT_TARGETCITY"),data.get("MGP_INPUT_GOODSNAME"),data.get("MGP_WEIGHT_VOLUME"),
 				data.get("MGP_START_WEIGHT_VOLUME"),data.get("MGP_END_WEIGHT_VOLUME"),data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
-
+		MyGoodsPageHelper.checkGoodsSendDate(seleniumUtil, MyGoodsPage.MGP_DIV_GOODSHEADER, data.get(""),data.get(""));
 		
 
 	}
