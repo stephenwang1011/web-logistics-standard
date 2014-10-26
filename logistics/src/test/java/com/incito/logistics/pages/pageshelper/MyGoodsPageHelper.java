@@ -126,14 +126,15 @@ public class MyGoodsPageHelper {
 
 	/** 检查货源信息的第二行信息:吨位或者体积 */
 	public static void checkGoodsWeightOrVolume(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
-
-		int items = seleniumUtil.findElementsBy(by).size(); // 这个items指的是查询出来有多少条货源
-		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
-			logger.warn("No data found with this filters!");
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size(); 
+		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) { 
+			//如果按照筛选条件查不到数据的时候给一个提示并退出此方法
+			logger.warn("根据您的筛选条件，无法查找出数据！");
 			return;
 		}
 
-		for (int i = 0; i < items; i++) {// 循环每个货源
+		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
 			double goodsWorV = 0; // 重量或者体积
 			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
 			String[] secondArray = second.split("，");
