@@ -8,8 +8,8 @@ import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
-public class Jdbc_CURD {
-	public static Logger logger = Logger.getLogger(Jdbc_CURD.class.getName());
+public class JdbcUtil {
+	public static Logger logger = Logger.getLogger(JdbcUtil.class.getName());
 	// 创建静态全局变量
 	static Connection conn;
 	static Statement statement;
