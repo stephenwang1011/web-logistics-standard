@@ -1,9 +1,6 @@
 package com.incito.logistics.util;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -25,6 +22,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Screen;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -561,26 +559,17 @@ public class SeleniumUtil {
 		logger.info("The ["+actual+"] is contains ["+expect+"]");
 }
 	
-/**比较2个时间大小方法*/
-	public void compareDate(String date1,String date2){
-	     DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	        try {
-	            Date dt1 = df.parse(date1);
-	            Date dt2 = df.parse(date2);
-	            if (dt1.getTime() > dt2.getTime()) {
-	                System.out.println("dt1 在dt2前");
-	   
-	            } else if (dt1.getTime() < dt2.getTime()) {
-	                System.out.println("dt1在dt2后");
-	        
-	            } else {
-	            	 System.out.println("dt1==dt2");
-	            }
-	        } catch (Exception exception) {
-	            exception.printStackTrace();
-	        }
+/**判断对应的图是不是存在*/
+	public void isImgExist(Screen s,String imgPath){
 
-	    }
+		if(s.exists(imgPath) != null){
+			logger.info("找到了指定的UI图：["+imgPath+"]并且一致");
+		}else{
+			logger.error("没有找到此UI图：["+imgPath+"]");
+			Assert.fail("没有找到此UI图：["+imgPath+"]");
+		}
+		
+	}
 		
 	}
 
