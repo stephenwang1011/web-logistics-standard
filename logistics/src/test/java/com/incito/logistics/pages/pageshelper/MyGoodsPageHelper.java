@@ -65,10 +65,10 @@ public class MyGoodsPageHelper {
 
 		}
 		// 开始时间
-		String startDate = "document.getElementsByName('startgoodstime')[0].setAttribute('value','" + info[7].substring(0, info[7].indexOf(" ")-1) + "');";
+		String startDate = "document.getElementsByName('startgoodstime')[0].setAttribute('value','" + info[7].toString().substring(0, info[7].toString().indexOf(" ")-1) + "');";
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(startDate);
 		// 结束时间
-		String endDate = "document.getElementsByName('endgoodstime')[0].setAttribute('value','" +  info[8].substring(0, info[8].indexOf(" ")-1)+ "');";
+		String endDate = "document.getElementsByName('endgoodstime')[0].setAttribute('value','" +  info[8].toString().substring(0, info[8].toString().indexOf(" ")-1)+ "');";
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(endDate);
 
 		// 点击搜索
