@@ -2,6 +2,8 @@ package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.sikuli.script.Screen;
+import org.testng.Assert;
 
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -73,6 +75,18 @@ public class HomePageHelper {
 	public static void holdOn(SeleniumUtil seleniumUtil, int sleepTime) {
 		seleniumUtil.pause(sleepTime);
 
+	}
+	
+	/**检查logo*/
+	public static void checkLogo(){
+		
+		Screen screen= new Screen();
+		if(screen.exists("/res/img/home/logo.png") != null){
+			logger.info("找到了logo图标，并且一致");
+		}else{
+			logger.error("没有找到此logo");
+			Assert.fail("没有找到此logo");
+		}
 	}
 
 }

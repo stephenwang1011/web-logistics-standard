@@ -18,6 +18,7 @@ public class HomePage_006_NotLogin_UI_Test extends BaseParpare {
 		
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.checkHomePageText(seleniumUtil);
+		HomePageHelper.checkLogo();
 
 	}
 
