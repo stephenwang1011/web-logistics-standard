@@ -15,6 +15,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.sikuli.script</groupId>
+			<artifactId>sikulixapi</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 			<version>3.0</version>
