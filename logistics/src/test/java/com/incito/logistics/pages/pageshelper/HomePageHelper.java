@@ -73,15 +73,15 @@ public class HomePageHelper {
 	/** 在首页暂停一会儿 */
 	public static void holdOn(SeleniumUtil seleniumUtil, int sleepTime) {
 		seleniumUtil.pause(sleepTime);
-
 	}
 	
-	/**检查logo*/
+	/**检查首页的相关UI界面*/
 	public static void checkUI(SeleniumUtil seleniumUtil){
 		Screen  s = new Screen();
+		logger.info("开始检查首页的UI");
 		seleniumUtil.isImgExist(s, "/res/img/home/logo.png");
 		seleniumUtil.isImgExist(s, "/res/img/home/Tabs.png");
-		
+		logger.info("检查首页的UI完成");
 	}
 
 }
