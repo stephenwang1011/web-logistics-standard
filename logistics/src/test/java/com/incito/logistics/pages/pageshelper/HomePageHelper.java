@@ -78,10 +78,20 @@ public class HomePageHelper {
 	/**检查首页的相关UI界面*/
 	public static void checkUI(SeleniumUtil seleniumUtil){
 		Screen  s = new Screen();
+		String screenWidth = String.valueOf(SeleniumUtil.getScreenWidth());
+		logger.info("当前屏幕的宽度是："+screenWidth);
+		if(screenWidth.equals("1366.0")){
 		logger.info("开始检查首页的UI");
-		seleniumUtil.isImgExist(s, "/res/img/home/logo.png");
-		seleniumUtil.isImgExist(s, "/res/img/home/Tabs.png");
+		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/logo.png");
+		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/tabs.png");
 		logger.info("检查首页的UI完成");
+		}
+		if(screenWidth.equals("1024.0")){
+		logger.info("开始检查首页的UI");
+		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/logo.png");
+		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/tabs.png");
+		logger.info("检查首页的UI完成");
+		}
 	}
 
 }
