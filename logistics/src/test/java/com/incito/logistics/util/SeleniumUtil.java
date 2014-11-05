@@ -206,7 +206,7 @@ public class SeleniumUtil {
 			Assert.assertEquals(actual, expected);
 		} catch (AssertionError e) {
 			logger.error("The expected text is [" + expected + "] but found [" + actual + "]");
-			Assert.fail("The expected text is [" + expected + "] but found [" + actual + "]");
+			Assert.fail("The expected text is [" + expected + "] but found [" + actual + "]",e);
 
 		}
 		logger.info("Found the expected string: [" + expected + "]");
