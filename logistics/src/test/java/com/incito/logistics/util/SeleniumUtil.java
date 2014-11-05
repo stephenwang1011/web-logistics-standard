@@ -561,7 +561,7 @@ public class SeleniumUtil {
 	
 /**判断对应的图是不是存在*/
 	public void isImgExist(Screen s,String imgPath){
-
+		
 		if(s.exists(imgPath) != null){
 			logger.info("找到了指定的UI图：["+imgPath+"]并且一致");
 		}else{
@@ -569,6 +569,11 @@ public class SeleniumUtil {
 			Assert.fail("没有找到此UI图：["+imgPath+"]");
 		}
 		
+	}
+	
+	/**获得屏幕的分辨率 - 宽*/
+	public static double getScreenWidth(){
+	return  java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	}
 		
 	}
