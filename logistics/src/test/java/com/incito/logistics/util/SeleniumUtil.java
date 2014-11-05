@@ -100,8 +100,7 @@ public class SeleniumUtil {
 	 * */
 	public void click(WebElement element) {
 		try {
-			element.click();
-
+			clickTheClickable(element);
 		} catch (StaleElementReferenceException e) {
 			logger.error("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 			Assert.fail("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
@@ -110,6 +109,22 @@ public class SeleniumUtil {
 			Assert.fail("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 		}
 		logger.info("Clicked element [" + getLocatorByElement(element, ">") + "]");
+	}
+	
+	/**不能点击时候重试点击操作*/
+	public void clickTheClickable(WebElement element) throws Exception {
+		try {
+			element.click();
+		} catch (Exception e) {
+			if (System.currentTimeMillis() - 600 > 2500) {
+				logger.warn(getLocatorByElement(element, ">") + " is unclickable");
+				throw new Exception(e);
+			} else {
+				Thread.sleep(500);
+				logger.warn(getLocatorByElement(element, ">")  + " is unclickable, try again");
+				clickTheClickable(element);
+			}
+		}
 	}
 
 	/**
