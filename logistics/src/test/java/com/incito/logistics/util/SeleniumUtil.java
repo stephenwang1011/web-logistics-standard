@@ -99,8 +99,9 @@ public class SeleniumUtil {
 	 * 包装点击操作
 	 * */
 	public void click(WebElement element) {
+		
 		try {
-			clickTheClickable(element);
+			clickTheClickable(element,System.currentTimeMillis(),2500);
 		} catch (StaleElementReferenceException e) {
 			logger.error("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 			Assert.fail("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
@@ -112,17 +113,17 @@ public class SeleniumUtil {
 	}
 	
 	/**不能点击时候重试点击操作*/
-	public void clickTheClickable(WebElement element) throws Exception {
+	public void clickTheClickable(WebElement element,long startTime,int timeOut) throws Exception {
 		try {
 			element.click();
 		} catch (Exception e) {
-			if (System.currentTimeMillis() - 600 > 2500) {
+			if (System.currentTimeMillis() - startTime > timeOut) {
 				logger.warn(getLocatorByElement(element, ">") + " is unclickable");
 				throw new Exception(e);
 			} else {
 				Thread.sleep(500);
 				logger.warn(getLocatorByElement(element, ">")  + " is unclickable, try again");
-				clickTheClickable(element);
+				clickTheClickable(element,startTime,timeOut);
 			}
 		}
 	}
