@@ -23,7 +23,7 @@ import com.incito.logistics.util.ExcelDataProvider;
 public class RegisterPage_011_End_Success_Test extends BaseParpare {
 
 	@Test(dataProvider="data")
-	public void RegisterSuccessTest(ITestContext context,Map<String,String> data) {
+	public void registerSuccessTest(ITestContext context,Map<String,String> data) {
 		final String USERNAME = "USERNAME";
 		final String PASSWORD = "PASSWORD";
 		final String REPASSWORD = "REPASSWORD";
