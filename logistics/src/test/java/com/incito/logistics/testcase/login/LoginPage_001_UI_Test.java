@@ -24,7 +24,6 @@ public class LoginPage_001_UI_Test extends BaseParpare {
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil); 
 		LoginPageHelper.checkLoginPageText(seleniumUtil); 
 		LoginPageHelper.checkInputData(seleniumUtil); 
-
 	}
 
 }
