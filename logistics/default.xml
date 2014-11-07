@@ -3,7 +3,7 @@
 <!-- thread-count 定义同时启动的浏览器数 paralle选择平行模式 -->
 <suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
 	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="firefox" />
+	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- driver的属性配置文件保存路径 -->
@@ -11,7 +11,7 @@
 	<!-- 数据库的备份和还原存放路径 -->
 	<parameter name="databasePath" value="config/database.properties" />
 	<!-- 定义测试的站点地址 -->
-	<parameter name="testurl" value="http://192.168.11.159:8080/web/index" />
+	<parameter name="testurl" value="http://192.168.11.201:8080/web/index" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素30秒不出现超时时间 -->
