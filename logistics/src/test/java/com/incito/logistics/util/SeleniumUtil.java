@@ -155,7 +155,8 @@ public class SeleniumUtil {
 			element.sendKeys(key);
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.warn("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
+			logger.error("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
+			Assert.fail("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 		}
 		logger.info("Typed：[" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 	}
