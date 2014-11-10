@@ -7,7 +7,8 @@ import com.incito.logistics.util.SeleniumUtil;
 
 public class FindCarsPagerHelper {
 	public static Logger logger = Logger.getLogger(FindCarsPagerHelper.class.getName());
-	// 等待页面上某个重要元素显示出来
+
+	// 页面上某个重要元素显示出来
 	public static void waitFindGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]页面元素");
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_FROM);
@@ -26,10 +27,17 @@ public class FindCarsPagerHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_BUTTON_VOLUME);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_TAB_PUBLIC);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_TAB_FAV);
+		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
+		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_CARTYPE);
+		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_STARTWEIGHT);
+		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_ENDWEIGHT);
+		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_STARTVOLUME);
+		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_ENDVOLUME);
 
 		logger.info("[找车源]页面元素，检查完毕！");
 	}
-	/**检查文本是不是正确*/
+
+	/** 检查文本是不是正确 */
 	public static void checkFindGoodsPageText(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]文本");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_PUBLIC).getText().trim(), "公共车源");
@@ -42,6 +50,56 @@ public class FindCarsPagerHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_WEIGHT).getText().trim(), "载重");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_VOLUME).getText().trim(), "车厢容积");
 		logger.info("[找车源]页面文本，检查完毕");
+	}
+
+	/** 在找车源输入相关信息以便查询 */
+	public static void typeCarsInfo(SeleniumUtil seleniumUtil, String... info) {
+		// 车辆出发地
+		if (info[0].toString() != "") {
+			String jsFrom = "document.getElementsByName('carcity')[0].setAttribute('value','" + info[0].toString() + "');";
+			seleniumUtil.executeJS(jsFrom);
+		}
+		// 车辆目的地
+		if (info[1].toString() != "") {
+			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[1].toString() + "');";
+			seleniumUtil.executeJS(jsTo);
+		}
+		//车长 -开始
+		if (info[2].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTCARLEN),info[2].toString() );
+		}
+		//车长 - 结束
+		if (info[3].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDCARLEN),info[3].toString() );
+		}
+		seleniumUtil.pause(5000);
+
+		// 点击高级搜索
+		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
+		seleniumUtil.pause(5000);
+		//车型
+		if (info[4].toString() != "") {
+			String carType = "document.getElementsByName('cartype')[0].setAttribute('value','" + info[4].toString() + "');";
+			seleniumUtil.executeJS(carType);
+		}
+		//载重 - 开始
+		if (info[5].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTWEIGHT),info[5].toString() );
+		}
+		//载重 - 结束
+		if (info[6].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDWEIGHT),info[6].toString() );
+		}
+		//容积 - 开始
+		if (info[7].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTVOLUME),info[7].toString() );
+		}
+		//容积 - 开始
+		if (info[8].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDVOLUME),info[8].toString() );
+		}
+		// 点击搜索
+		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_SEARCH));
 	}
 
 }
