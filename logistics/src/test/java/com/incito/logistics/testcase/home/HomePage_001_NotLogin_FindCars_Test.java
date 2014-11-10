@@ -20,7 +20,7 @@ public class HomePage_001_NotLogin_FindCars_Test extends BaseParpare {
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.checkHomePageText(seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARDS);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 		LoginPageHelper.enterPage(seleniumUtil, LoginPage.LP_BUTTON_CLOSE);
