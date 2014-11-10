@@ -16,7 +16,7 @@ public class HomePage {
 	/** tab首页 */
 	public static final By HP_LINK_HOME = By.linkText("首页");
 	/** tab找车源 */
-	public static final By HP_LINK_FINDCARDS = By.linkText("找车源");
+	public static final By HP_LINK_FINDCARS = By.linkText("找车源");
 	/** tab找货源 */
 	public static final By HP_LINK_FINDGOODS = By.id("link_standard_goods");
 	/** tab我的订单 */

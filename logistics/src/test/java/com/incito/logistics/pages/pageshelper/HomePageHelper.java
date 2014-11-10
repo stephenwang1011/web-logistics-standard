@@ -20,7 +20,7 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TAB_FINDCARS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_HOME);
 		// seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_LINK_PERSONCEN);
-		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDCARDS);
+		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDCARS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDGOODS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYORDER);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MYGOODS);
@@ -48,7 +48,7 @@ public class HomePageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LEFT_TITLE).getText(), "智慧物流" + "\n" + "全球领先的物流信息平台");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_HOME).getText(), "首页");
 		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_PERSONCEN).getText(),"个人中心");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDCARDS).getText(), "找车源");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDCARS).getText(), "找车源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDGOODS).getText(), "找货源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYORDER).getText(), "我的订单");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_LINK_MYGOODS).getText(), "我的货源");
