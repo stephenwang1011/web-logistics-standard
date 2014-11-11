@@ -30,7 +30,7 @@ public class SelectBrowser {
 		String chromedriver_linux = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_linux");
 		String chromedriver_mac = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_mac");
 		String iedriver = PropertiesDataProvider.getTestData(driverConfgFilePath, "iedriver");
-		String chrome_exePath = "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
+		//String chrome_exePath = "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
 
 		if (currentPlatform.toLowerCase().contains("win")) {
 
@@ -41,10 +41,10 @@ public class SelectBrowser {
 				return new InternetExplorerDriver(ieCapabilities);
 			} else if (browser.equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver", chromedriver_win);
-				ChromeOptions options = new ChromeOptions();
-				options.setBinary(chrome_exePath);
-				return new ChromeDriver(options); 
-//				return new ChromeDriver();
+//				ChromeOptions options = new ChromeOptions();
+//				options.setBinary(chrome_exePath);
+//				return new ChromeDriver(options); 
+				return new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 
