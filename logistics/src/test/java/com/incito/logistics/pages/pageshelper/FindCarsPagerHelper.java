@@ -27,13 +27,6 @@ public class FindCarsPagerHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_BUTTON_VOLUME);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_TAB_PUBLIC);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_TAB_FAV);
-		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
-		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_CARTYPE);
-		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_STARTWEIGHT);
-		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_ENDWEIGHT);
-		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_STARTVOLUME);
-		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_ENDVOLUME);
-
 		logger.info("[找车源]页面元素，检查完毕！");
 	}
 
@@ -72,11 +65,11 @@ public class FindCarsPagerHelper {
 		if (info[3].toString() != "") {
 			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDCARLEN),info[3].toString() );
 		}
-		seleniumUtil.pause(5000);
-
+		
 		// 点击高级搜索
+		if(info[4].toString()!=null||info[5].toString()!=null||info[6].toString()!=null||info[7].toString()!=null||info[8].toString()!=null){
 		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
-		seleniumUtil.pause(5000);
+
 		//车型
 		if (info[4].toString() != "") {
 			String carType = "document.getElementsByName('cartype')[0].setAttribute('value','" + info[4].toString() + "');";
@@ -97,6 +90,7 @@ public class FindCarsPagerHelper {
 		//容积 - 开始
 		if (info[8].toString() != "") {
 			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDVOLUME),info[8].toString() );
+		}
 		}
 		// 点击搜索
 		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_SEARCH));
