@@ -67,7 +67,7 @@ public class FindCarsPagerHelper {
 		}
 		
 		// 点击高级搜索
-		if(info[4].toString()!=null||info[5].toString()!=null||info[6].toString()!=null||info[7].toString()!=null||info[8].toString()!=null){
+		if(info[4].toString()!=""||info[5].toString()!=""||info[6].toString()!=""||info[7].toString()!=""||info[8].toString()!=""){
 		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
 
 		//车型
@@ -95,5 +95,26 @@ public class FindCarsPagerHelper {
 		// 点击搜索
 		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_SEARCH));
 	}
+	
+	/**检查查找出来的车源的  车辆当前城市也就是出发地*/
+	public static void checkCurrentCarLocation(SeleniumUtil seleniumUtil,String carFrom){
+		seleniumUtil.pause(800);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_SPAN_LOCATOR).size();
+			for (int i = 0; i < size; i++) {
+				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_SPAN_LOCATOR).get(i).getText().trim(), carFrom);
+			}
+			
+		}
+		
+		
 
+		
+	}
+	
 }
