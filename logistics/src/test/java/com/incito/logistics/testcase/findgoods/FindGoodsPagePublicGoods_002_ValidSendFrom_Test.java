@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.FindGoodsPage;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.MyGoodsPage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;

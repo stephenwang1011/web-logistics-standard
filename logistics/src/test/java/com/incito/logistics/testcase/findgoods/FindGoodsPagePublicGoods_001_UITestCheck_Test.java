@@ -1,12 +1,9 @@
 package com.incito.logistics.testcase.findgoods;
 
-import java.util.Map;
-
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
-import com.incito.logistics.pages.FindGoodsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;

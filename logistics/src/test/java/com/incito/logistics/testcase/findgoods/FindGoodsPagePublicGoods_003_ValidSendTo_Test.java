@@ -17,7 +17,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class FindGoodsPagePublicGoods_002_ValidSendTo_Test extends BaseParpare {
+public class FindGoodsPagePublicGoods_003_ValidSendTo_Test extends BaseParpare {
 	@Test(dataProvider = "data")
 	public void FindGoodsPagePublicGoodsValidSendTo(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
@@ -28,18 +28,19 @@ public class FindGoodsPagePublicGoods_002_ValidSendTo_Test extends BaseParpare {
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
+		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
-		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDGOODS);
-		HomePageHelper.holdOn(seleniumUtil, sleepTime);
+		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 
-		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
+		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 
+				data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
 		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_DISPLAY_SEARCH);
-		FindGoodsPageHelper.checkFindGoodsPrompt_Location(seleniumUtil, data);
-
+		FindGoodsPageHelper.checkGoodsAddress(seleniumUtil, FindGoodsPage.FGP_DISPLAY_SEARCH, 
+				data.get("ORIGINAL_ADDRESS"),data.get("TARGET_ADDRESS"));
 	}
 
 	@DataProvider(name = "data")
