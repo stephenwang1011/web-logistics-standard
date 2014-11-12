@@ -23,7 +23,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class FindCarsPage_004_StartCarLengthDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void fromDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void startCarLengthDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

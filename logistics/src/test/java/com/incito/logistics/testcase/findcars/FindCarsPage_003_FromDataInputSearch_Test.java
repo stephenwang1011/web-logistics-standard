@@ -18,7 +18,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：找车源，所有输入出发地
+ * @Description 测试用例：找车源，只输入出发地
  * */
 public class FindCarsPage_003_FromDataInputSearch_Test extends BaseParpare {
 
