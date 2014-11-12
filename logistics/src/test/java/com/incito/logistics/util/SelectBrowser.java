@@ -30,7 +30,9 @@ public class SelectBrowser {
 		String chromedriver_linux = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_linux");
 		String chromedriver_mac = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_mac");
 		String iedriver = PropertiesDataProvider.getTestData(driverConfgFilePath, "iedriver");
-		String chrome_exePath = "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
+		String chrome_exePath1 = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
+		String chrome_exePath2 = "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
+		String chrome_exePath = currentPlatform.equals("Windows 8.1") ? chrome_exePath1 : chrome_exePath2;
 
 		if (currentPlatform.toLowerCase().contains("win")) {
 
@@ -43,8 +45,8 @@ public class SelectBrowser {
 				System.setProperty("webdriver.chrome.driver", chromedriver_win);
 				ChromeOptions options = new ChromeOptions();
 				options.setBinary(chrome_exePath);
-				return new ChromeDriver(options); 
-//				return new ChromeDriver();
+				return new ChromeDriver(options);
+				// return new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return new FirefoxDriver();
 
@@ -81,9 +83,8 @@ public class SelectBrowser {
 
 		} else
 			logger.error("The [" + currentPlatform + "] is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
-			Assert.fail("The [" + currentPlatform + "] is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
-		
-		
+		Assert.fail("The [" + currentPlatform + "] is not supported for this automation frame,please change the OS(Windows,MAC or LINUX)");
+
 		return null;
 
 	}
