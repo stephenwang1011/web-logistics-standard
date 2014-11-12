@@ -48,4 +48,10 @@ public class FindCarsPage {
 	public static final By FCP_TAB_PUBLIC = By.id("findcarsTab0");
 	/**我的收藏*/
 	public static final By FCP_TAB_FAV = By.id("findcarsTab1");
+	
+	/**每个车源中的 车辆城市 */
+	public static final By FCP_SPAN_LOCATOR = By.xpath("//*[@class='text-major']");
+	
+	/**没有数据的提示语*/
+	public static final By FCP_DIV_MENTION = By.xpath("//*[text()='没有搜索到相应的数据']");
 }
