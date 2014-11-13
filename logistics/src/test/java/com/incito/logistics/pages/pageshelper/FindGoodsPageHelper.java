@@ -89,7 +89,7 @@ public class FindGoodsPageHelper {
 
 		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
 			double carLong = 0; // 车长
-			String second = seleniumUtil.findElementBy(by).findElements(By.xpath("//div[1]/div[1]/div[2]/span")).get(i).getText(); // 取得第二行的货源信息
+			String second = seleniumUtil.findElementsBy(By.cssSelector("div.goods-info-row2")).get(i).getText(); // 取得第二行的货源信息
 			String[] secondArray = second.split("，");
 			for (String temp : secondArray) {
 				if (temp.trim().contains("车辆要求")) {
