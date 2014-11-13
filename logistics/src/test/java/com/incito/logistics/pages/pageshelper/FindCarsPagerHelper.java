@@ -244,5 +244,58 @@ public class FindCarsPagerHelper {
 		}
 		
 	}
+	/**检查体积的方法*/
+	public static void checkCarVolume(SeleniumUtil seleniumUtil,String ...carVolumes){
+		seleniumUtil.pause(800);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+	
+			for (int i = 0; i < size; i++) {
+				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				double autualCarVolume = Double.parseDouble(secondInfos[4].substring(5, secondInfos[4].length()-1)); //取得车容积
+				//开始车长空 结束车长不空
+				if(carVolumes[0].equals("")&&carVolumes[1]!=""){
+					try {
+						Assert.assertTrue(autualCarVolume <= Double.parseDouble(carVolumes[1]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is bigger than input volume num [" + carVolumes[1] + "] L");
+						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is bigger than input volume num [" + carVolumes[1] + "] L");
+					}
+					logger.info("The car volume of the " + (i + 1) + "th goods info is [" + autualCarVolume + "] L, smaller than "+carVolumes[1]+ " L - Passed");
+				}
+				//开始车长不为空 结束车长空
+				if(carVolumes[0]!=""&&carVolumes[1].equals("")){
+					try {
+						Assert.assertTrue(autualCarVolume >= Double.parseDouble(carVolumes[0]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
+						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
+					}
+					logger.info("The car volume of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] T,bigger than "+carVolumes[0] +" L - Passed");
+				}
+				//都不为空
+				if(carVolumes[0]!=""&&carVolumes[1]!=""){
+					try {
+						Assert.assertTrue(autualCarVolume >= Double.parseDouble(carVolumes[0]) && autualCarVolume <= Double.parseDouble(carVolumes[1]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is not in the  input car volume num [" + carVolumes[0] + "] and [" + carVolumes[1] + "] ");
+						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is not in the  input car volume num [" + carVolumes[0] + "] and [" + carVolumes[1] + "] ");
+					}
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] L ,between "+carVolumes[0] +"and "+carVolumes[1]+" L - Passed");
+				}
+		
+			}
+			
+		}
+		
+		
+		
+	}
 	
 }
