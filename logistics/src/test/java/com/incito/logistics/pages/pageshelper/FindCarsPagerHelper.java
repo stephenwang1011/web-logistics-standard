@@ -1,6 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.FindCarsPage;
@@ -294,8 +295,57 @@ public class FindCarsPagerHelper {
 			
 		}
 		
-		
-		
 	}
+	/**检查目的地城市*/
+	public static void checkTargetCity(SeleniumUtil seleniumUtil,String ...targetCities){
+		
+		seleniumUtil.pause(800);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO1).size();
+			for (int i = 0; i < size; i++) {
+				String firstInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO1).get(i).getText();
+				String firstInfos[] = firstInfo.split(" ");
+				String actualTargetCity = firstInfos[1];
+				if(actualTargetCity.equals("全国")){
+					logger.info("Current target city is [全国] and contains expect city:"+targetCities[0]+" - OK");
+				}else
+				seleniumUtil.isContains(actualTargetCity,targetCities[0] );
+			}
+			
+		}
+	}
+	
+	/**从车源上点击某个按钮触发下一个事件*/
+	public static void enterPage(SeleniumUtil seleniumUtil,By byElement){
+		seleniumUtil.click(seleniumUtil.findElementBy(byElement));
+	}
+
+	/**检查收藏的车源是不是收藏成功*/
+	public static void isCarsFavSuccess(SeleniumUtil seleniumUtil,By byElement){
+
+		seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(0));	 //点击 收藏按钮
+		seleniumUtil.pause(800);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(0).getText(), "取消收藏");
+		String infosText1 = seleniumUtil.findElementBy(FindCarsPage.FCP_ITEM_INFOS).getText().trim();
+		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));	
+		seleniumUtil.pause(800);
+		String infosText2 = seleniumUtil.findElementBy(FindCarsPage.FCP_ITEM_INFOS).getText().trim();
+		seleniumUtil.isTextCorrect(infosText1, infosText2);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(0).getText(), "取消收藏");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
