@@ -20,11 +20,11 @@ import com.incito.logistics.util.PropertiesDataProvider;
 /**
  * 
  * @author xy-incito-wk
- * @Description 测试用例：找货源——只填写发货地
+ * @Description 测试用例：找货源——只填写收获地
  */
-public class FindGoodsPagePublicGoods_002_ValidSendFrom_Test extends BaseParpare {
+public class FindGoodsPagePublicGoods_004_ValidSendFromAndSendTo_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsValidSendFrom(ITestContext context, Map<String, String> data) {
+	public void FindGoodsPagePublicGoodsValidSendTo(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));

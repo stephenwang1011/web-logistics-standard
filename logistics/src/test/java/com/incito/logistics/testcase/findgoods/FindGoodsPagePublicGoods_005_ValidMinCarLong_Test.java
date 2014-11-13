@@ -20,11 +20,11 @@ import com.incito.logistics.util.PropertiesDataProvider;
 /**
  * 
  * @author xy-incito-wk
- * @Description 测试用例：找货源——只填写发货地
+ * @Description 测试用例：找货源——只填写车小车长
  */
-public class FindGoodsPagePublicGoods_002_ValidSendFrom_Test extends BaseParpare {
+public class FindGoodsPagePublicGoods_005_ValidMinCarLong_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsValidSendFrom(ITestContext context, Map<String, String> data) {
+	public void FindGoodsPagePublicGoodsValidMinCarLong(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -46,9 +46,9 @@ public class FindGoodsPagePublicGoods_002_ValidSendFrom_Test extends BaseParpare
 				data.get("FGP_INPUT_WEIGHT_VOLUME"), data.get("FGP_START_WEIGHT_VOLUME"), 
 				data.get("FGP_END_WEIGHT_VOLUME"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
-		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_DISPLAY_SEARCH);
-		FindGoodsPageHelper.checkGoodsAddress(seleniumUtil, FindGoodsPage.FGP_DISPLAY_SEARCH, 
-				data.get("ORIGINAL_ADDRESS"),data.get("TARGET_ADDRESS"));
+		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_SECOND_INFO);
+		FindGoodsPageHelper.checkCarLength(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH,
+				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 	}
 
 	@DataProvider(name = "data")

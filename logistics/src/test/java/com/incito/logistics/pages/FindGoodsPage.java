@@ -24,7 +24,21 @@ public class FindGoodsPage {
 	/** 搜索按钮 */
 	public static final By FGP_BUTTON_SEARCH = By.xpath("//*[@id='goodsform']/div[2]/div[5]/button[1]");
 	/** 高级搜索按钮 */
-	public static final By FGP_BUTTON_ADVANCESEARCH = By.id("btn btn-major");
+	public static final By FGP_BUTTON_ADVANCESEARCH = By.id("advancedBtn");
+	/** 车型要求文本框 */
+	public static final By FGP_INPUT_CARTYPE = By.name("fitcartypes");
+	/** 货物名称文本框 */
+	public static final By FGP_INPUT_GOODSNAME = By.name("goodsnames");
+	/**单位-体积还是重量*/
+	public static final By FGP_SELECT_GOODSUNIT = By.id("wvSwitch");
+	/**开始吨位文本框*/
+	public static final By FGP_INPUT_STARTWEIGHT = By.name("startweight");
+	/**结束吨位文本框*/
+	public static final By FGP_INPUT_ENDWEIGHT = By.name("endweight");
+	/**开始体积文本框*/
+	public static final By FGP_INPUT_STARTVOLUME = By.name("startvolume");
+	/**结束体积文本框*/
+	public static final By FGP_INPUT_ENDVOLUME = By.name("endvolume");
 	
 	//********以下元素是搜索之后的结果*******************************************
 	/** 搜索之后的第一排信息（起始地到目的地） */

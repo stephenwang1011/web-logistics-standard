@@ -51,6 +51,34 @@ public class FindGoodsPageHelper {
 		seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_STARTCARLONG), info[2].toString());
 		// 填写最长车长
 		seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_ENDTCARLONG), info[3].toString());
+		// 填写车型要求
+		if (info[4].toString() != "") {
+			String carType = "document.getElementsByName('fitcartypes')[0].setAttribute('value','" + info[4].toString() + "');";
+			seleniumUtil.executeJS(carType);
+		}
+		// 货物名称
+		if (info[5].toString() != "") {
+			String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[5].toString() + "');";
+			seleniumUtil.executeJS(goodsName);
+		}
+		// 体积还是重量
+		seleniumUtil.selectByText(FindGoodsPage.FGP_SELECT_GOODSUNIT, info[6].toString());
+		if (info[6].toString().equals("体积")) {
+			if (info[7].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_STARTVOLUME), info[7].toString());
+			}
+			if (info[8].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_ENDVOLUME), info[8].toString());
+			}
+		} else if (info[6].toString().equals("重量")) {
+			if (info[7].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_STARTWEIGHT), info[7].toString());
+			}
+			if (info[8].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_ENDWEIGHT), info[8].toString());
+			}
+
+		}
 	}
 
 	/** 从找货源进入指定的页面-根据元素定位来确定什么页面 */
@@ -78,7 +106,7 @@ public class FindGoodsPageHelper {
 	}
 
 	/** 检查货源信息的第二行信息:车长 */
-	public static void checkCarLength(SeleniumUtil seleniumUtil, By by,By by_car_length, String... secondInfos) {
+	public static void checkCarLength(SeleniumUtil seleniumUtil, By by, By by_car_length, String... secondInfos) {
 		// 这个items指的是查询出来有多少条货源
 		int items = seleniumUtil.findElementsBy(by).size();
 		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
@@ -90,9 +118,10 @@ public class FindGoodsPageHelper {
 		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
 			double carLong = 0; // 车长
 			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
+			second = second.replaceAll(" ", "");
 			String[] secondArray = second.split("，");
 			for (String temp : secondArray) {
-				if (temp.trim().contains("车辆要求")) {
+				if (temp.contains("车辆要求")) {
 					String[] temp1 = temp.split("：");
 					carLong = Double.parseDouble(temp1[1].replaceAll("米", ""));// 取得车长
 
@@ -100,37 +129,201 @@ public class FindGoodsPageHelper {
 						try {
 							Assert.assertTrue(carLong >= Double.parseDouble(secondInfos[0]));
 						} catch (AssertionError e) {
-							logger.error("Found the length of car in web page is [" + carLong + "] and is less than input length num [" + secondInfos[0] + "] T");
-							Assert.fail("Found the weight of car in web page is [" + carLong + "] and is less than input length num [" + secondInfos[0] + "] T");
+							logger.error("Found the length of car in web page is [" + carLong + "] and is less than input length num [" + secondInfos[0] + "] M");
+							Assert.fail("Found the weight of car in web page is [" + carLong + "] and is less than input length num [" + secondInfos[0] + "] M");
 						}
-						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] T");
+						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] M");
 					}
 
 					if (secondInfos[0].equals("") && secondInfos[1] != "") {
 						try {
 							Assert.assertTrue(carLong <= Double.parseDouble(secondInfos[1]));
 						} catch (AssertionError e) {
-							logger.error("Found the length of car in web page is [" + carLong + "] and is longer than input length num [" + secondInfos[1] + "] T");
-							Assert.fail("Found the weight in web page is [" + carLong + "] and is longer than input length num [" + secondInfos[1] + "] T");
+							logger.error("Found the length of car in web page is [" + carLong + "] and is longer than input length num [" + secondInfos[1] + "] M");
+							Assert.fail("Found the weight in web page is [" + carLong + "] and is longer than input length num [" + secondInfos[1] + "] M");
 						}
-						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] T");
+						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] M");
 					}
 
 					if (secondInfos[0] != "" && secondInfos[1] != "") {
 						try {
-							Assert.assertTrue(Double.parseDouble(secondInfos[1]) <= carLong && carLong >= Double.parseDouble(secondInfos[1]));
+							Assert.assertTrue(Double.parseDouble(secondInfos[0]) <= carLong && carLong <= Double.parseDouble(secondInfos[1]));
 						} catch (AssertionError e) {
-							logger.error("Found the length of car in web page is [" + carLong + "] and is not in input length num [" + secondInfos[0] + "] and [" + secondInfos[1] + "] T");
-							Assert.fail("Found the weight in web page is [" + carLong + "] and is not in input length num [" + secondInfos[0] + "] and [" + secondInfos[1] + "] T");
+							logger.error("Found the length of car in web page is [" + carLong + "] and is not in input length num [" + secondInfos[0] + "] and [" + secondInfos[1] + "] M");
+							Assert.fail("Found the weight in web page is [" + carLong + "] and is not in input length num [" + secondInfos[0] + "] and [" + secondInfos[1] + "] M");
 						}
-						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] T");
+						logger.info("The length of the " + (i + 1) + "the goods'car info is [" + carLong + "] M");
 					}
 				}
 			}
 		}
 	}
 
-	/** 检查搜索界面的是否包含搜索结果 */
+	/** 检查货源信息的第二行信息:车型要求 */
+	public static void checkCarType(SeleniumUtil seleniumUtil, By by, By by_car_length, String... secondInfos) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size();
+		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
+			// 如果按照筛选条件查不到数据的时候给一个提示并退出此方法
+			logger.warn("根据您的筛选条件，无法查找出数据！");
+			return;
+		}
+		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
+			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
+			second = second.replaceAll(" ", "");
+			String[] secondArray = second.split("，");
+			Boolean flag = false;
+			String carType = null;
+			for (String temp : secondArray) {
+				if (temp.contains("车辆要求")) {
+					String[] temp1 = temp.split("：");
+					if (secondInfos[0].contains(temp1[1])) {
+						flag = true;
+						carType = temp1[1];
+					}
+				} else if (secondInfos[0].contains(temp)) {
+					flag = true;
+					carType = temp;
+				}
+			}
+			try {
+				Assert.assertTrue(true);
+			} catch (AssertionError e) {
+				logger.error("未发现车型要求为：【" + secondInfos[0] + "】的货源信息。");
+				Assert.fail("在该页面中未发现车型要求为：【" + secondInfos[0] + "】的货源信息");
+			}
+			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + carType + "】。");
+		}
+
+	}
+
+	/** 检查货源信息的第二行信息:货物名称 */
+	public static void checkGoodsName(SeleniumUtil seleniumUtil, By by, By by_car_length, String... secondInfos) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size();
+		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
+			// 如果按照筛选条件查不到数据的时候给一个提示并退出此方法
+			logger.warn("根据您的筛选条件，无法查找出数据！");
+			return;
+		}
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			String goodsname = null;
+			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
+			second = second.replaceAll(" ", "");
+			String[] secondArray = second.split("，");
+			int temp = secondArray[0].indexOf("（");
+			if (temp != -1) {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf("（") - 1);
+			} else {
+				goodsname = secondArray[0];
+			}
+			try {
+				Assert.assertTrue(secondInfos[0].contains(goodsname));
+			} catch (AssertionError e) {
+				logger.error("未发现货物名称为：【" + secondInfos[0] + "】的货源信息。");
+				Assert.fail("在该页面中未发现货物名称为：【" + secondInfos[0] + "】的货源信息");
+			}
+			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + secondArray[0] + "】。");
+
+		}
+
+	}
+
+	/** 检查货源信息的第二行信息:吨位或者体积 */
+	public static void checkGoodsWeightOrVolume(SeleniumUtil seleniumUtil, By by, By by_car_length, String... secondInfos) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size();
+		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
+			// 如果按照筛选条件查不到数据的时候给一个提示并退出此方法
+			logger.warn("根据您的筛选条件，无法查找出数据！");
+			return;
+		}
+
+		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
+			double goodsWorV = 0; // 重量或者体积
+			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
+			second = second.replaceAll(" ", "");
+			String[] secondArray = second.split("，");
+			Boolean flag = false;
+			
+			if (secondInfos[0].equals("重量")) {
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("吨", ""));// 取得每个货源的重量数
+				if (secondInfos[1].equals("") && secondInfos[2] != "") {
+					Double temp = Double.parseDouble(secondInfos[2]);
+					try {
+						Assert.assertTrue(goodsWorV <= temp);
+					} catch (AssertionError e) {
+						logger.error("发现货物重量为：【" + goodsWorV + "】吨，大于搜索条件重量为：【" + temp + "】吨货源信息。");
+						Assert.fail("在该页面中发现货物重量为：【" + goodsWorV + "】吨，大于搜索条件重量为：【" + temp + "】吨货源信息。");
+					}
+					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，小于等于条件搜索的【" + temp + "】吨");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2].equals("")) {
+					Double temp = Double.parseDouble(secondInfos[1]);
+					try {
+						Assert.assertTrue(temp <= goodsWorV);
+					} catch (AssertionError e) {
+						logger.error("发现货物重量为：【" + goodsWorV + "】吨，小于搜索条件重量为：【" + temp + "】吨货源信息。");
+						Assert.fail("在该页面中发现货物重量为：【" + goodsWorV + "】吨，小于搜索条件重量为：【" + temp + "】吨货源信息。");
+					}
+					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，大于等于条件搜索的【" + temp + "】吨");
+				}
+				
+				if (secondInfos[1] != "" && secondInfos[2] != "") {
+					Double temp1 = Double.parseDouble(secondInfos[1]);
+					Double temp2 = Double.parseDouble(secondInfos[2]);
+					try {
+						Assert.assertTrue(temp1<=goodsWorV && goodsWorV<=temp2);
+					} catch (AssertionError e) {
+						logger.error("发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
+						Assert.fail("在该页面中发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
+					}
+					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
+				}
+			}
+
+			if (secondInfos[0].equals("体积")) {
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("方", ""));// 取得每个货源的体积数
+				if (secondInfos[1].equals("") && secondInfos[2] != "") {
+					Double temp = Double.parseDouble(secondInfos[2]);
+					try {
+						Assert.assertTrue(goodsWorV <= temp);
+					} catch (AssertionError e) {
+						logger.error("发现货物体积为：【" + goodsWorV + "】方，大于搜索条件体积为：【" + temp + "】方货源信息。");
+						Assert.fail("在该页面中发现货物体积为：【" + goodsWorV + "】方，大于搜索条件体积为：【" + temp + "】方货源信息。");
+					}
+					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，小于等于条件搜索的【" + temp + "】方");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2].equals("")) {
+					Double temp = Double.parseDouble(secondInfos[1]);
+					try {
+						Assert.assertTrue(temp <= goodsWorV);
+					} catch (AssertionError e) {
+						logger.error("发现货物体积为：【" + goodsWorV + "】方，小于搜索条件体积为：【" + temp + "】方货源信息。");
+						Assert.fail("在该页面中发现货物体积为：【" + goodsWorV + "】方，小于搜索条件体积为：【" + temp + "】方货源信息。");
+					}
+					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，大于等于条件搜索的【" + temp + "】方");
+				}
+				
+				if (secondInfos[1] != "" && secondInfos[2] != "") {
+					Double temp1 = Double.parseDouble(secondInfos[1]);
+					Double temp2 = Double.parseDouble(secondInfos[2]);
+					try {
+						Assert.assertTrue(temp1<=goodsWorV && goodsWorV<=temp2);
+					} catch (AssertionError e) {
+						logger.error("发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
+						Assert.fail("在该页面中发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
+					}
+					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
+				}
+			}
+		}
+
+	}
+
+	/** 检查搜索结果是否符合车长 */
 	public static void checkFindGoodsPrompt_CarLong(SeleniumUtil seleniumUtil, Map<String, String> data) {
 		logger.info("Start checking checkFindGoodsPrompt_CarLong page text");
 		String info = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO).get(0).getText().trim();
