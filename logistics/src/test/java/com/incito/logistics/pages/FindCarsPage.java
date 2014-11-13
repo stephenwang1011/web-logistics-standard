@@ -56,4 +56,12 @@ public class FindCarsPage {
 	public static final By FCP_DIV_MENTION = By.xpath("//*[text()='没有搜索到相应的数据']");
 	/**每个车源中的第二行 信息 车牌号，车长，吨位以及体积等信息*/
 	public static final By FCP_DIV_CARINFO2 = By.xpath("//*/div[2]/p[2]");
+	/**每个车源的第一行数据*/
+	public static final By FCP_DIV_CARINFO1 = By.className("cars-p-first");
+	/**收藏车源按钮*/
+	public  static final By FCP_BUTTON_FAV = By.xpath("//*[text()='收藏']");
+	/**取消收藏车源按钮*/
+	public  static final By FCP_BUTTON_CFAV = By.xpath("//*[text()='取消收藏']");
+	/**单独的一个车源信息*/
+	public static final By FCP_ITEM_INFOS = By.xpath("//*[@class='col-xs-8 ']");
 }
