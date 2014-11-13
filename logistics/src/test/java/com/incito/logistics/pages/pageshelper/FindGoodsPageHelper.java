@@ -78,7 +78,7 @@ public class FindGoodsPageHelper {
 	}
 
 	/** 检查货源信息的第二行信息:车长 */
-	public static void checkCarLength(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
+	public static void checkCarLength(SeleniumUtil seleniumUtil, By by,By by_car_length, String... secondInfos) {
 		// 这个items指的是查询出来有多少条货源
 		int items = seleniumUtil.findElementsBy(by).size();
 		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
@@ -89,7 +89,7 @@ public class FindGoodsPageHelper {
 
 		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
 			double carLong = 0; // 车长
-			String second = seleniumUtil.findElementsBy(By.cssSelector("div.goods-info-row2")).get(i).getText(); // 取得第二行的货源信息
+			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
 			String[] secondArray = second.split("，");
 			for (String temp : secondArray) {
 				if (temp.trim().contains("车辆要求")) {
@@ -128,7 +128,6 @@ public class FindGoodsPageHelper {
 				}
 			}
 		}
-
 	}
 
 	/** 检查搜索界面的是否包含搜索结果 */

@@ -31,6 +31,8 @@ public class FindGoodsPage {
 	public static final By FGP_DISPLAY_SEARCH = By.className("goods-infobox");
 	/** 搜索之后,地址下方的第二排信息*/
 	public static final By FGP_SECOND_INFO = By.xpath("//*[@class='goods-infobox']");
+	/** 搜索之后,地址下方的第二排车辆长度信息*/
+	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
 	/** 搜索无结果提示语 */
 	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
 }

@@ -39,7 +39,7 @@ public class FindGoodsPagePublicGoods_005_ValidMaxCarLong_Test extends BaseParpa
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_SEARCH);
 		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_SECOND_INFO);
-		FindGoodsPageHelper.checkCarLength(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, 
+		FindGoodsPageHelper.checkCarLength(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH,
 				data.get("FGP_INPUT_STARTCARLONG"), data.get("FGP_INPUT_ENDTCARLONG"));
 	}
 
