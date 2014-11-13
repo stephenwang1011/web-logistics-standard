@@ -136,8 +136,8 @@ public class FindCarsPagerHelper {
 					try {
 						Assert.assertTrue(autualCarLen <= Double.parseDouble(lenInfos[1]));
 					} catch (AssertionError e1) {
-						logger.error("Found the car length in web page is [" + autualCarLen + "] and is bigger than input weight num [" + lenInfos[1] + "] m");
-						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is bigger than input weight num [" + lenInfos[1] + "] m");
+						logger.error("Found the car length in web page is [" + autualCarLen + "] and is bigger than input length num [" + lenInfos[1] + "] m");
+						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is bigger than input length num [" + lenInfos[1] + "] m");
 					}
 					logger.info("The car length of the " + (i + 1) + "th goods info is [" + autualCarLen + "] m, smaller than "+lenInfos[1]+ " m - Passed");
 				}
@@ -146,8 +146,8 @@ public class FindCarsPagerHelper {
 					try {
 						Assert.assertTrue(autualCarLen >= Double.parseDouble(lenInfos[0]));
 					} catch (AssertionError e1) {
-						logger.error("Found the car length in web page is [" + autualCarLen + "] and is smaller than input weight num [" + lenInfos[0] + "] m");
-						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is smaller than input weight num [" + lenInfos[0] + "] m");
+						logger.error("Found the car length in web page is [" + autualCarLen + "] and is smaller than input lengthnum [" + lenInfos[0] + "] m");
+						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is smaller than input length num [" + lenInfos[0] + "] m");
 					}
 					logger.info("The car length of the " + (i + 1) + "th cars info is [" + autualCarLen + "] m,bigger than "+lenInfos[0] +" m - Passed");
 				}
@@ -190,6 +190,58 @@ public class FindCarsPagerHelper {
 			
 		}
 		
+		
+	}
+	
+	/**检查车源中的吨位*/
+	public static void checkCarWeight(SeleniumUtil seleniumUtil,String ...carWeights){
+		seleniumUtil.pause(800);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+	
+			for (int i = 0; i < size; i++) {
+				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				double autualCarWeight = Double.parseDouble(secondInfos[3].substring(3, secondInfos[3].length()-1)); //取得车重
+				//开始车长空 结束车长不空
+				if(carWeights[0].equals("")&&carWeights[1]!=""){
+					try {
+						Assert.assertTrue(autualCarWeight <= Double.parseDouble(carWeights[1]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is bigger than input weight num [" + carWeights[1] + "] T");
+						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is bigger than input weight num [" + carWeights[1] + "] T");
+					}
+					logger.info("The car weight of the " + (i + 1) + "th goods info is [" + autualCarWeight + "] T, smaller than "+carWeights[1]+ " T - Passed");
+				}
+				//开始车长不为空 结束车长空
+				if(carWeights[0]!=""&&carWeights[1].equals("")){
+					try {
+						Assert.assertTrue(autualCarWeight >= Double.parseDouble(carWeights[0]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is smaller than input weight num [" + carWeights[0] + "] T");
+						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is smaller than input weight num [" + carWeights[0] + "] T");
+					}
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T,bigger than "+carWeights[0] +" T - Passed");
+				}
+				//都不为空
+				if(carWeights[0]!=""&&carWeights[1]!=""){
+					try {
+						Assert.assertTrue(autualCarWeight >= Double.parseDouble(carWeights[0]) && autualCarWeight <= Double.parseDouble(carWeights[1]));
+					} catch (AssertionError e1) {
+						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is not in the  input car weight num [" + carWeights[0] + "] and [" + carWeights[1] + "] ");
+						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is not in the  input car weight num [" + carWeights[0] + "] and [" + carWeights[1] + "] ");
+					}
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T ,between "+carWeights[0] +"and "+carWeights[1]+" T - Passed");
+				}
+		
+			}
+			
+		}
 		
 	}
 	
