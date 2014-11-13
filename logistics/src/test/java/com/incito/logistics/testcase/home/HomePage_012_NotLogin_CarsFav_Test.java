@@ -14,7 +14,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
  *@Description 测试用例：未登录情况下点击公共车源的收藏按钮 弹出登陆页面
  *
  * */
-public class HomePage_013_NotLogin_CarsFav_Test extends BaseParpare {
+public class HomePage_012_NotLogin_CarsFav_Test extends BaseParpare {
 	@Test
 	public void clickFav(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
