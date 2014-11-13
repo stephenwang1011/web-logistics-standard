@@ -168,4 +168,29 @@ public class FindCarsPagerHelper {
 		
 	}
 	
+	/**检查车型*/
+	public static void checkCarType(SeleniumUtil seleniumUtil,String ...carTypes){
+		seleniumUtil.pause(800);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+	
+			for (int i = 0; i < size; i++) {
+				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				String acutalCarType = secondInfos[1];
+				seleniumUtil.isContains(carTypes[0],acutalCarType);
+		
+		
+			}
+			
+		}
+		
+		
+	}
+	
 }
