@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
+import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindCarsPagerHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
@@ -41,7 +42,9 @@ public class FindCarsPage_016_FavoriteCarsWithSearch_Test extends BaseParpare {
 		FindCarsPagerHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
 				data.get("FCP_INPUT_ENDWEIGHT"), data.get("FCP_INPUT_STARTVOLUME"),  data.get("FCP_INPUT_ENDVOLUME"));
-
+		FindCarsPagerHelper.favCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_FAV, data.get("LICENSE"));
+		FindCarsPagerHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
+		FindCarsPagerHelper.isFavCarExistByLicense(seleniumUtil, data.get("LICENSE"));
 
 	}
 
