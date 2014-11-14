@@ -14,7 +14,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
  *@Description 测试用例：未登录情况下点击查询 弹出登陆页面
  *
  * */
-public class HomePage_008_NotLogin_QuickSearch_Test extends BaseParpare {
+public class HomePage_008_NotLogin_QuickSearchOrder_Test extends BaseParpare {
 	@Test
 	public void quickSearch(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
