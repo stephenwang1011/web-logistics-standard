@@ -11,7 +11,7 @@ public class FindCarsPageHelper {
 	public static Logger logger = Logger.getLogger(FindCarsPageHelper.class.getName());
 
 	// 页面上某个重要元素显示出来
-	public static void waitFindGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
+	public static void waitFindCarsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]页面元素");
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_FROM);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_TO);
@@ -33,7 +33,7 @@ public class FindCarsPageHelper {
 	}
 
 	/** 检查文本是不是正确 */
-	public static void checkFindGoodsPageText(int timeOut, SeleniumUtil seleniumUtil) {
+	public static void checkFindCarsPageText(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]文本");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_PUBLIC).getText().trim(), "公共车源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getText().trim(), "我的收藏");
