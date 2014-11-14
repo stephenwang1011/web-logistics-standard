@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.pageshelper.FindCarsPagerHelper;
+import com.incito.logistics.pages.pageshelper.FindCarsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
@@ -37,11 +37,11 @@ public class FindCarsPage_015_FavoriteCarsWithNoSearch_Test extends BaseParpare 
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
-		FindCarsPagerHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
-		FindCarsPagerHelper.checkFindGoodsPageText(timeOut, seleniumUtil);
-		FindCarsPagerHelper.favCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_FAV, data.get("LICENSE"));
-		FindCarsPagerHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
-		FindCarsPagerHelper.isFavCarExistByLicense(seleniumUtil, data.get("LICENSE"));
+		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
+		FindCarsPageHelper.checkFindCarsPageText(timeOut, seleniumUtil);
+		FindCarsPageHelper.favCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_FAV, data.get("LICENSE"));
+		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
+		FindCarsPageHelper.isFavCarExistByLicense(seleniumUtil, data.get("LICENSE"));
 
 	}
 

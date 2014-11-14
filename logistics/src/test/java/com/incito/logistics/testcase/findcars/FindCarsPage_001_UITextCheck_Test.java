@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.pageshelper.FindCarsPagerHelper;
+import com.incito.logistics.pages.pageshelper.FindCarsPageHelper;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
@@ -31,8 +31,8 @@ public class FindCarsPage_001_UITextCheck_Test extends BaseParpare {
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
-		FindCarsPagerHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
-		FindCarsPagerHelper.checkFindGoodsPageText(timeOut, seleniumUtil);
+		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
+		FindCarsPageHelper.checkFindCarsPageText(timeOut, seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 
 	}
