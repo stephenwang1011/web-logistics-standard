@@ -172,6 +172,7 @@ public class FindGoodsPageHelper {
 			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
 			second = second.replaceAll(" ", "");
 			String[] secondArray = second.split("，");
+			@SuppressWarnings("unused")
 			Boolean flag = false;
 			String carType = null;
 			for (String temp : secondArray) {
@@ -244,6 +245,7 @@ public class FindGoodsPageHelper {
 			String second = seleniumUtil.findElementsBy(by_car_length).get(i).getText(); // 取得第二行的货源信息
 			second = second.replaceAll(" ", "");
 			String[] secondArray = second.split("，");
+			@SuppressWarnings("unused")
 			Boolean flag = false;
 			
 			if (secondInfos[0].equals("重量")) {

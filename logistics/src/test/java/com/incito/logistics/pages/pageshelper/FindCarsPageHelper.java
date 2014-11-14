@@ -7,11 +7,11 @@ import org.testng.Assert;
 import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.util.SeleniumUtil;
 
-public class FindCarsPagerHelper {
-	public static Logger logger = Logger.getLogger(FindCarsPagerHelper.class.getName());
+public class FindCarsPageHelper {
+	public static Logger logger = Logger.getLogger(FindCarsPageHelper.class.getName());
 
 	// 页面上某个重要元素显示出来
-	public static void waitFindGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
+	public static void waitFindCarsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]页面元素");
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_FROM);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_TO);
@@ -33,7 +33,7 @@ public class FindCarsPagerHelper {
 	}
 
 	/** 检查文本是不是正确 */
-	public static void checkFindGoodsPageText(int timeOut, SeleniumUtil seleniumUtil) {
+	public static void checkFindCarsPageText(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]文本");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_PUBLIC).getText().trim(), "公共车源");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getText().trim(), "我的收藏");
@@ -325,22 +325,61 @@ public class FindCarsPagerHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(byElement));
 	}
 
-	/**检查收藏的车源是不是收藏成功*/
-	public static void isCarsFavSuccess(SeleniumUtil seleniumUtil,By byElement){
-
-		seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(0));	 //点击 收藏按钮
-		seleniumUtil.pause(800);
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(0).getText(), "取消收藏");
-		String infosText1 = seleniumUtil.findElementBy(FindCarsPage.FCP_ITEM_INFOS).getText().trim();
-		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));	
-		seleniumUtil.pause(800);
-		String infosText2 = seleniumUtil.findElementBy(FindCarsPage.FCP_ITEM_INFOS).getText().trim();
-		seleniumUtil.isTextCorrect(infosText1, infosText2);
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(0).getText(), "取消收藏");
+	/**根据驾驶证 去收藏车源*/
+	public static void favCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
+		logger.info("Start favoriting cars");
+		seleniumUtil.pause(500);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+			for (int i = 0; i < size; i++) {
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				String autualLicense = secondInfos[0].trim();
+				if(autualLicense.equals(license)){
+					
+					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 收藏按钮
+					seleniumUtil.pause(500);
+					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
+					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));	
+					break;
+				}
+			}
+			
+		}
+		logger.info("Favoriting cars complete");
 	}
 	
-	
-	
+	/**根据驾驶证号，检查该车源是否被收藏*/
+	public static void isFavCarExistByLicense(SeleniumUtil seleniumUtil,String license){
+		logger.info("checking  cars is faved or not");
+		seleniumUtil.pause(500);
+		try{	
+		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+			logger.warn("No datas displayed with thes fitters");
+			return;
+		}}catch(Exception e){
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+			for (int i = 0; i < size; i++) {
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				String autualLicense = secondInfos[0].trim();
+				if(autualLicense.equals(license)){
+					seleniumUtil.pause(500);
+					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
+					break;
+					
+				}
+			}
+			
+		}
+		logger.info("check  cars is faved or not complete");
+	}
 	
 	
 	

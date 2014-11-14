@@ -64,6 +64,11 @@ public class HomePageHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 
 	}
+	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
+	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator,int index) {
+		seleniumUtil.click(seleniumUtil.findElementsBy(elementLocator).get(index));
+
+	}
 
 	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By bys, By by, int index) {
@@ -94,4 +99,26 @@ public class HomePageHelper {
 		}
 	}
 
+	/**未登录的情况下，检查车源中的驾驶证信息*/
+	public static void checkLicenseInNotLoginStatus(SeleniumUtil seleniumUtil){
+		int size  = seleniumUtil.findElementsBy(HomePage.HP_ARERA_GOODSANDCARS).get(0).findElements(HomePage.HP_CARS_INFO2).size(); //公共车源有多少
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isContains(seleniumUtil.findElementsBy(HomePage.HP_ARERA_GOODSANDCARS).get(0).findElements(HomePage.HP_CARS_INFO2).get(i).getText(), "***");
+		}
+	}
+	/**未登录情况下，鼠标滑动页面到底部，并点击返回顶部按钮*/
+	public static void backToTopCheck(SeleniumUtil seleniumUtil,int timeOut){
+		seleniumUtil.mouseMoveToElement(HomePage.HP_TEXT_FOOTER);
+		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_BUTTON_BACK);
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_BACK));
+		if(seleniumUtil.findElementBy(HomePage.HP_BUTTON_BACK).isDisplayed()==false){
+			logger.info("Back to top function works well - PASSED");
+		}else{
+			backToTopCheck(seleniumUtil, timeOut);
+			
+		}
+		
+		
+	}
+	
 }
