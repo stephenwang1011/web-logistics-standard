@@ -77,6 +77,10 @@ public class HomePage {
 	/** 两个 更多>> */
 	public static final By HP_LINK_MORE = By.xpath("	//*[text()='更多>>']");
 	
-
-
+	/**公共货源和公共车源2大部分的定位:使用findbyelements进行取值，第一个是车源，第二个是货源*/
+	public static final By HP_ARERA_GOODSANDCARS = By.cssSelector("div.index-infolist-content");
+	/**公共车源中的第二行信息：驾驶证车辆信息等*/
+	public static final By HP_CARS_INFO2= By.className("index-infobox-row2");
+	/**返回顶部*/
+	public static final By HP_BUTTON_BACK = By.className("back-top");
 }
