@@ -64,6 +64,11 @@ public class HomePageHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 
 	}
+	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
+	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator,int index) {
+		seleniumUtil.click(seleniumUtil.findElementsBy(elementLocator).get(index));
+
+	}
 
 	/** 从首页进入指定的页面-根据元素定位来确定什么页面 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By bys, By by, int index) {
