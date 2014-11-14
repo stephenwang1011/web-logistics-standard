@@ -4,6 +4,12 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.util.JdbcUtil;
 
+/**
+ * 
+ * @author xy-incito-wk
+ * @Description 清空数据库中该用户的全部个人信息
+ *
+ */
 public class AddUserInfoPage_034_JdbcUpdateDeleteAddUseInfo_Test extends JdbcUtil {
 	@Test
 	public void jdbcUpdate() {
