@@ -11,7 +11,7 @@ import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 
 /**
- * @author xy-incito-wy
+ * @author xy-incito-wk
  * @Description 注册失败：用户名和密码,确认密码都不填写
  * */
 public class RegisterPage_002_Fail_All_Empty_Test extends BaseParpare {

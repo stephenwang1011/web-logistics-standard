@@ -9,7 +9,7 @@ import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 
 /**
- * @author xy-incito-wy
+ * @author xy-incito-wk
  * @Description 注册页面上的文本检查
  * 
  * */
