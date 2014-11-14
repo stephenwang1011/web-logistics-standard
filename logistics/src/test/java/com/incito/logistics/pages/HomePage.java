@@ -18,7 +18,7 @@ public class HomePage {
 	/** tab找车源 */
 	public static final By HP_LINK_FINDCARS = By.linkText("找车源");
 	/** tab找货源 */
-	public static final By HP_LINK_FINDGOODS = By.id("link_standard_goods");
+	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
 	/** tab我的订单 */
 	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
 	/** 我的货源 */
@@ -40,6 +40,8 @@ public class HomePage {
 	public static final By HP_INPUT_TOCITY = By.id("targetcity");
 	/** 首页上的《找车源》上的查询按钮 */
 	public static final By HP_BUTTON_SEARCH2 = By.id("Fcar");
+	/** 首页上的《找货源》上的查询按钮 */
+	public static final By HP_BUTTON_SEARCH3 = By.id("Fgoods");
 	/** 登陆成功之后 用户名 区域 */
 	public static final By HP_TEXT_USERINFO = By.cssSelector("a.dropdown-toggle");
 	/** 左上角的商标文字 */
