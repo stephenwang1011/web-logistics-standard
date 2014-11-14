@@ -13,7 +13,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wk
- * @Description 测试用例：我的货源界面检查
+ * @Description 测试用例：查找货源界面检查
  * */
 public class FindGoodsPagePublicGoods_001_UITestCheck_Test extends BaseParpare {
 	@Test
