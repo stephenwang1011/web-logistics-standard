@@ -21,7 +21,6 @@ public class RegisterPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_INPUT_REPASSWD);
 		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_BUTTON_REGISTER);
 		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_BUTTON_BACK);
-
 	}
 
 	/** 检查注册页面上的文本 */
