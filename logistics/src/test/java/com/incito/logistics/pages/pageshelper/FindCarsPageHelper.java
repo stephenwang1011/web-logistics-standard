@@ -7,8 +7,8 @@ import org.testng.Assert;
 import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.util.SeleniumUtil;
 
-public class FindCarsPagerHelper {
-	public static Logger logger = Logger.getLogger(FindCarsPagerHelper.class.getName());
+public class FindCarsPageHelper {
+	public static Logger logger = Logger.getLogger(FindCarsPageHelper.class.getName());
 
 	// 页面上某个重要元素显示出来
 	public static void waitFindGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
