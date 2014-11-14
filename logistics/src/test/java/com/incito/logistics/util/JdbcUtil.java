@@ -100,7 +100,7 @@ public class JdbcUtil {
 			// 删除数据的sql语句
 			statement = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象，st属局部变量
 			int count = statement.executeUpdate(sql);// 执行sql删除语句，返回删除数据的数量
-			System.out.println("staff表中删除 " + count + " 条数据\n"); // 输出删除操作的处理结果
+			System.out.println("agent表中删除了【 " + count + " 】条数据。"); // 输出删除操作的处理结果
 			conn.close(); // 关闭数据库连接
 			logger.info("jdbc删除数据结束");
 		} catch (SQLException e) {
