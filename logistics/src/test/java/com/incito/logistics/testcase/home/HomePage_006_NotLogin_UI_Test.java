@@ -17,7 +17,7 @@ public class HomePage_006_NotLogin_UI_Test extends BaseParpare {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.checkHomePageText(seleniumUtil);
-		HomePageHelper.checkUI(seleniumUtil);
+//		HomePageHelper.checkUI(seleniumUtil);
 
 	}
 

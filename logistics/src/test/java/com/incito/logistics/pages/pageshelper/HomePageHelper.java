@@ -2,7 +2,6 @@ package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.sikuli.script.Screen;
 
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -81,23 +80,23 @@ public class HomePageHelper {
 	}
 	
 	/**检查首页的相关UI界面*/
-	public static void checkUI(SeleniumUtil seleniumUtil){
-		Screen  s = new Screen();
-		String screenWidth = String.valueOf(SeleniumUtil.getScreenWidth());
-		logger.info("当前屏幕的宽度是："+screenWidth);
-		if(screenWidth.equals("1366.0")){
-		logger.info("开始检查首页的UI");
-		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/logo.png");
-		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/tabs.png");
-		logger.info("检查首页的UI完成");
-		}
-		if(screenWidth.equals("1024.0")){
-		logger.info("开始检查首页的UI");
-		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/logo.png");
-		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/tabs.png");
-		logger.info("检查首页的UI完成");
-		}
-	}
+//	public static void checkUI(SeleniumUtil seleniumUtil){
+//		Screen  s = new Screen();
+//		String screenWidth = String.valueOf(SeleniumUtil.getScreenWidth());
+//		logger.info("当前屏幕的宽度是："+screenWidth);
+//		if(screenWidth.equals("1366.0")){
+//		logger.info("开始检查首页的UI");
+//		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/logo.png");
+//		seleniumUtil.isImgExist(s, "/res/img/home/1366_768/tabs.png");
+//		logger.info("检查首页的UI完成");
+//		}
+//		if(screenWidth.equals("1024.0")){
+//		logger.info("开始检查首页的UI");
+//		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/logo.png");
+//		seleniumUtil.isImgExist(s, "/res/img/home/1024_768/tabs.png");
+//		logger.info("检查首页的UI完成");
+//		}
+//	}
 
 	/**未登录的情况下，检查车源中的驾驶证信息*/
 	public static void checkLicenseInNotLoginStatus(SeleniumUtil seleniumUtil){
