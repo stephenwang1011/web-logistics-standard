@@ -117,8 +117,41 @@ public class HomePageHelper {
 			backToTopCheck(seleniumUtil, timeOut);
 			
 		}
-		
-		
+	
 	}
+	/**首页快速查找车源，订单和货源的方法 整合*/
+	public static void typeQuickSearchInfo(SeleniumUtil seleniumUtil,By quickSearchOptions,String  ...quickSearchInfos){
+		
+		if(seleniumUtil.findElementsBy(quickSearchOptions).get(1).getText().equals("找车源")){
+			if(quickSearchInfos[0]!=""){
+			String jsFrom = "document.getElementsByName('carcity')[0].setAttribute('value','" + quickSearchInfos[0].toString() + "');";
+			seleniumUtil.executeJS(jsFrom);
+			}
+			if(quickSearchInfos[1]!=""){
+			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
+			seleniumUtil.executeJS(jsTo);
+			}
+		}
+		
+		else	if(seleniumUtil.findElementsBy(quickSearchOptions).get(1).getText().equals("找货源")){
+			if(quickSearchInfos[0]!=""){
+			String jsFrom = "document.getElementsByName('localcity')[0].setAttribute('value','" + quickSearchInfos[0].toString() + "');";
+			seleniumUtil.executeJS(jsFrom);
+			}
+			if(quickSearchInfos[1]!=""){
+			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
+			seleniumUtil.executeJS(jsTo);
+			}
+		}else{
+			if(quickSearchInfos[2]!=""){
+				seleniumUtil.type(seleniumUtil.findElementBy(HomePage.HP_INPUT_ORDERNO), quickSearchInfos[2].toString());
+				
+			}
+			
+		}
+		
+		}
+		
+	
 	
 }
