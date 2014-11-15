@@ -34,6 +34,8 @@ public class HomePage {
 	public static final By HP_INPUT_ORDERNO = By.id("orderno");
 	/** 首页上的《物流跟踪》上的查询按钮 */
 	public static final By HP_BUTTON_SEARCH1 = By.xpath("//*[@id='findOrderForm']/div[2]/button");
+	/** 首页上的《物流跟踪》tab */
+	public static final By HP_TABS_TRACK = By.linkText("物流跟踪");
 	/** 首页上的《找车源》上的出发地 */
 	public static final By HP_INPUT_FROMCITY = By.id("carcity");
 	/** 首页上的《找车源》上的出发地 */
