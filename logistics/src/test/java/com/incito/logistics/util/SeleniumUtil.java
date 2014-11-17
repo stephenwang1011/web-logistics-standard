@@ -139,14 +139,14 @@ public class SeleniumUtil {
 	 * 获得元素的文本
 	 * */
 	public String getText(By elementLocator) {
-		return driver.findElement(elementLocator).getText();
+		return driver.findElement(elementLocator).getText().trim();
 	}
 	
 	/**
 	 * 获得元素 属性的文本
 	 * */
 	public String getAttributeText(By elementLocator,String attribute) {
-		return driver.findElement(elementLocator).getAttribute(attribute);
+		return driver.findElement(elementLocator).getAttribute(attribute).trim();
 	}
 
 	/**
