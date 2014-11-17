@@ -43,10 +43,13 @@ public class FindGoodsPage {
 	//********以下元素是搜索之后的结果*******************************************
 	/** 搜索之后的第一排信息（起始地到目的地） */
 	public static final By FGP_DISPLAY_SEARCH = By.className("goods-infobox");
-	/** 搜索之后,地址下方的第二排信息*/
+	/** 搜索之后,搜索得到货源信息*/
 	public static final By FGP_SECOND_INFO = By.xpath("//*[@class='goods-infobox']");
 	/** 搜索之后,地址下方的第二排车辆长度信息*/
 	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
+	/** 排序之后,默认隐藏信息*/
+	public static final By FGP_HIDE_INFO = By.cssSelector("div.goods-detail-info");
+	
 	/** 搜索无结果提示语 */
 	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
 }

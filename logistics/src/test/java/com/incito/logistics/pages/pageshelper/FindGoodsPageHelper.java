@@ -1,5 +1,8 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -247,7 +250,7 @@ public class FindGoodsPageHelper {
 			String[] secondArray = second.split("，");
 			@SuppressWarnings("unused")
 			Boolean flag = false;
-			
+
 			if (secondInfos[0].equals("重量")) {
 				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("吨", ""));// 取得每个货源的重量数
 				if (secondInfos[1].equals("") && secondInfos[2] != "") {
@@ -271,17 +274,17 @@ public class FindGoodsPageHelper {
 					}
 					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，大于等于条件搜索的【" + temp + "】吨");
 				}
-				
+
 				if (secondInfos[1] != "" && secondInfos[2] != "") {
 					Double temp1 = Double.parseDouble(secondInfos[1]);
 					Double temp2 = Double.parseDouble(secondInfos[2]);
 					try {
-						Assert.assertTrue(temp1<=goodsWorV && goodsWorV<=temp2);
+						Assert.assertTrue(temp1 <= goodsWorV && goodsWorV <= temp2);
 					} catch (AssertionError e) {
-						logger.error("发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
-						Assert.fail("在该页面中发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
+						logger.error("发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~" + temp2 + "】吨货源信息。");
+						Assert.fail("在该页面中发现货物重量为：【" + goodsWorV + "】吨，不在搜索条件重量为：【" + temp1 + "~" + temp2 + "】吨货源信息。");
 					}
-					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，在搜索条件重量为：【" + temp1 + "~"+temp2+"】吨货源信息。");
+					logger.info("您的搜索条件为“重量”，搜索结果的第【" + (i + 1) + "】条货源信息，重量为：【" + goodsWorV + "】吨，在搜索条件重量为：【" + temp1 + "~" + temp2 + "】吨货源信息。");
 				}
 			}
 
@@ -308,21 +311,20 @@ public class FindGoodsPageHelper {
 					}
 					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，大于等于条件搜索的【" + temp + "】方");
 				}
-				
+
 				if (secondInfos[1] != "" && secondInfos[2] != "") {
 					Double temp1 = Double.parseDouble(secondInfos[1]);
 					Double temp2 = Double.parseDouble(secondInfos[2]);
 					try {
-						Assert.assertTrue(temp1<=goodsWorV && goodsWorV<=temp2);
+						Assert.assertTrue(temp1 <= goodsWorV && goodsWorV <= temp2);
 					} catch (AssertionError e) {
-						logger.error("发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
-						Assert.fail("在该页面中发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
+						logger.error("发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~" + temp2 + "】方货源信息。");
+						Assert.fail("在该页面中发现货物体积为：【" + goodsWorV + "】方，不在搜索条件体积为：【" + temp1 + "~" + temp2 + "】方货源信息。");
 					}
-					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，在搜索条件体积为：【" + temp1 + "~"+temp2+"】方货源信息。");
+					logger.info("您的搜索条件为“体积”，搜索结果的第【" + (i + 1) + "】条货源信息，体积为：【" + goodsWorV + "】方，在搜索条件体积为：【" + temp1 + "~" + temp2 + "】方货源信息。");
 				}
 			}
 		}
-
 	}
 
 	/** 检查搜索结果是否符合车长 */
@@ -353,4 +355,34 @@ public class FindGoodsPageHelper {
 		logger.info("Check checkFindGoodsPrompt_CarLong page text completed");
 	}
 
+	// @SuppressWarnings("null")
+	public static void checkGoodsSendDate(SeleniumUtil seleniumUtil, By noGoodsInfo, By hideGoodsInfo) {
+		DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		int items = seleniumUtil.findElementsBy(hideGoodsInfo).size(); // 这个items指的是查询出来有多少条货源
+		String[] temp = new String[items];
+		if (seleniumUtil.findElementsBy(noGoodsInfo).get(0).getText().equals("没有搜索到相应的数据")) {
+			logger.warn("No data found with this filters!");
+			return;
+		}
+
+		for (int i = 0; i < items; i++) {
+			seleniumUtil.click(seleniumUtil.findElementsBy(noGoodsInfo).get(i));
+			String header = seleniumUtil.findElementBy(By.xpath("//div[2]/div[3]/div[2]")).getText();
+			// 取得发布时间的字符串
+			header = header.trim().substring(header.indexOf("：") + 1, header.length());
+			temp[i] = header;
+		}
+
+		for (int i = 0; i < items; i++) {
+			try {
+				Assert.assertTrue(formater.parse(temp[i]).getTime() >= formater.parse(temp[i + 1]).getTime());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (AssertionError e) {
+				logger.error("【默认排序】之后的发布时间，第【" + i + 1 + "】个货源的发布时间 ：" + temp[i] + " < 第【" + i + 2 + "】个货源的发布时间：" + temp[i + 1]);
+				Assert.fail("【默认排序】之后的发布时间，第【" + i + 1 + "】个货源的发布时间 ：" + temp[i] + " < 第【" + i + 2 + "】个货源的发布时间：" + temp[i + 1]);
+			}
+			logger.info("【默认排序】之后的发布时间，第【" + (i + 1) + "】个货源的发布时间 ：" + temp[i]);
+		}
+	}
 }
