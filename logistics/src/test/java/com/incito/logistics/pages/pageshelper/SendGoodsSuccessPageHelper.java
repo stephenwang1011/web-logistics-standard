@@ -29,7 +29,7 @@ public class SendGoodsSuccessPageHelper {
 		logger.info("Checking sendgoods page text completed");
 	}
 	
-	/**从发布货源失败页面上点击相应的按钮进入相应的页面*/
+	/**从发布货源成功页面上点击相应的按钮进入相应的页面*/
 	public static void enterPage(SeleniumUtil seleniumUtil,By elementLocator,int timeOut){
 		seleniumUtil.waitForElementToLoad(timeOut, elementLocator);
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
