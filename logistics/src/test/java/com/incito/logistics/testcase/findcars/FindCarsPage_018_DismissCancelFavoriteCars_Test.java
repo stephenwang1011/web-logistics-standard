@@ -19,9 +19,9 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：收藏的车源，在我的车源列表中取消收藏车源，不会弹出确认取消收藏的提示框
+ * @Description 测试用例：收藏的车源，在我的车源列表中取消收藏车源，会弹出确认取消收藏的提示框，然后在此提示框上点击取消按钮
  * */
-public class FindCarsPage_018_CancelFavoriteCars_Test extends BaseParpare {
+public class FindCarsPage_018_DismissCancelFavoriteCars_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
 	public void cancelFavoriteCars(ITestContext context, Map<String, String> data) {
@@ -36,10 +36,12 @@ public class FindCarsPage_018_CancelFavoriteCars_Test extends BaseParpare {
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
+		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
 		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
 		FindCarsPageHelper.checkFindCarsPageText(timeOut, seleniumUtil);
-		FindCarsPageHelper.cancelFavCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_CFAV, data.get("LICENSE"));
+		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
+		FindCarsPageHelper.dismissCancelCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_CFAV, data.get("LICENSE"));
 
 
 	}
