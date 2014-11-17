@@ -1,12 +1,13 @@
 package com.incito.logistics.pages.pageshelper;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.MyGoodsPage;
@@ -35,7 +36,7 @@ public class MyGoodsPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNAME);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_SELECT_GOODSUNIT);
 
-		logger.info("Check home my goods page elements completed");
+		logger.info("Check my goods page elements completed");
 
 	}
 
@@ -290,6 +291,22 @@ public class MyGoodsPageHelper {
 
 		}
 
+	}
+	/***编辑指定的货源*/
+	public static void editTargetGoods(SeleniumUtil seleniumUtil,String instration){
+		logger.info("Start editting goods");
+		List<WebElement> instrations = seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION);
+		int items = instrations.size(); 
+		for (int i = 0; i < items; i++) {
+			
+			if(instrations.get(i).getText().trim().equals(instration)){
+				logger.info("Find the "+instration+ " in "+(i+1)+" th goods,no longer to look for");
+			seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_BUTTON_EDIT).get(i));
+			break;	
+			}
+	
+		}
+		
 	}
 
 }

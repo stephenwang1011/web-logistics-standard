@@ -46,7 +46,13 @@ public class MyGoodsPage {
 	public static final By MGP_SPAN_ADDRESS = By.className("span-addr");
 	/**每条货源上的顶部信息：货源剩余时间和发布时间等*/
 	public static final By MGP_DIV_GOODSHEADER = By.className("mygoods-header");
+	/**每条货源的  货源说明部分*/
+	public static final By MGP_TEXT_INSTRUCTION = By.xpath("//*[@class='mygoods-basic']/p[3]");
 	
+	/**货源上的编辑按钮*/
+	public static final By MGP_BUTTON_EDIT = By.xpath("//*[text()='编辑']");
+	/**货源上的删除按钮*/
+	public static final By MGP_BUTTON_DELETE = By.xpath("//*[text()='删除']");
 	
 	
 	

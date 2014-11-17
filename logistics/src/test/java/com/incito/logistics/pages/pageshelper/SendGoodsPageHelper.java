@@ -3,6 +3,7 @@ package com.incito.logistics.pages.pageshelper;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
 import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -154,8 +155,30 @@ public class SendGoodsPageHelper {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_MEMOREMAIN).getText(),String.valueOf(ch.length-i-1));
 	
 		}
-		
-		
+	
+	}
+	
+	/**检查输入框的输入信息-编辑的时候会用到*/
+	public static void checkInput(SeleniumUtil seleniumUtil,By goodsType, By goodsDate,String ...inputs){
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSORIGINALCITY, "value"), inputs[0]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSRECEIPTCITY, "value"), inputs[1]);
+		Assert.assertTrue(seleniumUtil.findElementBy(goodsType).isSelected());
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSNAME, "value"), inputs[2]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSDETAILS, "value"), inputs[3]);
+		if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_DEVICEGOODS).isSelected() || seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_HEAVYGOODS).isSelected()) {
+			seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_WEIGHT, "value"), inputs[4]);
+		} else if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_LIGHTGOODS).isSelected()) {
+			seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_VOLUME, "value"), inputs[4]);
+		}
+
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_COUNT, "value"), inputs[5]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_CARLENGTH, "value"), inputs[6]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_CARTYPE, "value"), inputs[7]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_INFOFARE, "value"), inputs[8]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_FARE, "value"), inputs[9]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_DECLAREVALUE, "value"), inputs[10]);
+		Assert.assertTrue(seleniumUtil.findElementBy(goodsDate).isSelected());
+		seleniumUtil.isTextCorrect(seleniumUtil.getText(SendGoodsPage.SGP_INPUT_INSTRUCTION),inputs[11]);
 		
 	}
 

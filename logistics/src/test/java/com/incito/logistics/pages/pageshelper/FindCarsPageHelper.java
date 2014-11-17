@@ -1,7 +1,9 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.UnhandledAlertException;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.FindCarsPage;
@@ -353,7 +355,7 @@ public class FindCarsPageHelper {
 		}
 			
 		}
-		/**取消收藏操作*/
+		/**取消收藏操作 */
 		public static void cancelFavCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
 			logger.info("Start cancling favorite cars");
 			seleniumUtil.pause(500);
@@ -371,10 +373,44 @@ public class FindCarsPageHelper {
 					if(autualLicense.equals(license)){
 						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 取消收藏按钮
 						if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getAttribute("class").equals("active")){
-							seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+							Alert alert = seleniumUtil.switchToPromptedAlertAfterWait(2000);
+							alert	.accept();
 						}
 						seleniumUtil.pause(500);
 						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "收藏");
+						break;
+					}
+				}
+				
+			}
+			logger.info("Favoriting cars complete");
+		}
+		
+		/**取消收藏操作针对有弹出操作： 弹出2次弹窗 上点击取消按钮*/
+		public static void dismissCancelCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
+			logger.info("Start cancling favorite cars");
+			seleniumUtil.pause(500);
+			try{	
+			if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}}catch(Exception e){
+				logger.info("Found the cars info");
+				int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+				for (int i = 0; i < size; i++) {
+					String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+					String secondInfos[] = secondInfo.split("，");
+					String autualLicense = secondInfos[0].trim();
+					if(autualLicense.equals(license)){
+						try{
+						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 取消收藏按钮
+						}catch(UnhandledAlertException  uae){
+							seleniumUtil.pause(800);
+							seleniumUtil.switchToPromptedAlertAfterWait(1000).dismiss();
+
+						}
+						seleniumUtil.pause(5000);
+						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "取消收藏");
 						break;
 					}
 				}
