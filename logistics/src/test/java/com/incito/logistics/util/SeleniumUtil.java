@@ -134,6 +134,20 @@ public class SeleniumUtil {
 	public String getTitle() {
 		return driver.getTitle();
 	}
+	
+	/**
+	 * 获得元素的文本
+	 * */
+	public String getText(By elementLocator) {
+		return driver.findElement(elementLocator).getText();
+	}
+	
+	/**
+	 * 获得元素 属性的文本
+	 * */
+	public String getAttributeText(By elementLocator,String attribute) {
+		return driver.findElement(elementLocator).getAttribute(attribute);
+	}
 
 	/**
 	 * 包装清除操作
@@ -241,7 +255,7 @@ public class SeleniumUtil {
 	 * 等待alert出现
 	 * */
 	public Alert switchToPromptedAlertAfterWait(long waitMillisecondsForAlert) throws NoAlertPresentException {
-		final int ONE_ROUND_WAIT = 100;
+		final int ONE_ROUND_WAIT = 200;
 		NoAlertPresentException lastException = null;
 
 		long endTime = System.currentTimeMillis() + waitMillisecondsForAlert;
