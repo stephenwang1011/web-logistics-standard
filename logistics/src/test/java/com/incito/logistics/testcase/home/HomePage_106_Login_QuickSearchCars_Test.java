@@ -39,6 +39,7 @@ public class HomePage_106_Login_QuickSearchCars_Test extends BaseParpare {
 		
 		HomePageHelper.typeQuickSearchInfo(seleniumUtil, HomePage.HP_LINK_FINDCARS, data.get("FROM"),data.get("TO"),data.get("NO"));
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_SEARCH2);
+		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
 		FindCarsPageHelper.checkTargetCity(seleniumUtil, data.get("TO"));
 
