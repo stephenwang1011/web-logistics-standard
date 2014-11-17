@@ -160,9 +160,16 @@ public class SendGoodsPageHelper {
 	
 	/**检查输入框的输入信息-编辑的时候会用到*/
 	public static void checkInput(SeleniumUtil seleniumUtil,By goodsType, By goodsDate,String ...inputs){
+		logger.info("Checking the goods infos when try to edit it");
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSORIGINALCITY, "value"), inputs[0]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSRECEIPTCITY, "value"), inputs[1]);
+		try{
 		Assert.assertTrue(seleniumUtil.findElementBy(goodsType).isSelected());
+		}catch(AssertionError ae){
+			logger.error("["+seleniumUtil.getLocatorByElement(seleniumUtil.findElementBy(goodsType), ">")+"] : is not selected when edit this goods infos");
+			Assert.fail("["+seleniumUtil.getLocatorByElement(seleniumUtil.findElementBy(goodsType), ">")+"] : is not selected when edit this goods infos");
+			
+		}
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSNAME, "value"), inputs[2]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_GOODSDETAILS, "value"), inputs[3]);
 		if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_DEVICEGOODS).isSelected() || seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_HEAVYGOODS).isSelected()) {
@@ -177,8 +184,15 @@ public class SendGoodsPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_INFOFARE, "value"), inputs[8]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_FARE, "value"), inputs[9]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_DECLAREVALUE, "value"), inputs[10]);
+		try{
 		Assert.assertTrue(seleniumUtil.findElementBy(goodsDate).isSelected());
+		}catch(AssertionError ae){
+			logger.error("["+seleniumUtil.getLocatorByElement(seleniumUtil.findElementBy(goodsDate), ">")+"] : is not selected when edit this goods infos");
+			Assert.fail("["+seleniumUtil.getLocatorByElement(seleniumUtil.findElementBy(goodsDate), ">")+"] : is not selected when edit this goods infos");	
+
+		}
 		seleniumUtil.isTextCorrect(seleniumUtil.getText(SendGoodsPage.SGP_INPUT_INSTRUCTION),inputs[11]);
+		logger.info("All infos for this goods are correct when try to edit it");
 		
 	}
 
