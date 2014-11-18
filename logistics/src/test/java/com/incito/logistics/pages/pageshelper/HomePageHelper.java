@@ -144,9 +144,9 @@ public class HomePageHelper {
 			break;
 			
 		case "货物跟踪":
-				if(quickSearchInfos[2]!=""){
+				
 					seleniumUtil.type(seleniumUtil.findElementBy(HomePage.HP_INPUT_ORDERNO), quickSearchInfos[2].toString());
-				}
+	
 				break;
 				
 			default:
