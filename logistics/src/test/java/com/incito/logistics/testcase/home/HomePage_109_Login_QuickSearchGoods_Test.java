@@ -37,8 +37,7 @@ public class HomePage_109_Login_QuickSearchGoods_Test extends BaseParpare {
 		LoginPageHelper.login(seleniumUtil, username, password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS, 1);
-		
-		HomePageHelper.typeQuickSearchInfo(seleniumUtil, HomePage.HP_LINK_FINDGOODS, data.get("GOODSFROM"), data.get("GOODSTO"), data.get("NO"));
+		HomePageHelper.typeQuickSearchInfo(seleniumUtil, data.get("GOODSFROM"),data.get("GOODSTO"),data.get("NO"),data.get("QUICKSEARCHTYPE"));
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_SEARCH3);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 		FindGoodsPageHelper.checkGoodsAddress(seleniumUtil, FindGoodsPage.FGP_DISPLAY_SEARCH, 
