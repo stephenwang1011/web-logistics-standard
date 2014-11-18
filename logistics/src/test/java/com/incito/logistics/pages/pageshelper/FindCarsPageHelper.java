@@ -1,9 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.UnhandledAlertException;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.FindCarsPage;
@@ -61,396 +59,406 @@ public class FindCarsPageHelper {
 			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[1].toString() + "');";
 			seleniumUtil.executeJS(jsTo);
 		}
-		//车长 -开始
+		// 车长 -开始
 		if (info[2].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTCARLEN),info[2].toString() );
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTCARLEN), info[2].toString());
 		}
-		//车长 - 结束
+		// 车长 - 结束
 		if (info[3].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDCARLEN),info[3].toString() );
+			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDCARLEN), info[3].toString());
 		}
-		
-		// 点击高级搜索
-		if(info[4].toString()!=""||info[5].toString()!=""||info[6].toString()!=""||info[7].toString()!=""||info[8].toString()!=""){
-		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
 
-		//车型
-		if (info[4].toString() != "") {
-			String carType = "document.getElementsByName('cartype')[0].setAttribute('value','" + info[4].toString() + "');";
-			seleniumUtil.executeJS(carType);
-		}
-		//载重 - 开始
-		if (info[5].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTWEIGHT),info[5].toString() );
-		}
-		//载重 - 结束
-		if (info[6].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDWEIGHT),info[6].toString() );
-		}
-		//容积 - 开始
-		if (info[7].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTVOLUME),info[7].toString() );
-		}
-		//容积 - 开始
-		if (info[8].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDVOLUME),info[8].toString() );
-		}
+		// 点击高级搜索
+		if (info[4].toString() != "" || info[5].toString() != "" || info[6].toString() != "" || info[7].toString() != "" || info[8].toString() != "") {
+			seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_ADVSEARCH));
+
+			// 车型
+			if (info[4].toString() != "") {
+				String carType = "document.getElementsByName('cartype')[0].setAttribute('value','" + info[4].toString() + "');";
+				seleniumUtil.executeJS(carType);
+			}
+			// 载重 - 开始
+			if (info[5].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTWEIGHT), info[5].toString());
+			}
+			// 载重 - 结束
+			if (info[6].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDWEIGHT), info[6].toString());
+			}
+			// 容积 - 开始
+			if (info[7].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_STARTVOLUME), info[7].toString());
+			}
+			// 容积 - 开始
+			if (info[8].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(FindCarsPage.FCP_INPUT_ENDVOLUME), info[8].toString());
+			}
 		}
 		// 点击搜索
 		seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_SEARCH));
 	}
-	
-	/**检查查找出来的车源的  车辆当前城市也就是出发地*/
-	public static void checkCurrentCarLocation(SeleniumUtil seleniumUtil,String carFrom){
+
+	/** 检查查找出来的车源的 车辆当前城市也就是出发地 */
+	public static void checkCurrentCarLocation(SeleniumUtil seleniumUtil, String carFrom) {
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_SPAN_LOCATOR).size();
 			for (int i = 0; i < size; i++) {
 				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_SPAN_LOCATOR).get(i).getText().trim(), carFrom);
 			}
-			
+
 		}
 
 	}
-	
-	/**检测车源中的车长是不是符合条件*/
-	public static void  checkCarLength(SeleniumUtil seleniumUtil,String ...lenInfos){
-		
+
+	/** 检测车源中的车长是不是符合条件 */
+	public static void checkCarLength(SeleniumUtil seleniumUtil, String... lenInfos) {
+
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-	
+
 			for (int i = 0; i < size; i++) {
-				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
-				double autualCarLen = Double.parseDouble(secondInfos[2].substring(3, secondInfos[2].length()-1)); //取得车长
-				//开始车长空 结束车长不空
-				if(lenInfos[0].equals("")&&lenInfos[1]!=""){
+				double autualCarLen = Double.parseDouble(secondInfos[2].substring(3, secondInfos[2].length() - 1)); // 取得车长
+				// 开始车长空 结束车长不空
+				if (lenInfos[0].equals("") && lenInfos[1] != "") {
 					try {
 						Assert.assertTrue(autualCarLen <= Double.parseDouble(lenInfos[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car length in web page is [" + autualCarLen + "] and is bigger than input length num [" + lenInfos[1] + "] m");
 						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is bigger than input length num [" + lenInfos[1] + "] m");
 					}
-					logger.info("The car length of the " + (i + 1) + "th goods info is [" + autualCarLen + "] m, smaller than "+lenInfos[1]+ " m - Passed");
+					logger.info("The car length of the " + (i + 1) + "th goods info is [" + autualCarLen + "] m, smaller than " + lenInfos[1] + " m - Passed");
 				}
-				//开始车长不为空 结束车长空
-				if(lenInfos[0]!=""&&lenInfos[1].equals("")){
+				// 开始车长不为空 结束车长空
+				if (lenInfos[0] != "" && lenInfos[1].equals("")) {
 					try {
 						Assert.assertTrue(autualCarLen >= Double.parseDouble(lenInfos[0]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car length in web page is [" + autualCarLen + "] and is smaller than input lengthnum [" + lenInfos[0] + "] m");
 						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is smaller than input length num [" + lenInfos[0] + "] m");
 					}
-					logger.info("The car length of the " + (i + 1) + "th cars info is [" + autualCarLen + "] m,bigger than "+lenInfos[0] +" m - Passed");
+					logger.info("The car length of the " + (i + 1) + "th cars info is [" + autualCarLen + "] m,bigger than " + lenInfos[0] + " m - Passed");
 				}
-				//都不为空
-				if(lenInfos[0]!=""&&lenInfos[1]!=""){
+				// 都不为空
+				if (lenInfos[0] != "" && lenInfos[1] != "") {
 					try {
 						Assert.assertTrue(autualCarLen >= Double.parseDouble(lenInfos[0]) && autualCarLen <= Double.parseDouble(lenInfos[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car length in web page is [" + autualCarLen + "] and is not in the  input car length num [" + lenInfos[0] + "] and [" + lenInfos[1] + "] ");
 						Assert.fail("Found the car length in web page is [" + autualCarLen + "] and is not in the  input car length num [" + lenInfos[0] + "] and [" + lenInfos[1] + "] ");
 					}
-					logger.info("The car length of the " + (i + 1) + "th cars info is [" + autualCarLen + "] m ,between "+lenInfos[0] +"and "+lenInfos[1]+" m - Passed");
+					logger.info("The car length of the " + (i + 1) + "th cars info is [" + autualCarLen + "] m ,between " + lenInfos[0] + "and " + lenInfos[1] + " m - Passed");
 				}
-		
+
 			}
-			
+
 		}
-		
+
 	}
-	
-	/**检查车型*/
-	public static void checkCarType(SeleniumUtil seleniumUtil,String ...carTypes){
+
+	/** 检查车型 */
+	public static void checkCarType(SeleniumUtil seleniumUtil, String... carTypes) {
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-	
+
 			for (int i = 0; i < size; i++) {
-				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
 				String acutalCarType = secondInfos[1];
-				seleniumUtil.isContains(carTypes[0],acutalCarType);
-		
-		
+				seleniumUtil.isContains(carTypes[0], acutalCarType);
+
 			}
-			
+
 		}
-		
-		
+
 	}
-	
-	/**检查车源中的吨位*/
-	public static void checkCarWeight(SeleniumUtil seleniumUtil,String ...carWeights){
+
+	/** 检查车源中的吨位 */
+	public static void checkCarWeight(SeleniumUtil seleniumUtil, String... carWeights) {
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-	
+
 			for (int i = 0; i < size; i++) {
-				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
-				double autualCarWeight = Double.parseDouble(secondInfos[3].substring(3, secondInfos[3].length()-1)); //取得车重
-				//开始车长空 结束车长不空
-				if(carWeights[0].equals("")&&carWeights[1]!=""){
+				double autualCarWeight = Double.parseDouble(secondInfos[3].substring(3, secondInfos[3].length() - 1)); // 取得车重
+				// 开始车长空 结束车长不空
+				if (carWeights[0].equals("") && carWeights[1] != "") {
 					try {
 						Assert.assertTrue(autualCarWeight <= Double.parseDouble(carWeights[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is bigger than input weight num [" + carWeights[1] + "] T");
 						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is bigger than input weight num [" + carWeights[1] + "] T");
 					}
-					logger.info("The car weight of the " + (i + 1) + "th goods info is [" + autualCarWeight + "] T, smaller than "+carWeights[1]+ " T - Passed");
+					logger.info("The car weight of the " + (i + 1) + "th goods info is [" + autualCarWeight + "] T, smaller than " + carWeights[1] + " T - Passed");
 				}
-				//开始车长不为空 结束车长空
-				if(carWeights[0]!=""&&carWeights[1].equals("")){
+				// 开始车长不为空 结束车长空
+				if (carWeights[0] != "" && carWeights[1].equals("")) {
 					try {
 						Assert.assertTrue(autualCarWeight >= Double.parseDouble(carWeights[0]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is smaller than input weight num [" + carWeights[0] + "] T");
 						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is smaller than input weight num [" + carWeights[0] + "] T");
 					}
-					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T,bigger than "+carWeights[0] +" T - Passed");
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T,bigger than " + carWeights[0] + " T - Passed");
 				}
-				//都不为空
-				if(carWeights[0]!=""&&carWeights[1]!=""){
+				// 都不为空
+				if (carWeights[0] != "" && carWeights[1] != "") {
 					try {
 						Assert.assertTrue(autualCarWeight >= Double.parseDouble(carWeights[0]) && autualCarWeight <= Double.parseDouble(carWeights[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car weight in web page is [" + autualCarWeight + "] and is not in the  input car weight num [" + carWeights[0] + "] and [" + carWeights[1] + "] ");
 						Assert.fail("Found the car weight in web page is [" + autualCarWeight + "] and is not in the  input car weight num [" + carWeights[0] + "] and [" + carWeights[1] + "] ");
 					}
-					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T ,between "+carWeights[0] +"and "+carWeights[1]+" T - Passed");
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarWeight + "] T ,between " + carWeights[0] + "and " + carWeights[1] + " T - Passed");
 				}
-		
+
 			}
-			
+
 		}
-		
+
 	}
-	/**检查体积的方法*/
-	public static void checkCarVolume(SeleniumUtil seleniumUtil,String ...carVolumes){
+
+	/** 检查体积的方法 */
+	public static void checkCarVolume(SeleniumUtil seleniumUtil, String... carVolumes) {
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-	
+
 			for (int i = 0; i < size; i++) {
-				String secondInfo =  seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
-				double autualCarVolume = Double.parseDouble(secondInfos[4].substring(5, secondInfos[4].length()-1)); //取得车容积
-				//开始车长空 结束车长不空
-				if(carVolumes[0].equals("")&&carVolumes[1]!=""){
+				double autualCarVolume = Double.parseDouble(secondInfos[4].substring(5, secondInfos[4].length() - 1)); // 取得车容积
+				// 开始车长空 结束车长不空
+				if (carVolumes[0].equals("") && carVolumes[1] != "") {
 					try {
 						Assert.assertTrue(autualCarVolume <= Double.parseDouble(carVolumes[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is bigger than input volume num [" + carVolumes[1] + "] L");
 						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is bigger than input volume num [" + carVolumes[1] + "] L");
 					}
-					logger.info("The car volume of the " + (i + 1) + "th goods info is [" + autualCarVolume + "] L, smaller than "+carVolumes[1]+ " L - Passed");
+					logger.info("The car volume of the " + (i + 1) + "th goods info is [" + autualCarVolume + "] L, smaller than " + carVolumes[1] + " L - Passed");
 				}
-				//开始车长不为空 结束车长空
-				if(carVolumes[0]!=""&&carVolumes[1].equals("")){
+				// 开始车长不为空 结束车长空
+				if (carVolumes[0] != "" && carVolumes[1].equals("")) {
 					try {
 						Assert.assertTrue(autualCarVolume >= Double.parseDouble(carVolumes[0]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
 						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
 					}
-					logger.info("The car volume of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] T,bigger than "+carVolumes[0] +" L - Passed");
+					logger.info("The car volume of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] T,bigger than " + carVolumes[0] + " L - Passed");
 				}
-				//都不为空
-				if(carVolumes[0]!=""&&carVolumes[1]!=""){
+				// 都不为空
+				if (carVolumes[0] != "" && carVolumes[1] != "") {
 					try {
 						Assert.assertTrue(autualCarVolume >= Double.parseDouble(carVolumes[0]) && autualCarVolume <= Double.parseDouble(carVolumes[1]));
 					} catch (AssertionError e1) {
 						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is not in the  input car volume num [" + carVolumes[0] + "] and [" + carVolumes[1] + "] ");
 						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is not in the  input car volume num [" + carVolumes[0] + "] and [" + carVolumes[1] + "] ");
 					}
-					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] L ,between "+carVolumes[0] +"and "+carVolumes[1]+" L - Passed");
+					logger.info("The car weight of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] L ,between " + carVolumes[0] + "and " + carVolumes[1] + " L - Passed");
 				}
-		
+
 			}
-			
+
 		}
-		
+
 	}
-	/**检查目的地城市*/
-	public static void checkTargetCity(SeleniumUtil seleniumUtil,String ...targetCities){
-		
+
+	/** 检查目的地城市 */
+	public static void checkTargetCity(SeleniumUtil seleniumUtil, String... targetCities) {
+
 		seleniumUtil.pause(800);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO1).size();
 			for (int i = 0; i < size; i++) {
 				String firstInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO1).get(i).getText();
 				String firstInfos[] = firstInfo.split(" ");
 				String actualTargetCity = firstInfos[1];
-				if(actualTargetCity.equals("全国")){
-					logger.info("Current target city is [全国] and contains expect city:"+targetCities[0]+" - OK");
-				}else
-				seleniumUtil.isContains(actualTargetCity,targetCities[0] );
+				if (actualTargetCity.equals("全国")) {
+					logger.info("Current target city is [全国] and contains expect city:" + targetCities[0] + " - OK");
+				} else
+					seleniumUtil.isContains(actualTargetCity, targetCities[0]);
 			}
-			
+
 		}
 	}
-	
-	/**从车源上点击某个按钮触发下一个事件*/
-	public static void enterPage(SeleniumUtil seleniumUtil,By byElement){
+
+	/** 从车源上点击某个按钮触发下一个事件 */
+	public static void enterPage(SeleniumUtil seleniumUtil, By byElement) {
 		seleniumUtil.click(seleniumUtil.findElementBy(byElement));
 	}
 
-	/**根据驾驶证 去收藏车源*/
-	public static void favCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
+	/** 根据驾驶证 去收藏车源 */
+	public static void favCarsByLicense(SeleniumUtil seleniumUtil, By byElement, String license) {
 		logger.info("Start favoriting cars");
 		seleniumUtil.pause(500);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
 			for (int i = 0; i < size; i++) {
 				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
 				String autualLicense = secondInfos[0].trim();
-				if(autualLicense.equals(license)){
-					
-					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 收藏按钮
+				if (autualLicense.equals(license)) {
+
+					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击
+																						// 收藏按钮
 					seleniumUtil.pause(500);
 					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
-					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));	
+					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));
 					break;
 				}
 			}
 			logger.info("Favoriting cars complete");
 		}
-			
-		}
-		/**取消收藏操作 */
-		public static void cancelFavCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
-			logger.info("Start cancling favorite cars");
-			seleniumUtil.pause(500);
-			try{	
-			if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+
+	}
+
+	/** 取消收藏操作 */
+	public static void cancelFavCarsByLicense(SeleniumUtil seleniumUtil, By byElement, String license) {
+		logger.info("Start cancling favorite cars");
+		seleniumUtil.pause(500);
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
 				logger.warn("No datas displayed with thes fitters");
 				return;
-			}}catch(Exception e){
-				logger.info("Found the cars info");
-				int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-				for (int i = 0; i < size; i++) {
-					String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
-					String secondInfos[] = secondInfo.split("，");
-					String autualLicense = secondInfos[0].trim();
-					if(autualLicense.equals(license)){
-						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 取消收藏按钮
-						if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getAttribute("class").equals("active")){
-							Alert alert = seleniumUtil.switchToPromptedAlertAfterWait(2000);
-							alert	.accept();
-						}
-						seleniumUtil.pause(500);
-						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "收藏");
-						break;
-					}
-				}
-				
 			}
-			logger.info("Favoriting cars complete");
+		} catch (Exception e) {
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+			for (int i = 0; i < size; i++) {
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				String autualLicense = secondInfos[0].trim();
+				if (autualLicense.equals(license)) {
+					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮	
+					seleniumUtil.pause(800);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+					try{
+					Assert.assertTrue(autualLicense.equals(license));
+					}catch(AssertionError ae){
+						logger.error("The expect license is not :"+license);
+						Assert.fail("The expect license is not :"+license);
+						
+					}
+					break;
+				}
+			}
+
 		}
-		
-		/**取消收藏操作针对有弹出操作： 弹出2次弹窗 上点击取消按钮*/
-		public static void dismissCancelCarsByLicense(SeleniumUtil seleniumUtil,By byElement,String license){
-			logger.info("Start cancling favorite cars");
-			seleniumUtil.pause(500);
-			try{	
-			if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
+		logger.info("Favoriting cars complete");
+	}
+
+	/** 取消收藏操作针对有弹出操作： 弹出2次弹窗 上点击取消按钮 */
+	public static void dismissCancelCarsByLicense(SeleniumUtil seleniumUtil, By byElement, String license) {
+		logger.info("Start cancling favorite cars");
+		seleniumUtil.pause(500);
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
 				logger.warn("No datas displayed with thes fitters");
 				return;
-			}}catch(Exception e){
-				logger.info("Found the cars info");
-				int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
-				for (int i = 0; i < size; i++) {
-					String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
-					String secondInfos[] = secondInfo.split("，");
-					String autualLicense = secondInfos[0].trim();
-					if(autualLicense.equals(license)){
-						try{
-						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i));	 //点击 取消收藏按钮
-						}catch(UnhandledAlertException  uae){
-							seleniumUtil.pause(800);
-							seleniumUtil.switchToPromptedAlertAfterWait(1000).dismiss();
-
-						}
-						seleniumUtil.pause(5000);
-						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "取消收藏");
-						break;
-					}
-				}
-				
 			}
-			logger.info("Favoriting cars complete");
-		}
+		} catch (Exception e) {
+			logger.info("Found the cars info");
+			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+			for (int i = 0; i < size; i++) {
+				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+				String secondInfos[] = secondInfo.split("，");
+				String autualLicense = secondInfos[0].trim();
+				if (autualLicense.equals(license)) {
+					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击"	 取消收藏"按钮															
+					seleniumUtil.pause(800);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).dismiss();
+					try{
+					Assert.assertTrue(autualLicense.equals(license));
+					}catch(AssertionError ae){
+						logger.error("The expect license is not :"+license);
+						Assert.fail("The expect license is not :"+license);
+						
+					}
+					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
+					break;
+				}
+			}
 
-	
-	/**根据驾驶证号，检查该车源是否被收藏*/
-	public static void isFavCarExistByLicense(SeleniumUtil seleniumUtil,String license){
+		}
+		logger.info("Favoriting cars complete");
+	}
+
+	/** 根据驾驶证号，检查该车源是否被收藏 */
+	public static void isFavCarExistByLicense(SeleniumUtil seleniumUtil, String license) {
 		logger.info("checking  cars is faved or not");
 		seleniumUtil.pause(500);
-		try{	
-		if(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")){
-			logger.warn("No datas displayed with thes fitters");
-			return;
-		}}catch(Exception e){
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("No datas displayed with thes fitters");
+				return;
+			}
+		} catch (Exception e) {
 			logger.info("Found the cars info");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
 			for (int i = 0; i < size; i++) {
 				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
 				String autualLicense = secondInfos[0].trim();
-				if(autualLicense.equals(license)){
+				if (autualLicense.equals(license)) {
 					seleniumUtil.pause(500);
 					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
 					break;
-					
+
 				}
 			}
-			
+
 		}
 		logger.info("check  cars is faved or not complete");
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
