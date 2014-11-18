@@ -463,5 +463,14 @@ public class FindCarsPageHelper {
 		}
 		logger.info("check  cars is faved or not complete");
 	}
+	
+	/**检查快速查询的 输入框文本  目的和出发地*/
+	public  static void  checkCityName(SeleniumUtil seleniumUtil, String ...cites){
+		logger.info("Start checking qucik search for cars cites");
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(FindCarsPage.FCP_INPUT_FROM, "value"), cites[0]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(FindCarsPage.FCP_INPUT_TO, "value"), cites[1]);
+		logger.info("Checking qucik search for cars cites complete");
+		
+	}
 
 }
