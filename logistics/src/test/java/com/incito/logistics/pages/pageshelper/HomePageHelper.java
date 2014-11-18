@@ -119,9 +119,9 @@ public class HomePageHelper {
 	
 	}
 	/**首页快速查找车源，订单和货源的方法 整合*/
-	public static void typeQuickSearchInfo(SeleniumUtil seleniumUtil,By quickSearchOptions,String  ...quickSearchInfos){
-		
-		if(seleniumUtil.findElementsBy(quickSearchOptions).get(1).getText().equals("找车源")){
+	public static void typeQuickSearchInfo(SeleniumUtil seleniumUtil,String  ...quickSearchInfos){
+		switch(quickSearchInfos[3]){
+		case "找车源":
 			if(quickSearchInfos[0]!=""){
 			String jsFrom = "document.getElementsByName('carcity')[0].setAttribute('value','" + quickSearchInfos[0].toString() + "');";
 			seleniumUtil.executeJS(jsFrom);
@@ -130,9 +130,9 @@ public class HomePageHelper {
 			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
 			seleniumUtil.executeJS(jsTo);
 			}
-		}
-		
-		else	if(seleniumUtil.findElementsBy(quickSearchOptions).get(1).getText().equals("找货源")){
+			break;
+			
+		case "找货源": 
 			if(quickSearchInfos[0]!=""){
 			String jsFrom = "document.getElementsByName('localcity')[0].setAttribute('value','" + quickSearchInfos[0].toString() + "');";
 			seleniumUtil.executeJS(jsFrom);
@@ -141,16 +141,20 @@ public class HomePageHelper {
 			String jsTo = "document.getElementsByName('targetcity')[1].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
 			seleniumUtil.executeJS(jsTo);
 			}
-		}else{
-			if(quickSearchInfos[2]!=""){
-				seleniumUtil.type(seleniumUtil.findElementBy(HomePage.HP_INPUT_ORDERNO), quickSearchInfos[2].toString());
-				
-			}
+			break;
 			
-		}
+		case "货物跟踪":
+				if(quickSearchInfos[2]!=""){
+					seleniumUtil.type(seleniumUtil.findElementBy(HomePage.HP_INPUT_ORDERNO), quickSearchInfos[2].toString());
+				}
+				break;
+				
+			default:
+				return;
+			}
 		
 		}
 		
 	
-	
-}
+	}
+
