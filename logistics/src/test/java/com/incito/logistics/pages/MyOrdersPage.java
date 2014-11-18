@@ -21,6 +21,10 @@ public class MyOrdersPage {
 	public static final By MOP_BUTTON_ADSEARCH = By.id("advanced_search_btn");
 	/**我的订单页面 - 导航区*/
 	public static final By MOP_SPAN_TABS = By.cssSelector("div.in-sortbox");
+	/**我的订单页面 高级搜索条件输入框 - 订单号*/
+	public static final By MOP_INPUT_ORDERNO = By.name("orderNo");
+	/**我的订单页面 订单的详情的订单编号*/
+	public static final By MOP_TEXT_ORDERNO = By.className("order-no");
 	
 
 }
