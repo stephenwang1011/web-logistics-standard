@@ -31,9 +31,15 @@ public class MyOrdersPageHelper {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
 		}
 		
-		
 	}
-	
+	/**检查快速搜索的订单*/
+	public static void checkQuickSearchOrder(SeleniumUtil seleniumUtil, String ...qucikSearchInfos){
+			seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(MyOrdersPage.MOP_INPUT_ORDERNO, "value"), qucikSearchInfos[0]);
+			String orderno = seleniumUtil.getText(MyOrdersPage.MOP_TEXT_ORDERNO);
+			String[] s = orderno.split("：");
+			seleniumUtil.isTextCorrect(s[1], qucikSearchInfos[0]);
+
+	}
 	
 	
 	
