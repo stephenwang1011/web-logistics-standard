@@ -32,7 +32,6 @@ public class FindGoodsPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_INPUT_STARTCARLONG);
 		seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_INPUT_ENDTCARLONG);
 		logger.info("Check FindGoods page elements completed");
-
 	}
 
 	/**
@@ -367,9 +366,16 @@ public class FindGoodsPageHelper {
 
 		for (int i = 0; i < items; i++) {
 			seleniumUtil.click(seleniumUtil.findElementsBy(noGoodsInfo).get(i));
-			String header = seleniumUtil.findElementBy(By.xpath("//div[2]/div[3]/div[2]")).getText();
+			seleniumUtil.pause(800);
+			// String header =
+			// seleniumUtil.findElementBy(By.xpath("//div[2]/div[3]/div[2]")).getText();
+			String header = seleniumUtil.findElementsBy(By.xpath("//*[text()='发布时间']")).get(i).getText();
+			// String header =
+			// seleniumUtil.findElementsBy(By.cssSelector("div.goods-detail-row3")).get(i).getText();
+
 			// 取得发布时间的字符串
 			header = header.trim().substring(header.indexOf("：") + 1, header.length());
+			System.out.println(header);
 			temp[i] = header;
 		}
 
@@ -384,5 +390,30 @@ public class FindGoodsPageHelper {
 			}
 			logger.info("【默认排序】之后的发布时间，第【" + (i + 1) + "】个货源的发布时间 ：" + temp[i]);
 		}
+	}
+
+	/**
+	 * 在“找车源-公共货源”中点击当前页面按钮“收藏”变为“我的收藏”的货源
+	 * 
+	 * @param seleniumUtil
+	 * @param myFavoBotton
+	 */
+	public static void publicGoodsChangeFavoGoods(SeleniumUtil seleniumUtil, By myFavoBotton) {
+		int items = seleniumUtil.findElementsBy(myFavoBotton).size(); // 这个items指的是查询出来有多少条货源
+		for (int i = 0; i < items; i++) {
+			seleniumUtil.click(seleniumUtil.findElementsBy(myFavoBotton).get(i));
+		}
+		logger.info("您一共收藏了【"+items+"】条货源成为我的收藏。");
+	}
+	
+	public static void FavoGoodsChangepublicGoods(SeleniumUtil seleniumUtil, By cancelMyFavoBotton) {
+		int items = seleniumUtil.findElementsBy(cancelMyFavoBotton).size(); // 这个items指的是查询出来有多少条货源
+		for (int i = 0; i < items; i++) {
+			seleniumUtil.click(seleniumUtil.findElementsBy(cancelMyFavoBotton).get(0)); // 点击 取消收藏按钮	
+			seleniumUtil.pause(800);
+			seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+			seleniumUtil.pause(800);
+		}
+		logger.info("您一共取消【"+items+"】条我的收藏成为公共货源。");
 	}
 }
