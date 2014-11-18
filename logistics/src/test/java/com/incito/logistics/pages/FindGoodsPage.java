@@ -49,6 +49,10 @@ public class FindGoodsPage {
 	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
 	/** 排序之后,默认隐藏信息*/
 	public static final By FGP_HIDE_INFO = By.cssSelector("div.goods-detail-info");
+	/** 每条货源右边的按钮“我的收藏”*/
+	public static final By FGP_GOODS_BUTTON_MYFAVO = By.xpath("//*[text()='收藏' and @type='button']");
+	/** 每条货源右边的按钮“我的收藏”*/
+	public static final By FGP_GOODS_BUTTON_CANCELMYFAVO = By.xpath("//*[text()='取消收藏' and @type='button']");
 	
 	/** 搜索无结果提示语 */
 	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
