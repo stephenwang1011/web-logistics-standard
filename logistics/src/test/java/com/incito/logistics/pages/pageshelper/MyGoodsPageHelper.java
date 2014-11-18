@@ -1,4 +1,5 @@
 package com.incito.logistics.pages.pageshelper;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,53 +44,53 @@ public class MyGoodsPageHelper {
 	/** 在找货源界面输入相关货源信息以便查询 */
 	public static void typeGoodsInfo(SeleniumUtil seleniumUtil, String... info) {
 		// 货源编号
-		if(info[0].toString()!=""){
-		seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_GOODSNO), info[0].toString());
+		if (info[0].toString() != "") {
+			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_GOODSNO), info[0].toString());
 		}
 		// 填充发货地
-		if(info[1].toString()!=""){
-		String jsFrom = "document.getElementsByName('localcity')[0].setAttribute('value','" + info[1].toString() + "');";
-		seleniumUtil.executeJS(jsFrom);
+		if (info[1].toString() != "") {
+			String jsFrom = "document.getElementsByName('localcity')[0].setAttribute('value','" + info[1].toString() + "');";
+			seleniumUtil.executeJS(jsFrom);
 		}
 		// 填充收货地
-		if(info[2].toString()!=""){
-		String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[2].toString() + "');";
-		seleniumUtil.executeJS(jsTo);
+		if (info[2].toString() != "") {
+			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[2].toString() + "');";
+			seleniumUtil.executeJS(jsTo);
 		}
 		// 点击高级搜索
 		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
 		// 货物名称
-		if(info[3].toString()!=""){
-		String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[3].toString() + "');";
-		seleniumUtil.executeJS(goodsName);
+		if (info[3].toString() != "") {
+			String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[3].toString() + "');";
+			seleniumUtil.executeJS(goodsName);
 		}
 		// 体积还是重量
 		seleniumUtil.selectByText(MyGoodsPage.MGP_SELECT_GOODSUNIT, info[4].toString());
 		if (info[4].toString().equals("体积")) {
-			if(info[5].toString()!=""){
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[5].toString());
+			if (info[5].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[5].toString());
 			}
-			if(info[6].toString()!=""){
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_ENDVOLUME), info[6].toString());
+			if (info[6].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_ENDVOLUME), info[6].toString());
 			}
 		} else if (info[4].toString().equals("重量")) {
-			if(info[5].toString()!=""){
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTWEIGHT), info[5].toString());
+			if (info[5].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTWEIGHT), info[5].toString());
 			}
-			if(info[6].toString()!=""){
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_ENDWEIGHT), info[6].toString());
+			if (info[6].toString() != "") {
+				seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_ENDWEIGHT), info[6].toString());
 			}
 
 		}
 		// 开始时间
-		if(info[7].toString()!=""){
-		String startDate = "document.getElementsByName('startgoodstime')[0].setAttribute('value','" + info[7].toString().substring(0, info[7].toString().indexOf(" ")) + "');";
-		((JavascriptExecutor) seleniumUtil.driver).executeScript(startDate);
+		if (info[7].toString() != "") {
+			String startDate = "document.getElementsByName('startgoodstime')[0].setAttribute('value','" + info[7].toString().substring(0, info[7].toString().indexOf(" ")) + "');";
+			((JavascriptExecutor) seleniumUtil.driver).executeScript(startDate);
 		}
 		// 结束时间
-		if(info[8]!=""){
-		String endDate = "document.getElementsByName('endgoodstime')[0].setAttribute('value','" +  info[8].toString().substring(0, info[8].toString().indexOf(" "))+ "');";
-		((JavascriptExecutor) seleniumUtil.driver).executeScript(endDate);
+		if (info[8] != "") {
+			String endDate = "document.getElementsByName('endgoodstime')[0].setAttribute('value','" + info[8].toString().substring(0, info[8].toString().indexOf(" ")) + "');";
+			((JavascriptExecutor) seleniumUtil.driver).executeScript(endDate);
 		}
 		// 点击搜索
 		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_SEARCH));
@@ -147,9 +148,9 @@ public class MyGoodsPageHelper {
 	/** 检查货源信息的第二行信息:吨位或者体积 */
 	public static void checkGoodsWeightOrVolume(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
 		// 这个items指的是查询出来有多少条货源
-		int items = seleniumUtil.findElementsBy(by).size(); 
-		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) { 
-			//如果按照筛选条件查不到数据的时候给一个提示并退出此方法
+		int items = seleniumUtil.findElementsBy(by).size();
+		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
+			// 如果按照筛选条件查不到数据的时候给一个提示并退出此方法
 			logger.warn("根据您的筛选条件，无法查找出数据！");
 			return;
 		}
@@ -231,10 +232,13 @@ public class MyGoodsPageHelper {
 
 	}
 
-	/** 检查货物的发布时间 
-	 * @throws ParseException */
-	public static void checkGoodsSendDate(SeleniumUtil seleniumUtil, By by, String... headInfos)  {
-	     DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	/**
+	 * 检查货物的发布时间
+	 * 
+	 * @throws ParseException
+	 */
+	public static void checkGoodsSendDate(SeleniumUtil seleniumUtil, By by, String... headInfos) {
+		DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		int items = seleniumUtil.findElementsBy(by).size(); // 这个items指的是查询出来有多少条货源
 		if (seleniumUtil.findElementsBy(MyGoodsPage.MGP_ITEM_GOODS).get(0).getText().equals("没有搜索到相应的数据")) {
 			logger.warn("No data found with this filters!");
@@ -246,67 +250,125 @@ public class MyGoodsPageHelper {
 			// 取得发布时间的 字符串
 			header = header.substring(header.indexOf("：") + 1, header.length());
 			if (headInfos[0].equals("") && headInfos[1] != "") {
-				try{
 				try {
-					Assert.assertTrue(formater.parse(headInfos[1]).getTime()>=formater.parse(header).getTime());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				}catch(AssertionError e){
-					logger.error("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在您的筛选条件时间内");
-					Assert.fail("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在您的筛选条件时间内");
+					try {
+						Assert.assertTrue(formater.parse(headInfos[1]).getTime() >= formater.parse(header).getTime());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (AssertionError e) {
+					logger.error("您选择的货源发布的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在您的筛选条件时间内");
+					Assert.fail("您选择的货源发布的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在您的筛选条件时间内");
 				}
-				logger.info("您选择的货源发布的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间符合筛选条件");
+				logger.info("您选择的货源发布的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间符合筛选条件");
 			}
 			if (headInfos[1].equals("") && headInfos[0] != "") {
-				try{
 				try {
-					Assert.assertTrue(formater.parse(headInfos[0]).getTime()<=formater.parse(header).getTime());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				}catch(AssertionError e){
-					logger.error("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间小于您的筛选条件时间");
-					Assert.fail("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间小于您的筛选条件时间");
+					try {
+						Assert.assertTrue(formater.parse(headInfos[0]).getTime() <= formater.parse(header).getTime());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (AssertionError e) {
+					logger.error("您选择的货源发布的开始时间是：" + headInfos[0] + " 该货源的详情中的时间是：[" + header + "] ，该时间小于您的筛选条件时间");
+					Assert.fail("您选择的货源发布的开始时间是：" + headInfos[0] + " 该货源的详情中的时间是：[" + header + "] ，该时间小于您的筛选条件时间");
 				}
-				logger.info("您选择的货源发布的开始时间是："+headInfos[0]+" 该货源的详情中的时间是：["+header+"] ，该时间符合筛选条件");
+				logger.info("您选择的货源发布的开始时间是：" + headInfos[0] + " 该货源的详情中的时间是：[" + header + "] ，该时间符合筛选条件");
 			}
-			if (headInfos[0]!="" && headInfos[1] != "") {
-				try{
+			if (headInfos[0] != "" && headInfos[1] != "") {
 				try {
-					Assert.assertTrue(formater.parse(headInfos[0]).getTime()<=formater.parse(header).getTime()&&formater.parse(headInfos[1]).getTime()>=formater.parse(header).getTime());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				}catch(AssertionError e){
-					logger.error("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在开始和结束时间之间");
-					Assert.fail("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间不在开始和结束时间之间");
+					try {
+						Assert.assertTrue(formater.parse(headInfos[0]).getTime() <= formater.parse(header).getTime() && formater.parse(headInfos[1]).getTime() >= formater.parse(header).getTime());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (AssertionError e) {
+					logger.error("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在开始和结束时间之间");
+					Assert.fail("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在开始和结束时间之间");
 				}
-				logger.info("您选择的货源发布的开始时间是："+headInfos[0]+",您选择的货源的结束时间是："+headInfos[1]+" 该货源的详情中的时间是：["+header+"] ，该时间在开始和结束时间之间");
-			
+				logger.info("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间在开始和结束时间之间");
+
 			}
 
 		}
 
 	}
-	/***编辑指定的货源*/
-	public static void editTargetGoods(SeleniumUtil seleniumUtil,String instration){
+
+	/*** 编辑指定的货源 */
+	public static void editTargetGoods(SeleniumUtil seleniumUtil, String instration) {
 		logger.info("Start editting goods");
 		List<WebElement> instrations = seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION);
-		int items = instrations.size(); 
+		int items = instrations.size();
 		for (int i = 0; i < items; i++) {
-			
-			if(instrations.get(i).getText().trim().equals(instration)){
-				logger.info("Find the "+instration+ " in "+(i+1)+" th goods,no longer to look for");
-			seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_BUTTON_EDIT).get(i));
-			break;	
+
+			if (instrations.get(i).getText().trim().equals(instration)) {
+				logger.info("Find the " + instration + " in " + (i + 1) + " th goods,no longer to look for");
+				seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_BUTTON_EDIT).get(i));
+				break;
 			}
-	
+
 		}
+
+	}
+
+	/*** 删除指定的货源 */
+	public static void deleteTargetGoods(SeleniumUtil seleniumUtil, String instration, Boolean flag) {
+
+		logger.info("Start deleting goods");
+		List<WebElement> instrations = seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION);
+		int items = instrations.size();
+		for (int i = 0; i < items; i++) {
+
+			if (instrations.get(i).getText().trim().equals(instration)) {
+				//点击删除按钮
+				seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_BUTTON_DELETE).get(i));
+				if (flag == true) {
+					seleniumUtil.pause(800);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+					seleniumUtil.pause(800);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+					seleniumUtil.pause(800);
+					break;
+				}
+				if (flag == false) {
+					seleniumUtil.pause(800);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).dismiss();
+					seleniumUtil.pause(800);
+					break;
+				}
+
+			}
+
+		}
+
+	}
+
+	/** 检查指定的货源是不是被删除成功 */
+	public static void checkGoodsExistAfterDelete(SeleniumUtil seleniumUtil, String instration, Boolean flag) {
+		logger.info("Start to check the goods is delete or not");
+		List<WebElement> instrations = seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION);
+		int items = instrations.size();
+		for (int i = 0; i < items; i++) {
+			if (flag == true) {
+				if (instrations.get(i).getText().trim().equals(instration) == false) {
 		
+						logger.info("Didn't find the target goods which goods instration is " + instration + " and the tagrget goods has been deleted - "+i);
+					
+				} else {
+					logger.error("The target goods didn't delete");
+					Assert.fail("The target goods didn't delete");
+				}
+			}
+			if (flag == false) {
+				if (instrations.get(i).getText().trim().equals(instration) == true) {
+					logger.info("Goods delete operation has been cancled");
+				}
+
+			}
+		}
 	}
 
 }
