@@ -379,9 +379,12 @@ public class FindCarsPageHelper {
 				String secondInfos[] = secondInfo.split("，");
 				String autualLicense = secondInfos[0].trim();
 				if (autualLicense.equals(license)) {
+
+					if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getAttribute("class")=="active"){
 					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮	
 					seleniumUtil.pause(800);
 					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
+					}
 					try{
 					Assert.assertTrue(autualLicense.equals(license));
 					}catch(AssertionError ae){
