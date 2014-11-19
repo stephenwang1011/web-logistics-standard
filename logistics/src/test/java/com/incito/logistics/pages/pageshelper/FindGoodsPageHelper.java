@@ -47,7 +47,7 @@ public class FindGoodsPageHelper {
 		String jsFrom = "document.getElementsByName('localcity')[0].setAttribute('value','" + info[0].toString() + "');";
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(jsFrom);
 		// 填充收货地
-		String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[1].toString() + "');";
+		String jsTo = "document.getElementsByName('targetcity')[1].setAttribute('value','" + info[1].toString() + "');";
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(jsTo);
 		// 填写最低车长
 		seleniumUtil.type(seleniumUtil.findElementBy(FindGoodsPage.FGP_INPUT_STARTCARLONG), info[2].toString());
