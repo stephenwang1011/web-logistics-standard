@@ -18,12 +18,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：找车源，只输入出发地
+ * @Description 测试用例：找车源，车长：开始和结束车长
  * */
-public class FindCarsPage_003_FromDataInputSearch_Test extends BaseParpare {
+public class FindCarsPage_006_Public_StartEndCarLengthDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void fromDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void startEndCarLengthDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -41,7 +41,7 @@ public class FindCarsPage_003_FromDataInputSearch_Test extends BaseParpare {
 		FindCarsPageHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
 				data.get("FCP_INPUT_ENDWEIGHT"), data.get("FCP_INPUT_STARTVOLUME"),  data.get("FCP_INPUT_ENDVOLUME"));
-		FindCarsPageHelper.checkCurrentCarLocation(seleniumUtil, data.get("FCP_INPUT_FROM"));
+		FindCarsPageHelper.checkCarLength(seleniumUtil,data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"));
 
 	}
 
