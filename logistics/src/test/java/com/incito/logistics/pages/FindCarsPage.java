@@ -43,6 +43,12 @@ public class FindCarsPage {
 	public static final By FCP_BUTTON_WEIGHT = By.id("li_order_totalload");
 	/** 按照容积排序 */
 	public static final By FCP_BUTTON_VOLUME = By.id("li_order_volume");
+	
+	/**排序箭头- 上*/
+	public static final By FCP_IMG_UPARROW = By.cssSelector("i.icon-arrow-up");
+	/**排序箭头-下*/
+	public static final By FCP_IMG_DOWNARROW = By.cssSelector("i.icon-arrow-down");
+	
 	/************排序按钮*************/
 	
 	/***2个tabs****/

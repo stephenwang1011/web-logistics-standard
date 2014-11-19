@@ -1,9 +1,5 @@
 package com.incito.logistics.pages.pageshelper;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -477,7 +473,7 @@ public class FindCarsPageHelper {
 		
 	}
 	/**我的车源中，分别按照：星级，车长，重量和体积排序*/
-	public static void checkCarsSort(SeleniumUtil seleniumUtil, By carsNum,String sortRule) {
+	public static void checkCarsSort(SeleniumUtil seleniumUtil,String sortRule,int pageLoadTime) {
 		logger.info("开始按照"+sortRule+"检查排序");
 	
 		try {
@@ -488,13 +484,67 @@ public class FindCarsPageHelper {
 		} catch (Exception e) {
 			logger.info("找到了车源信息");
 			int items = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size(); //取得车源的条数
-			String[] temp = new String[items];
+			float[] temp1 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第一次点击
+			float[] temp2 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第二次点击
+			int count = 0;//定义点击计数器
 			switch(sortRule){
 			case "信用等级":
-				for (int s = 0; s < temp.length; s++) {
-					float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
-					temp[s] = stars;
+				while(count<2){ //点击2次 信用等级
+				seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_CREDIT));
+				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+
+
+
+				if(count==0){
+					for (int s = 0; s < temp1.length; s++) {//把星级的具体值存入一个float数组
+						float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
+						temp1[s] = stars;
+					}	
+					logger.info("点击星级排序，箭头往上");
+					for (int i = 0; i < temp1.length; i++) {
+						System.out.println(temp1[i]);
+						try{
+							if(i==19){
+								break;
+							}
+						Assert.assertTrue(temp1[i+1]>=temp1[i]);
+						logger.info("第"+(i+2)+"组数:"+temp1[i+1]+"据大于等于第"+(i+1)+"组数据:"+temp1[i]);
+						}catch(AssertionError ae){
+							logger.error("当星级箭头向上时，按星级排序出错："+temp1[i+1]+"应该大于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
+							Assert.fail("当星级箭头向上时，按星级排序出错："+temp1[i+1]+"应该大于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
+						}
+		
+					}
+					count++;
 				}
+				if(count==1){
+					for (int s = 0; s < temp2.length; s++) {//把星级的具体值存入一个float数组
+						seleniumUtil.pause(1000);
+						float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
+						temp2[s] = stars;
+					}	
+
+					logger.info("点击星级排序，箭头往下");
+					for (int i = 0; i < temp2.length; i++) {
+						System.out.println(temp2[i]);
+						try{
+							if(i==19){
+								break;
+							}
+						Assert.assertTrue(temp2[i]>=temp2[i+1]);
+						logger.info("第"+(i+2)+"组数据:"+temp2[i+1]+"小于等于第"+(i+1)+"组数据:"+temp2[i]);
+						}catch(AssertionError ae){
+							logger.error("当星级箭头向下时，按星级排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
+							Assert.fail("当星级箭头向下时，按星级排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
+						}
+					}
+					count++;			
+		
+				}
+				
+			}
+			
+				
 				break;
 				
 			case "车长":
