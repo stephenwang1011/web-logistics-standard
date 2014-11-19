@@ -80,6 +80,11 @@
 			<package name="com.incito.logistics.testcase.myorders" />
 		</packages>
 	</test>
+		<test name="网站信息" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.foot" />
+		</packages>
+	</test>
 
 
 	<listeners>
