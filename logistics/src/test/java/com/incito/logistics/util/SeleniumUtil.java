@@ -356,6 +356,7 @@ public class SeleniumUtil {
 	 * */
 	public void executeJS(String js) {
 		((JavascriptExecutor) driver).executeScript(js);
+		logger.info("Run js：["+js+"] success" );
 	}
 
 	/**
