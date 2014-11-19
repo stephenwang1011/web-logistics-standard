@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
  * 找货源页面所有元素定位
  * */
 public class FootPage {
-	
 	//****************主页面上面的6个tab***************************************
 	/** tab首页 */
 	public static final By FP_LINK_HOME = By.id("link_standard_index");
@@ -22,10 +21,10 @@ public class FootPage {
 	public static final By FP_LINK_CENTER = By.id("link_standard_ucenter");
 	
 	//****************主页面底部的3个信息***************************************
-	/** 关于我们链接 ，推荐使用这个*/
-	public static final By FP_LINK_ABOUTUS = By.linkText("关于我们");
 	/** 联系我们链接 */
 	public static final By FP_LINK_CONTACTUS = By.linkText("联系我们");
+	/** 关于我们链接*/
+	public static final By FP_LINK_ABOUTUS = By.linkText("关于我们");
 	/** 联系我们链接 */
 	public static final By FP_LINK_HELP = By.linkText("帮助中心");
 	
