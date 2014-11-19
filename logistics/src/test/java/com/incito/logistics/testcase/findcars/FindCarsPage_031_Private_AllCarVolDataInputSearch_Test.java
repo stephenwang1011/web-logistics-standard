@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
+import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindCarsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
@@ -18,12 +19,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：找车源，车长：开始和结束车长
+ * @Description 测试用例：找车源，输入开始喝结束容积
  * */
-public class FindCarsPage_006_StartEndCarLengthDataInputSearch_Test extends BaseParpare {
+public class FindCarsPage_031_Private_AllCarVolDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void startEndCarLengthDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void allCarVolDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -38,10 +39,11 @@ public class FindCarsPage_006_StartEndCarLengthDataInputSearch_Test extends Base
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
 		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
 		FindCarsPageHelper.checkFindCarsPageText(timeOut, seleniumUtil);
+		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
 		FindCarsPageHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
 				data.get("FCP_INPUT_ENDWEIGHT"), data.get("FCP_INPUT_STARTVOLUME"),  data.get("FCP_INPUT_ENDVOLUME"));
-		FindCarsPageHelper.checkCarLength(seleniumUtil,data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"));
+		FindCarsPageHelper.checkCarVolume(seleniumUtil, data.get("FCP_INPUT_STARTVOLUME"), data.get("FCP_INPUT_ENDVOLUME"));
 
 	}
 

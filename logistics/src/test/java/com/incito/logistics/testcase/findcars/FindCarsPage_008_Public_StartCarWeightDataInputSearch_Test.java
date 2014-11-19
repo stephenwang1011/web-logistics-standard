@@ -20,7 +20,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 测试用例：找车源，只输入车长：开始车重
  * */
-public class FindCarsPage_008_StartCarWeightDataInputSearch_Test extends BaseParpare {
+public class FindCarsPage_008_Public_StartCarWeightDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
 	public void startCarWeightDataInputSearch(ITestContext context, Map<String, String> data) {

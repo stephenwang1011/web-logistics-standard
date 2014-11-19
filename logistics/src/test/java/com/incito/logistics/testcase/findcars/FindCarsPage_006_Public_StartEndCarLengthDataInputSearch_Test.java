@@ -18,12 +18,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：找车源，只输入车长：开始车长
+ * @Description 测试用例：找车源，车长：开始和结束车长
  * */
-public class FindCarsPage_004_StartCarLengthDataInputSearch_Test extends BaseParpare {
+public class FindCarsPage_006_Public_StartEndCarLengthDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void startCarLengthDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void startEndCarLengthDataInputSearch(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

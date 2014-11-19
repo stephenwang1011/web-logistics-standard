@@ -54,7 +54,7 @@ public class MyGoodsPageHelper {
 		}
 		// 填充收货地
 		if (info[2].toString() != "") {
-			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[2].toString() + "');";
+			String jsTo = "document.getElementsByName('targetcity')[1].setAttribute('value','" + info[2].toString() + "');";
 			seleniumUtil.executeJS(jsTo);
 		}
 		// 点击高级搜索

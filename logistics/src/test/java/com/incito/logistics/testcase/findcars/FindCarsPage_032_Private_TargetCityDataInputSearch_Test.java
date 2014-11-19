@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
+import com.incito.logistics.pages.FindCarsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindCarsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
@@ -20,7 +21,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 测试用例：找车源，输入开始喝结束容积
  * */
-public class FindCarsPage_014_TargetCityDataInputSearch_Test extends BaseParpare {
+public class FindCarsPage_032_Private_TargetCityDataInputSearch_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
 	public void targetCityDataInputSearch(ITestContext context, Map<String, String> data) {
@@ -38,6 +39,7 @@ public class FindCarsPage_014_TargetCityDataInputSearch_Test extends BaseParpare
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
 		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
 		FindCarsPageHelper.checkFindCarsPageText(timeOut, seleniumUtil);
+		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
 		FindCarsPageHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
 				data.get("FCP_INPUT_ENDWEIGHT"), data.get("FCP_INPUT_STARTVOLUME"),  data.get("FCP_INPUT_ENDVOLUME"));

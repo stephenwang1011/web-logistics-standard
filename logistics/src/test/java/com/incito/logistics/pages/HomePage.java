@@ -23,6 +23,8 @@ public class HomePage {
 	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
 	/** 我的货源 */
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
+	/** 个人中心 */
+	public static final By HP_LINK_CENTER = By.id("link_standard_ucenter");
 
 	/** 首页上的 免费发布货源 按钮 */
 	public static final By HP_BUTTON_FREESEND = By.xpath("//*[@id='freepub_']");
@@ -68,14 +70,14 @@ public class HomePage {
 	public static final By HP_TEXT_CITY = By.id("city");
 	/** 首页顶部天气 */
 	public static final By HP_TEXT_WEATHER = By.id("wea-items");
-	/** 关于我们链接 */
+	/** 关于我们链接，不推荐使用这个 */
 	public static final By HP_LINK_ABOUT = By.xpath("//[text()='关于我们']");
-	/** 关于我们链接 */
-	public static final By HP_LINK_ABOUTUS = By.xpath("//[text()='关于我们']");
+	/** 关于我们链接 ，推荐使用这个*/
+	public static final By HP_LINK_ABOUTUS = By.linkText("关于我们");
 	/** 联系我们链接 */
-	public static final By HP_LINK_CONTACTUS = By.xpath("//[text()='联系我们']");
+	public static final By HP_LINK_CONTACTUS = By.linkText("联系我们");
 	/** 联系我们链接 */
-	public static final By HP_LINK_HELP = By.xpath("//[text()='帮助中心']");
+	public static final By HP_LINK_HELP = By.linkText("帮助中心");
 	/** 两个 更多>> */
 	public static final By HP_LINK_MORE = By.xpath("	//*[text()='更多>>']");
 	
