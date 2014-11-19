@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
  *  @description 找车源的页面元素声明
  * */
 public class FindCarsPage {
+	/**星级*/
+	public static final By FCP_TEXT_STAR = By.className("rateit-range");
 	/** 线路方向 出发地 */
 	public static final By FCP_INPUT_FROM = By.id("carcity");
 	/** 线路方向 目的地 */

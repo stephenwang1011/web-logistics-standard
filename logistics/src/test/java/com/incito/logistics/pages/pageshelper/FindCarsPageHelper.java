@@ -1,5 +1,9 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -472,5 +476,50 @@ public class FindCarsPageHelper {
 		logger.info("Checking qucik search for cars cites complete");
 		
 	}
+	/**我的车源中，分别按照：星级，车长，重量和体积排序*/
+	public static void checkCarsSort(SeleniumUtil seleniumUtil, By carsNum,String sortRule) {
+		logger.info("开始按照"+sortRule+"检查排序");
+	
+		try {
+			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
+				logger.warn("没有相关数据");
+				return;
+			}
+		} catch (Exception e) {
+			logger.info("找到了车源信息");
+			int items = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size(); //取得车源的条数
+			String[] temp = new String[items];
+			switch(sortRule){
+			case "信用等级":
+				for (int s = 0; s < temp.length; s++) {
+					float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
+					temp[s] = stars;
+				}
+				break;
+				
+			case "车长":
+				
+				break;
+			case "载重":
+				
+				break;
+			case "剩余容积":
+				
+				break;
+				
+			default:
+			return;
+				
+			
+			}
+			
+			
+			}
+
+		}
+
+
+
+	
 
 }
