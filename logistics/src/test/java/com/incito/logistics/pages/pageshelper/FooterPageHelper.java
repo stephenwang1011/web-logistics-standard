@@ -14,8 +14,8 @@ public class FooterPageHelper {
 	/** 根据元素定位来确定进入什么页面 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator) {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
-
 	}
+
 	/** 检查底部相关信息：关于我们，联系我们，帮助中心等 */
 	public static void checkFooterPageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking footer page elements");
@@ -46,14 +46,14 @@ public class FooterPageHelper {
 	}
 
 	public static void checkFootPageText(SeleniumUtil seleniumUtil, By by) {
-		try {
-			Assert.assertTrue(seleniumUtil.findElementBy(by).getAttribute("class") == "active");
-		} catch (Exception e) {
-			Assert.fail();
-			e.printStackTrace();
-		}
 		String temp = seleniumUtil.findElementBy(by).getText();
 		temp = temp.replaceAll(" ", "");
+		try {
+			Assert.assertTrue(seleniumUtil.findElementBy(by).getAttribute("class").equals("active"));
+		} catch (AssertionError e) {
+			logger.error("你查找的的页面【" + temp + "】不能正常显示");
+			Assert.fail("你查找的的页面【" + temp + "】不能正常显示");
+		}
 		switch (temp) {
 		case "联系我们":
 			logger.info("你查看的页面【联系我们】能够正常显示");
