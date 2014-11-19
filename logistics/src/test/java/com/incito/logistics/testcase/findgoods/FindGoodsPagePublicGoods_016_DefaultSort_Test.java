@@ -4,7 +4,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
-import com.incito.logistics.pages.FindGoodsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
@@ -17,7 +16,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * */
 public class FindGoodsPagePublicGoods_016_DefaultSort_Test extends BaseParpare {
 	@Test
-	public void UITestCheck(ITestContext context) {
+	public void DefaultSort(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -32,6 +31,6 @@ public class FindGoodsPagePublicGoods_016_DefaultSort_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 
-		FindGoodsPageHelper.checkGoodsSendDate(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_HIDE_INFO);
+//		FindGoodsPageHelper.checkGoodsSendDate(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_HIDE_INFO);
 	}
 }
