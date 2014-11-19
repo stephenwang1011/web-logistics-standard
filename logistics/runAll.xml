@@ -75,18 +75,19 @@
 			<package name="com.incito.logistics.testcase.findcars" />
 		</packages>
 	</test>
+	
 	<test name="我的订单" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.myorders" />
 		</packages>
-</test>
-<!-- 	
-		<test name="网站信息" preserve-order="true">
+	</test>
+	
+	<test name="网站信息" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.foot" />
 		</packages>
 	</test>
- -->
+
 
 	<listeners>
 		<!-- arrow插件实现用例失败重跑以及生成测试报告 -->

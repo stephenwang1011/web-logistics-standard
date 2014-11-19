@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.FootPage;
-import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 
@@ -21,7 +20,7 @@ public class FootPage_004_COA_Test extends BaseParpare {
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.checkHomePageText(seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_CONTACTUS);
+		HomePageHelper.enterPage(seleniumUtil, FootPage.FP_LINK_HELP);
 		FooterPageHelper.waitTAB_Foot_FourInfoToLoad(timeOut, seleniumUtil);
 		FooterPageHelper.enterPage(seleniumUtil, FootPage.FP_HOST_LINK_COA);
 		FooterPageHelper.waitTAB_Foot_FourInfoToLoad(timeOut, seleniumUtil);
