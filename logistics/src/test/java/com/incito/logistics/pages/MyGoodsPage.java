@@ -14,7 +14,7 @@ public class MyGoodsPage {
 	/**发货地输入框*/
 	public static final By MGP_INPUT_ORIGINALCITY = By.name("localcity");
 	/**收货地输入框*/
-	public static final By MGP_INPUT_TARGETCITY= By.name("targetcity");
+	public static final By MGP_INPUT_TARGETCITY= By.id("targetcity");
 	/**搜索按钮*/
 	public static final By MGP_BUTTON_SEARCH = By.xpath("//button[@onclick='doSearch()']");	
 	/**高级搜索按钮*/

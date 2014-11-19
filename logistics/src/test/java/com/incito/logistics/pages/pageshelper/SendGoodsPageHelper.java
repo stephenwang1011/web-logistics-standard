@@ -116,13 +116,13 @@ public class SendGoodsPageHelper {
 		if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_LIGHTGOODS).isSelected()) {
 			seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_VOLUMEERROR);
 		}
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_ORIGINALCITYERROR).getText(), "必填字段");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_GOODSNAMEERROR).getText(), "必填字段");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_ORIGINALCITYERROR).getText(), "必填信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_GOODSNAMEERROR).getText(), "必填信息");
 		if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_DEVICEGOODS).isSelected() || seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_HEAVYGOODS).isSelected()) {
-			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_WEIGHTERROR).getText(), "必填字段");
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_WEIGHTERROR).getText(), "必填信息");
 		}
 		if (seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_LIGHTGOODS).isSelected()) {
-			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_VOLUMEERROR).getText(), "必填字段");
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsPage.SGP_TEXT_VOLUMEERROR).getText(), "必填信息");
 		}
 
 		logger.info("Checking sendgoods page error text complete");
