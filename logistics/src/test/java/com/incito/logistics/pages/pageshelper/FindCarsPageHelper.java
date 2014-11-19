@@ -56,7 +56,7 @@ public class FindCarsPageHelper {
 		}
 		// 车辆目的地
 		if (info[1].toString() != "") {
-			String jsTo = "document.getElementsByName('targetcity')[0].setAttribute('value','" + info[1].toString() + "');";
+			String jsTo = "document.getElementsByName('targetcity')[1].setAttribute('value','" + info[1].toString() + "');";
 			seleniumUtil.executeJS(jsTo);
 		}
 		// 车长 -开始
