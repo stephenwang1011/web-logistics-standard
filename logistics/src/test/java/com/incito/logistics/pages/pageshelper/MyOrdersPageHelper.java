@@ -81,7 +81,7 @@ public class MyOrdersPageHelper {
 		}
 		// 货物名称
 		if (info[5].toString() != "") {
-			String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[5].toString() + "');";
+			String goodsName = "document.getElementsByName('goodsname')[0].setAttribute('value','" + info[5].toString() + "');";
 			seleniumUtil.executeJS(goodsName);
 		}
 		// 填写承运司机
@@ -198,9 +198,37 @@ public class MyOrdersPageHelper {
 			Assert.assertTrue(header.equals(odersNum[0]));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("您所查找的订单编号为：" + odersNum[0] + "，没有查找到！！！");
-			Assert.fail("您所查找的订单编号为：" + odersNum[0] + "，没有查找到！！！" );
+			logger.error("您所查找的订单编号为：【" + odersNum[0] + "】，没有查找到！！！");
+			Assert.fail("您所查找的订单编号为：【" + odersNum[0] + "】，没有查找到！！！" );
 		}
-		logger.info("您所查找的订单编号为：" + odersNum[0] + "，查找到了。" );
+		logger.info("您所查找的订单编号为：【" + odersNum[0] + "】，查找到了。" );
 	}
+	
+	/** 检查货源信息的第二行信息:货物名称 */
+	public static void checkGoodsName(SeleniumUtil seleniumUtil, By byGoodsName, String... secondInfos) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(byGoodsName).size();
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			String goodsname = null;
+			String second = seleniumUtil.findElementsBy(byGoodsName).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
+			second = second.replaceAll(" ", "");
+			System.out.println(second);
+			String[] secondArray = second.split("，");
+			int temp = secondArray[0].indexOf("（");
+			if (temp != -1) {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf("（") - 1);
+			} else {
+				goodsname = secondArray[0];
+			}
+			try {
+				Assert.assertTrue(secondInfos[0].contains(goodsname));
+			} catch (AssertionError e) {
+				logger.error("未发现货物名称为：【" + secondInfos[0] + "】的货源信息。");
+				Assert.fail("在该页面中未发现货物名称为：【" + secondInfos[0] + "】的货源信息");
+			}
+			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + secondArray[0] + "】。");
+		}
+	}
+	
+	
 }
