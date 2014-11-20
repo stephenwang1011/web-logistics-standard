@@ -14,7 +14,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 按照信用等级排序车源
  * */
-public class FindCarsPage_033_SortByCredit_Test extends BaseParpare {
+public class FindCarsPage_036_Public_SortByCarVolume_Test extends BaseParpare {
 
 	@Test
 	public void sortByCredit(ITestContext context) {
@@ -31,7 +31,7 @@ public class FindCarsPage_033_SortByCredit_Test extends BaseParpare {
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS);
 		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
-		FindCarsPageHelper.checkCarsSort(seleniumUtil, "信用等级", timeOut);
+		FindCarsPageHelper.checkCarsSort(seleniumUtil, "车厢容积", timeOut);
 
 
 	}
