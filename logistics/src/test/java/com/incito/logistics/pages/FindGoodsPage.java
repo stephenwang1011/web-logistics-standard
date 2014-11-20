@@ -55,5 +55,22 @@ public class FindGoodsPage {
 	public static final By FGP_GOODS_BUTTON_CANCELMYFAVO = By.xpath("//*[text()='取消收藏' and @type='button']");
 	
 	/** 搜索无结果提示语 */
-	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//label[text()='没有搜索到相应的数据']");
+	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//*[text()='没有搜索到相应的数据']");
+	
+	/**排序 - 默认*/
+	public static final By FGP_LINK_DEFAULT = By.xpath("//*[@ordername='1']");
+	/**排序 - 信用*/
+	public static final By FGP_LINK_CREDIT = By.xpath("//*[@ordername='2']");
+	/**排序 - 车长*/
+	public static final By FGP_LINK_LENGTH = By.xpath("//*[@ordername='3']");
+	/**排序 - 重量*/
+	public static final By FGP_LINK_WEIGHT = By.xpath("//*[@ordername='4']");
+	/**排序 - 体积*/
+	public static final By FGP_LINK_VOLUME = By.xpath("//*[@ordername='5']");
+	
+	/**锁定每条信息*/
+	public static final By FGP_ITEM_GOODS = By.xpath("//*[@class='goods-infobox']");
+	/**星级和发布时间的定位*/
+	public static final By FGP_ITEM_GOODSANDSTARS = By.cssSelector("div.goods-detail-row3");
+	
 }
