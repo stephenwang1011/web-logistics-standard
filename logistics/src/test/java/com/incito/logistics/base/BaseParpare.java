@@ -31,8 +31,8 @@ public class BaseParpare {
 			seleniumUtil.launchBrowser(browserName, context);
 		} catch (WebDriverException e) {
 			seleniumUtil.quit();
-			logger.error("Chrome not reachable,it maybe closed by user");
-			Assert.fail("Chrome not reachable,it maybe closed by user");
+			logger.error("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因");
+			Assert.fail("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因");
 		}
 		// 设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
 		testContext.setAttribute("SELENIUM_DRIVER", seleniumUtil.driver);
@@ -44,8 +44,8 @@ public class BaseParpare {
 		if (seleniumUtil.driver != null) {
 			seleniumUtil.quit();
 		} else {
-			logger.error("The driver  is null,quit failed");
-			Assert.fail("The driver  is null,quit failed");
+			logger.error("浏览器driver没有获得对象,退出操作失败");
+			Assert.fail("浏览器driver没有获得对象,退出操作失败");
 
 		}
 	}
