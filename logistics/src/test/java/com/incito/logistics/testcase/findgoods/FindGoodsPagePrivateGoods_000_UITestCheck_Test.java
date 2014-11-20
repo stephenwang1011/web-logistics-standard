@@ -34,6 +34,6 @@ public class FindGoodsPagePrivateGoods_000_UITestCheck_Test extends BaseParpare 
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 		
-		FindGoodsPageHelper.checkGoodsSendDate(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_HIDE_INFO);
+//		FindGoodsPageHelper.checkGoodsSendDate(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_HIDE_INFO);
 	}
 }
