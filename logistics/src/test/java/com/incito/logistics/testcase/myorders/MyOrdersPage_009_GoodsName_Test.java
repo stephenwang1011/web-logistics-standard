@@ -22,7 +22,7 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_008_OrdersNum_Test extends BaseParpare {
+public class MyOrdersPage_009_GoodsName_Test extends BaseParpare {
 	@Test(dataProvider = "data")
 	public void OrdersNum(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
@@ -48,8 +48,8 @@ public class MyOrdersPage_008_OrdersNum_Test extends BaseParpare {
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkOdersNum(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERNO,
-				data.get("MOP_INPUT_ORDERSNUM"));
+		MyOrdersPageHelper.checkGoodsName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES,
+				data.get("MOP_INPUT_GOODSNAME"));
 	}
 	
 	@DataProvider(name = "data")
