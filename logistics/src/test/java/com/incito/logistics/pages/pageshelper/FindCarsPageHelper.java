@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.FindCarsPage;
+import com.incito.logistics.pages.PaginationPage;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class FindCarsPageHelper {
@@ -472,10 +473,9 @@ public class FindCarsPageHelper {
 		logger.info("Checking qucik search for cars cites complete");
 		
 	}
+	
 	/**我的车源中，分别按照：星级，车长，重量和体积排序*/
 	public static void checkCarsSort(SeleniumUtil seleniumUtil,String sortRule,int pageLoadTime) {
-		logger.info("开始按照"+sortRule+"检查排序");
-	
 		try {
 			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
 				logger.warn("没有相关数据");
@@ -483,6 +483,9 @@ public class FindCarsPageHelper {
 			}
 		} catch (Exception e) {
 			logger.info("找到了车源信息");
+			logger.info("开始按照"+sortRule+"检查排序");
+			//分页数
+			int pages = seleniumUtil.findElementBy(PaginationPage.PP_LINK_PAGE).findElements(PaginationPage.PP_LINK_PAGENUM).size()-1;
 			int items = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size(); //取得车源的条数
 			float[] temp1 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第一次点击
 			float[] temp2 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第二次点击
@@ -493,16 +496,15 @@ public class FindCarsPageHelper {
 				seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_BUTTON_CREDIT));
 				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
 
-
-
 				if(count==0){
-					for (int s = 0; s < temp1.length; s++) {//把星级的具体值存入一个float数组
+					for (int s = 0; s < temp1.length; s++) {
+						
+						//把星级的具体值存入一个float数组
 						float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
 						temp1[s] = stars;
 					}	
 					logger.info("点击星级排序，箭头往上");
 					for (int i = 0; i < temp1.length; i++) {
-						System.out.println(temp1[i]);
 						try{
 							if(i==19){
 								break;
@@ -515,18 +517,18 @@ public class FindCarsPageHelper {
 						}
 		
 					}
-					count++;
+					count++; //此时count的值变成1,1<2进行第二轮循环
+					continue;
 				}
+				
 				if(count==1){
 					for (int s = 0; s < temp2.length; s++) {//把星级的具体值存入一个float数组
-						seleniumUtil.pause(1000);
 						float stars = Float.valueOf(seleniumUtil.findElementsBy(FindCarsPage.FCP_TEXT_STAR).get(s).getAttribute("aria-valuenow"));
 						temp2[s] = stars;
 					}	
 
 					logger.info("点击星级排序，箭头往下");
 					for (int i = 0; i < temp2.length; i++) {
-						System.out.println(temp2[i]);
 						try{
 							if(i==19){
 								break;
