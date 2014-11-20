@@ -608,7 +608,7 @@ public class SeleniumUtil {
 	return  java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	}
 	/**判断元素是不是存在*/
-	public  boolean ElementExist (By by){
+	public  boolean doesElementExist (By by){
 		try{
 			driver.findElement(by);
 			logger.info("元素："+getLocatorByElement(findElementBy(by), ">")+"存在");
