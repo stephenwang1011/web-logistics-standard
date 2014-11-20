@@ -34,7 +34,5 @@ public class MyOrdersPage_001_UITextCheck_Test extends BaseParpare {
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 		MyOrdersPageHelper.checkMyOrdersPageText(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
-
 	}
-
 }
