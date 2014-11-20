@@ -607,6 +607,16 @@ public class SeleniumUtil {
 	public static double getScreenWidth(){
 	return  java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	}
-		
+	/**判断元素是不是存在*/
+	public  boolean ElementExist (By by){
+		try{
+			driver.findElement(by);
+			logger.info("元素："+getLocatorByElement(findElementBy(by), ">")+"存在");
+			return true;
+		}catch(org.openqa.selenium.NoSuchElementException ex){
+			logger.error("元素："+getLocatorByElement(findElementBy(by), ">")+"不存在");
+			return false;
+		}
+	 }
 	}
 
