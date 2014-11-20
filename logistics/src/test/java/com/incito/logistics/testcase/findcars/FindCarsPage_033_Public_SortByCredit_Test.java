@@ -17,7 +17,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class FindCarsPage_033_Public_SortByCredit_Test extends BaseParpare {
 
 	@Test
-	public void sortByCredit(ITestContext context) {
+	public void publicSortByCredit(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

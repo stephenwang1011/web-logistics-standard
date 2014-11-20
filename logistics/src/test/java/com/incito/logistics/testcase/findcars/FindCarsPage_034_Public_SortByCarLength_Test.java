@@ -14,10 +14,10 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wy
  * @Description 按照信用等级排序车源
  * */
-public class FindCarsPage_034_Public_SortByCarLenght_Test extends BaseParpare {
+public class FindCarsPage_034_Public_SortByCarLength_Test extends BaseParpare {
 
 	@Test
-	public void sortByCredit(ITestContext context) {
+	public void publicSortByCarLength(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

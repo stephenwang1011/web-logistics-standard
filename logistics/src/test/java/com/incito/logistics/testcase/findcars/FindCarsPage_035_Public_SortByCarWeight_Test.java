@@ -17,7 +17,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class FindCarsPage_035_Public_SortByCarWeight_Test extends BaseParpare {
 
 	@Test
-	public void sortByCredit(ITestContext context) {
+	public void publicSortByCarWeight(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
