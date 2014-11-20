@@ -11,12 +11,12 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito-wk
- * @Description 测试用例：查找货源界面检查
+ * @author xy-incito-wy
+ * @Description 找货源-公共货源上，默认排序检查
  * */
 public class FindGoodsPagePublicGoods_016_DefaultSort_Test extends BaseParpare {
 	@Test
-	public void DefaultSort(ITestContext context) {
+	public void publicDefaultSort(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -30,7 +30,6 @@ public class FindGoodsPagePublicGoods_016_DefaultSort_Test extends BaseParpare {
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
-
-//		FindGoodsPageHelper.checkGoodsSendDate(seleniumUtil, FindGoodsPage.FGP_SECOND_INFO, FindGoodsPage.FGP_HIDE_INFO);
+		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "默认排序", timeOut);
 	}
 }
