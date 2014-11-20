@@ -483,10 +483,6 @@ public class FindCarsPageHelper {
 		} catch (Exception e) {
 			logger.info("找到了车源信息");
 			logger.info("开始按照"+sortRule+"检查排序");
-//			//分页数
-//			if(seleniumUtil.doesElementExist(PaginationPage.PP_LINK_PAGE)){
-//			int pages = seleniumUtil.findElementBy(PaginationPage.PP_LINK_PAGE).findElements(PaginationPage.PP_LINK_PAGENUM).size()-1;
-//			}
 			int items = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size(); //取得车源的条数
 			float[] temp1 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第一次点击
 			float[] temp2 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第二次点击

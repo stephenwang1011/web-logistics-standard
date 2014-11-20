@@ -391,44 +391,6 @@ public class FindGoodsPageHelper {
 		}
 		logger.info("Check checkFindGoodsPrompt_CarLong page text completed");
 	}
-
-	public static void checkGoodsSendDate(SeleniumUtil seleniumUtil, By noGoodsInfo, By hideGoodsInfo) {
-		DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		int items = seleniumUtil.findElementsBy(hideGoodsInfo).size(); // 这个items指的是查询出来有多少条货源
-		String[] temp = new String[items];
-		if (seleniumUtil.findElementsBy(noGoodsInfo).get(0).getText().equals("没有搜索到相应的数据")) {
-			logger.warn("No data found with this filters!");
-			return;
-		}
-
-		for (int i = 0; i < items; i++) {
-			seleniumUtil.click(seleniumUtil.findElementsBy(noGoodsInfo).get(i));
-			seleniumUtil.pause(800);
-			// String header =
-			// seleniumUtil.findElementBy(By.xpath("//div[2]/div[3]/div[2]")).getText();
-			String header = seleniumUtil.findElementsBy(By.xpath("//*[text()='发布时间']")).get(i).getText();
-			// String header =
-			// seleniumUtil.findElementsBy(By.cssSelector("div.goods-detail-row3")).get(i).getText();
-
-			// 取得发布时间的字符串
-			header = header.trim().substring(header.indexOf("：") + 1, header.length());
-			System.out.println(header);
-			temp[i] = header;
-		}
-
-		for (int i = 0; i < items; i++) {
-			try {
-				Assert.assertTrue(formater.parse(temp[i]).getTime() >= formater.parse(temp[i + 1]).getTime());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			} catch (AssertionError e) {
-				logger.error("【默认排序】之后的发布时间，第【" + i + 1 + "】个货源的发布时间 ：" + temp[i] + " < 第【" + i + 2 + "】个货源的发布时间：" + temp[i + 1]);
-				Assert.fail("【默认排序】之后的发布时间，第【" + i + 1 + "】个货源的发布时间 ：" + temp[i] + " < 第【" + i + 2 + "】个货源的发布时间：" + temp[i + 1]);
-			}
-			logger.info("【默认排序】之后的发布时间，第【" + (i + 1) + "】个货源的发布时间 ：" + temp[i]);
-		}
-	}
-
 	/**
 	 * 在“找车源-公共货源”中点击当前页面按钮“收藏”变为“我的收藏”的货源
 	 * 
