@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
  * 
  * */
 public class MyOrdersPage {
+	//以下是搜索及高级搜索的条件****************************************************
 	/**我的订单页面 - 发货地输入框*/
 	public static final By MOP_INPUT_FROM = By.name("originalcity");
 	/**我的订单页面 - 收货地输入框*/
@@ -42,7 +43,7 @@ public class MyOrdersPage {
 	/**我的订单页面 订单的详情的订单时间*/
 	public static final By MOP_TEXT_ORDERDATE = By.cssSelector("span.order-time");
 	/**我的订单页面 隐藏司机的姓名*/
-	public static final By MOP_TEXT_ORDERDRIVERNAME = By.cssSelector("div.col-xs-6.mt-3");
+	public static final By MOP_TEXT_ORDERDRIVERNAME = By.cssSelector("div.order-infobox");
 	
 
 }
