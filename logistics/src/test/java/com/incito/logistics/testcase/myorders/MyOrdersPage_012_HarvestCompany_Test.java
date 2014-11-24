@@ -48,8 +48,8 @@ public class MyOrdersPage_012_HarvestCompany_Test extends BaseParpare {
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkDriverName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES, MyOrdersPage.MOP_TEXT_ORDERDRIVERNAME, timeOut, 
-				data.get("MOP_INPUT_DRIVER"));
+//		MyOrdersPageHelper.checkDriverName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES, MyOrdersPage.MOP_TEXT_ORDERDRIVERNAME, timeOut, 
+//				data.get("MOP_INPUT_DRIVER"));
 	}
 	
 	@DataProvider(name = "data")
