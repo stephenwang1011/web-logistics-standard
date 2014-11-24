@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
-import com.incito.logistics.pages.MyGoodsPage;
 import com.incito.logistics.pages.MyOrdersPage;
 import com.incito.logistics.util.SeleniumUtil;
 
