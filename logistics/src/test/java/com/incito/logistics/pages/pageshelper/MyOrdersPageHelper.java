@@ -32,6 +32,16 @@ public class MyOrdersPageHelper {
 		logger.info("Checking my order page web element complete");
 	}
 
+	/**企业版的 检查我的订单页面上的文本 */
+	public static void checkMyOrdersPageTextForEnterprise(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_ADSEARCH).getText().trim(), "高级搜索");
+		int size = seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).size();
+		String tabs[] = { "近三个月的订单", "待接单", "待配货", "运输中", "待签收", "已签收", "已拒签", "三个月前订单" };
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
+		}
+	}
 	/** 检查我的订单页面上的文本 */
 	public static void checkMyOrdersPageText(SeleniumUtil seleniumUtil) {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
@@ -42,6 +52,7 @@ public class MyOrdersPageHelper {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
 		}
 	}
+
 
 	/** 检查快速搜索的订单 */
 	public static void checkQuickSearchOrder(SeleniumUtil seleniumUtil, String... qucikSearchInfos) {
