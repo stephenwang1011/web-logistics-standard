@@ -15,8 +15,7 @@ import com.incito.logistics.util.SeleniumUtil;
 
 /**
  * 
- * @author Think
- * 注释：现在没有将搜索结果中没有数据的写进来
+ * @author Think 注释：现在没有将搜索结果中没有数据的写进来
  */
 public class MyOrdersPageHelper {
 	public static Logger logger = Logger.getLogger(HomePageHelper.class.getName());
@@ -86,15 +85,15 @@ public class MyOrdersPageHelper {
 		}
 		// 填写承运司机
 		if (info[6].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[6].toString());
+			seleniumUtil.type(seleniumUtil.findElementBy(MyOrdersPage.MOP_INPUT_DRIVER), info[6].toString());
 		}
 		// 填收货人
 		if (info[7].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[7].toString());
+			seleniumUtil.type(seleniumUtil.findElementBy(MyOrdersPage.MOP_INPUT_RECEIVER), info[7].toString());
 		}
 		// 填写收货公司
 		if (info[8].toString() != "") {
-			seleniumUtil.type(seleniumUtil.findElementBy(MyGoodsPage.MGP_INPUT_STARTVOLUME), info[8].toString());
+			seleniumUtil.type(seleniumUtil.findElementBy(MyOrdersPage.MOP_INPUT_HARVESTCOMPANY), info[8].toString());
 		}
 	}
 
@@ -199,20 +198,20 @@ public class MyOrdersPageHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("您所查找的订单编号为：【" + odersNum[0] + "】，没有查找到！！！");
-			Assert.fail("您所查找的订单编号为：【" + odersNum[0] + "】，没有查找到！！！" );
+			Assert.fail("您所查找的订单编号为：【" + odersNum[0] + "】，没有查找到！！！");
 		}
-		logger.info("您所查找的订单编号为：【" + odersNum[0] + "】，查找到了。" );
+		logger.info("您所查找的订单编号为：【" + odersNum[0] + "】，查找到了。");
 	}
-	
+
 	/** 检查货源信息的第二行信息:货物名称 */
 	public static void checkGoodsName(SeleniumUtil seleniumUtil, By byGoodsName, String... secondInfos) {
 		// 这个items指的是查询出来有多少条货源
 		int items = seleniumUtil.findElementsBy(byGoodsName).size();
+		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
 		for (int i = 0; i < items; i++) {// 循环每个货源
 			String goodsname = null;
 			String second = seleniumUtil.findElementsBy(byGoodsName).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
 			second = second.replaceAll(" ", "");
-			System.out.println(second);
 			String[] secondArray = second.split("，");
 			int temp = secondArray[0].indexOf("（");
 			if (temp != -1) {
@@ -229,6 +228,67 @@ public class MyOrdersPageHelper {
 			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + secondArray[0] + "】。");
 		}
 	}
-	
-	
+
+	/** 检查我的订单中司机的姓名 */
+	public static void checkDriverName(SeleniumUtil seleniumUtil, By byOrdersNum, By byDriverName, int pageLoadTime, String... infos) {
+		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
+		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
+			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+			String driveName = seleniumUtil.findElementBy(byDriverName).getText(); // 取得第二行的货源信息
+			driveName = driveName.replaceAll(" ", "");
+			String[] name = driveName.split("：|\n");
+			try {
+				Assert.assertTrue(name[1].equals(infos[0]));
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("未发现司机为：【" + infos[0] + "】的订单信息。");
+				Assert.fail("未发现司机为：【" + infos[0] + "】的订单信息。");
+			}
+			logger.info("您搜索的司机姓名为：【" + name[1] + "】。");
+		}
+	}
+
+	/** 检查我的订单中收货人的姓名 */
+	public static void checkReceiverName(SeleniumUtil seleniumUtil, By byOrdersNum, By byReceiverName, int pageLoadTime, String... infos) {
+		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
+		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
+			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+			String ReceiverName = seleniumUtil.findElementBy(byReceiverName).getText(); // 取得第二行的货源信息
+			ReceiverName = ReceiverName.replaceAll(" ", "");
+			String[] name = ReceiverName.split("：|\n");
+			try {
+				Assert.assertTrue(name[1].equals(infos[0]));
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("未发现司机为：【" + infos[0] + "】的订单信息。");
+				Assert.fail("未发现司机为：【" + infos[0] + "】的订单信息。");
+			}
+			logger.info("您搜索的司机姓名为：【" + name[1] + "】。");
+		}
+	}
+
+	/** 检查我的订单中收获公司 */
+	public static void checkHarvestCompany(SeleniumUtil seleniumUtil, By byOrdersNum, By byHarvestCompany, int pageLoadTime, String... infos) {
+		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
+		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
+			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+			String HarvestCompany = seleniumUtil.findElementBy(byHarvestCompany).getText(); // 取得第二行的货源信息
+			HarvestCompany = HarvestCompany.replaceAll(" ", "");
+			String[] name = HarvestCompany.split("：|\n");
+			try {
+				Assert.assertTrue(name[1].equals(infos[0]));
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("未发现司机为：【" + infos[0] + "】的订单信息。");
+				Assert.fail("未发现司机为：【" + infos[0] + "】的订单信息。");
+			}
+			logger.info("您搜索的司机姓名为：【" + name[1] + "】。");
+		}
+	}
 }
