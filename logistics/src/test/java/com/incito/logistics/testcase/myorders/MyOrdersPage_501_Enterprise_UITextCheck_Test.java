@@ -10,18 +10,19 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
+import com.incito.logistics.pages.MyOrdersPage;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_001_UITextCheck_Test extends BaseParpare {
+public class MyOrdersPage_501_Enterprise_UITextCheck_Test extends BaseParpare {
 	@Test
 	public void myOrdersUiTest(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
-		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
+		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
+		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		
@@ -32,7 +33,12 @@ public class MyOrdersPage_001_UITextCheck_Test extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYORDER);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkMyOrdersPageText(seleniumUtil);
+		
+		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_TAB_MYCARS);
+		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_RADIO_MYGOODS);
+		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+		MyOrdersPageHelper.checkMyOrdersPageTextForEnterprise(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 }
