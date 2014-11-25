@@ -285,7 +285,7 @@ public class SeleniumUtil {
 			return;
 		}
 		try {
-			logger.info("The process pause " + sleepTime + " millisecond");
+			logger.info("由于selenium的处理速度过快，此处等待 " + sleepTime + " 毫秒（只建议等待时间为1秒以内的使用此方法）");
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
