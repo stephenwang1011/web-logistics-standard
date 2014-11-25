@@ -18,12 +18,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 登录情况下 进行快速查找订单
+ * @Description 登录情况下 进行快速查找自有车队订单中的 自己发布的货源 产生的订单编号
  * 
  * */
 public class HomePage_511_Login_Enterprise_QuickSearchOrders_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void quickSearchOrders(ITestContext context,Map<String,String> data) {
+	public void enterPriseQuickSearchOwnOrders(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String enterprise_username = PropertiesDataProvider.getTestData(configFilePath, "enterprise_username");

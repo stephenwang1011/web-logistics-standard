@@ -18,7 +18,7 @@ import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
- * @author xy-incito-wk
+ * @author xy-incito-wy
  * @Description 企业账户登录情况下 进行快速查找货源操作，只输入收货地
  * 
  * */

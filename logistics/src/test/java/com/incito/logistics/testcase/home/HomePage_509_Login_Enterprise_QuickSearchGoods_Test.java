@@ -24,7 +24,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * */
 public class HomePage_509_Login_Enterprise_QuickSearchGoods_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void fromOnlyQuickSearchGoods(ITestContext context,Map<String,String> data) {
+	public void enterPriseFromToQuickSearchGoods(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String enterprise_username = PropertiesDataProvider.getTestData(configFilePath, "enterprise_username");

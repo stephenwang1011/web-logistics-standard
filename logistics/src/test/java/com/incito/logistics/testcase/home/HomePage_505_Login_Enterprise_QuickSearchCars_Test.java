@@ -23,7 +23,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * */
 public class HomePage_505_Login_Enterprise_QuickSearchCars_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void fromOnlyQuickSearchCars(ITestContext context,Map<String,String> data) {
+	public void enterpriseFromOnlyQuickSearchCars(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String enterprise_username = PropertiesDataProvider.getTestData(configFilePath, "enterprise_username");

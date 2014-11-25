@@ -10,20 +10,20 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.pageshelper.FindCarsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 企业账户登录情况下 进行快速查找车源操作，输入出发地和目的地
+ * @Description 登录情况下 进行快速查找 社会车辆产生的订单
  * 
  * */
-public class HomePage_507_Login_Enterprise_QuickSearchCars_Test extends BaseParpare {
+public class HomePage_513_Login_Enterprise_QuickSearchOrders_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void enterPriseFromToQuickSearchCars(ITestContext context,Map<String,String> data) {
+	public void enterPriseQuickSearchPublicCarsOrders(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String enterprise_username = PropertiesDataProvider.getTestData(configFilePath, "enterprise_username");
@@ -35,15 +35,13 @@ public class HomePage_507_Login_Enterprise_QuickSearchCars_Test extends BaseParp
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, enterprise_username, enterprise_password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS, 1);
-		
 		HomePageHelper.typeQuickSearchInfo(seleniumUtil, data.get("FROM"),data.get("TO"),data.get("NO"),data.get("QUICKSEARCHTYPE"));
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_SEARCH2);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_SEARCH1);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		FindCarsPageHelper.waitFindCarsPageToLoad(timeOut, seleniumUtil);
-		FindCarsPageHelper.checkCityName(seleniumUtil, data.get("FROM"),data.get("TO"));
-		FindCarsPageHelper.checkCurrentCarLocation(seleniumUtil, data.get("FROM"));
-		FindCarsPageHelper.checkTargetCity(seleniumUtil, data.get("TO"));
+		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+		MyOrdersPageHelper.checkQuickSearchOrder(seleniumUtil, data.get("NO"));
+		
+
 
 	}
 	@DataProvider(name = "data")
