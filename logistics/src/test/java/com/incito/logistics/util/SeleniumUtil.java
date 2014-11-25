@@ -53,11 +53,11 @@ public class SeleniumUtil {
 			maxWindow(browserName);
 			hasLoadPageSucceeded(timeOut);
 			get(webUrl);
-			logger.info("Opening the test page:[" + webUrl + "]");
+			logger.info("打开测试页面:[" + webUrl + "]");
 
 		} catch (Exception e) {
 			refresh();
-			logger.info("Web page was refreshed successfully");
+			logger.info("页面刷新成功！");
 		}
 
 	}
@@ -172,7 +172,7 @@ public class SeleniumUtil {
 			logger.error("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 			Assert.fail("Failed to type the [" + key + "] to [" + getLocatorByElement(element, ">") + "]");
 		}
-		logger.info("Typed：[" + key + "] to [" + getLocatorByElement(element, ">") + "]");
+		logger.info("输入：[" + key + "] 到 [" + getLocatorByElement(element, ">") + "]");
 	}
 
 	/**
