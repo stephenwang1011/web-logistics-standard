@@ -37,7 +37,7 @@ public class TestResultListener extends TestListenerAdapter {
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
-		logger.warn(tr.getName() + " test case runs failed!");
+		logger.warn(tr.getName() + " 测试用例执行失败！");
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER"); // 这里就是取driver
 		saveScreenShot(tr, webDriver);
 	}
@@ -46,7 +46,7 @@ public class TestResultListener extends TestListenerAdapter {
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER");
-		logger.warn(tr.getName() + " test case was skipped");
+		logger.warn(tr.getName() + " 测试用例由于某些原因被跳过！");
 		saveScreenShot(tr, webDriver);
 
 	}
@@ -54,13 +54,13 @@ public class TestResultListener extends TestListenerAdapter {
 	@Override
 	public void onTestSuccess(ITestResult tr) {
 		super.onTestSuccess(tr);
-		logger.info(tr.getName() + " test case runs successfully");
+		logger.info(tr.getName() + " 测试用例执行成功！");
 	}
 
 	@Override
 	public void onTestStart(ITestResult tr) {
 		super.onTestStart(tr);
-		logger.info(tr.getName() + " test case start running");
+		logger.info(tr.getName() + " 测试用例开始执行！");
 	}
 
 	@Override
@@ -72,14 +72,14 @@ public class TestResultListener extends TestListenerAdapter {
 		// collect all id's from passed test
 		Set<Integer> passedTestIds = new HashSet<Integer>();
 		for (ITestResult passedTest : testContext.getPassedTests().getAllResults()) {
-			logger.info("Passed= " + passedTest.getName());
+			logger.info("执行成功的用例 = " + passedTest.getName());
 			passedTestIds.add(getId(passedTest));
 		}
 
 		// Eliminate the repeat methods
 		Set<Integer> skipTestIds = new HashSet<Integer>();
 		for (ITestResult skipTest : testContext.getSkippedTests().getAllResults()) {
-			logger.info("Skipped = " + skipTest.getName());
+			logger.info("被跳过的用例 = " + skipTest.getName());
 			// id = class + method + dataprovider
 			int skipTestId = getId(skipTest);
 
@@ -93,7 +93,7 @@ public class TestResultListener extends TestListenerAdapter {
 		// Eliminate the repeat failed methods
 		Set<Integer> failedTestIds = new HashSet<Integer>();
 		for (ITestResult failedTest : testContext.getFailedTests().getAllResults()) {
-			logger.info("Failed = " + failedTest.getName());
+			logger.info("执行失败的用例 = " + failedTest.getName());
 			// id = class + method + dataprovider
 			int failedTestId = getId(failedTest);
 
@@ -112,7 +112,7 @@ public class TestResultListener extends TestListenerAdapter {
 		for (Iterator<ITestResult> iterator = testContext.getFailedTests().getAllResults().iterator(); iterator.hasNext();) {
 			ITestResult testResult = iterator.next();
 			if (testsToBeRemoved.contains(testResult)) {
-				logger.info("Removed repeat faild test case = " + testResult.getName());
+				logger.info("移除重复失败的用例 = " + testResult.getName());
 				iterator.remove();
 			}
 		}
