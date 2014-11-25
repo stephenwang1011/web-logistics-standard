@@ -78,5 +78,15 @@ public class LoginPageHelper {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
 		
 	}
+	
+	/**检查 checkbox被选择或者没有被选择*/
+	public static void doesCheckBoxSelect(SeleniumUtil seleniumUtil){
+		enterPage(seleniumUtil, LoginPage.LP_CHECKBOX_AUTO);
+		seleniumUtil.doesCheckboxSelected(LoginPage.LP_CHECKBOX_AUTO);
+		enterPage(seleniumUtil, LoginPage.LP_CHECKBOX_AUTO);
+		seleniumUtil.doesCheckboxSelected(LoginPage.LP_CHECKBOX_AUTO);
+		
+		
+	}
 
 }

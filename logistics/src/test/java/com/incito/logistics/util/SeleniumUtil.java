@@ -342,7 +342,18 @@ public class SeleniumUtil {
 		Select s = new Select(driver.findElement(by));
 		s.selectByIndex(index);
 	}
-
+	/**检查checkbox是不是勾选*/
+	public boolean doesCheckboxSelected(By elementLocator){
+		if(findElementBy(elementLocator).isSelected()==true){
+			logger.info("CheckBox: "+getLocatorByElement(findElementBy(elementLocator), ">")+" 被勾选");
+			return true;
+		}
+		else
+			logger.info("CheckBox: "+getLocatorByElement(findElementBy(elementLocator), ">")+" 没有被勾选");
+		return false;
+		
+		
+	}
 	/**
 	 * 选择下拉选项 -根据文本内容
 	 * */
