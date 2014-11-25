@@ -45,5 +45,18 @@ public class MyOrdersPage {
 	/**我的订单页面 隐藏司机的姓名*/
 	public static final By MOP_TEXT_ORDERDRIVERNAME = By.cssSelector("div.order-infobox");
 	
+	//以下是企业版本的我的订单中的新增加的页面元素********************************************
+	/**我的订单页面"自有车队的订单"*/
+	public static final By MOP_TAB_MYCARS = By.xpath("//*[@role='tab' and text()='自有车队的订单']");
+	/**我的订单页面"社会车辆的订单"*/
+	public static final By MOP_TAB_SOCIETYCARS = By.xpath("//*[@role='tab' and text()='社会车辆的订单']");
+	/**我的订单页面"社会车辆的订单-货源自己发布"*/
+	public static final By MOP_RADIO_MYGOODS = By.cssSelector("input[type='radio'][value='0']"); //By.xpath("//*[@type='radio' and @value='0']")
+	/**我的订单页面"社会车辆的订单-货源从平台发送"*/
+	public static final By MOP_RADIO_PLATFORMGOODS = By.cssSelector("input[type='radio'][value='1']");
+	/**我的订单页面 订单的数目：只含有货物信息*/
+	public static final By MOP_EP_TEXT_ORDERSINFOES = By.className("order-infobox");
+	/**我的订单页面 订单收货地址*/
+	public static final By MOP_EP_TEXT_ADDRESS = By.cssSelector("p.in-city-highlight");
 
 }
