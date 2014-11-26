@@ -18,7 +18,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class FindCarsPage_039_Private_SortByCarLenght_Test extends BaseParpare {
 
 	@Test
-	public void sortByCredit(ITestContext context) {
+	public void privateSortByCarLength(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
