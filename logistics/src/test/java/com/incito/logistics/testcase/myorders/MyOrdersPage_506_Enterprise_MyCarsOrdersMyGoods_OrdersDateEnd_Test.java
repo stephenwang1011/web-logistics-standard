@@ -22,9 +22,9 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_502_Enterprise_SendFrom_Test extends BaseParpare {
+public class MyOrdersPage_506_Enterprise_MyCarsOrdersMyGoods_OrdersDateEnd_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void SendFrom(ITestContext context, Map<String, String> data) {
+	public void ordersDateEnd(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");
@@ -42,7 +42,7 @@ public class MyOrdersPage_502_Enterprise_SendFrom_Test extends BaseParpare {
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_RADIO_MYGOODS);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		
+
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
 				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"),
@@ -51,8 +51,8 @@ public class MyOrdersPage_502_Enterprise_SendFrom_Test extends BaseParpare {
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkMyOrdersAddress(seleniumUtil, MyOrdersPage.MOP_EP_TEXT_ORDERSINFOES,  MyOrdersPage.MOP_EP_TEXT_ADDRESS,
-				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"));
+		MyOrdersPageHelper.checkOrdersSendDate(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERDATE,
+				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"));
 	}
 	
 	@DataProvider(name = "data")

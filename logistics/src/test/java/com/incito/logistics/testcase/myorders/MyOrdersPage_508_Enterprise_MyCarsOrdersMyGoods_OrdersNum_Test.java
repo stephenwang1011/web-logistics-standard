@@ -22,9 +22,9 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_506_Enterprise_OrdersDateEnd_Test extends BaseParpare {
+public class MyOrdersPage_508_Enterprise_MyCarsOrdersMyGoods_OrdersNum_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void ordersDateEnd(ITestContext context, Map<String, String> data) {
+	public void OrdersNum(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");
@@ -43,6 +43,7 @@ public class MyOrdersPage_506_Enterprise_OrdersDateEnd_Test extends BaseParpare 
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_RADIO_MYGOODS);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 
+		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_ADSEARCH);
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
 				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"),
@@ -51,8 +52,8 @@ public class MyOrdersPage_506_Enterprise_OrdersDateEnd_Test extends BaseParpare 
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkOrdersSendDate(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERDATE,
-				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"));
+		MyOrdersPageHelper.checkOdersNum(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERNO,
+				data.get("MOP_INPUT_ORDERSNUM"));
 	}
 	
 	@DataProvider(name = "data")

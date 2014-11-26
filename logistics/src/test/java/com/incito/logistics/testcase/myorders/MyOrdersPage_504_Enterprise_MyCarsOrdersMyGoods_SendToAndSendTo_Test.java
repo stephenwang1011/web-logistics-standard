@@ -22,7 +22,7 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_503_Enterprise_SendTo_Test extends BaseParpare {
+public class MyOrdersPage_504_Enterprise_MyCarsOrdersMyGoods_SendToAndSendTo_Test extends BaseParpare {
 	@Test(dataProvider = "data")
 	public void SendFrom(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");

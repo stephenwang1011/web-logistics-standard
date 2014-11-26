@@ -22,9 +22,9 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_509_Enterprise_GoodsName_Test extends BaseParpare {
+public class MyOrdersPage_507_Enterprise_MyCarsOrdersMyGoods_OrdersDateStartAndEnd_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void OrdersNum(ITestContext context, Map<String, String> data) {
+	public void ordersDateStartAndEnd(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");
@@ -38,12 +38,7 @@ public class MyOrdersPage_509_Enterprise_GoodsName_Test extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYORDER);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_TAB_MYCARS);
-		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_RADIO_MYGOODS);
-		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-
-		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_ADSEARCH);
+		
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
 				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"),
@@ -52,8 +47,8 @@ public class MyOrdersPage_509_Enterprise_GoodsName_Test extends BaseParpare {
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkGoodsName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES,
-				data.get("MOP_INPUT_GOODSNAME"));
+		MyOrdersPageHelper.checkOrdersSendDate(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERDATE,
+				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"));
 	}
 	
 	@DataProvider(name = "data")
