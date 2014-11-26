@@ -364,40 +364,63 @@ public class FindCarsPageHelper {
 
 	/** 取消收藏操作 */
 	public static void cancelFavCarsByLicense(SeleniumUtil seleniumUtil, By byElement, String license) {
-		logger.info("Start cancling favorite cars");
+		logger.info("开始执行取消收藏车源的操作...");
 		seleniumUtil.pause(500);
 		try {
 			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
-				logger.warn("No datas displayed with thes fitters");
+				logger.warn("没有搜索到相应的数据");
 				return;
 			}
 		} catch (Exception e) {
-			logger.info("Found the cars info");
+			logger.info("找到了车辆信息");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+
 			for (int i = 0; i < size; i++) {
 				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
 				String autualLicense = secondInfos[0].trim();
+
 				if (autualLicense.equals(license)) {
 
-					if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getAttribute("class")=="active"){
+					if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV).getAttribute("class").equals("active")){
 					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮	
-					seleniumUtil.pause(800);
-					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
-					}
-					try{
-					Assert.assertTrue(autualLicense.equals(license));
-					}catch(AssertionError ae){
-						logger.error("The expect license is not :"+license);
-						Assert.fail("The expect license is not :"+license);
+					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();//接受弹窗
+					seleniumUtil.waitForElementToLoad(2, FindCarsPage.FCP_DIV_CARINFO2);
+					int insize = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+					for (int j = 0; j < insize; j++) {
+						String insecondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(j).getText();
+						String insecondInfos[] = insecondInfo.split("，");
+						String inautualLicense = insecondInfos[0].trim();
+						if(inautualLicense!=license){
+							logger.info("剩下车源的第"+(j+1)+"条车源信息中车牌号不为"+license);
+							if(j==(insize-1)){
+								logger.info("取消收藏车牌号："+license+" 车源成功");
+							}
+				
+							continue;
+						}
+						if(inautualLicense.endsWith(license)){
+							logger.error("车牌号为："+license+"的车源没有被取消收藏成功");
+							Assert.fail("车牌号为："+license+"的车源没有被取消收藏成功");
+						}
 						
 					}
+					
+					}
+					
+					if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_PUBLIC).getAttribute("class").equals("active")){
+						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮
+						seleniumUtil.waitForElementToLoad(2, FindCarsPage.FCP_BUTTON_FAV);
+						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "收藏");
+						
+					}
+					
 					break;
 				}
 			}
 
 		}
-		logger.info("Favoriting cars complete");
+
 	}
 
 	/** 取消收藏操作针对有弹出操作： 弹出2次弹窗 上点击取消按钮 */
