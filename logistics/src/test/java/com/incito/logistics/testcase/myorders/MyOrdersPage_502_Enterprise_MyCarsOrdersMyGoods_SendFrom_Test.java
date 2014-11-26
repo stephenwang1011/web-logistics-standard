@@ -22,7 +22,7 @@ import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_505_Enterprise_OrdersDateStart_Test extends BaseParpare {
+public class MyOrdersPage_502_Enterprise_MyCarsOrdersMyGoods_SendFrom_Test extends BaseParpare {
 	@Test(dataProvider = "data")
 	public void SendFrom(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
@@ -38,6 +38,10 @@ public class MyOrdersPage_505_Enterprise_OrdersDateStart_Test extends BaseParpar
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYORDER);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_TAB_MYCARS);
+		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_RADIO_MYGOODS);
+		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 		
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
@@ -47,8 +51,8 @@ public class MyOrdersPage_505_Enterprise_OrdersDateStart_Test extends BaseParpar
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-		MyOrdersPageHelper.checkOrdersSendDate(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERDATE,
-				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"));
+		MyOrdersPageHelper.checkMyOrdersAddress(seleniumUtil, MyOrdersPage.MOP_EP_TEXT_ORDERSINFOES,  MyOrdersPage.MOP_EP_TEXT_ADDRESS,
+				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"));
 	}
 	
 	@DataProvider(name = "data")

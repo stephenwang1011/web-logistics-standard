@@ -17,7 +17,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class MyOrdersPage_501_Enterprise_UITextCheck_Test extends BaseParpare {
+public class MyOrdersPage_501_Enterprise_MyCarsOrdersMyGoods_UITextCheck_Test extends BaseParpare {
 	@Test
 	public void myOrdersUiTest(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
