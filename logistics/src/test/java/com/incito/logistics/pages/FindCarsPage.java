@@ -55,7 +55,7 @@ public class FindCarsPage {
 	/**公共车源*/
 	public static final By FCP_TAB_PUBLIC = By.id("findcarsTab0");
 	/**我的收藏*/
-	public static final By FCP_TAB_FAV = By.xpath("//*[text()='我的收藏' and @role='tab']");
+	public static final By FCP_TAB_FAV = By.id("findcarsTab1");
 	
 	/**每个车源中的 车辆城市 */
 	public static final By FCP_SPAN_LOCATOR = By.xpath("//*[@class='text-major']");
