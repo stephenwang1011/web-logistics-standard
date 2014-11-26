@@ -32,16 +32,6 @@ public class MyOrdersPageHelper {
 		logger.info("Checking my order page web element complete");
 	}
 
-	/**企业版的 检查我的订单页面上的文本 */
-	public static void checkMyOrdersPageTextForEnterprise(SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_ADSEARCH).getText().trim(), "高级搜索");
-		int size = seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).size();
-		String tabs[] = { "近三个月的订单", "待接单", "待配货", "运输中", "待签收", "已签收", "已拒签", "三个月前订单" };
-		for (int i = 0; i < size; i++) {
-			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
-		}
-	}
 	/** 检查我的订单页面上的文本 */
 	public static void checkMyOrdersPageText(SeleniumUtil seleniumUtil) {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
@@ -53,6 +43,38 @@ public class MyOrdersPageHelper {
 		}
 	}
 
+	/** 企业版的 检查"我的订单-自有车队的订单-货源自己发布"页面上的文本 */
+	public static void checkMyOrdersPageTextForEnterprise(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_ADSEARCH).getText().trim(), "高级搜索");
+		int size = seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).size();
+		String tabs[] = { "近三个月的订单", "待接单", "待配货", "运输中", "待签收", "已签收", "已拒签", "三个月前订单" };
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
+		}
+	}
+
+	/** 企业版的 检查"我的订单-自有车队的订单-货源从平台预定"页面上的文本 */
+	public static void checkMyOrdersPageTextForMyCarsOrdersPublicGoods(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_ADSEARCH).getText().trim(), "高级搜索");
+		int size = seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).size();
+		String tabs[] = { "近三个月的订单", "待接单", "待付款", "司机已付款", "待配货", "运输中", "待签收", "待评价", "交易成功", "交易关闭", "三个月前订单" };
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
+		}
+	}
+
+	/** 企业版的 检查"我的订单-自有车队的订单-货源从平台预定"页面上的文本 */
+	public static void checkMyOrdersPageTextForSocietyCarsOrders(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_SEARCH).getText().trim(), "搜索");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_BUTTON_ADSEARCH).getText().trim(), "高级搜索");
+		int size = seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).size();
+		String tabs[] = { "近三个月的订单", "已预订", "待收款", "配货中", "运输中", "到达收货地", "待评价", "交易成功", "交易关闭", "三个月前订单" };
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyOrdersPage.MOP_SPAN_TABS).findElements(By.tagName("span")).get(i).getText(), tabs[i]);
+		}
+	}
 
 	/** 检查快速搜索的订单 */
 	public static void checkQuickSearchOrder(SeleniumUtil seleniumUtil, String... qucikSearchInfos) {
@@ -112,6 +134,7 @@ public class MyOrdersPageHelper {
 		try {
 			// 这个items指的是查询出来有多少条货源
 			int items = seleniumUtil.findElementsBy(byOrdersInfoes).size();
+			logger.info("您搜索的结果一共有：【" + items + "】条货源");
 			for (int i = 0; i < items; i++) {// 循环每个订单：只对针对当前页面的
 				String address = seleniumUtil.findElementsBy(byAddress).get(i).getText();
 				address = address.replaceAll(" ", "");
@@ -143,6 +166,7 @@ public class MyOrdersPageHelper {
 		// try {
 		DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		int items = seleniumUtil.findElementsBy(byOrdersDate).size(); // 这个items指的是查询出来有多少条货源
+		logger.info("您搜索的结果一共含有：【" + items + "】条订单信息。");
 		for (int i = 0; i < items; i++) {
 			String header = seleniumUtil.findElementsBy(byOrdersDate).get(i).getText();
 			// 取得发布时间的 字符串

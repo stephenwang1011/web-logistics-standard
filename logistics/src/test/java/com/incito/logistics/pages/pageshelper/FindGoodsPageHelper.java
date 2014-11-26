@@ -107,7 +107,8 @@ public class FindGoodsPageHelper {
 			seleniumUtil.isContains(targetcity, goodsAdd[1]);
 		}
 	}
-	/**检查货物的发布时间*/
+
+	/** 检查货物的发布时间 */
 	public static void checkGoodsSendDate(SeleniumUtil seleniumUtil, By noGoodsInfo, By hideGoodsInfo) {
 		DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		int items = seleniumUtil.findElementsBy(hideGoodsInfo).size(); // 这个items指的是查询出来有多少条货源
@@ -391,6 +392,7 @@ public class FindGoodsPageHelper {
 		}
 		logger.info("Check checkFindGoodsPrompt_CarLong page text completed");
 	}
+
 	/**
 	 * 在“找车源-公共货源”中点击当前页面按钮“收藏”变为“我的收藏”的货源
 	 * 
@@ -402,23 +404,23 @@ public class FindGoodsPageHelper {
 		for (int i = 0; i < items; i++) {
 			seleniumUtil.click(seleniumUtil.findElementsBy(myFavoBotton).get(i));
 		}
-		logger.info("您一共收藏了【"+items+"】条货源成为我的收藏。");
+		logger.info("您一共收藏了【" + items + "】条货源成为我的收藏。");
 	}
-	
+
 	public static void FavoGoodsChangepublicGoods(SeleniumUtil seleniumUtil, By cancelMyFavoBotton) {
 		int items = seleniumUtil.findElementsBy(cancelMyFavoBotton).size(); // 这个items指的是查询出来有多少条货源
 		for (int i = 0; i < items; i++) {
-			seleniumUtil.click(seleniumUtil.findElementsBy(cancelMyFavoBotton).get(0)); // 点击 取消收藏按钮	
+			seleniumUtil.click(seleniumUtil.findElementsBy(cancelMyFavoBotton).get(0)); // 点击
+																						// 取消收藏按钮
 			seleniumUtil.pause(800);
 			seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
 			seleniumUtil.pause(800);
 		}
-		logger.info("您一共取消【"+items+"】条我的收藏成为公共货源。");
+		logger.info("您一共取消【" + items + "】条我的收藏成为公共货源。");
 	}
-	
-	
-	/**我的货源中，分别按照：默认、星级，车长，重量和体积排序*/
-	public static void checkCarsSort(SeleniumUtil seleniumUtil,String sortRule,int pageLoadTime) {
+
+	/** 我的货源中，分别按照：默认、星级，车长，重量和体积排序 */
+	public static void checkCarsSort(SeleniumUtil seleniumUtil, String sortRule, int pageLoadTime) {
 		try {
 			if (seleniumUtil.findElementBy(FindGoodsPage.FGP_NODIAPALY_SEARCH).getText().trim().equals("没有搜索到相应的数据")) {
 				logger.warn("没有相关数据");
@@ -426,296 +428,290 @@ public class FindGoodsPageHelper {
 			}
 		} catch (Exception e) {
 			logger.info("找到了货源信息");
-			logger.info("开始按照["+sortRule+"]检查排序");
-			int items = seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODS).size(); //取得货源的条数
-			float[] temp1 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第一次点击
-			float[] temp2 = new float[items];//用于临时存放 星级数值 、车长、吨位、容积等 - 用于第二次点击
-			String[] temp3 = new String[items];//用于临时存放 发布时间
-			int count = 0;//定义点击计数器
-			switch(sortRule){
-			case "信用评价":
-				while(count<2){ //点击2次 信用等级
-				seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_CREDIT));
-				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+			logger.info("开始按照[" + sortRule + "]检查排序");
+			int items = seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODS).size(); // 取得货源的条数
+			float[] temp1 = new float[items];// 用于临时存放 星级数值 、车长、吨位、容积等 - 用于第一次点击
+			float[] temp2 = new float[items];// 用于临时存放 星级数值 、车长、吨位、容积等 - 用于第二次点击
+			String[] temp3 = new String[items];// 用于临时存放 发布时间
+			int count = 0;// 定义点击计数器
+			switch (sortRule) {
 
-				if(count==0){
-					for (int s = 0; s < temp1.length; s++) {					
-						//把星级的具体值存入一个float数组
-						float stars = Float.valueOf( seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("rateit-range")).getAttribute("aria-valuenow"));
-						temp1[s] = stars;
-					}	
-					logger.info("点击星级排序，箭头往下");
-					for (int i = 0; i < temp1.length; i++) {
-						try{
-							if(i==temp1.length-1){
-								break;
-							}
-						Assert.assertTrue(temp1[i+1]<=temp1[i]);
-						logger.info("第"+(i+2)+"组数:"+temp1[i+1]+"据小于等于第"+(i+1)+"组数据:"+temp1[i]);
-						}catch(AssertionError ae){
-							logger.error("当星级箭头向下时，按星级排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当星级箭头向下时，按星级排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-		
-					}
-					count++; //此时count的值变成1,1<2进行第二轮循环
-					continue;
-				}
-				
-				if(count==1){
-					for (int s = 0; s < temp2.length; s++) {//把星级的具体值存入一个float数组
-						float stars = Float.valueOf( seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("rateit-range")).getAttribute("aria-valuenow"));
-						temp2[s] = stars;
-					}	
-
-					logger.info("点击星级排序，箭头往上");
-					for (int i = 0; i < temp2.length; i++) {
-						try{
-							if(i==temp2.length-1){
-								break;
-							}
-						Assert.assertTrue(temp2[i]<=temp2[i+1]);
-						logger.info("第"+(i+2)+"组数据:"+temp2[i+1]+"小于等于第"+(i+1)+"组数据:"+temp2[i]);
-						}catch(AssertionError ae){
-							logger.error("当星级箭头向上时，按星级排序出错："+temp2[i+1]+"应该大于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当星级箭头向上时，按星级排序出错："+temp2[i+1]+"应该大于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-					}
-					count++;			
-		
-		
-				}
-				
-			}
-				break;
-				
-			case "车长":
-				while(count<1){ // 因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
-				seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_LENGTH));
-				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-
-				if(count==0){
-					for (int s = 0; s < temp1.length; s++) {					
-						//把车长的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
-						if(secondInfo.indexOf("米")==-1){
-							break;
-						}
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
-						temp1[s] = autualCarLen;
-					}	
-					logger.info("点击车长排序，箭头往下");
-					for (int i = 0; i < temp1.length; i++) {
-						try{
-							if(i==temp1.length-1){
-								break;
-							}
-						Assert.assertTrue(temp1[i+1]<=temp1[i]);
-						logger.info("第"+(i+2)+"组数据:"+temp1[i+1]+"小于等于第"+(i+1)+"组数据:"+temp1[i]);
-						}catch(AssertionError ae){
-							logger.error("当车长箭头向下时，按车长排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当车长箭头向下时，按车长排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-		
-					}
-					count++; //此时count的值变成1,1<2进行第二轮循环
-					continue;
-				}
-				
-				if(count==1){
-					for (int s = 0; s < temp2.length; s++) {//把车长的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
-						temp2[s] = autualCarLen;
-					}	
-
-					logger.info("点击车长排序，箭头往上");
-					for (int i = 0; i < temp2.length; i++) {
-						try{
-							if(i==temp2.length-1){
-								break;
-							}
-						Assert.assertTrue(temp2[i]<=temp2[i+1]);
-						logger.info("第"+(i+2)+"组数据:"+temp2[i+1]+"大于等于第"+(i+1)+"组数据:"+temp2[i]);
-						}catch(AssertionError ae){
-							logger.error("当车长箭头向上时，按车长排序出错："+temp2[i+1]+"应该大于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当车长箭头向上时，按车长排序出错："+temp2[i+1]+"应该小大等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-					}
-					count++;			
-		
-				}
-				
-			}
-				break;
-				
-			case "重量":
-				while(count<1){ //因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
-				seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_WEIGHT));
-				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-
-				if(count==0){
-					for (int s = 0; s < temp1.length; s++) {					
-						//把吨位的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取得车重
-						temp1[s] = autualCarWeight;
-					}	
-					logger.info("点击载重排序，箭头往下");
-					for (int i = 0; i < temp1.length; i++) {
-						try{
-							if(i==temp1.length-1){
-								break;
-							}
-						Assert.assertTrue(temp1[i+1]<=temp1[i]);
-						logger.info("第"+(i+2)+"组数据:"+temp1[i+1]+"小于等于第"+(i+1)+"组数据:"+temp1[i]);
-						}catch(AssertionError ae){
-							logger.error("当载重箭头向下时，按载重排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当载重箭头向下时，按载重排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-		
-					}
-					count++; //此时count的值变成1,1<2进行第二轮循环
-					continue;
-				}
-				
-				if(count==1){
-					for (int s = 0; s < temp2.length; s++) {//把载重的具体值存入一个float数组
-						//把吨位的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarWeight = Float.valueOf(secondInfos[3].substring(3, secondInfos[3].length() - 1)); // 取得车重
-						temp2[s] = autualCarWeight;
-					}	
-
-					logger.info("点击载重排序，箭头往下");
-					for (int i = 0; i < temp2.length; i++) {
-						try{
-							if(i==temp2.length-1){
-								break;
-							}
-						Assert.assertTrue(temp2[i]>=temp2[i+1]);
-						logger.info("第"+(i+2)+"组数据:"+temp2[i+1]+"小于等于第"+(i+1)+"组数据:"+temp2[i]);
-						}catch(AssertionError ae){
-							logger.error("当载重箭头向下时，按载重排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当载重箭头向下时，按载重排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-					}
-					count++;			
-		
-				}
-				
-			}
-				break;
-				
-			case "体积":
-				while(count<1){ ////因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
-				seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_VOLUME));
-				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-				if(count==0){
-					for (int s = 0; s < temp1.length; s++) {					
-						//把容积的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
-						if(secondInfo.indexOf("方")==-1){
-							logger.warn("注意：从第"+(s+1)+"条货源没有输入体积信息，故会跳过检测");
-							break;
-						}
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取的体积
-						temp1[s] = autualCarVolume;
-					}	
-					logger.info("点击车厢容积排序，箭头往下");
-					for (int i = 0; i < temp1.length; i++) {
-						try{
-							if(i==temp1.length-1){
-								break;
-							}
-						Assert.assertTrue(temp1[i+1]<=temp1[i]);
-						logger.info("第"+(i+2)+"组数:"+temp1[i+1]+"据小于等于第"+(i+1)+"组数据:"+temp1[i]);
-						}catch(AssertionError ae){
-							logger.error("当车厢容积箭头向下时，按车厢容积排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当车厢容积箭头向下时，按车厢容积排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-		
-					}
-					count++; //此时count的值变成1,1<2进行第二轮循环
-					continue;
-				}
-				
-				if(count==1){
-					for (int s = 0; s < temp2.length; s++) {//把容积的具体值存入一个float数组
-						//把容积的具体值存入一个float数组
-						String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
-						String secondInfos[] = secondInfo.split("，");
-						float autualCarVolume = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 1)); // 取得车容积
-						temp2[s] = autualCarVolume;
-					}	
-
-					logger.info("点击车厢容积排序，箭头往下");
-					for (int i = 0; i < temp2.length; i++) {
-						try{
-							if(i==temp2.length-1){
-								break;
-							}
-						Assert.assertTrue(temp2[i]>=temp2[i+1]);
-						logger.info("第"+(i+2)+"组数据:"+temp2[i+1]+"小于等于第"+(i+1)+"组数据:"+temp2[i]);
-						}catch(AssertionError ae){
-							logger.error("当车厢容积箭头向下时，按车厢容积排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("当车厢容积箭头向下时，按车厢容积排序出错："+temp2[i+1]+"应该小于等于"+temp2[i]+"出错位置在第"+(i+1)+"和"+i);
-						}
-					}
-					count++;			
-		
-				}
-				
-			}
-				break;
-				
 			case "默认排序":
 				seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_DEFAULT));
 				seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
 				DateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					for (int s = 0; s < temp1.length; s++) {					
-						seleniumUtil.click(seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODS).get(s));//点击展开货源详情
-						String time = seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("col-xs-4")).getText().trim();
-						time = time.substring(time.indexOf("：") + 1, time.length());
-						temp3[s] = time;
-					}	
-					for (int i = 0; i < temp3.length; i++) {
-						try{
-							if(i==temp3.length-1){
+				for (int s = 0; s < temp1.length; s++) {
+					seleniumUtil.click(seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODS).get(s));// 点击展开货源详情
+					String time = seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("col-xs-4")).getText().trim();
+					time = time.substring(time.indexOf("：") + 1, time.length());
+					temp3[s] = time;
+				}
+				for (int i = 0; i < temp3.length; i++) {
+					try {
+						if (i == temp3.length - 1) {
+							break;
+						}
+						Assert.assertTrue(formater.parse(temp3[i]).getTime() >= formater.parse(temp3[i + 1]).getTime());
+						logger.info("第" + (i + 1) + "组数:[" + temp3[i] + "]据大于等于第" + (i + 2) + "组数据:[" + temp3[i + 1] + "]");
+					} catch (AssertionError ae) {
+						logger.error("按默认排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+						Assert.fail("按默认排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+					} catch (ParseException e1) {
+						logger.error("不能解析第" + (i + 1) + "条数据的日期：" + temp3[i]);
+						Assert.fail("不能解析第" + (i + 1) + "条数据的日期：" + temp3[i]);
+					}
+
+				}
+				break;
+
+			case "信用评级":
+				while (count < 2) { // 点击2次 信用等级
+					seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_CREDIT));
+					seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+
+					if (count == 0) {
+						for (int s = 0; s < temp1.length; s++) {
+							// 把星级的具体值存入一个float数组
+							float stars = Float.valueOf(seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("rateit-range")).getAttribute("aria-valuenow"));
+							temp1[s] = stars;
+						}
+						logger.info("点击星级排序，箭头往下");
+						for (int i = 0; i < temp1.length; i++) {
+							try {
+								if (i == temp1.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp1[i + 1] <= temp1[i]);
+								logger.info("第" + (i + 2) + "组数:" + temp1[i + 1] + "据小于等于第" + (i + 1) + "组数据:" + temp1[i]);
+							} catch (AssertionError ae) {
+								logger.error("当星级箭头向下时，按星级排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当星级箭头向下时，按星级排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+
+						}
+						count++; // 此时count的值变成1,1<2进行第二轮循环
+						continue;
+					}
+
+					if (count == 1) {
+						for (int s = 0; s < temp2.length; s++) {// 把星级的具体值存入一个float数组
+							float stars = Float.valueOf(seleniumUtil.findElementsBy(FindGoodsPage.FGP_ITEM_GOODSANDSTARS).get(s).findElement(By.className("rateit-range")).getAttribute("aria-valuenow"));
+							temp2[s] = stars;
+						}
+
+						logger.info("点击星级排序，箭头往上");
+						for (int i = 0; i < temp2.length; i++) {
+							try {
+								if (i == temp2.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp2[i] <= temp2[i + 1]);
+								logger.info("第" + (i + 2) + "组数据:" + temp2[i + 1] + "小于等于第" + (i + 1) + "组数据:" + temp2[i]);
+							} catch (AssertionError ae) {
+								logger.error("当星级箭头向上时，按星级排序出错：" + temp2[i + 1] + "应该大于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当星级箭头向上时，按星级排序出错：" + temp2[i + 1] + "应该大于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+						}
+						count++;
+
+					}
+
+				}
+				break;
+
+			case "车长":
+				while (count < 1) { // 因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
+					seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_LENGTH));
+					seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+
+					if (count == 0) {
+						for (int s = 0; s < temp1.length; s++) {
+							// 把车长的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
+							if (secondInfo.indexOf("米") == -1) {
 								break;
 							}
-							Assert.assertTrue(formater.parse(temp3[i]).getTime() >= formater.parse(temp3[i + 1]).getTime());
-						logger.info("第"+(i+1)+"组数:["+temp3[i]+"]据大于等于第"+(i+2)+"组数据:["+temp3[i+1]+"]");
-						}catch(AssertionError ae){
-							logger.error("按默认排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-							Assert.fail("按默认排序出错："+temp1[i+1]+"应该小于等于"+temp1[i]+"出错位置在第"+(i+1)+"和"+i);
-						} catch (ParseException e1) {
-							logger.error("不能解析第"+(i+1)+"条数据的日期："+temp3[i]);
-							Assert.fail("不能解析第"+(i+1)+"条数据的日期："+temp3[i]);
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
+							temp1[s] = autualCarLen;
 						}
-		
+						logger.info("点击车长排序，箭头往下");
+						for (int i = 0; i < temp1.length; i++) {
+							try {
+								if (i == temp1.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp1[i + 1] <= temp1[i]);
+								logger.info("第" + (i + 2) + "组数据:" + temp1[i + 1] + "小于等于第" + (i + 1) + "组数据:" + temp1[i]);
+							} catch (AssertionError ae) {
+								logger.error("当车长箭头向下时，按车长排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当车长箭头向下时，按车长排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+
+						}
+						count++; // 此时count的值变成1,1<2进行第二轮循环
+						continue;
 					}
+
+					if (count == 1) {
+						for (int s = 0; s < temp2.length; s++) {// 把车长的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
+							temp2[s] = autualCarLen;
+						}
+
+						logger.info("点击车长排序，箭头往上");
+						for (int i = 0; i < temp2.length; i++) {
+							try {
+								if (i == temp2.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp2[i] <= temp2[i + 1]);
+								logger.info("第" + (i + 2) + "组数据:" + temp2[i + 1] + "大于等于第" + (i + 1) + "组数据:" + temp2[i]);
+							} catch (AssertionError ae) {
+								logger.error("当车长箭头向上时，按车长排序出错：" + temp2[i + 1] + "应该大于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当车长箭头向上时，按车长排序出错：" + temp2[i + 1] + "应该小大等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+						}
+						count++;
+
+					}
+
+				}
 				break;
-				
+
+			case "重量":
+				while (count < 1) { // 因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
+					seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_WEIGHT));
+					seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+
+					if (count == 0) {
+						for (int s = 0; s < temp1.length; s++) {
+							// 把吨位的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取得车重
+							temp1[s] = autualCarWeight;
+						}
+						logger.info("点击载重排序，箭头往下");
+						for (int i = 0; i < temp1.length; i++) {
+							try {
+								if (i == temp1.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp1[i + 1] <= temp1[i]);
+								logger.info("第" + (i + 2) + "组数据:" + temp1[i + 1] + "小于等于第" + (i + 1) + "组数据:" + temp1[i]);
+							} catch (AssertionError ae) {
+								logger.error("当载重箭头向下时，按载重排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当载重箭头向下时，按载重排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+
+						}
+						count++; // 此时count的值变成1,1<2进行第二轮循环
+						continue;
+					}
+
+					if (count == 1) {
+						for (int s = 0; s < temp2.length; s++) {// 把载重的具体值存入一个float数组
+							// 把吨位的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarWeight = Float.valueOf(secondInfos[3].substring(3, secondInfos[3].length() - 1)); // 取得车重
+							temp2[s] = autualCarWeight;
+						}
+
+						logger.info("点击载重排序，箭头往下");
+						for (int i = 0; i < temp2.length; i++) {
+							try {
+								if (i == temp2.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp2[i] >= temp2[i + 1]);
+								logger.info("第" + (i + 2) + "组数据:" + temp2[i + 1] + "小于等于第" + (i + 1) + "组数据:" + temp2[i]);
+							} catch (AssertionError ae) {
+								logger.error("当载重箭头向下时，按载重排序出错：" + temp2[i + 1] + "应该小于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当载重箭头向下时，按载重排序出错：" + temp2[i + 1] + "应该小于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+						}
+						count++;
+
+					}
+
+				}
+				break;
+
+			case "体积":
+				while (count < 1) { // //因为我的货源的 出现的信息不规则，导致不能定位，后续在做，第二次点击的排序检查
+					seleniumUtil.click(seleniumUtil.findElementBy(FindGoodsPage.FGP_LINK_VOLUME));
+					seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
+					if (count == 0) {
+						for (int s = 0; s < temp1.length; s++) {
+							// 把容积的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
+							if (secondInfo.indexOf("方") == -1) {
+								logger.warn("注意：从第" + (s + 1) + "条货源没有输入体积信息，故会跳过检测");
+								break;
+							}
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取的体积
+							temp1[s] = autualCarVolume;
+						}
+						logger.info("点击车厢容积排序，箭头往下");
+						for (int i = 0; i < temp1.length; i++) {
+							try {
+								if (i == temp1.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp1[i + 1] <= temp1[i]);
+								logger.info("第" + (i + 2) + "组数:" + temp1[i + 1] + "据小于等于第" + (i + 1) + "组数据:" + temp1[i]);
+							} catch (AssertionError ae) {
+								logger.error("当车厢容积箭头向下时，按车厢容积排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当车厢容积箭头向下时，按车厢容积排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+
+						}
+						count++; // 此时count的值变成1,1<2进行第二轮循环
+						continue;
+					}
+
+					if (count == 1) {
+						for (int s = 0; s < temp2.length; s++) {// 把容积的具体值存入一个float数组
+							// 把容积的具体值存入一个float数组
+							String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
+							String secondInfos[] = secondInfo.split("，");
+							float autualCarVolume = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 1)); // 取得车容积
+							temp2[s] = autualCarVolume;
+						}
+
+						logger.info("点击车厢容积排序，箭头往下");
+						for (int i = 0; i < temp2.length; i++) {
+							try {
+								if (i == temp2.length - 1) {
+									break;
+								}
+								Assert.assertTrue(temp2[i] >= temp2[i + 1]);
+								logger.info("第" + (i + 2) + "组数据:" + temp2[i + 1] + "小于等于第" + (i + 1) + "组数据:" + temp2[i]);
+							} catch (AssertionError ae) {
+								logger.error("当车厢容积箭头向下时，按车厢容积排序出错：" + temp2[i + 1] + "应该小于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+								Assert.fail("当车厢容积箭头向下时，按车厢容积排序出错：" + temp2[i + 1] + "应该小于等于" + temp2[i] + "出错位置在第" + (i + 1) + "和" + i);
+							}
+						}
+						count++;
+
+					}
+
+				}
+				break;
+
 			default:
-				logger.warn("你选择的排序规则：["+sortRule+"]不被支持！");
-			return;
-				
-			
-			}
-			
-			
+				logger.warn("你选择的排序规则：[" + sortRule + "]不被支持！");
+				return;
+
 			}
 
 		}
-	
-		
-		
-		}
-	
 
+	}
+
+}

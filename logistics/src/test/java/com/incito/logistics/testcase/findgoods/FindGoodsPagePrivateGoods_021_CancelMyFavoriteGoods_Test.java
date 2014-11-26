@@ -15,7 +15,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @author xy-incito-wk
  * @Description 测试用例：在我的收藏页面取消当前页面的所有收藏
  * */
-public class FindGoodsPagePrivateGoods_016_CancelMyFavoriteGoods_Test extends BaseParpare {
+public class FindGoodsPagePrivateGoods_021_CancelMyFavoriteGoods_Test extends BaseParpare {
 	@Test
 	public void CancelMyFavoriteGoods(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
