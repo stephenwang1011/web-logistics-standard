@@ -123,11 +123,11 @@ public class FindCarsPageHelper {
 		seleniumUtil.pause(800);
 		try {
 			if (seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim().equals("没有搜索到相应的数据")) {
-				logger.warn("No datas displayed with thes fitters");
+				logger.warn("没有搜索到相应的数据");
 				return;
 			}
 		} catch (Exception e) {
-			logger.info("Found the cars info");
+			logger.info("找到车源信息了");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
 
 			for (int i = 0; i < size; i++) {
