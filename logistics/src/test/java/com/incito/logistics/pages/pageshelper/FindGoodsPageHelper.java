@@ -530,10 +530,11 @@ public class FindGoodsPageHelper {
 							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
 							if (secondInfo.indexOf("米") == -1) {
 								break;
+							} else {
+								String secondInfos[] = secondInfo.split("，");
+								float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
+								temp1[s] = autualCarLen;
 							}
-							String secondInfos[] = secondInfo.split("，");
-							float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
-							temp1[s] = autualCarLen;
 						}
 						logger.info("点击车长排序，箭头往下");
 						for (int i = 0; i < temp1.length; i++) {
@@ -591,8 +592,12 @@ public class FindGoodsPageHelper {
 							// 把吨位的具体值存入一个float数组
 							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
 							String secondInfos[] = secondInfo.split("，");
-							float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取得车重
-							temp1[s] = autualCarWeight;
+							if (secondInfo.contains("吨")) {
+								float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取得车重
+								temp1[s] = autualCarWeight;
+							} else {
+								temp1[s] = 0;
+							}
 						}
 						logger.info("点击载重排序，箭头往下");
 						for (int i = 0; i < temp1.length; i++) {
@@ -654,8 +659,12 @@ public class FindGoodsPageHelper {
 								break;
 							}
 							String secondInfos[] = secondInfo.split("，");
-							float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取的体积
-							temp1[s] = autualCarVolume;
+							if (secondInfo.contains("方")) {
+								float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取的体积
+								temp1[s] = autualCarVolume;
+							} else {
+								temp1[s] = 0;
+							}
 						}
 						logger.info("点击车厢容积排序，箭头往下");
 						for (int i = 0; i < temp1.length; i++) {
