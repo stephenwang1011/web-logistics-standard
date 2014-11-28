@@ -37,7 +37,6 @@ public class SendGoodsPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_INSTRUCTION);
 		logger.info("Checking SendGoods Page elements completed");
 	}
-
 	/** 检查发布货源页面页面上的文本 */
 	public static void checkSendGoodsPageText(SeleniumUtil seleniumUtil) {
 		logger.info("Starting checking sendgoods page text");
@@ -98,6 +97,8 @@ public class SendGoodsPageHelper {
 		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INSTRUCTION), info[11].toString());
 
 	}
+	
+	
 
 	/** 从发布货源界面上点击按钮或者链接进入相关页面 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator) {
