@@ -109,7 +109,7 @@ public class SeleniumUtil {
 			logger.error("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 			Assert.fail("Failed to click element [" + getLocatorByElement(element, ">") + "]");
 		}
-		logger.info("Clicked element [" + getLocatorByElement(element, ">") + "]");
+		logger.info("点击元素 [" + getLocatorByElement(element, ">") + "]");
 	}
 	
 	/**不能点击时候重试点击操作*/
@@ -158,7 +158,7 @@ public class SeleniumUtil {
 		} catch (Exception e) {
 			logger.error("Failed to clear [" + getLocatorByElement(element, ">") + "] contents!");
 		}
-		logger.info("Cleared the contents on [" + getLocatorByElement(element, ">") + "]");
+		logger.info("清除元素 [" + getLocatorByElement(element, ">") + "]上的内容");
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class SeleniumUtil {
 	 * 在给定的时间内去查找元素，如果没找到则超时，抛出异常
 	 * */
 	public void waitForElementToLoad(int timeOut, final By By) {
-		logger.info("Start finding the element [" + By + "]");
+		logger.info("开始查找元素[" + By + "]");
 		try {
 			(new WebDriverWait(driver, timeOut)).until(new ExpectedCondition<Boolean>() {
 
@@ -200,11 +200,11 @@ public class SeleniumUtil {
 				}
 			});
 		} catch (TimeoutException e) {
-			logger.error("TIME OUT!! " + timeOut + " second(s) has passed,but did not find element [" + By + "]");
-			Assert.fail("TIME OUT!! " + timeOut + " second(s) has passed,but did not find element [" + By + "]");
+			logger.error("超时!! " + timeOut + " 秒之后还没找到元素 [" + By + "]");
+			Assert.fail("超时!! " + timeOut + " 秒之后还没找到元素 [" + By + "]");
 
 		}
-		logger.info("Found the element [" + By + "]");
+		logger.info("找到了元素 [" + By + "]");
 	}
 
 	/**
@@ -236,11 +236,11 @@ public class SeleniumUtil {
 		try {
 			Assert.assertEquals(actual, expected);
 		} catch (AssertionError e) {
-			logger.error("The expected text is [" + expected + "] but found [" + actual + "]");
-			Assert.fail("The expected text is [" + expected + "] but found [" + actual + "]",e);
+			logger.error("期望的文字是 [" + expected + "] 但是找到了 [" + actual + "]");
+			Assert.fail("期望的文字是 [" + expected + "] 但是找到了 [" + actual + "]");
 
 		}
-		logger.info("Found the expected string: [" + expected + "]");
+		logger.info("找到了期望的文字: [" + expected + "]");
 
 	}
 
@@ -366,7 +366,7 @@ public class SeleniumUtil {
 	 * */
 	public void executeJS(String js) {
 		((JavascriptExecutor) driver).executeScript(js);
-		logger.info("Run js：["+js+"] success" );
+		logger.info("执行JavaScript语句：["+js+"]" );
 	}
 
 	/**
