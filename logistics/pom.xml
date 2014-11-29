@@ -19,7 +19,7 @@
 			<artifactId>sikulixapi</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
@@ -76,7 +76,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.33</version>
+			<version>5.1.34</version>
 		</dependency>
 
 	</dependencies>
