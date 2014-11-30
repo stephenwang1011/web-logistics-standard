@@ -49,6 +49,7 @@ public class JdbcUtil {
 			statement = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
 			int count = statement.executeUpdate(sql); // 执行插入操作的sql语句，并返回插入数据的个数
 			System.out.println("更新 " + count + " 条数据"); // 输出插入操作的处理结果
+			statement.close();
 			conn.close(); // 关闭数据库连接
 			logger.info("jdbc插入数据结束");
 		} catch (SQLException e) {
@@ -66,6 +67,7 @@ public class JdbcUtil {
 			statement = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象，st属局部变量
 			int count = statement.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数
 			System.out.println("更新 " + count + " 条数据"); // 输出更新操作的处理结果
+			statement.close();
 			conn.close(); // 关闭数据库连接
 			logger.info("jdbc更新数据结束");
 		} catch (SQLException e) {
@@ -94,6 +96,8 @@ public class JdbcUtil {
 				// 输出查到的记录的各个字段的值
 				System.out.println(name + " " + age + " " + sex + " " + address + " " + depart + " " + worklen + " " + wage);
 			}
+			rs.close();
+			statement.close();
 			conn.close(); // 关闭数据库连接
 			logger.info("jdbc插入数据结束");
 		} catch (SQLException e) {
@@ -111,6 +115,7 @@ public class JdbcUtil {
 			statement = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象，st属局部变量
 			int count = statement.executeUpdate(sql);// 执行sql删除语句，返回删除数据的数量
 			System.out.println("agent表中删除了【 " + count + " 】条数据。"); // 输出删除操作的处理结果
+			statement.close();
 			conn.close(); // 关闭数据库连接
 			logger.info("jdbc删除数据结束");
 		} catch (SQLException e) {
