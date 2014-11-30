@@ -27,16 +27,18 @@ public class MyGoodsPageHelper {
 		logger.info("Start checking my goods page elements");
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_BUTTON_SEARCH);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_BUTTON_ADSEARCH);
+
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNO);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_ORIGINALCITY);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_TARGETCITY);
-		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+//		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+//		if (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-down")) {
+//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_STARTDATE);
+//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_ENDDATE);
+//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNAME);
+//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_SELECT_GOODSUNIT);
+//		}
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_RADIOBOX_GOODSTYPE);
-		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_STARTDATE);
-		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_ENDDATE);
-		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNAME);
-		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_SELECT_GOODSUNIT);
-
 		logger.info("Check my goods page elements completed");
 
 	}
@@ -58,7 +60,10 @@ public class MyGoodsPageHelper {
 			seleniumUtil.executeJS(jsTo);
 		}
 		// 点击高级搜索
-		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+//		if (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-up")) {
+//			seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+//			waitMyGoodsPageToLoad(15, seleniumUtil);
+//		}
 		// 货物名称
 		if (info[3].toString() != "") {
 			String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[3].toString() + "');";
@@ -98,9 +103,7 @@ public class MyGoodsPageHelper {
 
 	/** 从我的货源界面点击相关按钮 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By by) {
-
 		seleniumUtil.click(seleniumUtil.findElementBy(by));
-
 	}
 
 	/** 检查货源的第一行的数据：发货地和收货地 */
@@ -323,7 +326,7 @@ public class MyGoodsPageHelper {
 		for (int i = 0; i < items; i++) {
 
 			if (instrations.get(i).getText().trim().equals(instration)) {
-				//点击删除按钮
+				// 点击删除按钮
 				seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_BUTTON_DELETE).get(i));
 				if (flag == true) {
 					seleniumUtil.pause(800);
@@ -354,9 +357,9 @@ public class MyGoodsPageHelper {
 		for (int i = 0; i < items; i++) {
 			if (flag == true) {
 				if (instrations.get(i).getText().trim().equals(instration) == false) {
-		
-						logger.info("Didn't find the target goods which goods instration is " + instration + " and the tagrget goods has been deleted - "+i);
-					
+
+					logger.info("Didn't find the target goods which goods instration is " + instration + " and the tagrget goods has been deleted - " + i);
+
 				} else {
 					logger.error("The target goods didn't delete");
 					Assert.fail("The target goods didn't delete");

@@ -16,11 +16,14 @@ public class MyGoodsPage {
 	/**收货地输入框*/
 	public static final By MGP_INPUT_TARGETCITY= By.id("targetcity");
 	/**搜索按钮*/
-	public static final By MGP_BUTTON_SEARCH = By.xpath("//button[@onclick='doSearch()']");	
+//	public static final By MGP_BUTTON_SEARCH = By.xpath("//button[@onclick='doSearch()']");	
+	public static final By MGP_BUTTON_SEARCH = By.xpath("//*[@class='in-form-btn']/button[1]");//因为在企业版本的搜索按钮的onclick名称又改了，先改为统一格式	
 	/**高级搜索按钮*/
 	public static final By MGP_BUTTON_ADSEARCH = By.id("advancedBtn");
+	/**高级搜索按钮中隐藏或者显示内容*/
+	public static final By MGP_BUTTON_ADSEARCH_ARROW = By.xpath("//*[@id='advancedBtn']/span");
 	//**********以下元素 是点击了高级搜索按钮出现的 我是分隔符*********************
-	/**货物名*/
+	/**货物名称*/
 	public static final By MGP_INPUT_GOODSNAME= By.name("goodsnames");
 	/**单位-体积还是重量*/
 	public static final By MGP_SELECT_GOODSUNIT = By.id("wvSwitch");
@@ -53,8 +56,12 @@ public class MyGoodsPage {
 	public static final By MGP_BUTTON_EDIT = By.xpath("//*[text()='编辑']");
 	/**货源上的删除按钮*/
 	public static final By MGP_BUTTON_DELETE = By.xpath("//*[text()='删除']");
-	
-	
-	
 
+	//******企业版本出现的页面元素****************************************
+	/**tab标签：发布到平台的货源*/
+	public static final By MGP_TAB_PLATFORMGOODS_EP = By.xpath("//*[text()='发布到平台的货源']");
+	/**tab标签：发布到车队的货源*/
+	public static final By MGP_TAB_CARSGOODS_EP = By.xpath("//*[text()='发布到车队的货源']");
+	/**tab标签：从平台预定的货源*/
+	public static final By MGP_TAB_PLATFORMORDERS_EP = By.xpath("//*[text()='从平台预订的货源']");
 }

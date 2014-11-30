@@ -30,7 +30,7 @@ public class MyGoodsPage_001_UITextCheck_Test extends BaseParpare {
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);		
 		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 
