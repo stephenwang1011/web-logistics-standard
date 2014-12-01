@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
+import com.incito.logistics.pages.SendGoodsForEnterprisePage;
 import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.util.SeleniumUtil;
 
@@ -132,10 +133,10 @@ public class SendGoodsPageHelper {
 
 	/** 检查发布货源失败-其中某一个或者某个必填项没有填写，我们只用检查，发布按钮是不是还存在，来判断是不是发布成功 */
 	public static void checkSendStatus(SeleniumUtil seleniumUtil) {
-		logger.info("Start checking send goods status");
+		logger.info("开始检查发布货源是否成功");
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_SEND));
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(SendGoodsPage.SGP_BUTTON_RESET));
-		logger.info("Checking send goods status complete");
+		logger.info("找到了发布和清空按钮，证明货源没有发布出出去");
 	}
 	
 	/**检查货物名称、车型、车长所有的文本*/
@@ -158,6 +159,18 @@ public class SendGoodsPageHelper {
 		}
 	
 	}
+	/**企业版发布货源 货物详情字数统计*/
+	public static void checkRemainTextForEnterprise(SeleniumUtil seleniumUtil,String comment){
+		char ch[] = comment.toCharArray();
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_TEXT_MEMOREMAIN).getText(),"50");
+		for (int i = 0; i < ch.length; i++) {
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INSTRUCTION), String.valueOf(ch[i]));
+			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_TEXT_MEMOREMAIN).getText(),String.valueOf(ch.length-i-1));
+	
+		}
+	
+	}
+	
 	
 	/**检查输入框的输入信息-编辑的时候会用到*/
 	public static void checkInput(SeleniumUtil seleniumUtil,By goodsType, By goodsDate,String ...inputs){

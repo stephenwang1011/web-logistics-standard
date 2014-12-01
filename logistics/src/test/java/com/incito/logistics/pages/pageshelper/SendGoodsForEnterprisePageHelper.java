@@ -2,7 +2,6 @@ package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.SendGoodsForEnterprisePage;
@@ -71,17 +70,17 @@ public class SendGoodsForEnterprisePageHelper {
 		case "发布到平台":
 			// 填充发货地
 			String jsFrom = "document.getElementsByName('originalcity')[0].setAttribute('value','" + info[0].toString() + "');";
-			((JavascriptExecutor) seleniumUtil.driver).executeScript(jsFrom);
+			seleniumUtil.executeJS(jsFrom);
 			// 填充收货地
 			String jsTo = "document.getElementsByName('receiptcity')[0].setAttribute('value','" + info[1].toString() + "');";
-			((JavascriptExecutor) seleniumUtil.driver).executeScript(jsTo);
+			seleniumUtil.executeJS(jsTo);
 			// 选择货物类型
 			if (seleniumUtil.findElementBy(goodsType).isSelected() == false) {
 				seleniumUtil.click(seleniumUtil.findElementBy(goodsType));
 			}
 			// 货物名称
 			String goodsName = "document.getElementsByName('goodsname')[0].setAttribute('value','" + info[2].toString() + "');";
-			((JavascriptExecutor) seleniumUtil.driver).executeScript(goodsName);
+			seleniumUtil.executeJS(goodsName);
 			// 货物详细名称
 			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_GOODSDETAILS), info[3].toString());
 			// 货物重量 or 体积
@@ -94,10 +93,10 @@ public class SendGoodsForEnterprisePageHelper {
 			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_COUNT), info[5].toString());
 			// 车长要求
 			String carLen = "document.getElementsByName('carlength')[0].setAttribute('value','" + info[6].toString() + "');";
-			((JavascriptExecutor) seleniumUtil.driver).executeScript(carLen);
+			seleniumUtil.executeJS(carLen);
 			// 车型要求
 			String carType = "document.getElementsByName('fitcartype')[0].setAttribute('value','" + info[7].toString() + "');";
-			((JavascriptExecutor) seleniumUtil.driver).executeScript(carType);
+			seleniumUtil.executeJS(carType);
 			// 信息费
 			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_INFOFARE), info[8].toString());
 			// 运费
