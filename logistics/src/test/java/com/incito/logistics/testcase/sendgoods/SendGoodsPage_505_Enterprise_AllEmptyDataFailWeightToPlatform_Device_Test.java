@@ -43,10 +43,10 @@ public class SendGoodsPage_505_Enterprise_AllEmptyDataFailWeightToPlatform_Devic
 		SendGoodsForEnterprisePageHelper.waitSendGoodsToPlatam(timeOut, seleniumUtil);
 		SendGoodsForEnterprisePageHelper.typeGoodsInfo(seleniumUtil,"发布到平台", SendGoodsForEnterprisePage.SGP_RADIOBOX_LIGHTGOODS, SendGoodsForEnterprisePage.SGP_BUTTON_GOODSDATE3, 
 				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_GOODSNAME"), data.get("SGP_INPUT_GOODSDETAILS"),
-				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
+				data.get("SGP_INPUT_WEIGHT"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
 				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsForEnterprisePageHelper.enterPage(seleniumUtil, SendGoodsForEnterprisePage.SGP_BUTTON_SEND);
-	//	SendGoodsPageHelper.checkSendGoodsAllEmptyFailedStatus(seleniumUtil);
+		SendGoodsPageHelper.checkSendStatus(seleniumUtil);
 		
 	}
 	
