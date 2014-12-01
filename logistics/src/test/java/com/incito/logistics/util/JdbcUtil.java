@@ -1,10 +1,14 @@
 package com.incito.logistics.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
@@ -16,20 +20,23 @@ public class JdbcUtil {
 	static Statement statement;
 	
 	//构造全局静态变量链接数据库
-	static ITestContext context = null;
-	static String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("databasepath"));
-	static String jdbc_url = PropertiesDataProvider.getTestData(configFilePath, "jdbc_url");
-	static String jdbc_db = PropertiesDataProvider.getTestData(configFilePath, "jdbc_db");
-	static String jdbc_driver = PropertiesDataProvider.getTestData(configFilePath, "jdbc_driver");
-	static String jdbc_name = PropertiesDataProvider.getTestData(configFilePath, "jdbc_name");
-	static String jdbc_password = PropertiesDataProvider.getTestData(configFilePath, "jdbc_password");
+//	static ITestContext context;
+//	static String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("databasepath"));
+//	Properties prop = new Properties();
+//	InputStream inStream = new FileInputStream(new File("config/database.properties"));
+//	prop.load(inStream);
+//	static String jdbc_url = PropertiesDataProvider.getTestData(configFilePath, "jdbc_url");
+//	static String jdbc_db = PropertiesDataProvider.getTestData(configFilePath, "jdbc_db");
+//	static String jdbc_driver = PropertiesDataProvider.getTestData(configFilePath, "jdbc_driver");
+//	static String jdbc_name = PropertiesDataProvider.getTestData(configFilePath, "jdbc_name");
+//	static String jdbc_password = PropertiesDataProvider.getTestData(configFilePath, "jdbc_password");
 
 	public static Connection getConnection() {
-//		String jdbc_url = "jdbc:mysql://192.168.11.201:3306/";
-//		String jdbc_db = "smartdb";
-//		String jdbc_driver = "com.mysql.jdbc.Driver";
-//		String jdbc_name = "root";
-//		String jdbc_password = "p@ssw0rd";
+		String jdbc_url = "jdbc:mysql://192.168.11.201:3306/";
+		String jdbc_db = "smartdb";
+		String jdbc_driver = "com.mysql.jdbc.Driver";
+		String jdbc_name = "root";
+		String jdbc_password = "p@ssw0rd";
 		Connection con = null; // 创建用于连接数据库的Connection对象
 		try {
 			Class.forName(jdbc_driver);// 加载Mysql数据驱动
