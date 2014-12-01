@@ -2,6 +2,8 @@ package com.incito.logistics.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,32 +13,34 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
-import org.testng.ITestContext;
+
 
 public class JdbcUtil {
 	public static Logger logger = Logger.getLogger(JdbcUtil.class.getName());
 	// 创建静态全局变量
 	static Connection conn;
 	static Statement statement;
-	
-	//构造全局静态变量链接数据库
-//	static ITestContext context;
-//	static String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("databasepath"));
-//	Properties prop = new Properties();
-//	InputStream inStream = new FileInputStream(new File("config/database.properties"));
-//	prop.load(inStream);
-//	static String jdbc_url = PropertiesDataProvider.getTestData(configFilePath, "jdbc_url");
-//	static String jdbc_db = PropertiesDataProvider.getTestData(configFilePath, "jdbc_db");
-//	static String jdbc_driver = PropertiesDataProvider.getTestData(configFilePath, "jdbc_driver");
-//	static String jdbc_name = PropertiesDataProvider.getTestData(configFilePath, "jdbc_name");
-//	static String jdbc_password = PropertiesDataProvider.getTestData(configFilePath, "jdbc_password");
 
 	public static Connection getConnection() {
-		String jdbc_url = "jdbc:mysql://192.168.11.201:3306/";
-		String jdbc_db = "smartdb";
-		String jdbc_driver = "com.mysql.jdbc.Driver";
-		String jdbc_name = "root";
-		String jdbc_password = "p@ssw0rd";
+		String jdbc_url = null;
+		String jdbc_db = null;
+		String jdbc_driver = null;
+		String jdbc_name = null;
+		String jdbc_password = null;
+		try {
+			Properties prop = new Properties();
+			InputStream inStream = new FileInputStream(new File("config/database.properties"));
+			prop.load(inStream);
+			jdbc_url = prop.getProperty("jdbc_url");
+			jdbc_db = prop.getProperty("jdbc_db");
+			jdbc_driver = prop.getProperty("jdbc_driver");
+			jdbc_name = prop.getProperty("jdbc_name");
+			jdbc_password = prop.getProperty("jdbc_password");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		Connection con = null; // 创建用于连接数据库的Connection对象
 		try {
 			Class.forName(jdbc_driver);// 加载Mysql数据驱动
