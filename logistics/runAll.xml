@@ -16,7 +16,7 @@
 	<parameter name="language" value="en" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
-	<!-- 页面元素15秒不出现超时时间 -->
+	<!-- 页面元素10秒不出现超时时间 -->
 	<parameter name="timeOut" value="10" />
 	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
 	<parameter name="waitMillisecondsForAlert" value="40000" />
