@@ -63,5 +63,9 @@ public class MyGoodsPage {
 	/**tab标签：发布到车队的货源*/
 	public static final By MGP_TAB_CARSGOODS_EP = By.xpath("//*[text()='发布到车队的货源']");
 	/**tab标签：从平台预定的货源*/
-	public static final By MGP_TAB_PLATFORMORDERS_EP = By.xpath("//*[text()='从平台预订的货源']");
+	public static final By MGP_TAB_PLATFORMORDERSGOODS_EP = By.xpath("//*[text()='从平台预订的货源']");
+	/**每条货源上的货物收发地址*/
+	public static final By MGP_SPAN_ADDRESS_EP = By.className("in-city-highlight");
+	/**每条货源上的货物名称*/
+	public static final By MGP_SPAN_GOODSNAME_EP = By.className("pl30");
 }

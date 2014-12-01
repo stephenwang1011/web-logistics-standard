@@ -31,13 +31,19 @@ public class MyGoodsPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNO);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_ORIGINALCITY);
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_TARGETCITY);
-//		seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
-//		if (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-down")) {
-//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_STARTDATE);
-//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_ENDDATE);
-//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_INPUT_GOODSNAME);
-//			seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_SELECT_GOODSUNIT);
-//		}
+		// seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+		// if
+		// (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-down"))
+		// {
+		// seleniumUtil.waitForElementToLoad(timeOut,
+		// MyGoodsPage.MGP_INPUT_STARTDATE);
+		// seleniumUtil.waitForElementToLoad(timeOut,
+		// MyGoodsPage.MGP_INPUT_ENDDATE);
+		// seleniumUtil.waitForElementToLoad(timeOut,
+		// MyGoodsPage.MGP_INPUT_GOODSNAME);
+		// seleniumUtil.waitForElementToLoad(timeOut,
+		// MyGoodsPage.MGP_SELECT_GOODSUNIT);
+		// }
 		seleniumUtil.waitForElementToLoad(timeOut, MyGoodsPage.MGP_RADIOBOX_GOODSTYPE);
 		logger.info("Check my goods page elements completed");
 
@@ -60,10 +66,12 @@ public class MyGoodsPageHelper {
 			seleniumUtil.executeJS(jsTo);
 		}
 		// 点击高级搜索
-//		if (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-up")) {
-//			seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
-//			waitMyGoodsPageToLoad(15, seleniumUtil);
-//		}
+		// if
+		// (seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH_ARROW).getAttribute("class").equals("icon-sort-up"))
+		// {
+		// seleniumUtil.click(seleniumUtil.findElementBy(MyGoodsPage.MGP_BUTTON_ADSEARCH));
+		// waitMyGoodsPageToLoad(15, seleniumUtil);
+		// }
 		// 货物名称
 		if (info[3].toString() != "") {
 			String goodsName = "document.getElementsByName('goodsnames')[0].setAttribute('value','" + info[3].toString() + "');";
@@ -143,9 +151,28 @@ public class MyGoodsPageHelper {
 				goodsname = secondArray[0].substring(0, secondArray[0].indexOf(" "));
 			}
 			seleniumUtil.isContains(secondInfos[0], goodsname);
-
 		}
+	}
 
+	/** 检查货源信息的第二行信息:货物名称 */
+	public static void checkGoodsName_EP(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
+		if (!seleniumUtil.doesElementExist(by)) {
+			logger.warn("No data found with this filters!");
+			return;
+		}
+		int items = seleniumUtil.findElementsBy(by).size(); // 这个items指的是查询出来有多少条货源
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			String goodsname = null;
+			String second = seleniumUtil.findElementsBy(by).get(i).getText(); // 取得第二行的货源信息
+			String[] secondArray = second.split("，");
+			int temp = secondArray[0].indexOf("（");
+			if (temp != -1) {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf("（") - 1);
+			} else {
+				goodsname = secondArray[0].substring(0, secondArray[0].indexOf(" "));
+			}
+			seleniumUtil.isContains(secondInfos[0], goodsname);
+		}
 	}
 
 	/** 检查货源信息的第二行信息:吨位或者体积 */
@@ -161,6 +188,92 @@ public class MyGoodsPageHelper {
 		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
 			double goodsWorV = 0; // 重量或者体积
 			String second = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
+			String[] secondArray = second.split("，");
+			if (secondInfos[0].equals("重量")) {
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("吨", ""));// 取得每个货源的重量数
+				if (secondInfos[1].equals("") && secondInfos[2] != "") {
+					try {
+						Assert.assertTrue(goodsWorV <= Double.parseDouble(secondInfos[2]));
+					} catch (AssertionError e) {
+						logger.error("Found the weight in web page is [" + goodsWorV + "] and is bigger than input weight num [" + secondInfos[2] + "] T");
+						Assert.fail("Found the weight in web page is [" + goodsWorV + "] and is bigger than input weight num [" + secondInfos[2] + "] T");
+					}
+					logger.info("The weight of the " + (i + 1) + "th goods info is [" + goodsWorV + "] T");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2].equals("")) {
+					try {
+						Assert.assertTrue(goodsWorV >= Double.parseDouble(secondInfos[1]));
+					} catch (AssertionError e) {
+						logger.error("Found the weight in web page is [" + goodsWorV + "] and is smaller than input weight num [" + secondInfos[1] + "] T");
+						Assert.fail("Found the weight in web page is [" + goodsWorV + "] and is smaller than input weight num [" + secondInfos[1] + "] T");
+					}
+					logger.info("The weight of the " + (i + 1) + "th goods info is [" + goodsWorV + "] T");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2] != "") {
+					try {
+						Assert.assertTrue(goodsWorV >= Double.parseDouble(secondInfos[1]) && goodsWorV <= Double.parseDouble(secondInfos[2]));
+					} catch (AssertionError e) {
+						logger.error("Found the weight in web page is [" + goodsWorV + "] and is not in the  input weight num [" + secondInfos[1] + "] and [" + secondInfos[2] + "] T");
+						Assert.fail("Found the weight in web page is [" + goodsWorV + "] and is smaller than input weight num [" + secondInfos[1] + "] and [" + secondInfos[2] + "] T");
+					}
+					logger.info("The weight of the " + (i + 1) + "th goods info is [" + goodsWorV + "] T");
+				}
+
+			}
+
+			if (secondInfos[0].equals("体积")) {
+
+				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("方", ""));// 取得每个货源的重量数
+				if (secondInfos[1].equals("") && secondInfos[2] != "") {
+					try {
+						Assert.assertTrue(goodsWorV <= Double.parseDouble(secondInfos[2]));
+					} catch (AssertionError e) {
+						logger.error("Found the volume in web page is [" + goodsWorV + "] and is bigger than input volume num [" + secondInfos[2] + "] m³");
+						Assert.fail("Found the volume in web page is [" + goodsWorV + "] and is bigger than input volume num [" + secondInfos[2] + "] m³");
+					}
+					logger.info("The volume of the " + (i + 1) + "th goods info is [" + goodsWorV + "] m³");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2].equals("")) {
+					try {
+						Assert.assertTrue(goodsWorV >= Double.parseDouble(secondInfos[1]));
+					} catch (AssertionError e) {
+						logger.error("Found the volume in web page is [" + goodsWorV + "] and is smaller than input volume num [" + secondInfos[1] + "] m³");
+						Assert.fail("Found the volume in web page is [" + goodsWorV + "] and is smaller than input volume num [" + secondInfos[1] + "] m³");
+					}
+					logger.info("The volume of the " + (i + 1) + "th goods info is [" + goodsWorV + "] m³");
+				}
+
+				if (secondInfos[1] != "" && secondInfos[2] != "") {
+					try {
+						Assert.assertTrue(goodsWorV >= Double.parseDouble(secondInfos[1]) && goodsWorV <= Integer.valueOf(secondInfos[2]));
+					} catch (AssertionError e) {
+						logger.error("Found the volume in web page is [" + goodsWorV + "] and is not in the  input volume num [" + secondInfos[1] + "] and [" + secondInfos[2] + "] m³");
+						Assert.fail("Found the volume in web page is [" + goodsWorV + "] and is smaller than input volume num [" + secondInfos[1] + "] and [" + secondInfos[2] + "] m³");
+					}
+					logger.info("The volume of the " + (i + 1) + "th goods info is [" + goodsWorV + "] m³");
+				}
+
+			}
+
+		}
+
+	}
+
+	/** 检查货源信息的第二行信息:吨位或者体积 */
+	public static void checkGoodsWeightOrVolume_EP(SeleniumUtil seleniumUtil, By by, String... secondInfos) {
+		if (!seleniumUtil.doesElementExist(by)) {
+			logger.warn("No data found with this filters!");
+			return;
+		}
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size();
+
+		for (int i = 0; i < items; i++) {// 循环每个货源-只对针对当前页面的
+			double goodsWorV = 0; // 重量或者体积
+			String second = seleniumUtil.findElementsBy(by).get(i).getText(); // 取得第二行的货源信息
 			String[] secondArray = second.split("，");
 			if (secondInfos[0].equals("重量")) {
 				goodsWorV = Double.parseDouble(secondArray[2].replaceAll("吨", ""));// 取得每个货源的重量数

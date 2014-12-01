@@ -527,12 +527,12 @@ public class FindGoodsPageHelper {
 					if (count == 0) {
 						for (int s = 0; s < temp1.length; s++) {
 							// 把车长的具体值存入一个float数组
-							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
+							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText();
 							if (secondInfo.indexOf("米") == -1) {
 								break;
 							} else {
 								String secondInfos[] = secondInfo.split("，");
-								float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
+								float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].indexOf("米"))); // 取得车长
 								temp1[s] = autualCarLen;
 							}
 						}
@@ -558,7 +558,7 @@ public class FindGoodsPageHelper {
 						for (int s = 0; s < temp2.length; s++) {// 把车长的具体值存入一个float数组
 							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
 							String secondInfos[] = secondInfo.split("，");
-							float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 2)); // 取得车长
+							float autualCarLen = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].indexOf("米"))); // 取得车长
 							temp2[s] = autualCarLen;
 						}
 
@@ -593,7 +593,7 @@ public class FindGoodsPageHelper {
 							String secondInfo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(s).getText().trim();
 							String secondInfos[] = secondInfo.split("，");
 							if (secondInfo.contains("吨")) {
-								float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取得车重
+								float autualCarWeight = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].indexOf("吨"))); // 取得车重
 								temp1[s] = autualCarWeight;
 							} else {
 								temp1[s] = 0;
@@ -622,7 +622,7 @@ public class FindGoodsPageHelper {
 							// 把吨位的具体值存入一个float数组
 							String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
 							String secondInfos[] = secondInfo.split("，");
-							float autualCarWeight = Float.valueOf(secondInfos[3].substring(3, secondInfos[3].length() - 1)); // 取得车重
+							float autualCarWeight = Float.valueOf(secondInfos[3].substring(3, secondInfos[3].indexOf("吨"))); // 取得车重
 							temp2[s] = autualCarWeight;
 						}
 
@@ -660,7 +660,7 @@ public class FindGoodsPageHelper {
 							}
 							String secondInfos[] = secondInfo.split("，");
 							if (secondInfo.contains("方")) {
-								float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].length() - 2)); // 取的体积
+								float autualCarVolume = Float.valueOf(secondInfos[2].substring(0, secondInfos[2].indexOf("方"))); // 取的体积
 								temp1[s] = autualCarVolume;
 							} else {
 								temp1[s] = 0;
@@ -689,7 +689,7 @@ public class FindGoodsPageHelper {
 							// 把容积的具体值存入一个float数组
 							String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(s).getText();
 							String secondInfos[] = secondInfo.split("，");
-							float autualCarVolume = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].length() - 1)); // 取得车容积
+							float autualCarVolume = Float.valueOf(secondInfos[4].substring(5, secondInfos[4].indexOf("方"))); // 取得车容积
 							temp2[s] = autualCarVolume;
 						}
 
