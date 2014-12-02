@@ -82,7 +82,7 @@ public class SendGoodsForEnterprisePage {
 	/******************************下面是企业版的发布货源界面 - 发布到车队***************************/
 	/**发货人的街道信息*/
 	public static final By SGP_INPUT_SENDERSTREET =  By.name("originalstreet");
-	/**添加收货人的按钮*/
+	/**添加发货人的按钮*/
 	public static final By SGP_BUTTON_ADDSENDER = By.id("addShipperBtn");
 	/**收货人的街道信息*/
 	public static final By SGP_INPUT_RECEIPTSTREET =  By.name("receiptstreet");
@@ -99,5 +99,28 @@ public class SendGoodsForEnterprisePage {
 	public static final By SGP_RADIOBOX_YES = By.xpath("//*[@name='grabswitch' and @value='1']");
 	/**是否允许司机抢单 - 否*/
 	public static final By SGP_RADIOBOX_NO = By.xpath("//*[@name='grabswitch' and @value='0']");
+	
+	
+	//点开添加发货人按钮出现的元素
+	/**发货人姓名*/
+	public static final By SGP_INPUT_SENDERNAME = By.id("shipper_name");
+	/**发货人电话*/
+	public static final By SGP_INPUT_SENDERTEL = By.name("shipper.mobile");
+	/**发货人公司*/
+	public static final By SGP_INPUT_SENDERCOMPANY= By.name("shipper.company");
+	
+	//点击添加收货人按钮出现的元素
+	/**收货人姓名*/
+	public static final By SGP_INPUT_RECEIPTNAME = By.id("consigne_name");
+	/**收货人电话*/
+	public static final By SGP_INPUT_RECEIPTTEL = By.name("consigne.mobile");
+	/**收货人公司*/
+	public static final By SGP_INPUT_RECEIPTCOMPANY= By.name("consigne.company");
+	
+	
+	/**定义一个空BY*/
+	public static final By SGP_NUKNOW_BY = By.name("");
+	
+	
 	
 }

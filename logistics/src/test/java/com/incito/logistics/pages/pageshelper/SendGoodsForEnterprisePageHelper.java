@@ -112,6 +112,91 @@ public class SendGoodsForEnterprisePageHelper {
 			break;
 		
 		case "发布到车队":
+			// 填充发货地 必填
+			String from = "document.getElementsByName('originalcity')[0].setAttribute('value','" + info[0].toString() + "');";
+			seleniumUtil.executeJS(from);
+			// 填充收货地 必填
+			String to= "document.getElementsByName('receiptcity')[0].setAttribute('value','" + info[1].toString() + "');";
+			seleniumUtil.executeJS(to);
+			// 选择货物类型
+			if (seleniumUtil.findElementBy(goodsType).isSelected()!=true) {
+				seleniumUtil.click(seleniumUtil.findElementBy(goodsType));
+			}
+			// 货物名称
+			String name = "document.getElementsByName('goodsname')[0].setAttribute('value','" + info[2].toString() + "');";
+			seleniumUtil.executeJS(name);
+			// 货物详细名称
+			if(info[3].equals("")!=true){
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_GOODSDETAILS), info[3].toString());
+			}
+			// 货物重量 or 体积
+			if (seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_DEVICEGOODS).isSelected() || seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_HEAVYGOODS).isSelected()) {
+				seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_WEIGHT), info[4].toString());
+			} else if (seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_LIGHTGOODS).isSelected()) {
+				seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_VOLUME), info[4].toString());
+			}
+			// 货物件数
+			if(info[5].equals("")!=true){
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_COUNT), info[5].toString());
+			}
+			// 车长要求
+			if(info[6].equals("")!=true){
+			String carLength = "document.getElementsByName('carlength')[0].setAttribute('value','" + info[6].toString() + "');";
+			seleniumUtil.executeJS(carLength);
+			}
+			// 车型要求
+			if(info[7].equals("")!=true){
+			String type = "document.getElementsByName('fitcartype')[0].setAttribute('value','" + info[7].toString() + "');";
+			seleniumUtil.executeJS(type);
+			}
+			//发货人的街道信息
+			if(info[8].equals("")!=true){
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_SENDERSTREET), info[8].toString());
+			}
+			//收货人的街道信息
+			if(info[17].equals("")!=true){
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTSTREET), info[17].toString());
+			}
+			//添加发货人信息
+			 if(info[9]!=""||info[10]!=""||info[11]!=""){
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_BUTTON_ADDSENDER);
+				 seleniumUtil.click(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_BUTTON_ADDSENDER));
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_SENDERNAME);
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_SENDERTEL);
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_SENDERCOMPANY);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_SENDERNAME), info[9]);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_SENDERTEL), info[10]);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_SENDERCOMPANY), info[11]);
+
+			 }
+				//添加收货人信息
+			 if(info[12]!=""||info[13]!=""||info[14]!=""){
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_BUTTON_ADDRECEIPT);
+				 seleniumUtil.click(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_BUTTON_ADDRECEIPT));
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTNAME);
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTTEL);
+				 seleniumUtil.waitForElementToLoad(5, SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTCOMPANY);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTNAME), info[12]);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTTEL), info[13]);
+				 seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_RECEIPTCOMPANY), info[14]);
+
+			 }
+			// 货源说明
+			seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_INPUT_INSTRUCTION), info[15].toString());
+			//是否让司机抢单
+			if(info[16].equals("是")){
+				if(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_YES).isSelected()==false){
+					seleniumUtil.click(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_YES));
+				}
+			}else if(info[16].equals("否")){
+				if(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_NO).isSelected()==false){
+					seleniumUtil.click(seleniumUtil.findElementBy(SendGoodsForEnterprisePage.SGP_RADIOBOX_NO));
+				}
+			}else{
+				Assert.fail("info[16]获取到的execl数据有误："+info[16]+"请输入 是 或者 否 ");
+			}
+			
+			
 			
 			break;
 			
