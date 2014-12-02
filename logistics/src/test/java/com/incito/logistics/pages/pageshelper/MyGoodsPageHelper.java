@@ -360,9 +360,20 @@ public class MyGoodsPageHelper {
 			logger.warn("No data found with this filters!");
 			return;
 		}
-
+		// 用于判断当前的标签是否在“我的货源-发布到车队的货源”tab中
+		Boolean flag = seleniumUtil.findElementBy(MyGoodsPage.MGP_TAB_GOODS_EP).findElements(By.tagName("li")).get(1).getAttribute("class").equals("active");
+		Boolean flag1 = seleniumUtil.findElementBy(MyGoodsPage.MGP_TAB_GOODS_EP).findElements(By.tagName("li")).get(2).getAttribute("class").equals("active");
+		String header = null;
 		for (int i = 0; i < items; i++) {
-			String header = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("div")).get(2).getText();
+			if (flag) {
+				seleniumUtil.click(seleniumUtil.findElementsBy(by).get(i));
+				header = seleniumUtil.findElementsBy(by).get(i).findElement(By.className("pl100")).getText();
+			} else if (flag1) {
+				seleniumUtil.click(seleniumUtil.findElementsBy(by).get(i));
+				header = seleniumUtil.findElementsBy(by).get(i).findElement(By.className("mygoods-detail-info")).findElements(By.tagName("span")).get(13).getText();
+			} else {
+				header = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("div")).get(2).getText();
+			}
 			// 取得发布时间的 字符串
 			header = header.substring(header.indexOf("：") + 1, header.length());
 			if (headInfos[0].equals("") && headInfos[1] != "") {
@@ -406,11 +417,8 @@ public class MyGoodsPageHelper {
 					Assert.fail("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在开始和结束时间之间");
 				}
 				logger.info("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间在开始和结束时间之间");
-
 			}
-
 		}
-
 	}
 
 	/*** 编辑指定的货源 */

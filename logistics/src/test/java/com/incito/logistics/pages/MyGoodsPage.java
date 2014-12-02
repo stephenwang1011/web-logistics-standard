@@ -51,13 +51,14 @@ public class MyGoodsPage {
 	public static final By MGP_DIV_GOODSHEADER = By.className("mygoods-header");
 	/**每条货源的  货源说明部分*/
 	public static final By MGP_TEXT_INSTRUCTION = By.xpath("//*[@class='mygoods-basic']/p[3]");
-	
 	/**货源上的编辑按钮*/
 	public static final By MGP_BUTTON_EDIT = By.xpath("//*[text()='编辑']");
 	/**货源上的删除按钮*/
 	public static final By MGP_BUTTON_DELETE = By.xpath("//*[text()='删除']");
 
 	//******企业版本出现的页面元素****************************************
+	/**tab标签：三个平台的标签*/
+	public static final By MGP_TAB_GOODS_EP = By.cssSelector("ul[role='tablist']");
 	/**tab标签：发布到平台的货源*/
 	public static final By MGP_TAB_PLATFORMGOODS_EP = By.xpath("//*[text()='发布到平台的货源']");
 	/**tab标签：发布到车队的货源*/
@@ -68,4 +69,7 @@ public class MyGoodsPage {
 	public static final By MGP_SPAN_ADDRESS_EP = By.className("in-city-highlight");
 	/**每条货源上的货物名称*/
 	public static final By MGP_SPAN_GOODSNAME_EP = By.className("pl30");
+	/**每条货源上的顶部信息：货源剩余时间和发布时间等*/
+	public static final By MGP_DIV_GOODSTIME_EP = By.className("mygoods-center");
+	
 }

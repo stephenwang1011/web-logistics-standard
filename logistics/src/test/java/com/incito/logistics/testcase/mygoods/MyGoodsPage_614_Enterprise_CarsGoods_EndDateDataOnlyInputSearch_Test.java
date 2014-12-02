@@ -38,13 +38,13 @@ public class MyGoodsPage_614_Enterprise_CarsGoods_EndDateDataOnlyInputSearch_Tes
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
 		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
-		MyGoodsPageHelper.enterPage(seleniumUtil, MyGoodsPage.MGP_TAB_PLATFORMGOODS_EP);
+		MyGoodsPageHelper.enterPage(seleniumUtil, MyGoodsPage.MGP_TAB_CARSGOODS_EP);
 		MyGoodsPageHelper.enterPage(seleniumUtil, MyGoodsPage.MGP_BUTTON_ADSEARCH);
 
 		MyGoodsPageHelper.typeGoodsInfo(seleniumUtil, data.get("MGP_INPUT_GOODSNO"),data.get("MGP_INPUT_ORIGINALCITY"),
 				data.get("MGP_INPUT_TARGETCITY"),data.get("MGP_INPUT_GOODSNAME"),data.get("MGP_WEIGHT_VOLUME"),
 				data.get("MGP_START_WEIGHT_VOLUME"),data.get("MGP_END_WEIGHT_VOLUME"),data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
-//		MyGoodsPageHelper.checkGoodsSendDate(seleniumUtil, MyGoodsPage.MGP_DIV_GOODSHEADER, data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
+		MyGoodsPageHelper.checkGoodsSendDate(seleniumUtil, MyGoodsPage.MGP_DIV_GOODSTIME_EP, data.get("MGP_INPUT_STARTDATE"),data.get("MGP_INPUT_ENDDATE"));
 	}
 	
 
