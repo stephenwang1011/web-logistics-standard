@@ -24,7 +24,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class SendGoodsPage_518_Enterprise_GoodsMemoCountFromPlatform_Test extends BaseParpare {
 
 	@Test(dataProvider="data")
-	public void goodsMemoCountTest(ITestContext context,Map<String, String> data) {
+	public void checkGoodsMemoCountFromPlatformTest(ITestContext context,Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");

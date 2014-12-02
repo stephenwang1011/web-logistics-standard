@@ -19,7 +19,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class SendGoodsPage_517_Enterprise_CheckAllCarLengthFromPlatform_Test extends BaseParpare {
 
 	@Test
-	public void sendAllValidDataForWeightSuccessTest(ITestContext context) {
+	public void checkAllCarLengthFromPlatform(ITestContext context) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "enterprise_password");
