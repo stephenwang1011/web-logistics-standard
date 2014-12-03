@@ -21,8 +21,8 @@ public class SelectBrowser {
 	public WebDriver selectExplorerByName(String browser, ITestContext context) {
 		Properties props = System.getProperties(); // 获得系统属性集
 		String currentPlatform = props.getProperty("os.name"); // 操作系统名称
-		logger.info("The current OS is [" + currentPlatform + "]");
-		logger.info("Starting test browser [" + browser + "]");
+		logger.info("当前操作系统是 [" + currentPlatform + "]");
+		logger.info("启动测试浏览器[" + browser + "]");
 		String driverConfgFilePath = context.getCurrentXmlTest().getParameter("driverConfgFilePath");
 		/** 声明好驱动的路径 */
 		String chromedriver_win = PropertiesDataProvider.getTestData(driverConfgFilePath, "chromedriver_win");
