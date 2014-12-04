@@ -43,7 +43,7 @@ public class MyOrdersPage {
 	/**我的订单页面 订单的详情的订单时间*/
 	public static final By MOP_TEXT_ORDERDATE = By.cssSelector("span.order-time");
 	/**我的订单页面 隐藏司机的姓名*/
-	public static final By MOP_TEXT_ORDERDRIVERNAME = By.cssSelector("div.order-infobox");
+	public static final By MOP_TEXT_ORDERDRIVERNAME = By.className("order-detail-row");
 	
 	//以下是企业版本的我的订单中的新增加的页面元素********************************************
 	/**我的订单页面"自有车队的订单"*/

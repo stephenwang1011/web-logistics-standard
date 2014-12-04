@@ -269,8 +269,7 @@ public class MyOrdersPageHelper {
 		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
 		for (int i = 0; i < items; i++) {// 循环每个货源
 			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
-			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-			String driveName = seleniumUtil.findElementBy(byDriverName).getText(); // 取得第二行的货源信息
+			String driveName = seleniumUtil.findElementsBy(byDriverName).get(i).findElements(By.tagName("div")).get(1).getText(); // 取得第二行的货源信息
 			driveName = driveName.replaceAll(" ", "");
 			String[] name = driveName.split("：|\n");
 			try {
