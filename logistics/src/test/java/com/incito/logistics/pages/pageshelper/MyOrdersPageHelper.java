@@ -263,7 +263,7 @@ public class MyOrdersPageHelper {
 		}
 	}
 
-	/** 检查我的订单中司机的姓名 */
+	/** 检查我的订单中承运司机的姓名 */
 	public static void checkDriverName(SeleniumUtil seleniumUtil, By byOrdersNum, By byDriverName, int pageLoadTime, String... infos) {
 		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
 		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
@@ -284,15 +284,14 @@ public class MyOrdersPageHelper {
 	}
 
 	/** 检查我的订单中收货人的姓名 */
-	public static void checkReceiverName(SeleniumUtil seleniumUtil, By byOrdersNum, By byReceiverName, int pageLoadTime, String... infos) {
+	public static void checkReceiverName(SeleniumUtil seleniumUtil, By byOrdersNum, By byReceiverName, String... infos) {
 		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
 		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
 		for (int i = 0; i < items; i++) {// 循环每个货源
 			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
-			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-			String ReceiverName = seleniumUtil.findElementBy(byReceiverName).getText(); // 取得第二行的货源信息
+			String ReceiverName = seleniumUtil.findElementsBy(byReceiverName).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
 			ReceiverName = ReceiverName.replaceAll(" ", "");
-			String[] name = ReceiverName.split("：|\n");
+			String[] name = ReceiverName.split("：|，");
 			try {
 				Assert.assertTrue(name[1].equals(infos[0]));
 			} catch (Exception e) {
@@ -304,24 +303,23 @@ public class MyOrdersPageHelper {
 		}
 	}
 
-	/** 检查我的订单中收获公司 */
-	public static void checkHarvestCompany(SeleniumUtil seleniumUtil, By byOrdersNum, By byHarvestCompany, int pageLoadTime, String... infos) {
+	/** 检查我的订单中收货公司 */
+	public static void checkHarvestCompany(SeleniumUtil seleniumUtil, By byOrdersNum, By byHarvestCompany, String... infos) {
 		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
 		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
 		for (int i = 0; i < items; i++) {// 循环每个货源
 			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
-			seleniumUtil.hasLoadPageSucceeded(pageLoadTime);
-			String HarvestCompany = seleniumUtil.findElementBy(byHarvestCompany).getText(); // 取得第二行的货源信息
+			String HarvestCompany = seleniumUtil.findElementsBy(byHarvestCompany).get(i).findElements(By.tagName("p")).get(1).getText(); // 取得第二行的货源信息
 			HarvestCompany = HarvestCompany.replaceAll(" ", "");
-			String[] name = HarvestCompany.split("：|\n");
+			String[] name = HarvestCompany.split("：|，");
 			try {
-				Assert.assertTrue(name[1].equals(infos[0]));
+				Assert.assertTrue(name[3].equals(infos[0]));
 			} catch (Exception e) {
 				e.printStackTrace();
-				logger.error("未发现司机为：【" + infos[0] + "】的订单信息。");
-				Assert.fail("未发现司机为：【" + infos[0] + "】的订单信息。");
+				logger.error("未发现收货公司为：【" + infos[0] + "】的订单信息。");
+				Assert.fail("未发现收货公司为：【" + infos[0] + "】的订单信息。");
 			}
-			logger.info("您搜索的司机姓名为：【" + name[1] + "】。");
+			logger.info("您搜索的收货公司为：【" + name[3] + "】。");
 		}
 	}
 }

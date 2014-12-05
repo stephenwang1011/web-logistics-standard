@@ -48,8 +48,8 @@ public class MyOrdersPage_011_Receiver_Test extends BaseParpare {
 				data.get("MOP_INPUT_HARVESTCOMPANY"));
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_SEARCH);
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
-//		MyOrdersPageHelper.checkReceiverName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES, MyOrdersPage.MOP_TEXT_ORDERDRIVERNAME, timeOut, 
-//				data.get("MOP_INPUT_DRIVER"));
+		MyOrdersPageHelper.checkReceiverName(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES, MyOrdersPage.MOP_TEXT_ORDERRECEIVERNAME, 
+				data.get("MOP_INPUT_RECEIVER"));
 	}
 	
 	@DataProvider(name = "data")
