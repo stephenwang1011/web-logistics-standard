@@ -282,7 +282,7 @@ public class FindCarsPageHelper {
 						logger.error("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
 						Assert.fail("Found the car volume in web page is [" + autualCarVolume + "] and is smaller than input volume num [" + carVolumes[0] + "] L");
 					}
-					logger.info("The car volume of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] T,bigger than " + carVolumes[0] + " L - Passed");
+					logger.info("The car volume of the " + (i + 1) + "th cars info is [" + autualCarVolume + "] L,bigger than " + carVolumes[0] + " L - Passed");
 				}
 				// 都不为空
 				if (carVolumes[0] != "" && carVolumes[1] != "") {
@@ -372,7 +372,6 @@ public class FindCarsPageHelper {
 				return;
 			}
 		} catch (Exception e) {
-			logger.info("找到了车辆信息");
 			int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
 
 			for (int i = 0; i < size; i++) {
@@ -386,6 +385,7 @@ public class FindCarsPageHelper {
 					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮	
 					seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();//接受弹窗
 					seleniumUtil.waitForElementToLoad(2, FindCarsPage.FCP_DIV_CARINFO2);
+					seleniumUtil.pause(800);
 					int insize = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
 					for (int j = 0; j < insize; j++) {
 						String insecondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(j).getText();
@@ -416,6 +416,10 @@ public class FindCarsPageHelper {
 					}
 					
 					break;
+				}
+				if(autualLicense!=(license)){
+					logger.warn("你要取消的车辆：["+license+"]在我的我的车辆收藏中已经不存在，也许之前被手动取消收藏过，请检查！");
+					Assert.fail("你要取消的车辆：["+license+"]在我的我的车辆收藏中已经不存在，也许之前被手动取消收藏过，请检查！");
 				}
 			}
 
