@@ -17,7 +17,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * */
 public class FindGoodsPagePrivateGoods_018_CarLengthSort_Test extends BaseParpare {
 	@Test
-	public void publicDefaultSort(ITestContext context) {
+	public void privateCarLengthSort(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
