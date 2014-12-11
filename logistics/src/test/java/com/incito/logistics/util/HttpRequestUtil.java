@@ -22,13 +22,19 @@ public class HttpRequestUtil {
 		try {
 			URL url = new URL(strURL);// 创建连接
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			// 设置是否向httpUrlConnection输出，因为这个是post请求，参数要放在http正文内，因此需要设为true, 默认情况下是false;   
 			connection.setDoOutput(true);
+			// 设置是否从httpUrlConnection读入，默认情况下是true;  
 			connection.setDoInput(true);
+			//post请求不能使用缓存 故为false
 			connection.setUseCaches(false);
+			//setInstanceFollowRedirects是成员函数，仅作用于当前函数  
 			connection.setInstanceFollowRedirects(true);
+			// 设定请求的方法为"POST"，默认是GET   
 			connection.setRequestMethod("POST"); // 设置请求方式
 			connection.setRequestProperty("Accept", "application/json"); // 设置接收数据的格式
 			connection.setRequestProperty("Content-Type", "application/json"); // 设置发送数据的格式
+			// 连接，从上述中url.openConnection()至此的配置必须要在connect之前完成
 			connection.connect();
 			OutputStreamWriter out = new OutputStreamWriter(
 					connection.getOutputStream(), "UTF-8"); // utf-8编码
@@ -56,6 +62,7 @@ public class HttpRequestUtil {
 		}
 		return result;
 	}
+	
 	
 
 }
