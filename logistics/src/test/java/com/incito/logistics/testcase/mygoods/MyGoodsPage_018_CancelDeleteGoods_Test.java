@@ -26,7 +26,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 public class MyGoodsPage_018_CancelDeleteGoods_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void deleteGoodsAgain(ITestContext context, Map<String, String> data) {
+	public void cancelDeleteGoodsAgain(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
