@@ -6,6 +6,8 @@
 	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
+	<!-- 货源id信息 -->
+	<parameter name="GoodsInfo" value="config/goods.properties" />
 	<!-- driver的属性配置文件保存路径 -->
 	<parameter name="driverConfgFilePath" value="config/driver.properties" />
 	<!-- 数据库的备份和还原存放路径 -->
