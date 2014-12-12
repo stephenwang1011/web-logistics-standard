@@ -506,13 +506,31 @@ public class MyGoodsPageHelper {
 					no = no.substring(5);
 					break;
 			}
-			
+		}
+		return no;
+	}
+	
+	/**检查已经被预定的货源的状态*/
+	public static void checkGoodsStatus(SeleniumUtil seleniumUtil,String goodsno,int timeOut){
+		int itmes = seleniumUtil.findElementsBy(MyGoodsPage.MGP_ITEM_GOODS).size();
+		for (int i = 0; i < itmes; i++) {
+			seleniumUtil.click( seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i));//点击展开货源
+			String no = seleniumUtil.findElementBy(By.xpath("//*[@class='mygoods-center-detail']/p[1]/span[1]")).getText();
+			if(no.substring(5).equals(goodsno)){
+				logger.info("找到了期望的货源编号："+goodsno);
+				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(MyGoodsPage.MGP_DIV_GOODSSTAUS).get(i).getText().trim(), "已交易");
+				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(MyGoodsPage.MGP_LINK_CHECKORDER).get(i).getText().trim(), "查看订单");
+				seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_LINK_CHECKORDER).get(i));
+				MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+				break;
+			}
+				
+	
 		}
 
 		
 		
 		
-		return no;
 	}
 
 }
