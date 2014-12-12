@@ -87,33 +87,23 @@ public class JdbcUtil {
 	}
 
 	/* 查询数据库，输出符合要求的记录的情况 */
-	public static void query(String sql) {
+	public static String query(String sql) {
 		conn = getConnection(); // 同样先要获取连接，即连接到数据库
+		String goodsid = null;
 		try {
-			logger.info("jdbc查询数据开始");
-			// String sql = "select * from staff"; // 查询数据的sql语句
 			statement = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象，st属局部变量
 			ResultSet rs = statement.executeQuery(sql); // 执行sql查询语句，返回查询数据的结果集
-			System.out.println("最后的查询结果为：");
 			while (rs.next()) { // 判断是否还有下一个数据
 				// 根据字段名获取相应的值
-				String name = rs.getString("name");
-				int age = rs.getInt("age");
-				String sex = rs.getString("sex");
-				String address = rs.getString("address");
-				String depart = rs.getString("depart");
-				String worklen = rs.getString("worklen");
-				String wage = rs.getString("wage");
-				// 输出查到的记录的各个字段的值
-				System.out.println(name + " " + age + " " + sex + " " + address + " " + depart + " " + worklen + " " + wage);
+				goodsid = rs.getString("id");
 			}
 			rs.close();
 			statement.close();
 			conn.close(); // 关闭数据库连接
-			logger.info("jdbc插入数据结束");
 		} catch (SQLException e) {
-			System.out.println("查询数据失败");
+			e.printStackTrace();
 		}
+		return goodsid;
 	}
 
 	/* 删除符合要求的记录，输出情况 */
