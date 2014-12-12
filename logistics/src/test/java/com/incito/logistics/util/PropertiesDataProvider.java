@@ -1,5 +1,11 @@
 package com.incito.logistics.util;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Date;
+import java.util.Properties;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -21,4 +27,25 @@ public class PropertiesDataProvider {
 		return String.valueOf(config.getProperty(key));
 
 	}
+	
+	public static void writeProperties(String key,String value) {
+		Properties properties = new Properties();
+		OutputStream output = null;
+		try {
+			output = new FileOutputStream("config/goods.properties");
+			properties.setProperty(key,value);//保存键值对到内存
+			properties.store(output, "wangyang modify" + new Date().toString());// 保存键值对到文件中
+		} catch (IOException io) {
+			io.printStackTrace();
+		} finally {
+			if (output != null) {
+				try {
+					output.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
+
