@@ -489,5 +489,30 @@ public class MyGoodsPageHelper {
 			}
 		}
 	}
+	
+	//获取指定货源的货源编号
+	public static String getGoodsNo(SeleniumUtil seleniumUtil,String from,String to, String memo){
+		String no = null;
+		int itmes = seleniumUtil.findElementsBy(MyGoodsPage.MGP_ITEM_GOODS).size();
+		for (int i = 0; i < itmes; i++) {
+			String address = seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i).getAttribute("title");
+			String instraction =seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION).get(i).getText();
+			address = address.replaceAll(" ", "");
+			String add[] = address.split("至");
+			String original = add[0], targetcity = add[1];
+			if(from.equals(original)&&to.equals(targetcity)&&memo.equals(instraction)){
+				seleniumUtil.click( seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i));//点击展开货源
+					no = seleniumUtil.findElementBy(By.xpath("//*[@class='mygoods-center-detail']/p[1]/span[1]")).getText();
+					no = no.substring(5);
+					break;
+			}
+			
+		}
+
+		
+		
+		
+		return no;
+	}
 
 }
