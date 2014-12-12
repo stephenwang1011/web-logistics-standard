@@ -1,9 +1,12 @@
 package com.incito.logistics.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Properties;
 
 import org.apache.commons.configuration.Configuration;
@@ -30,10 +33,28 @@ public class PropertiesDataProvider {
 	
 	public static void writeProperties(String key,String value) {
 		Properties properties = new Properties();
+		try {
+			properties.load(new FileInputStream("config/goods.properties"));
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		OutputStream output = null;
 		try {
 			output = new FileOutputStream("config/goods.properties");
-			properties.setProperty(key,value);//保存键值对到内存
+	          for (Enumeration<?> e = properties.propertyNames(); e.hasMoreElements();) {
+	                String s = (String) e.nextElement(); // 遍历所有元素
+	                if (s.equals(key)) {
+	                    /**如果键相同则覆盖*/
+	                	properties.setProperty(s, value);
+	                } else {
+	                	/**否则就原样写入*/
+	                	properties.setProperty(key, value);
+	                }
+	            }
+			
+		//	properties.setProperty(key,value);//保存键值对到内存
 			properties.store(output, "wangyang modify" + new Date().toString());// 保存键值对到文件中
 		} catch (IOException io) {
 			io.printStackTrace();
