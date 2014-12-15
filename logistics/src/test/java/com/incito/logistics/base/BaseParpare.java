@@ -5,12 +5,19 @@ package com.incito.logistics.base;
  * @Description 测试开始 和 测试结束 的操作
  * 
  * */
+import java.io.IOException;
+import java.util.Iterator;
+
 import junit.framework.Assert;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriverException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+
+import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class BaseParpare {
@@ -46,8 +53,25 @@ public class BaseParpare {
 		} else {
 			logger.error("浏览器driver没有获得对象,退出操作失败");
 			Assert.fail("浏览器driver没有获得对象,退出操作失败");
-
 		}
 	}
+	
+	@DataProvider(name = "data")
+	public Iterator<Object[]> dataFortestMethod() throws IOException {
+		String moduleName = null; // 模块的名字
+		String caseNum = null; // 用例编号
+		String className = this.getClass().getName();
+		int dotIndexNum = className.indexOf("."); // 取得第一个.的index
+		int underlineIndexNum = className.indexOf("_"); // 取得第一个_的index
 
+		if (dotIndexNum > 0) {
+			moduleName = className.substring(30, className.lastIndexOf(".")); // 取到模块的名称
+		}
+
+		if (underlineIndexNum > 0) {
+			caseNum = className.substring(underlineIndexNum + 1, underlineIndexNum + 4); // 取到用例编号
+		}
+		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
+		return new ExcelDataProvider(moduleName, caseNum);
+	}
 }
