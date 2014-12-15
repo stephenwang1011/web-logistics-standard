@@ -1,6 +1,7 @@
 package com.incito.logistics.pages.pageshelper;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
 import com.incito.logistics.pages.HomePage;
@@ -149,5 +150,32 @@ public class HomePageHelper {
 			return;
 		}
 	}
+	
+	/**快速搜索我的订单，输入不合法的订单编号提示信息*/
+	public static void checkIncorrectOrderInfo(SeleniumUtil seleniumUtil){
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(HomePage.HP_TEXT_ORDERPROMPT).getText().trim(),"请输入正确的订单号");
+		
+	}
+	
+	/**未完成用户信息的用户在登录之后，首页上查看车源信息 驾驶证号打上了 *号*/
+	public static void checkUnauthenticationUserHomeCars(SeleniumUtil seleniumUtil){
+		int size = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(HomePage.HP_TEXT_SECONDINFO).size();
+		for (int i = 0; i < size; i++) {
+			seleniumUtil.isContains(seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(HomePage.HP_TEXT_SECONDINFO).get(i).getText(), "***");
+		}
 
+	}
+	
+	/**未认证的用户点击我的车源上的定位按钮，弹出alert*/
+	public static void checkUnauthenticationUserLoc(SeleniumUtil seleniumUtil,int sleepTime){
+		Alert alert = seleniumUtil.switchToPromptedAlertAfterWait(sleepTime);
+		seleniumUtil.isTextCorrect(alert.getText(), "您还未通过认证，暂时不能查看司机当前位置");
+		alert.accept();
+	}
+
+	/**检查首页上收藏（货源或车源）按钮点击之后是不是变成了取消收藏按钮*/
+	public static void checkFavButton(SeleniumUtil seleniumUtil,By bys, By by, int index){
+		seleniumUtil.isTextCorrect(seleniumUtil.getOneElement(bys, by, index).getText(), "取消收藏");
+		
+	}
 }
