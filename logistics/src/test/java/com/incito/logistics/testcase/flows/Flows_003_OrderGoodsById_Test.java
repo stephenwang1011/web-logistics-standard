@@ -13,11 +13,12 @@ public class Flows_003_OrderGoodsById_Test {
 
 	@Test
 	public void orderGoods(ITestContext context) {
-		String GoodsInfo = context.getCurrentXmlTest().getParameter("GoodsInfo");
-		String goodsid = PropertiesDataProvider.getTestData(GoodsInfo, "goodsid");
+		String goodsInfo = context.getCurrentXmlTest().getParameter("goodsInfo");		
+		String interface_flow = context.getCurrentXmlTest().getParameter("interface_flow");
+		String goodsid = PropertiesDataProvider.getTestData(goodsInfo, "goodsid");
+		String url = PropertiesDataProvider.getTestData(interface_flow, "order_url");
 
-		HttpRequestUtil.post("http://192.168.11.201:8080/logistics/goods/destineGoods?imei=A0000002FF7099",
-				"{\"goodsid\":\"" + goodsid + "\",\"carid\":\"a5cf1b6065ef468e84242ded4c9bc7f6\"}");
+		HttpRequestUtil.post(url,"{\"goodsid\":\"" + goodsid + "\",\"carid\":\"a5cf1b6065ef468e84242ded4c9bc7f6\"}");
 
 	}
 
