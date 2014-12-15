@@ -21,9 +21,9 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @Description 登录情况下 进行快速查找订单
  * 
  * */
-public class HomePage_111_Login_QuickSearchOrders_Test extends BaseParpare {
+public class HomePage_111_Login_QuickSearchOrdersForTarget_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void quickSearchOrders(ITestContext context,Map<String,String> data) {
+	public void quickSearchOrdersForTarget(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String username = PropertiesDataProvider.getTestData(configFilePath, "username");

@@ -15,7 +15,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 	 * @Description 登录情况下点击公共车源上的 "更多>>" 进入找车源页面
 	 * 
 	 * */
-	public class HomePage_113_Login_MoreCars_Test extends BaseParpare {
+	public class HomePage_115_Login_MoreCars_Test extends BaseParpare {
 	@Test
 	public void clickMoreCars(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
