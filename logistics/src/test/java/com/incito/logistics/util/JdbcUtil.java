@@ -29,6 +29,7 @@ public class JdbcUtil {
 		String jdbc_password = null;
 		try {
 			Properties prop = new Properties();
+//			InputStream inStream = JdbcUtil.class.getResourceAsStream("config/database.properties");
 			InputStream inStream = new FileInputStream(new File("config/database.properties"));
 			prop.load(inStream);
 			jdbc_url = prop.getProperty("jdbc_url");
