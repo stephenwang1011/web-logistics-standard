@@ -34,6 +34,8 @@ public class HomePage {
 	public static final By HP_TAB_FINDCARS = By.linkText("找车源");
 	/** 首页上的《物流跟踪》中的订单号输入框 */
 	public static final By HP_INPUT_ORDERNO = By.id("orderno");
+	/**首页上不正确的订单号提示信息*/
+	public static final By HP_TEXT_ORDERPROMPT = By.xpath("//*[text()='请输入正确的订单号']");
 	/** 首页上的《物流跟踪》上的查询按钮 */
 	public static final By HP_BUTTON_SEARCH1 = By.xpath("//*[@id='findOrderForm']/div[2]/button");
 	/** 首页上的《物流跟踪》tab */
@@ -60,6 +62,8 @@ public class HomePage {
 	public static final By HP_ARERA_CARDSANDGOODS = By.xpath("//*[@class='index-infobox']");
 	/** 公共车源或者公共货源 上的收藏按钮 */
 	public static final By HP_BUTTON_FAV = By.xpath("//*[text()='收藏']");
+	/** 公共车源或者公共货源 上的取消收藏按钮 */
+	public static final By HP_BUTTON_CFAV = By.xpath("//*[text()='取消收藏']");
 	/** 公共货源上的定位按钮 */
 	public static final By HP_BUTTON_LOC = By.xpath("//*[text()='定位']");
 	/** 首页顶部日期 */
@@ -87,4 +91,20 @@ public class HomePage {
 	public static final By HP_CARS_INFO2= By.className("index-infobox-row2");
 	/**返回顶部*/
 	public static final By HP_BUTTON_BACK = By.className("back-top");
+	
+	/**首页上，公共车源和货源2大区域定位*/
+	public static final By HP_ARERA_CARSANDGOODS = By.cssSelector("div.index-infolist-content");
+	
+	/**首页上公共车源和公共货源信息上的  第二行信息*/
+	public static final By HP_TEXT_SECONDINFO = By.className("index-infobox-row2");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
