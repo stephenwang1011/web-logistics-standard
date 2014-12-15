@@ -360,20 +360,14 @@ public class MyGoodsPageHelper {
 			logger.warn("No data found with this filters!");
 			return;
 		}
-		// 用于判断当前的标签是否在“我的货源-发布到车队的货源”tab中
-		Boolean flag = seleniumUtil.findElementBy(MyGoodsPage.MGP_TAB_GOODS_EP).findElements(By.tagName("li")).get(1).getAttribute("class").equals("active");
-		Boolean flag1 = seleniumUtil.findElementBy(MyGoodsPage.MGP_TAB_GOODS_EP).findElements(By.tagName("li")).get(2).getAttribute("class").equals("active");
-		String header = null;
-		for (int i = 0; i < items; i++) {
-			if (flag) {
-				seleniumUtil.click(seleniumUtil.findElementsBy(by).get(i));
-				header = seleniumUtil.findElementsBy(by).get(i).findElement(By.className("pl100")).getText();
-			} else if (flag1) {
-				seleniumUtil.click(seleniumUtil.findElementsBy(by).get(i));
-				header = seleniumUtil.findElementsBy(by).get(i).findElement(By.className("mygoods-detail-info")).findElements(By.tagName("span")).get(13).getText();
-			} else {
-				header = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("div")).get(2).getText();
-			}
+		else{
+
+			for (int j = 0; j < items; j++) {
+				
+	
+
+			String 	header = seleniumUtil.findElementsBy(by).get(j).findElements(By.tagName("div")).get(2).getText();
+	
 			// 取得发布时间的 字符串
 			header = header.substring(header.indexOf("：") + 1, header.length());
 			if (headInfos[0].equals("") && headInfos[1] != "") {
@@ -417,6 +411,7 @@ public class MyGoodsPageHelper {
 					Assert.fail("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间不在开始和结束时间之间");
 				}
 				logger.info("您选择的货源发布的开始时间是：" + headInfos[0] + ",您选择的货源的结束时间是：" + headInfos[1] + " 该货源的详情中的时间是：[" + header + "] ，该时间在开始和结束时间之间");
+			}
 			}
 		}
 	}
@@ -493,6 +488,49 @@ public class MyGoodsPageHelper {
 
 			}
 		}
+	}
+	
+	//获取指定货源的货源编号
+	public static String getGoodsNo(SeleniumUtil seleniumUtil,String from,String to, String memo){
+		String no = null;
+		int itmes = seleniumUtil.findElementsBy(MyGoodsPage.MGP_ITEM_GOODS).size();
+		for (int i = 0; i < itmes; i++) {
+			String address = seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i).getAttribute("title");
+			String instraction =seleniumUtil.findElementsBy(MyGoodsPage.MGP_TEXT_INSTRUCTION).get(i).getText();
+			address = address.replaceAll(" ", "");
+			String add[] = address.split("至");
+			String original = add[0], targetcity = add[1];
+			if(from.equals(original)&&to.equals(targetcity)&&memo.equals(instraction)){
+				seleniumUtil.click( seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i));//点击展开货源
+					no = seleniumUtil.findElementBy(By.xpath("//*[@class='mygoods-center-detail']/p[1]/span[1]")).getText();
+					no = no.substring(5);
+					break;
+			}
+		}
+		return no;
+	}
+	
+	/**检查已经被预定的货源的状态*/
+	public static void checkGoodsStatus(SeleniumUtil seleniumUtil,String goodsno,int timeOut){
+		int itmes = seleniumUtil.findElementsBy(MyGoodsPage.MGP_ITEM_GOODS).size();
+		for (int i = 0; i < itmes; i++) {
+			seleniumUtil.click( seleniumUtil.findElementsBy(By.xpath("//*[@class='span-addr']")).get(i));//点击展开货源
+			String no = seleniumUtil.findElementBy(By.xpath("//*[@class='mygoods-center-detail']/p[1]/span[1]")).getText();
+			if(no.substring(5).equals(goodsno)){
+				logger.info("找到了期望的货源编号："+goodsno);
+				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(MyGoodsPage.MGP_DIV_GOODSSTAUS).get(i).getText().trim(), "已交易");
+				seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(MyGoodsPage.MGP_LINK_CHECKORDER).get(i).getText().trim(), "查看订单");
+				seleniumUtil.click(seleniumUtil.findElementsBy(MyGoodsPage.MGP_LINK_CHECKORDER).get(i));
+				MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
+				break;
+			}
+				
+	
+		}
+
+		
+		
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.incito.logistics.testcase.mygoods;
+package com.incito.logistics.testcase.flows;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -10,23 +10,21 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.MyGoodsPageHelper;
-import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
-import com.incito.logistics.pages.pageshelper.SendGoodsSuccessPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
+import com.incito.logistics.util.JdbcUtil;
 import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：对自己发布的货源进行删除操作
+ * @Description 辅助001测试，获取刚才发的的货源在数据库中的id
  * */
-public class MyGoodsPage_018_CancelDeleteGoods_Test extends BaseParpare {
+public class Flows_002_GetGoodsId_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void cancelDeleteGoodsAgain(ITestContext context, Map<String, String> data) {
+	public void getGoodsID(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -38,21 +36,12 @@ public class MyGoodsPage_018_CancelDeleteGoods_Test extends BaseParpare {
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
-		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
-		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
-		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_LIGHTGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE5, 
-				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_GOODSNAME"), data.get("SGP_INPUT_GOODSDETAILS"),
-				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
-				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
-		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
-		SendGoodsSuccessPageHelper.waitSendGoodsSuccessPageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
 		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
-		MyGoodsPageHelper.deleteTargetGoods(seleniumUtil, data.get("INSTRUCTION"),false);
-		MyGoodsPageHelper.checkGoodsExistAfterDelete(seleniumUtil, data.get("INSTRUCTION"),false);
-		
-		
+		String goodsno = MyGoodsPageHelper.getGoodsNo(seleniumUtil, data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_INSTRUCTION"));
+		PropertiesDataProvider.writeProperties("goodsno", goodsno);  //写入货源的编号到属性文件，便于下次读取
+		String goodsid = JdbcUtil.query("select id from goods where goodsno='"+goodsno+"'");
+		PropertiesDataProvider.writeProperties("goodsid", goodsid); //写入货源id到 属性文件，以便下次查询使用
 		
 	}
 	

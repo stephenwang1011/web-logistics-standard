@@ -72,4 +72,9 @@ public class MyGoodsPage {
 	/**每条货源上的顶部信息：货源剩余时间和发布时间等*/
 	public static final By MGP_DIV_GOODSTIME_EP = By.className("mygoods-center");
 	
+	/**货源状态：新货源或已交易 - 可能会出现多个状态，建议用findElements*/
+	public static final By MGP_DIV_GOODSSTAUS = By.xpath("//*[@class='col-xs-2']");
+	/**每个货源上的查看订单按钮，可能会有多个，建议用findElements*/
+	public static final By MGP_LINK_CHECKORDER = By.linkText("查看订单");
+	
 }

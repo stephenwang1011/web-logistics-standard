@@ -1,4 +1,4 @@
-package com.incito.logistics.testcase.mygoods;
+package com.incito.logistics.testcase.flows;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -13,7 +13,6 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.pages.pageshelper.MyGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsSuccessPageHelper;
 import com.incito.logistics.util.ExcelDataProvider;
@@ -21,12 +20,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 测试用例：对自己发布的货源进行删除操作
+ * @Description 测试流程之前 先发布一条用例
  * */
-public class MyGoodsPage_018_CancelDeleteGoods_Test extends BaseParpare {
+public class Flows_001_SendGoods_Test extends BaseParpare {
 
 	@Test(dataProvider = "data")
-	public void cancelDeleteGoodsAgain(ITestContext context, Map<String, String> data) {
+	public void sendGoodsTest(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
@@ -41,19 +40,12 @@ public class MyGoodsPage_018_CancelDeleteGoods_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
 		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
-		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_LIGHTGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE5, 
+		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_DEVICEGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE3, 
 				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_GOODSNAME"), data.get("SGP_INPUT_GOODSDETAILS"),
-				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
+				data.get("SGP_INPUT_WEIGHT"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
 				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_FARE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
 		SendGoodsSuccessPageHelper.waitSendGoodsSuccessPageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
-		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
-		MyGoodsPageHelper.deleteTargetGoods(seleniumUtil, data.get("INSTRUCTION"),false);
-		MyGoodsPageHelper.checkGoodsExistAfterDelete(seleniumUtil, data.get("INSTRUCTION"),false);
-		
-		
-		
 	}
 	
 
