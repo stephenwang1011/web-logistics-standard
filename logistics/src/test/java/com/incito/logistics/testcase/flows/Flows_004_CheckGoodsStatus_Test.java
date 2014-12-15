@@ -34,10 +34,5 @@ public class Flows_004_CheckGoodsStatus_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
 		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
 		MyGoodsPageHelper.checkGoodsStatus(seleniumUtil, goodsno, timeOut);
-
-	
 	}
-	
-
-
 }

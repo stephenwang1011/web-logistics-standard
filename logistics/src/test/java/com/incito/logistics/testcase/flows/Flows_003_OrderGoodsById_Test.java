@@ -19,7 +19,5 @@ public class Flows_003_OrderGoodsById_Test {
 		String url = PropertiesDataProvider.getTestData(interface_flow, "order_url");
 
 		HttpRequestUtil.post(url,"{\"goodsid\":\"" + goodsid + "\",\"carid\":\"a5cf1b6065ef468e84242ded4c9bc7f6\"}");
-
 	}
-
 }

@@ -38,7 +38,9 @@ public class Flows_002_GetGoodsId_Test extends BaseParpare {
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_MYGOODS);
 		MyGoodsPageHelper.waitMyGoodsPageToLoad(timeOut, seleniumUtil);
-		String goodsno = MyGoodsPageHelper.getGoodsNo(seleniumUtil, data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_INSTRUCTION"));
+		String goodsno = MyGoodsPageHelper.getGoodsNo(seleniumUtil, 
+				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), 
+				data.get("SGP_INPUT_INSTRUCTION"));
 		PropertiesDataProvider.writeProperties("goodsno", goodsno);  //写入货源的编号到属性文件，便于下次读取
 		String goodsid = JdbcUtil.query("select id from goods where goodsno='"+goodsno+"'");
 		PropertiesDataProvider.writeProperties("goodsid", goodsid); //写入货源id到 属性文件，以便下次查询使用
@@ -52,17 +54,17 @@ public class Flows_002_GetGoodsId_Test extends BaseParpare {
 		String caseNum = null; // 用例编号
 		String className = this.getClass().getName();
 		int dotIndexNum = className.indexOf("."); // 取得第一个.的index
-		int underlineIndexNum = className.indexOf("_"); // 取得第一个_的index
+//		int underlineIndexNum = className.indexOf("_"); // 取得第一个_的index
 
 		if (dotIndexNum > 0) {
 			moduleName = className.substring(30, className.lastIndexOf(".")); // 取到模块的名称
 		}
 
-		if (underlineIndexNum > 0) {
-			caseNum = className.substring(underlineIndexNum + 1, underlineIndexNum + 4); // 取到用例编号
-		}
+//		if (underlineIndexNum > 0) {
+//			caseNum = className.substring(underlineIndexNum + 1, underlineIndexNum + 4); // 取到用例编号
+			caseNum = "001";//因为为辅助001测试用例，所以直接获取001用例中execl中的数据。
+//		}
 		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
 		return new ExcelDataProvider(moduleName, caseNum);
 	}
-
 }

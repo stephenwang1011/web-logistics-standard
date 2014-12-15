@@ -12,6 +12,9 @@ import com.incito.logistics.util.SeleniumUtil;
 public class SendGoodsPageHelper {
 	public static Logger logger = Logger.getLogger(SendGoodsPageHelper.class.getName());
 
+	
+	
+	
 	/** 等待发布货源页面上某个重要元素显示出来 */
 	public static void waitSendGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 

@@ -524,13 +524,6 @@ public class MyGoodsPageHelper {
 				MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 				break;
 			}
-				
-	
 		}
-
-		
-		
-		
 	}
-
 }
