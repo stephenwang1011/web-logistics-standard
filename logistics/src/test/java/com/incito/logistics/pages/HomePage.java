@@ -18,9 +18,9 @@ public class HomePage {
 	/** tab找车源 */
 	public static final By HP_LINK_FINDCARS = By.linkText("找车源");
 	/** tab找货源 */
-	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
+	public static final By HP_LINK_FINDGOODS = By.id("link_standard_goods");
 	/** tab我的订单 */
-	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
+	public static final By HP_LINK_MYORDER = By.id("link_standard_myorder");
 	/** 我的货源 */
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
 	/** 个人中心 */
@@ -98,6 +98,9 @@ public class HomePage {
 	/**首页上公共车源和公共货源信息上的  第二行信息*/
 	public static final By HP_TEXT_SECONDINFO = By.className("index-infobox-row2");
 	
+	/**首页上公共车源和公共货源信息上的  第三行信息*/
+	public static final By HP_TEXT_THIRDINFO = By.cssSelector("p.index-infobox-row3");
+
 	
 	
 	
