@@ -49,6 +49,9 @@ public class FindGoodsPage {
 	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
 	/** 排序之后,默认隐藏信息*/
 	public static final By FGP_HIDE_INFO = By.cssSelector("div.goods-detail-info");
+	/**隐藏信息中字体大小的class名称*/
+//	public static final By FGP_HIDE_ATTESTED = By.className("col-xs-4");
+	public static final By FGP_HIDE_ATTESTED = By.cssSelector("div.goods-detail-info.row");
 	/** 每条货源右边的按钮“我的收藏”*/
 	public static final By FGP_GOODS_BUTTON_MYFAVO = By.xpath("//*[text()='收藏' and @type='button']");
 	/** 每条货源右边的按钮“我的收藏”*/
@@ -72,5 +75,4 @@ public class FindGoodsPage {
 	public static final By FGP_ITEM_GOODS = By.xpath("//*[@class='goods-infobox']");
 	/**星级和发布时间的定位*/
 	public static final By FGP_ITEM_GOODSANDSTARS = By.cssSelector("div.goods-detail-row3");
-	
 }
