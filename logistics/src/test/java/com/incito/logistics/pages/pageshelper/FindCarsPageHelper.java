@@ -760,7 +760,31 @@ public class FindCarsPageHelper {
 			}
 
 		}
+	/**在首页收藏的车源，到找车源 我的收藏中验证是不是收藏成功的方法*/
+	public static  void doesCarsFavInMyFav(SeleniumUtil seleniumUtil,String license,String driver){
+		int size = seleniumUtil.findElementsBy(FindCarsPage.FCP_ITEM_INFOS).size();
 
+		for (int i = 0; i < size; i++) {
+			String second = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
+			String third = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO3).get(i).getText();
+			if(second.contains(license)&&third.contains(driver)){
+				logger.info("在找车源-我的收藏模块找到了刚刚在首页收藏的车源，车牌号："+license+" 司机："+driver);
+				break;
+				
+			}else{
+				logger.info("第"+(i+1)+"条车源不是刚刚在首页收藏的车源");
+				if(i==size-1){
+					logger.warn("没有找到你要的车源"+license+"你可能没有收藏成功或者已经取消收藏了");
+
+				}
+				
+			}
+			
+			
+		}
+		
+		
+	}
 
 
 	

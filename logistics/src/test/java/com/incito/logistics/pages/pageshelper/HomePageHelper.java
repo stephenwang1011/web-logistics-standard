@@ -1,8 +1,11 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -176,6 +179,22 @@ public class HomePageHelper {
 	/**检查首页上收藏（货源或车源）按钮点击之后是不是变成了取消收藏按钮*/
 	public static void checkFavButton(SeleniumUtil seleniumUtil,By bys, By by, int index){
 		seleniumUtil.isTextCorrect(seleniumUtil.getOneElement(bys, by, index).getText(), "取消收藏");
+		
+	}
+	
+	/**根据车牌号和驾驶者来点击 收藏或者定位按钮*/
+	public static void clickFavButtonByLicenseAndDriver(String license, String driver,SeleniumUtil seleniumUtil,By favOrCfavButton){
+		List<WebElement> cars_secondinfo = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(HomePage.HP_TEXT_SECONDINFO);
+		List<WebElement> cars_thirdinfo = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(HomePage.HP_TEXT_THIRDINFO);
+		List<WebElement> cars_fav = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(favOrCfavButton);
+		int size =  cars_secondinfo.size();
+
+		for (int i = 0; i < size; i++) {
+			if(cars_secondinfo.get(i).getText().contains(license)&&cars_thirdinfo.get(i).getText().contains(driver)){
+				seleniumUtil.click(cars_fav.get(i));
+			}
+		}
+		
 		
 	}
 }
