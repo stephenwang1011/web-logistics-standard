@@ -112,7 +112,7 @@
 						<suiteXmlFile>runAll.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<!--定义maven运行测试生成的报表路径 -->
-					<reportsDirectory>./result/test-report/chrome</reportsDirectory>
+					<reportsDirectory>./result/test-report/ie</reportsDirectory>
 				</configuration>
 			</plugin>
 
