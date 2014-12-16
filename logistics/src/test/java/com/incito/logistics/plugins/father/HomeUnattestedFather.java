@@ -14,7 +14,7 @@ import com.incito.logistics.util.SeleniumUtil;
  * @description 每个流程 开始之间的一个准备类，主要是做登录准备以及相关数据加载准备
  * 
  * */
-public class HomeUnauthenticationFather extends BaseParpare {
+public class HomeUnattestedFather extends BaseParpare {
 	protected static int timeOut = 0;
 	protected static int sleepTime = 0;
 
