@@ -11,12 +11,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wy
- * @Description 登录情况下，未认证的用户去点击收藏按钮，应该收藏成功并且在找车源-我的收藏中有刚才收藏的车源
+ * @Description 登录情况下，未认证的用户去点击定位按钮 应该弹出："您还未通过认证，暂时不能查看司机当前位置"
  * 
  * */
-public class HomePage_118_Login_UnauthenticationUserGoodsFav_Test extends BaseParpare {
+public class HomePage_117_Login_UnattestedUserGoodsLoc_Test extends BaseParpare {
 	@Test
-	public void unauthenticationUserGoodsFav(ITestContext context) {
+	public void unauthenticationUserCheckHomeCars(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String unauthusername = PropertiesDataProvider.getTestData(configFilePath, "unauthusername");
@@ -29,8 +29,8 @@ public class HomePage_118_Login_UnauthenticationUserGoodsFav_Test extends BasePa
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, unauthusername, password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_FAV, indexGoods);
-		HomePageHelper.checkFavButton(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_CFAV, indexGoods);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_LOC, indexGoods);
+		HomePageHelper.checkUnauthenticationUserLoc(seleniumUtil, sleepTime);
 
 
 	}
