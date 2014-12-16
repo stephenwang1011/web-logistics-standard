@@ -10,16 +10,16 @@ import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsSuccessPageHelper;
-import com.incito.logistics.plugins.father.FlowFather;
+import com.incito.logistics.plugins.father.OrderFlowFather;
 
 /**
  * @author xy-incito-wy
  * @Description 测试流程之前 先发布一条用例
  * */
-public class Flows_001_SendGoods_Test extends FlowFather {
+public class Flows_001_SendGoods_Test extends OrderFlowFather {
 	@Test(dataProvider = "data")
 	public void sendGoodsTest(ITestContext context,Map<String, String> data) {
-		FlowFather.flowParpare(context, seleniumUtil);
+		OrderFlowFather.flowParpare(context, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
 		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
