@@ -64,6 +64,8 @@ public class FindCarsPage {
 	public static final By FCP_DIV_MENTION = By.xpath("//*[text()='没有搜索到相应的数据']");
 	/**每个车源中的第二行 信息 车牌号，车长，吨位以及体积等信息*/
 	public static final By FCP_DIV_CARINFO2 = By.xpath("//*/div[2]/p[2]");
+	/**每个车源中的第三行 信息 驾驶员*/
+	public static final By FCP_DIV_CARINFO3 = By.xpath("//*/div[2]/p[3]");
 	/**每个车源的第一行数据*/
 	public static final By FCP_DIV_CARINFO1 = By.className("cars-p-first");
 	/**收藏车源按钮*/
