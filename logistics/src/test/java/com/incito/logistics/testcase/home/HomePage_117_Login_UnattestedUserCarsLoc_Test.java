@@ -14,9 +14,9 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @Description 登录情况下，未认证的用户去点击定位按钮 应该弹出："您还未通过认证，暂时不能查看司机当前位置"
  * 
  * */
-public class HomePage_117_Login_UnattestedUserGoodsLoc_Test extends BaseParpare {
+public class HomePage_117_Login_UnattestedUserCarsLoc_Test extends BaseParpare {
 	@Test
-	public void unauthenticationUserCheckHomeCars(ITestContext context) {
+	public void unattestedUserCarsLoc(ITestContext context) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String unauthusername = PropertiesDataProvider.getTestData(configFilePath, "unauthusername");
