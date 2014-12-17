@@ -32,8 +32,8 @@ public class MyOrdersPage {
 	public static final By MOP_SPAN_TABS = By.cssSelector("div.in-sortbox");
 	
 	//以下是我的订单中详情****************************************************
-	/**我的订单页面 高级搜索条件输入框 - 订单号*/
-	public static final By MOP_TEXT_NOINFO = By.linkText("没有搜索到相应的数据");
+	/**我的订单页面没有搜到到相关的数据*/
+	public static final By MOP_TEXT_NOINFO = By.cssSelector("b");
 	/**我的订单页面 订单的数目：只含有货物信息*/
 	public static final By MOP_TEXT_ORDERSINFOES = By.className("order-info");
 	/**我的订单页面 订单的详情的订单编号*/

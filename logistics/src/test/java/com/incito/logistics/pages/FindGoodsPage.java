@@ -54,9 +54,11 @@ public class FindGoodsPage {
 	/**隐藏信息中字体大小的class名称*/
 //	public static final By FGP_HIDE_ATTESTED = By.className("col-xs-4");
 	public static final By FGP_HIDE_ATTESTED = By.cssSelector("div.goods-detail-info.row");
+	/** 每条货源右边的按钮“收藏”和“取消收藏”*/
+	public static final By FGP_GOODS_BUTTON_MYFAVOANDCANCEL = By.cssSelector("div.goods-info-btns.row");
 	/** 每条货源右边的按钮“我的收藏”*/
 	public static final By FGP_GOODS_BUTTON_MYFAVO = By.xpath("//*[text()='收藏' and @type='button']");
-	/** 每条货源右边的按钮“我的收藏”*/
+	/** 每条货源右边的按钮“取消收藏”*/
 	public static final By FGP_GOODS_BUTTON_CANCELMYFAVO = By.xpath("//*[text()='取消收藏' and @type='button']");
 	
 	/** 搜索无结果提示语 */

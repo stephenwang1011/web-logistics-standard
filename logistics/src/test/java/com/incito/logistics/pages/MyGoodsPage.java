@@ -41,6 +41,8 @@ public class MyGoodsPage {
 	public static final By MGP_INPUT_ENDDATE = By.name("endgoodstime");
 	//**********以上元素 是点击了高级搜索按钮出现的 我是分隔符*********************
 	
+	/**我的订单页面没有搜到到相关的数据*/
+	public static final By MGP_TEXT_NOINFO = By.cssSelector("b");
 	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox*/
 	public static final By MGP_RADIOBOX_GOODSTYPE = By.xpath("//label[@class='radio-inline']/input");
 	/**判断每页条数的关键元素*/
