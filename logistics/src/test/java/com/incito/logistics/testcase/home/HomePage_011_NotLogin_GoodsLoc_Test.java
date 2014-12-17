@@ -21,7 +21,7 @@ public class HomePage_011_NotLogin_GoodsLoc_Test extends BaseParpare {
 		int indexGoods = Integer.valueOf(context.getCurrentXmlTest().getParameter("indexGoods"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_LOC, indexGoods);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_ITEMS, HomePage.HP_BUTTON_LOC, indexGoods);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 		LoginPageHelper.enterPage(seleniumUtil, LoginPage.LP_BUTTON_CLOSE);

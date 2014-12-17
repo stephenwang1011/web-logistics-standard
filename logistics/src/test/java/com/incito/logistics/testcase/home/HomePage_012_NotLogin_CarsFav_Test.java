@@ -21,7 +21,7 @@ public class HomePage_012_NotLogin_CarsFav_Test extends BaseParpare {
 		int indexCars = Integer.valueOf(context.getCurrentXmlTest().getParameter("indexCars"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_FAV, indexCars);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_ITEMS, HomePage.HP_BUTTON_FAV, indexCars);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 		LoginPageHelper.enterPage(seleniumUtil, LoginPage.LP_BUTTON_CLOSE);
