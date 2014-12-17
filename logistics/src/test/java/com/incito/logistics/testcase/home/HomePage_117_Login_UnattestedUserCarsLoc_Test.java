@@ -29,7 +29,7 @@ public class HomePage_117_Login_UnattestedUserCarsLoc_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, unauthusername, password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_CARDSANDGOODS, HomePage.HP_BUTTON_LOC, indexGoods);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_ARERA_ITEMS, HomePage.HP_BUTTON_LOC, indexGoods);
 		HomePageHelper.checkUnauthenticationUserLoc(seleniumUtil, sleepTime);
 
 
