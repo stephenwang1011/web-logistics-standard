@@ -18,9 +18,9 @@ public class HomePage {
 	/** tab找车源 */
 	public static final By HP_LINK_FINDCARS = By.linkText("找车源");
 	/** tab找货源 */
-	public static final By HP_LINK_FINDGOODS = By.linkText("找货源");
+	public static final By HP_LINK_FINDGOODS = By.id("link_standard_goods");
 	/** tab我的订单 */
-	public static final By HP_LINK_MYORDER = By.linkText("我的订单");
+	public static final By HP_LINK_MYORDER = By.id("link_standard_myorder");
 	/** 我的货源 */
 	public static final By HP_LINK_MYGOODS = By.linkText("我的货源");
 	/** 个人中心 */
@@ -59,7 +59,7 @@ public class HomePage {
 	 * 通过findByElements 拆分:<br>
 	 * 前8个是 公共货源的 数据，后八个是公共车源的数据<br>
 	 * */
-	public static final By HP_ARERA_CARDSANDGOODS = By.xpath("//*[@class='index-infobox']");
+	public static final By HP_ARERA_ITEMS = By.className("index-infobox");
 	/** 公共车源或者公共货源 上的收藏按钮 */
 	public static final By HP_BUTTON_FAV = By.xpath("//*[text()='收藏']");
 	/** 公共车源或者公共货源 上的取消收藏按钮 */
@@ -100,14 +100,4 @@ public class HomePage {
 	
 	/**首页上公共车源和公共货源信息上的  第三行信息*/
 	public static final By HP_TEXT_THIRDINFO = By.cssSelector("p.index-infobox-row3");
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
