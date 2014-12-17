@@ -87,7 +87,6 @@ public class FindGoodsPageHelper {
 	/** 从找货源进入指定的页面-根据元素定位来确定什么页面 */
 	public static void enterPage(SeleniumUtil seleniumUtil, By elementLocator) {
 		seleniumUtil.click(seleniumUtil.findElementBy(elementLocator));
-
 	}
 
 	/** 检查货源的第一行的数据：发货地和收货地 */
@@ -460,7 +459,6 @@ public class FindGoodsPageHelper {
 						logger.error("不能解析第" + (i + 1) + "条数据的日期：" + temp3[i]);
 						Assert.fail("不能解析第" + (i + 1) + "条数据的日期：" + temp3[i]);
 					}
-
 				}
 				break;
 
@@ -487,7 +485,6 @@ public class FindGoodsPageHelper {
 								logger.error("当星级箭头向下时，按星级排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 								Assert.fail("当星级箭头向下时，按星级排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 							}
-
 						}
 						count++; // 此时count的值变成1,1<2进行第二轮循环
 						continue;
@@ -513,9 +510,7 @@ public class FindGoodsPageHelper {
 							}
 						}
 						count++;
-
 					}
-
 				}
 				break;
 
@@ -548,7 +543,6 @@ public class FindGoodsPageHelper {
 								logger.error("当车长箭头向下时，按车长排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 								Assert.fail("当车长箭头向下时，按车长排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 							}
-
 						}
 						count++; // 此时count的值变成1,1<2进行第二轮循环
 						continue;
@@ -576,9 +570,7 @@ public class FindGoodsPageHelper {
 							}
 						}
 						count++;
-
 					}
-
 				}
 				break;
 
@@ -611,7 +603,6 @@ public class FindGoodsPageHelper {
 								logger.error("当载重箭头向下时，按载重排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 								Assert.fail("当载重箭头向下时，按载重排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 							}
-
 						}
 						count++; // 此时count的值变成1,1<2进行第二轮循环
 						continue;
@@ -640,9 +631,7 @@ public class FindGoodsPageHelper {
 							}
 						}
 						count++;
-
 					}
-
 				}
 				break;
 
@@ -678,7 +667,6 @@ public class FindGoodsPageHelper {
 								logger.error("当车厢容积箭头向下时，按车厢容积排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 								Assert.fail("当车厢容积箭头向下时，按车厢容积排序出错：" + temp1[i + 1] + "应该小于等于" + temp1[i] + "出错位置在第" + (i + 1) + "和" + i);
 							}
-
 						}
 						count++; // 此时count的值变成1,1<2进行第二轮循环
 						continue;
@@ -707,20 +695,41 @@ public class FindGoodsPageHelper {
 							}
 						}
 						count++;
-
 					}
-
 				}
 				break;
 
 			default:
 				logger.warn("你选择的排序规则：[" + sortRule + "]不被支持！");
 				return;
-
 			}
-
 		}
-
 	}
 
+	/** 查找货源页面未认证用户的检查，查看不到的信息有：货代名称、 联系人、联系方式、公司地址 */
+	public static void unattestedUserChecked(SeleniumUtil seleniumUtil, By byOrdersNum, By... byAttestedInfo) {
+		String UnattestedInfo = "认证后即可查看";
+		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
+		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
+		
+		int[] info = { 2, 5, 6, 12 };
+		String[] infoTest = { "联系人", "货代名称", "联系方式", "公司名称" };
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
+			// 查找联系人的信息
+			for (int j = 0; j < info.length; j++) {
+				String contactMan = seleniumUtil.findElementsBy(byAttestedInfo[0]).get(i).findElements(By.tagName("div")).get(info[j]).getText(); // 取得第二行的货源信息
+				contactMan = contactMan.replaceAll(" ", "");
+				String[] need = contactMan.split("：");
+				try {
+					Assert.assertTrue(need[1].equals(UnattestedInfo));
+				} catch (Exception e) {
+					e.printStackTrace();
+					logger.error(infoTest[j] + "和预定字段信息不匹配为：【" + need[1] + "】。");
+					Assert.fail(infoTest[j] + "和预定字段信息不匹配为：【" + need[1] + "】。");
+				}
+				logger.info(need[0] + "联系人的字段信息为：【" + need[1] + "】。");
+			}
+		}
+	}
 }
