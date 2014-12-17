@@ -265,9 +265,7 @@ public class FindGoodsPageHelper {
 				Assert.fail("在该页面中未发现货物名称为：【" + secondInfos[0] + "】的货源信息");
 			}
 			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + secondArray[0] + "】。");
-
 		}
-
 	}
 
 	/** 检查货源信息的第二行信息:吨位或者体积 */
@@ -711,7 +709,7 @@ public class FindGoodsPageHelper {
 		String UnattestedInfo = "认证后即可查看";
 		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
 		logger.info("您一共搜索到【" + items + "】条货源信息，现显示如下：");
-		
+
 		int[] info = { 2, 5, 6, 12 };
 		String[] infoTest = { "联系人", "货代名称", "联系方式", "公司名称" };
 		for (int i = 0; i < items; i++) {// 循环每个货源
@@ -731,5 +729,46 @@ public class FindGoodsPageHelper {
 				logger.info(need[0] + "联系人的字段信息为：【" + need[1] + "】。");
 			}
 		}
+	}
+
+	/** 找货源页面获取第一个货源的“货源编号” */
+	public static String firstGoodsId(SeleniumUtil seleniumUtil, By byOrdersNum, By byGoodsId) {
+		seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(0));
+		String goodsId = seleniumUtil.findElementsBy(byGoodsId).get(0).findElements(By.tagName("div")).get(3).getText(); // 取得第二行的货源信息
+		goodsId = goodsId.replaceAll(" ", "");
+		String[] need = goodsId.split("：");
+		try {
+			Assert.assertTrue(!need[1].equals(""));
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("货源编号没有获取到，为空。");
+			Assert.fail("货源编号没有获取到，为空。");
+		}
+		logger.info(need[0] + "为：【" + need[1] + "】。");
+		return need[1];
+	}
+
+	/** 找货源页面获取第一个货源的“货源编号” */
+	public static String[] allGoodsId(SeleniumUtil seleniumUtil, By byOrdersNum, By byGoodsId) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(byOrdersNum).size();
+
+		String[] goodsIds = new String[items];
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			seleniumUtil.click(seleniumUtil.findElementsBy(byOrdersNum).get(i));
+			String goodsId = seleniumUtil.findElementsBy(byGoodsId).get(i).findElements(By.tagName("div")).get(3).getText(); // 取得第二行的货源信息
+			goodsId = goodsId.replaceAll(" ", "");
+			String[] need = goodsId.split("：");
+			try {
+				Assert.assertTrue(!need[1].equals(""));
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("货源编号没有获取到，为空。");
+				Assert.fail("货源编号没有获取到，为空。");
+			}
+			logger.info(need[0] + "为：【" + need[1] + "】。");
+			goodsIds[i] = need[1];
+		}
+		return goodsIds;
 	}
 }
