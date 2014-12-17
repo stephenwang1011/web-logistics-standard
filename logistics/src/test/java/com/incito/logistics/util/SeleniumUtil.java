@@ -437,6 +437,14 @@ public class SeleniumUtil {
 	}
 
 	/**
+	 * 包装selenium模拟鼠标操作 - 鼠标移动到指定元素
+	 * */
+	public void mouseMoveToElement(WebElement element) {
+		Actions builder = new Actions(driver);
+		Actions mouse = builder.moveToElement(element);
+		mouse.perform();
+	}
+	/**
 	 * 添加cookies,做自动登陆的必要方法
 	 * */
 	public void addCookies(int sleepTime) {
