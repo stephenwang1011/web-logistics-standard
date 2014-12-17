@@ -9,7 +9,7 @@ import com.incito.logistics.plugins.father.HomeUnattestedFather;
 
 /**
  * @author xy-incito-wy
- * @Description 接着用例118，登录情况下，未认证的用户去点击取消收藏按钮,，应该取消收藏成功，同时在找车源我的收藏模块中不存在此车源
+ * @Description 认证的用户登录之后，检测首页的公共车源和公共货源的 的分别最多条数是8条
  * 
  * */
 public class HomePage_122_Login_CheckGoodsCarsItems_Test extends HomeUnattestedFather {
