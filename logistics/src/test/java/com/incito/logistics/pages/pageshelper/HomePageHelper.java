@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
+import com.incito.logistics.pages.FindGoodsPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
 
@@ -33,7 +35,7 @@ public class HomePageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LEFT_TITLE);
 		// seleniumUtil.waitForElementToLoad(timeOut,HomePage.HP_LINK_CHANGEANOTHER);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_TEXT_FOOTER);
-		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_ARERA_CARDSANDGOODS);
+		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_ARERA_ITEMS);
 		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_MORE);
 		logger.info("Check home page elements completed");
 	}
@@ -194,7 +196,118 @@ public class HomePageHelper {
 				seleniumUtil.click(cars_fav.get(i));
 			}
 		}
+
+	}
+	/**
+	 * 点击公共货源上的第一个货源的收藏按钮
+	 * */
+	public static void favOnPubGoods(SeleniumUtil seleniumUtil,int timeOut,int sleepTime){
+		seleniumUtil.click(seleniumUtil.findElementsBy(HomePage.HP_BUTTON_GOODSBUTTON).get(0));//点击第一个收藏
+		seleniumUtil.pause(sleepTime);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(HomePage.HP_BUTTON_GOODSBUTTON).get(1).getText(), "取消收藏");
+		String address =  seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_FIRST).getText();
+					address = address.replaceAll("到", "");
+		String detail =  seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_SECOND).getText();
+					detail = detail.replaceAll(" ", "");
+		String memo = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_THIRDINFO).getText(); 
+		String homeGoodsInfo[] ={address,detail,memo}; 
+
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
+		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
+		seleniumUtil.pause(sleepTime);
 		
+		int goodsInMyFavNum = seleniumUtil.findElementsBy(FindGoodsPage.FGP_FIRST_INFOADDRESS).size();
+		for (int i = 0; i < goodsInMyFavNum; i++) {
+			String addFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_CITY).get(i).getText();
+						addFav = addFav.replaceAll("至", "");
+			String detailFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(i).getText();
+						detailFav = detailFav.replaceAll(" ", "");
+			String memoFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).get(i).getText();
+			String favGoodsInfo[] = {addFav,detailFav,memoFav};
+
+			if(favGoodsInfo[0].equals(homeGoodsInfo[0])&&favGoodsInfo[1].equals(homeGoodsInfo[1])&&favGoodsInfo[2].equals(homeGoodsInfo[2])){				
+				logger.info("您刚才在首页收藏的货源，在找货源-我的收藏模块中存在！");
+				return;
+			}else{
+				logger.info("第"+(i+1)+"条货源，不是您刚才收藏的货源，程序会继续检查下一条数据...");
+				if(i==goodsInMyFavNum-1){
+					
+					logger.error("您在首页收藏的货源，在找货源-我的收藏模块中不存在！");
+					Assert.fail("您在首页收藏的货源，在找货源-我的收藏模块中不存在！");
+				}
+				
+			}
+			
+		}
 		
 	}
+	
+	/**
+	 * 点击公共货源上的第一个货源的取消收藏按钮
+	 * */
+	public static void cancelFavOnPubGoods(SeleniumUtil seleniumUtil,int timeOut,int sleepTime){
+		seleniumUtil.click(seleniumUtil.findElementsBy(HomePage.HP_BUTTON_GOODSBUTTON).get(1));//点击第一个收藏
+		seleniumUtil.pause(sleepTime);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(HomePage.HP_BUTTON_GOODSBUTTON).get(0).getText(), "收藏");
+		String address =  seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_FIRST).getText();
+					address = address.replaceAll("到", "");
+		String detail =  seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_SECOND).getText();
+					detail = detail.replaceAll(" ", "");
+		String memo = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).get(0).findElement(HomePage.HP_TEXT_THIRDINFO).getText(); 
+		String homeGoodsInfo[] ={address,detail,memo}; 
+
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
+		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
+		seleniumUtil.pause(sleepTime);
+		
+		int goodsInMyFavNum = seleniumUtil.findElementsBy(FindGoodsPage.FGP_FIRST_INFOADDRESS).size();
+		for (int i = 0; i < goodsInMyFavNum; i++) {
+			String addFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_CITY).get(i).getText();
+						addFav = addFav.replaceAll("至", "");
+			String detailFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_SECOND_INFO_CAR_LENGTH).get(i).getText();
+						detailFav = detailFav.replaceAll(" ", "");
+			String memoFav = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).get(i).getText();
+			String favGoodsInfo[] = {addFav,detailFav,memoFav};
+
+			if(favGoodsInfo[0].equals(homeGoodsInfo[0])&&favGoodsInfo[1].equals(homeGoodsInfo[1])&&favGoodsInfo[2].equals(homeGoodsInfo[2])){				
+				logger.error("您刚才在首页收藏的货源没有取消收藏成功！");
+				Assert.fail("您刚才在首页收藏的货源没有取消收藏成功！");
+		
+			}else{
+				logger.info("第"+(i+1)+"条货源，不是您刚才收藏的货源，程序会继续检查下一条数据...");
+				if(i==goodsInMyFavNum-1){
+					
+					logger.info("您在首页收藏的货源，在找货源-我的收藏模块中不存在,取消收藏成功！！");
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	/**检查首页公共车源和公共货源的条数*/
+	public static void checkCarsGoodsItems(SeleniumUtil seleniumUtil){
+		int carsssize = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(0).findElements(HomePage.HP_ARERA_ITEMS).size();
+		int goodssize = seleniumUtil.findElementsBy(HomePage.HP_ARERA_CARSANDGOODS).get(1).findElements(HomePage.HP_ARERA_ITEMS).size();
+		if(carsssize<=8&goodssize<=8){
+			logger.info("首页上的公共车源和公共货源 条数符合需求规范（小于等于8条）");
+		}else{
+			
+			logger.equals("首页上的公共车源和公共货源 条数不符合需求规范（大于等于8条），其中车源有："+carsssize+"条,货源有："+goodssize+"条");
+			Assert.fail("首页上的公共车源和公共货源 条数不符合需求规范（大于等于8条），其中车源有："+carsssize+"条,货源有："+goodssize+"条");
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
