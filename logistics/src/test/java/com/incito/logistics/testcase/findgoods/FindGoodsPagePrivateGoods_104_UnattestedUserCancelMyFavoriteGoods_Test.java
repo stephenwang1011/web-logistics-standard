@@ -10,7 +10,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 /**
  * 
  * @author xy-incito-wk
- * @Description 测试用例：未认证的用户登录，隐藏信息的检验
+ * @Description 测试用例：已登录的情况下，未认证的用户登录，取消我的收藏页面中当前所有收藏的货源
  */
 public class FindGoodsPagePrivateGoods_104_UnattestedUserCancelMyFavoriteGoods_Test extends FindGoodsFather {
 	@Test

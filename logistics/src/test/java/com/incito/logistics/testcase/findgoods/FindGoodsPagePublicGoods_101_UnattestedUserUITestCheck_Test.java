@@ -8,7 +8,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 
 /**
  * @author xy-incito-wk
- * @Description 测试用例：未认证的用户登录，查找货源界面检查
+ * @Description 测试用例：已登录的情况下，未认证的用户登录，我的货源UI和文字检验
  * */
 public class FindGoodsPagePublicGoods_101_UnattestedUserUITestCheck_Test extends FindGoodsFather {
 	@Test

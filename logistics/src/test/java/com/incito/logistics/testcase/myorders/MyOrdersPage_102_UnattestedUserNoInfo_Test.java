@@ -2,7 +2,7 @@ package com.incito.logistics.testcase.myorders;
 
 /**
  *@author  xy-incito-wk
- *@Description 测试用例：我的订单无数据的提示信息
+ *@Description 测试用例：已登录的情况下，未认证的用户登录，我的订单无数据的提示信息
  *
  * */
 import org.testng.ITestContext;

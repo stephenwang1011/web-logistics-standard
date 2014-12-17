@@ -10,7 +10,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 /**
  * 
  * @author xy-incito-wk
- * @Description 测试用例：未认证的用户登录，隐藏信息的检验
+ * @Description 测试用例：已登录的情况下，未认证的用户登录，收藏的货源在我的收藏中查看
  */
 public class FindGoodsPagePrivateGoods_101_UnattestedUserCheckCollection_Test extends FindGoodsFather {
 	@Test
