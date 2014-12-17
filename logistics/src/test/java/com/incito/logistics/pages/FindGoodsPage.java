@@ -45,6 +45,8 @@ public class FindGoodsPage {
 	public static final By FGP_DISPLAY_SEARCH = By.className("goods-infobox");
 	/** 搜索之后,搜索得到货源信息*/
 	public static final By FGP_SECOND_INFO = By.xpath("//*[@class='goods-infobox']");
+	/** 搜索之后,地址下方的第一排地址信息*/
+	public static final By FGP_FIRST_INFOADDRESS= By.cssSelector("div.goods-info-row1");
 	/** 搜索之后,地址下方的第二排车辆长度信息*/
 	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
 	/** 排序之后,默认隐藏信息*/
@@ -75,4 +77,8 @@ public class FindGoodsPage {
 	public static final By FGP_ITEM_GOODS = By.xpath("//*[@class='goods-infobox']");
 	/**星级和发布时间的定位*/
 	public static final By FGP_ITEM_GOODSANDSTARS = By.cssSelector("div.goods-detail-row3");
+	/**我的收藏中的目的地和出发地定位*/
+	public static final By FGP_TEXT_CITY = By.className("goods-row1-city");
+	/**我的收藏中的 说明定位*/
+	public static final By FGP_TEXT_MEMO = By.cssSelector("div.goods-info-row3");
 }

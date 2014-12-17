@@ -100,4 +100,17 @@ public class HomePage {
 	
 	/**首页上公共车源和公共货源信息上的  第三行信息*/
 	public static final By HP_TEXT_THIRDINFO = By.cssSelector("p.index-infobox-row3");
+	
+	/**车源上的收藏和取消收藏按钮，单数是收藏 基数是取消收藏*/
+	public static final By HP_BUTTON_CARSBUTTON = By.cssSelector("button.index_cars_btn");
+	
+	/**货源上的收藏和取消收藏按钮，单数是收藏 基数是取消收藏*/
+	public static final By HP_BUTTON_GOODSBUTTON = By.cssSelector("button.index_goods_btn");
+	
+	/**公共车源和公共货源 第一行信息*/
+	public static final By HP_TEXT_FIRST = By.className("index-infobox-row1");
+	/**公共车源和公共货源 第二行信息*/
+	public static final By HP_TEXT_SECOND = By.className("index-infobox-row2");
+	
+	
 }
