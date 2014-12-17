@@ -19,12 +19,12 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 /**
  * @author xy-incito-wk
- * @Description 登录情况下 进行快速查找货源操作，只输入收货地
+ * @Description 登录情况下 进行快速查找货源操作，输入发货地和收货地
  * 
  * */
 public class HomePage_110_Login_QuickSearchGoods_Test extends BaseParpare {
 	@Test(dataProvider="data")
-	public void fromOnlyQuickSearchGoods(ITestContext context,Map<String,String> data) {
+	public void fromToQuickSearchGoods(ITestContext context,Map<String,String> data) {
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
