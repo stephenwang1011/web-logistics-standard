@@ -526,4 +526,18 @@ public class MyGoodsPageHelper {
 			}
 		}
 	}
+	
+	/** 我的订单页面中没有搜索到相关的数据 */
+	public static void myGoodsNoInfo(SeleniumUtil seleniumUtil, By byMyGoodsNum) {
+		String info = seleniumUtil.findElementBy(byMyGoodsNum).getText();
+		String provideInfo = "没有搜索到相应的数据";
+		try {
+			Assert.assertTrue(info.equals(provideInfo));
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("未查找到提示信息为：【" + provideInfo + "】的提示语。");
+			Assert.fail("未查找到提示信息为：【" + provideInfo + "】的提示语。");
+		}
+		logger.info("提示信息为：【" + info + "】的提示语。");
+	}
 }
