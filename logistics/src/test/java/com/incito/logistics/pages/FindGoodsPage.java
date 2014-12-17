@@ -45,6 +45,8 @@ public class FindGoodsPage {
 	public static final By FGP_DISPLAY_SEARCH = By.className("goods-infobox");
 	/** 搜索之后,搜索得到货源信息*/
 	public static final By FGP_SECOND_INFO = By.xpath("//*[@class='goods-infobox']");
+	/** 搜索之后,地址下方的第一排地址信息*/
+	public static final By FGP_FIRST_INFOADDRESS= By.cssSelector("div.goods-info-row1");
 	/** 搜索之后,地址下方的第二排车辆长度信息*/
 	public static final By FGP_SECOND_INFO_CAR_LENGTH = By.cssSelector("div.goods-info-row2");
 	/** 排序之后,默认隐藏信息*/
@@ -52,9 +54,11 @@ public class FindGoodsPage {
 	/**隐藏信息中字体大小的class名称*/
 //	public static final By FGP_HIDE_ATTESTED = By.className("col-xs-4");
 	public static final By FGP_HIDE_ATTESTED = By.cssSelector("div.goods-detail-info.row");
+	/** 每条货源右边的按钮“收藏”和“取消收藏”*/
+	public static final By FGP_GOODS_BUTTON_MYFAVOANDCANCEL = By.cssSelector("div.goods-info-btns.row");
 	/** 每条货源右边的按钮“我的收藏”*/
 	public static final By FGP_GOODS_BUTTON_MYFAVO = By.xpath("//*[text()='收藏' and @type='button']");
-	/** 每条货源右边的按钮“我的收藏”*/
+	/** 每条货源右边的按钮“取消收藏”*/
 	public static final By FGP_GOODS_BUTTON_CANCELMYFAVO = By.xpath("//*[text()='取消收藏' and @type='button']");
 	
 	/** 搜索无结果提示语 */
@@ -75,4 +79,8 @@ public class FindGoodsPage {
 	public static final By FGP_ITEM_GOODS = By.xpath("//*[@class='goods-infobox']");
 	/**星级和发布时间的定位*/
 	public static final By FGP_ITEM_GOODSANDSTARS = By.cssSelector("div.goods-detail-row3");
+	/**我的收藏中的目的地和出发地定位*/
+	public static final By FGP_TEXT_CITY = By.className("goods-row1-city");
+	/**我的收藏中的 说明定位*/
+	public static final By FGP_TEXT_MEMO = By.cssSelector("div.goods-info-row3");
 }
