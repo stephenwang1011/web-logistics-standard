@@ -11,7 +11,6 @@ import java.util.Iterator;
 import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriverException;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -36,9 +35,9 @@ public class BaseParpare {
 
 		try {
 			seleniumUtil.launchBrowser(browserName, context);
-		} catch (WebDriverException e) {
+		} catch (Exception e) {
 			seleniumUtil.quit();
-			logger.error("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因");
+			logger.error("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因",e);
 			Assert.fail("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因");
 		}
 		// 设置一个testng上下文属性，将driver存起来，之后可以使用context随时取到
