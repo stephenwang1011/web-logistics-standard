@@ -5,17 +5,17 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.FindGoodsPage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
-import com.incito.logistics.plugins.father.FindGoodsFather;
+import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 
 /**
  * 
  * @author xy-incito-wk
  * @Description 测试用例：未认证的用户登录，隐藏信息的检验
  */
-public class FindGoodsPagePrivateGoods_103_UnattestedUserUserInfoCheck_Test extends FindGoodsFather {
+public class FindGoodsPagePrivateGoods_103_UnattestedUserUserInfoCheck_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
-		FindGoodsFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
 		

@@ -5,16 +5,16 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.MyGoodsPage;
 import com.incito.logistics.pages.pageshelper.MyGoodsPageHelper;
-import com.incito.logistics.plugins.father.MyGoodsFather;
+import com.incito.logistics.plugins.father.MyGoodsUnatestedFather;
 
 /**
  * @author xy-incito-wy
  * @Description 测试用例：已登录的情况下，未认证的用户登录，我的货源界面无数据的提示信息
  * */
-public class MyGoodsPage_102_UnattestedUserNoInfo_Test extends MyGoodsFather {
+public class MyGoodsPage_102_UnattestedUserNoInfo_Test extends MyGoodsUnatestedFather {
 	@Test
 	public void uITextCheck(ITestContext context) {
-		MyGoodsFather.UnattestedMyOrdersParpare(context, seleniumUtil);
+		MyGoodsUnatestedFather.UnattestedMyOrdersParpare(context, seleniumUtil);
 
 		MyGoodsPageHelper.myGoodsNoInfo(seleniumUtil, MyGoodsPage.MGP_TEXT_NOINFO);
 	}
