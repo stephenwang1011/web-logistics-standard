@@ -3,7 +3,7 @@
 <!-- thread-count 定义同时启动的浏览器数 paralle选择平行模式 -->
 <suite name="LogisticsAutoTest" parallel="tests" thread-count="1">
 	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="chrome" />
+	<parameter name="browserName" value="ie" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- 货源信息 -->
