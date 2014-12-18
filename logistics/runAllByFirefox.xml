@@ -79,13 +79,19 @@
 			<package name="com.incito.logistics.testcase.findcars" />
 		</packages>
 	</test>
-	
+
 	<test name="我的订单" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.myorders" />
 		</packages>
 	</test>
-	
+
+	<test name="个人中心" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.personcenter" />
+		</packages>
+	</test>
+
 	<test name="网站信息" preserve-order="true">
 		<packages>
 			<package name="com.incito.logistics.testcase.foot" />

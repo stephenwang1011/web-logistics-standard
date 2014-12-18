@@ -32,7 +32,7 @@
 
 	<!--测试用例按照包名来建立test -->
 
-	<test name="注册" >
+	<test name="注册">
 		<packages>
 			<package name="com.incito.logistics.testcase.register" />
 		</packages>
@@ -44,49 +44,55 @@
 		</packages>
 	</test>
 
-	<test name="登录" >
+	<test name="登录">
 		<packages>
 			<package name="com.incito.logistics.testcase.login" />
 		</packages>
 	</test>
 
-	<test name="首页" >
+	<test name="首页">
 		<packages>
 			<package name="com.incito.logistics.testcase.home" />
 		</packages>
 	</test>
 
-	<test name="发布货源" >
+	<test name="发布货源">
 		<packages>
 			<package name="com.incito.logistics.testcase.sendgoods" />
 		</packages>
 	</test>
 
-	<test name="我的货源" >
+	<test name="我的货源">
 		<packages>
 			<package name="com.incito.logistics.testcase.mygoods" />
 		</packages>
 	</test>
 
-	<test name="找货源" >
+	<test name="找货源">
 		<packages>
 			<package name="com.incito.logistics.testcase.findgoods" />
 		</packages>
 	</test>
 
-	<test name="找车源" >
+	<test name="找车源">
 		<packages>
 			<package name="com.incito.logistics.testcase.findcars" />
 		</packages>
 	</test>
-	
-	<test name="我的订单" >
+
+	<test name="我的订单">
 		<packages>
 			<package name="com.incito.logistics.testcase.myorders" />
 		</packages>
 	</test>
-	
-	<test name="网站信息" >
+
+	<test name="个人中心" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.personcenter" />
+		</packages>
+	</test>
+
+	<test name="网站信息">
 		<packages>
 			<package name="com.incito.logistics.testcase.foot" />
 		</packages>
