@@ -112,5 +112,9 @@ public class HomePage {
 	/**公共车源和公共货源 第二行信息*/
 	public static final By HP_TEXT_SECOND = By.className("index-infobox-row2");
 	
+	/**首页快速查询tab - 找车源*/
+	public static final By HP_QUICK_FINDCARS = By.xpath("//*[@href='#profile']");
 	
+	/**首页快速查询tab - 找车源*/
+	public static final By HP_QUICK_FINDGOODS = By.xpath("//*[@href='#goods']");
 }
