@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
-import com.incito.logistics.plugins.father.MyOrdersFather;
+import com.incito.logistics.plugins.father.MyOrdersUnatestedFather;
 
-public class MyOrdersPage_101_UnattestedUserUITextCheck_Test extends MyOrdersFather {
+public class MyOrdersPage_101_UnattestedUserUITextCheck_Test extends MyOrdersUnatestedFather {
 	@Test
 	public void myOrdersUiTest(ITestContext context) {
-		MyOrdersFather.UnattestedMyOrdersParpare(context, seleniumUtil);
+		MyOrdersUnatestedFather.UnattestedMyOrdersParpare(context, seleniumUtil);
 		MyOrdersPageHelper.checkMyOrdersPageText(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
