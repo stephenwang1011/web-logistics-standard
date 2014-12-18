@@ -776,17 +776,43 @@ public class FindCarsPageHelper {
 				if(i==size-1){
 					logger.warn("没有找到你要的车源"+license+"你可能没有收藏成功或者已经取消收藏了");
 
+				}	
+			}	
+		}
+	}
+
+/**验证找车源中的，未认证的用户信息*/
+	public static void checkCarsInfoForUnattestedUser(SeleniumUtil seleniumUtil,int sleepTime){
+		By bys[] =  {FindCarsPage.FCP_BUTTON_DEFAULT,FindCarsPage.FCP_BUTTON_CREDIT,FindCarsPage.FCP_BUTTON_CARLEN,FindCarsPage.FCP_BUTTON_WEIGHT,FindCarsPage.FCP_BUTTON_VOLUME};
+
+		for (int i = 0; i < bys.length; i++) {
+			seleniumUtil.click(seleniumUtil.findElementBy(bys[i]));
+			seleniumUtil.pause(sleepTime);
+			int carsNum = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).size();
+			for (int j = 0; j < carsNum; j++) {
+				String second = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(j).getText();
+				String  secondInfos[] = second.split("，");
+				String license = secondInfos[0].trim();
+				String third = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO3).get(j).getText();
+				if(license.contains("***")&&third.contains("电话：认证后即可查看")&&third.contains("所属公司：认证后即可查看")){
+					
+					logger.info("未认证的用户看到的司机信息都被隐藏 - PASSED");
+				}else{
+					
+					logger.error("未认证的用户可以看到相关被隐藏的信息，具体请看："+license +" "+third);
+					Assert.fail("未认证的用户可以看到相关被隐藏的信息，具体请看："+license +" "+third);
 				}
+				
 				
 			}
 			
 			
+			
+			
+			
 		}
 		
-		
 	}
-
-
 	
 
 }
