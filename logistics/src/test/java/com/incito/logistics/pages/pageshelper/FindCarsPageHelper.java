@@ -13,6 +13,7 @@ public class FindCarsPageHelper {
 	// 页面上某个重要元素显示出来
 	public static void waitFindCarsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("开始检查[找车源]页面元素");
+		seleniumUtil.pause(800);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_FROM);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_INPUT_TO);
 		seleniumUtil.waitForElementToLoad(timeOut, FindCarsPage.FCP_BUTTON_SEARCH);
@@ -349,8 +350,7 @@ public class FindCarsPageHelper {
 				String autualLicense = secondInfos[0].trim();
 				if (autualLicense.equals(license)) {
 
-					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击收藏按钮
-																			
+					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击收藏按钮																
 					seleniumUtil.waitForElementToLoad(5, FindCarsPage.FCP_BUTTON_CFAV);
 					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
 					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));
