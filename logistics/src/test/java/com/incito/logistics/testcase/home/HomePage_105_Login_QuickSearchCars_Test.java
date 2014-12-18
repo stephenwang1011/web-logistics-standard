@@ -35,7 +35,7 @@ public class HomePage_105_Login_QuickSearchCars_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDCARS, 1);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_QUICK_FINDCARS);
 		
 		HomePageHelper.typeQuickSearchInfo(seleniumUtil, data.get("FROM"),data.get("TO"),data.get("NO"),data.get("QUICKSEARCHTYPE"));
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_SEARCH2);
