@@ -45,6 +45,14 @@ public class MyGoodsPage {
 	public static final By MGP_TEXT_NOINFO = By.cssSelector("b");
 	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox*/
 	public static final By MGP_RADIOBOX_GOODSTYPE = By.xpath("//label[@class='radio-inline']/input");
+	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox中“查看全部”*/
+	public static final By MGP_RADIOBOX_GOODSTYPE_ALL = By.cssSelector("input[type='radio'][value='']");
+	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox中“新货源”*/
+	public static final By MGP_RADIOBOX_GOODSTYPE_NEWGOODS = By.cssSelector("input[type='radio'][value='new']");
+	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox中“已失效的货源”*/
+	public static final By MGP_RADIOBOX_GOODSTYPE_INVALIDGOODS = By.cssSelector("input[type='radio'][value='invalid']");
+	/**查看全部 新货源 已失效的货源 已交易的货源  四个radiobox中“已交易的货源”*/
+	public static final By MGP_RADIOBOX_GOODSTYPE_TRADEGOODS = By.cssSelector("input[type='radio'][value='handling']");
 	/**判断每页条数的关键元素*/
 	public static final By MGP_ITEM_GOODS = By.xpath("//*[@class='mygoods-inbox']");
 	/**每条货源上的货物收发地址*/

@@ -30,6 +30,26 @@ public class MyOrdersPage {
 	public static final By MOP_BUTTON_ADSEARCH = By.id("advanced_search_btn");
 	/**我的订单页面 - 导航区*/
 	public static final By MOP_SPAN_TABS = By.cssSelector("div.in-sortbox");
+	/**我的订单页面 - 导航区：近三个月的订单*/
+	public static final By MOP_SPAN_TABS_THREEORDERS = By.xpath("//*[@class='in-sortbox order-sortbox']/span[1]");
+	/**我的订单页面 - 导航区：已预订*/
+	public static final By MOP_SPAN_TABS_BOOKEDORDERS = By.xpath("//*[@class='in-sortbox order-sortbox']/span[2]");
+	/**我的订单页面 - 导航区：待收款*/
+	public static final By MOP_SPAN_TABS_PENDINGPAYMENT = By.xpath("//*[@class='in-sortbox order-sortbox']/span[3]");
+	/**我的订单页面 - 导航区：配货中*/
+	public static final By MOP_SPAN_TABS_PICKINGIN = By.xpath("//*[@class='in-sortbox order-sortbox']/span[4]");
+	/**我的订单页面 - 导航区：运输中*/
+	public static final By MOP_SPAN_TABS_TRANSPORTATION = By.xpath("//*[@class='in-sortbox order-sortbox']/span[5]");
+	/**我的订单页面 - 导航区：到达收货地*/
+	public static final By MOP_SPAN_TABS_ARRIVALOFRECEIPT = By.xpath("//*[@class='in-sortbox order-sortbox']/span[6]");
+	/**我的订单页面 - 导航区：待评价*/
+	public static final By MOP_SPAN_TABS_TOBEEVALUATED = By.xpath("//*[@class='in-sortbox order-sortbox']/span[7]");
+	/**我的订单页面 - 导航区：交易成功*/
+	public static final By MOP_SPAN_TABS_TRADINGSUCCESS = By.xpath("//*[@class='in-sortbox order-sortbox']/span[8]");
+	/**我的订单页面 - 导航区：交易关闭*/
+	public static final By MOP_SPAN_TABS_TRADINGCLOSED = By.xpath("//*[@class='in-sortbox order-sortbox']/span[9]");
+	/**我的订单页面 - 导航区：三个月前订单*/
+	public static final By MOP_SPAN_TABS_THREEAGEORDERS = By.xpath("//*[@class='in-sortbox order-sortbox']/span[10]");
 	
 	//以下是我的订单中详情****************************************************
 	/**我的订单页面没有搜到到相关的数据*/

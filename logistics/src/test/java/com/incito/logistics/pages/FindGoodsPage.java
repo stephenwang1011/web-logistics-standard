@@ -10,7 +10,7 @@ public class FindGoodsPage {
 	/** 公共货源按钮 */
 	public static final By FGP_BUTTON_PUBLICDOODS = By.linkText("公共货源");
 	/** 我的收藏按钮 */
-	public static final By FGP_BUTTON_MYFAVORITES = By.linkText("我的收藏");
+	public static final By FGP_BUTTON_MYFAVORITES = By.xpath("//*[@class='nav nav-tabs in-form-navtabs']/li[2]");
 	
 	//********以下元素是“搜索”选项的查找元素*************************************
 	/** 发货地文本框 */
@@ -62,7 +62,7 @@ public class FindGoodsPage {
 	public static final By FGP_GOODS_BUTTON_CANCELMYFAVO = By.xpath("//*[text()='取消收藏' and @type='button']");
 	
 	/** 搜索无结果提示语 */
-	public static final By FGP_NODIAPALY_SEARCH = By.xpath("//*[text()='没有搜索到相应的数据']");
+	public static final By FGP_NODIAPALY_SEARCH = By.cssSelector("b");
 	
 	/**排序 - 默认*/
 	public static final By FGP_LINK_DEFAULT = By.xpath("//*[@ordername='1']");

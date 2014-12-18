@@ -61,7 +61,7 @@ public class FindCarsPage {
 	public static final By FCP_SPAN_LOCATOR = By.xpath("//*[@class='text-major']");
 	
 	/**没有数据的提示语*/
-	public static final By FCP_DIV_MENTION = By.xpath("//*[text()='没有搜索到相应的数据']");
+	public static final By FCP_DIV_MENTION = By.cssSelector("b");
 	/**每个车源中的第二行 信息 车牌号，车长，吨位以及体积等信息*/
 	public static final By FCP_DIV_CARINFO2 = By.xpath("//*/div[2]/p[2]");
 	/**每个车源中的第三行 信息 驾驶员*/
