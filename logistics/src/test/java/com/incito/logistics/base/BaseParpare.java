@@ -36,7 +36,7 @@ public class BaseParpare {
 		try {
 			seleniumUtil.launchBrowser(browserName, context);
 		} catch (Exception e) {
-			seleniumUtil.quit();
+			//seleniumUtil.quit();
 			logger.error("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因",e);
 			Assert.fail("浏览器不能正常工作，请检查是不是被手动关闭或者其他原因");
 		}
@@ -54,8 +54,11 @@ public class BaseParpare {
 			Assert.fail("浏览器driver没有获得对象,退出操作失败");
 		}
 	}
-	
+
 	@DataProvider(name = "data")
+	/**
+	 * 测试数据提供者 - 方法
+	 * */
 	public Iterator<Object[]> dataFortestMethod() throws IOException {
 		String moduleName = null; // 模块的名字
 		String caseNum = null; // 用例编号
