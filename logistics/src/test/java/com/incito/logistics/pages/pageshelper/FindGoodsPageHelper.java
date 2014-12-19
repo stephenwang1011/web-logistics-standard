@@ -91,19 +91,23 @@ public class FindGoodsPageHelper {
 
 	/** 检查货源的第一行的数据：发货地和收货地 */
 	public static void checkGoodsAddress(SeleniumUtil seleniumUtil, By by, String... goodsAdd) {
+		// 这个items指的是查询出来有多少条货源
+		int items = seleniumUtil.findElementsBy(by).size();
 		if (seleniumUtil.findElementsBy(by).get(0).getText().equals("没有搜索到相应的数据")) {
 			logger.warn("No data found with this filters!");
 			return;
 		}
-		String address = seleniumUtil.findElementBy(by).findElement(By.xpath("//div[1]/div[1]/div[1]/span[1]")).getAttribute("title");
-		address = address.replaceAll(" ", "");
-		String add[] = address.split("至");
-		String original = add[0], targetcity = add[1];
-		if (goodsAdd[0].equals("") == false) {
-			seleniumUtil.isContains(original, goodsAdd[0]);
-		}
-		if (goodsAdd[1].equals("") == false) {
-			seleniumUtil.isContains(targetcity, goodsAdd[1]);
+		for (int i = 0; i < items; i++) {// 循环每个货源
+			String address = seleniumUtil.findElementsBy(by).get(i).findElements(By.tagName("span")).get(0).getText();
+			address = address.replaceAll(" ", "");
+			String add[] = address.split("至");
+			String original = add[0], targetcity = add[1];
+			if (goodsAdd[0].equals("") == false) {
+				seleniumUtil.isContains(original, goodsAdd[0]);
+			}
+			if (goodsAdd[1].equals("") == false) {
+				seleniumUtil.isContains(targetcity, goodsAdd[1]);
+			}
 		}
 	}
 
@@ -235,7 +239,6 @@ public class FindGoodsPageHelper {
 			}
 			logger.info("您的搜索条件为:【" + secondInfos[0] + "】，搜索结果的第【" + (i + 1) + "】条货源信息，车辆要求为：【" + carType + "】。");
 		}
-
 	}
 
 	/** 检查货源信息的第二行信息:货物名称 */
