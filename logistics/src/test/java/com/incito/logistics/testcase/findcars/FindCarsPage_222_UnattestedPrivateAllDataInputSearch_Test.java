@@ -16,7 +16,7 @@ import com.incito.logistics.plugins.father.FindCarsUnattestedFather;
 public class FindCarsPage_222_UnattestedPrivateAllDataInputSearch_Test extends FindCarsUnattestedFather {
 
 	@Test(dataProvider = "data")
-	public void allDataInputSearch(ITestContext context, Map<String, String> data) {
+	public void unattestedPrivateAllDataInputSearch(ITestContext context, Map<String, String> data) {
 		FindCarsUnattestedFather.unattestedFindCarsParpare(context, seleniumUtil);
 		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
 		FindCarsPageHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 

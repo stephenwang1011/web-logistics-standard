@@ -16,7 +16,7 @@ import com.incito.logistics.plugins.father.FindCarsUnattestedFather;
 public class FindCarsPage_221_UnattestedAcceptCancelFavoriteCars_Test extends FindCarsUnattestedFather {
 
 	@Test(dataProvider = "data")
-	public void UnattestedAcceptCancelFavoriteCars(ITestContext context, Map<String, String> data) {
+	public void unattestedAcceptCancelFavoriteCars(ITestContext context, Map<String, String> data) {
 		FindCarsUnattestedFather.unattestedFindCarsParpare(context, seleniumUtil);
 		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
 		FindCarsPageHelper.cancelFavCarsByLicense(seleniumUtil, FindCarsPage.FCP_BUTTON_CFAV, data.get("LICENSE"));
