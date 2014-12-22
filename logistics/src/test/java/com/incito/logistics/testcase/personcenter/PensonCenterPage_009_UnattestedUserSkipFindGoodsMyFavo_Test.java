@@ -2,7 +2,7 @@ package com.incito.logistics.testcase.personcenter;
 
 /**
  *@author  xy-incito-wk
- *@Description 测试用例：已登录的情况下，未认证的用户登录，点击新货源，查看连接跳转并检查状态
+ *@Description 测试用例：已登录的情况下，未认证的用户登录，点击我的收藏中货源，查看连接跳转并检查状态
  *
  * */
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ import com.incito.logistics.pages.PersonCenterPage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
 import com.incito.logistics.plugins.father.PensonCenterUnatestedFather;
 
-public class PensonCenterPage_008_UnattestedUserSkipFindGoodsMyFavo_Test extends PensonCenterUnatestedFather {
+public class PensonCenterPage_009_UnattestedUserSkipFindGoodsMyFavo_Test extends PensonCenterUnatestedFather {
 	@Test
 	public void personCenterMyOrdersFindGoodsMyFavo(ITestContext context) {
 		PensonCenterUnatestedFather.UnattestedPensonCenterParpare(context, seleniumUtil);

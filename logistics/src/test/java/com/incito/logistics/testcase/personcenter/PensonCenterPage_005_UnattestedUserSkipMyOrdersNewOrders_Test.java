@@ -2,7 +2,7 @@ package com.incito.logistics.testcase.personcenter;
 
 /**
  *@author  xy-incito-wk
- *@Description 测试用例：已登录的情况下，未认证的用户登录，点击新货源，查看连接跳转并检查状态
+ *@Description 测试用例：已登录的情况下，未认证的用户登录，点击我的订单中新订单，查看连接跳转并检查状态
  *
  * */
 import org.openqa.selenium.By;
