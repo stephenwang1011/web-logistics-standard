@@ -143,7 +143,8 @@ public class HomePageHelper {
 				seleniumUtil.executeJS(jsFrom);
 			}
 			if (quickSearchInfos[1] != "") {
-				String jsTo = "document.getElementsByName('targetcity')[1].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
+				String jsTo = "document.getElementById('targetcity1').setAttribute('value','" + quickSearchInfos[1].toString() + "');";
+//				String jsTo = "document.getElementsByName('targetcity')[2].setAttribute('value','" + quickSearchInfos[1].toString() + "');";
 				seleniumUtil.executeJS(jsTo);
 			}
 			break;

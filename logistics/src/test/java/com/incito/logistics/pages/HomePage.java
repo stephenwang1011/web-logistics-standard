@@ -115,6 +115,6 @@ public class HomePage {
 	/**首页快速查询tab - 找车源*/
 	public static final By HP_QUICK_FINDCARS = By.xpath("//*[@href='#profile']");
 	
-	/**首页快速查询tab - 找车源*/
+	/**首页快速查询tab - 找货源*/
 	public static final By HP_QUICK_FINDGOODS = By.xpath("//*[@href='#goods']");
 }
