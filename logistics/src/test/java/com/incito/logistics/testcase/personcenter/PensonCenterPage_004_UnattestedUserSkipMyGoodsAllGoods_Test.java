@@ -28,8 +28,9 @@ public class PensonCenterPage_004_UnattestedUserSkipMyGoodsAllGoods_Test extends
 		try {
 			Assert.assertTrue(selected);
 		} catch (Exception e) {
-			e.printStackTrace();
 			Assert.fail("在我的货源页面中‘已失效货源’没有被选中。");
+			e.printStackTrace();
+			throw e;
 		}
 		if (num == 0) {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyGoodsPage.MGP_TEXT_NOINFO).getText().trim(), "没有搜索到相应的数据");
@@ -38,6 +39,8 @@ public class PensonCenterPage_004_UnattestedUserSkipMyGoodsAllGoods_Test extends
 				Assert.assertTrue(false);
 			} catch (Exception e) {
 				Assert.fail("在我的货源页面中‘已失效货源’中未认证的用户含有新货源！！！");
+				e.printStackTrace();
+				throw e;
 			}
 		}
 	}

@@ -12,7 +12,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
  * @author xy-incito-wk
  * @Description 测试用例：已登录的情况下，未认证的用户登录，收藏的货源在我的收藏中查看
  */
-public class FindGoodsPagePrivateGoods_101_UnattestedUserCheckCollection_Test extends FindGoodsUnatestedFather {
+public class FindGoodsPagePrivateGoods_100_UnattestedUserCheckCollection_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
 		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);

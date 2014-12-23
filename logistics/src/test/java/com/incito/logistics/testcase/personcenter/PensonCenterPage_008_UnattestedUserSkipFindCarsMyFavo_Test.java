@@ -29,6 +29,8 @@ public class PensonCenterPage_008_UnattestedUserSkipFindCarsMyFavo_Test extends 
 			Assert.assertTrue(selected.equals("active"));
 		} catch (Exception e) {
 			Assert.fail("在找货源页面中‘我的收藏’没有被选中。");
+			e.printStackTrace();
+			throw e;
 		}
 		if (num == 0) {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindCarsPage.FCP_DIV_MENTION).getText().trim(), "没有搜索到相应的数据");
@@ -38,6 +40,8 @@ public class PensonCenterPage_008_UnattestedUserSkipFindCarsMyFavo_Test extends 
 				Assert.assertTrue(factNum == num);
 			} catch (Exception e) {
 				Assert.fail("个人中心查找车源的收藏个数与找车源中个人不一致！！！");
+				e.printStackTrace();
+				throw e;
 			}
 		}
 	}

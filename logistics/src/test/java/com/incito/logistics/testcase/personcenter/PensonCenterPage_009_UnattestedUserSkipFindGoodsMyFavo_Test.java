@@ -29,6 +29,8 @@ public class PensonCenterPage_009_UnattestedUserSkipFindGoodsMyFavo_Test extends
 			Assert.assertTrue(selected.equals("active"));
 		} catch (Exception e) {
 			Assert.fail("在找货源页面中‘我的收藏’没有被选中。");
+			e.printStackTrace();
+			throw e;
 		}
 		if (num == 0) {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(FindGoodsPage.FGP_NODIAPALY_SEARCH).getText().trim(), "没有搜索到相应的数据");
@@ -38,6 +40,8 @@ public class PensonCenterPage_009_UnattestedUserSkipFindGoodsMyFavo_Test extends
 				Assert.assertTrue(factNum == num);
 			} catch (Exception e) {
 				Assert.fail("个人中心查找货源的收藏个数与找货源中个数不一致！！！");
+				e.printStackTrace();
+				throw e;
 			}
 		}
 	}

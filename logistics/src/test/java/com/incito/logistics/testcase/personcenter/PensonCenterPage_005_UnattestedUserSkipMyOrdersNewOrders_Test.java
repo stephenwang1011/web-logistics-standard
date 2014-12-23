@@ -29,8 +29,9 @@ public class PensonCenterPage_005_UnattestedUserSkipMyOrdersNewOrders_Test exten
 		try {
 			Assert.assertTrue(selected.equals("in-sortbox-active"));
 		} catch (Exception e) {
-			e.printStackTrace();
 			Assert.fail("在我的订单页面中‘已预订’没有被选中。");
+			e.printStackTrace();
+			throw e;
 		}
 		if (num == 0) {
 			seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(MyGoodsPage.MGP_TEXT_NOINFO).getText().trim(), "没有搜索到相应的数据");
@@ -39,6 +40,8 @@ public class PensonCenterPage_005_UnattestedUserSkipMyOrdersNewOrders_Test exten
 				Assert.assertTrue(false);
 			} catch (Exception e) {
 				Assert.fail("在我的订单页面中‘已预订’中未认证的用户含有新货源！！！");
+				e.printStackTrace();
+				throw e;
 			}
 		}
 	}

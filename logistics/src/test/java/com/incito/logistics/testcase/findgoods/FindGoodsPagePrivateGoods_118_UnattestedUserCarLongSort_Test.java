@@ -10,13 +10,16 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 /**
  * 
  * @author xy-incito-wk
- * @Description 测试用例：已登录的情况下，未认证的用户登录，点击公共货源，隐藏信息中只有认证之后才能看到的信息，隐藏信息的检查
+ * @Description 测试用例：已登录的情况下，未认证的用户登录，点击我的收藏，找货源模块下，公共货源上的按照车长排序
  */
-public class FindGoodsPagePublicGoods_102_UnattestedUserInfoCheck_Test extends FindGoodsUnatestedFather {
+public class FindGoodsPagePrivateGoods_118_UnattestedUserCarLongSort_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
 		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
-		
-		FindGoodsPageHelper.unattestedUserChecked(seleniumUtil, FindGoodsPage.FGP_DISPLAY_SEARCH, FindGoodsPage.FGP_HIDE_ATTESTED);
+
+		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
+		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+
+		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "车长", timeOut);
 	}
 }
