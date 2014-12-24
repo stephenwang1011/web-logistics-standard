@@ -66,7 +66,7 @@ public class SeleniumUtil {
 	 * 最大化浏览器操作
 	 * */
 	public void maxWindow(String browserName) {
-		logger.info("最大化浏览器:"+browserName);
+		logger.info("最大化浏览器:" + browserName);
 		driver.manage().window().maximize();
 	}
 
@@ -99,9 +99,9 @@ public class SeleniumUtil {
 	 * 包装点击操作
 	 * */
 	public void click(WebElement element) {
-		
+
 		try {
-			clickTheClickable(element,System.currentTimeMillis(),2500);
+			clickTheClickable(element, System.currentTimeMillis(), 2500);
 		} catch (StaleElementReferenceException e) {
 			logger.error("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
 			Assert.fail("The element you clicked:[" + getLocatorByElement(element, ">") + "] is no longer exist!");
@@ -111,9 +111,9 @@ public class SeleniumUtil {
 		}
 		logger.info("点击元素 [" + getLocatorByElement(element, ">") + "]");
 	}
-	
-	/**不能点击时候重试点击操作*/
-	public void clickTheClickable(WebElement element,long startTime,int timeOut) throws Exception {
+
+	/** 不能点击时候重试点击操作 */
+	public void clickTheClickable(WebElement element, long startTime, int timeOut) throws Exception {
 		try {
 			element.click();
 		} catch (Exception e) {
@@ -122,8 +122,8 @@ public class SeleniumUtil {
 				throw new Exception(e);
 			} else {
 				Thread.sleep(500);
-				logger.warn(getLocatorByElement(element, ">")  + " is unclickable, try again");
-				clickTheClickable(element,startTime,timeOut);
+				logger.warn(getLocatorByElement(element, ">") + " is unclickable, try again");
+				clickTheClickable(element, startTime, timeOut);
 			}
 		}
 	}
@@ -134,18 +134,18 @@ public class SeleniumUtil {
 	public String getTitle() {
 		return driver.getTitle();
 	}
-	
+
 	/**
 	 * 获得元素的文本
 	 * */
 	public String getText(By elementLocator) {
 		return driver.findElement(elementLocator).getText().trim();
 	}
-	
+
 	/**
 	 * 获得元素 属性的文本
 	 * */
-	public String getAttributeText(By elementLocator,String attribute) {
+	public String getAttributeText(By elementLocator, String attribute) {
 		return driver.findElement(elementLocator).getAttribute(attribute).trim();
 	}
 
@@ -341,18 +341,18 @@ public class SeleniumUtil {
 		Select s = new Select(driver.findElement(by));
 		s.selectByIndex(index);
 	}
-	/**检查checkbox是不是勾选*/
-	public boolean doesCheckboxSelected(By elementLocator){
-		if(findElementBy(elementLocator).isSelected()==true){
-			logger.info("CheckBox: "+getLocatorByElement(findElementBy(elementLocator), ">")+" 被勾选");
+
+	/** 检查checkbox是不是勾选 */
+	public boolean doesCheckboxSelected(By elementLocator) {
+		if (findElementBy(elementLocator).isSelected() == true) {
+			logger.info("CheckBox: " + getLocatorByElement(findElementBy(elementLocator), ">") + " 被勾选");
 			return true;
-		}
-		else
-			logger.info("CheckBox: "+getLocatorByElement(findElementBy(elementLocator), ">")+" 没有被勾选");
+		} else
+			logger.info("CheckBox: " + getLocatorByElement(findElementBy(elementLocator), ">") + " 没有被勾选");
 		return false;
-		
-		
+
 	}
+
 	/**
 	 * 选择下拉选项 -根据文本内容
 	 * */
@@ -366,7 +366,15 @@ public class SeleniumUtil {
 	 * */
 	public void executeJS(String js) {
 		((JavascriptExecutor) driver).executeScript(js);
-		logger.info("执行JavaScript语句：["+js+"]" );
+		logger.info("执行JavaScript语句：[" + js + "]");
+	}
+
+	/**
+	 * 执行JavaScript 方法和对象
+	 * */
+	public void executeJS(String js, Object... args) {
+		((JavascriptExecutor) driver).executeScript(js, args);
+		logger.info("执行JavaScript语句：[" + js + "]");
 	}
 
 	/**
@@ -444,6 +452,7 @@ public class SeleniumUtil {
 		Actions mouse = builder.moveToElement(element);
 		mouse.perform();
 	}
+
 	/**
 	 * 添加cookies,做自动登陆的必要方法
 	 * */
@@ -584,57 +593,61 @@ public class SeleniumUtil {
 	public void loginOnWinGUI(String username, String password, String url) {
 		driver.get(username + ":" + password + "@" + url);
 	}
-	/**检查元素是否显示*/
-	public void isDisplayed(WebElement element){
-		if(element.isDisplayed()==true){
-			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is displayed");
-		}else if(element.isDisplayed()==false){
-			logger.info("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");	
-			Assert.fail("The element: ["+getLocatorByElement(element, ">")+"] is not displayed");
+
+	/** 检查元素是否显示 */
+	public void isDisplayed(WebElement element) {
+		if (element.isDisplayed() == true) {
+			logger.info("The element: [" + getLocatorByElement(element, ">") + "] is displayed");
+		} else if (element.isDisplayed() == false) {
+			logger.info("The element: [" + getLocatorByElement(element, ">") + "] is not displayed");
+			Assert.fail("The element: [" + getLocatorByElement(element, ">") + "] is not displayed");
 		}
-	}
-	
-	/**
-	 * 判断实际文本时候包含期望文本
-	 * @param actual 实际文本
-	 * @param expect 期望文本
-	 */
-	public void isContains(String actual,String expect){
-		try{
-		Assert.assertTrue(actual.contains(expect));
-		}catch(AssertionError e){
-			logger.error("The ["+actual+"] is not contains ["+expect+"]");
-			Assert.fail("The ["+actual+"] is not contains ["+expect+"]");
-		}
-		logger.info("The ["+actual+"] is contains ["+expect+"]");
-}
-	
-/**判断对应的图是不是存在*/
-	public void isImgExist(Screen s,String imgPath){
-		
-		if(s.exists(imgPath) != null){
-			logger.info("找到了指定的UI图：["+imgPath+"]并且一致");
-		}else{
-			logger.error("没有找到此UI图：["+imgPath+"]");
-			Assert.fail("没有找到此UI图：["+imgPath+"]");
-		}
-		
-	}
-	
-	/**获得屏幕的分辨率 - 宽*/
-	public static double getScreenWidth(){
-	return  java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	}
-	/**判断元素是不是存在*/
-	public  boolean doesElementExist (By by){
-		try{
-			driver.findElement(by);
-			logger.info("元素："+getLocatorByElement(findElementBy(by), ">")+"存在");
-			return true;
-		}catch(org.openqa.selenium.NoSuchElementException ex){
-			logger.error("元素："+getLocatorByElement(findElementBy(by), ">")+"不存在");
-			return false;
-		}
-	 }
 	}
 
+	/**
+	 * 判断实际文本时候包含期望文本
+	 * 
+	 * @param actual
+	 *            实际文本
+	 * @param expect
+	 *            期望文本
+	 */
+	public void isContains(String actual, String expect) {
+		try {
+			Assert.assertTrue(actual.contains(expect));
+		} catch (AssertionError e) {
+			logger.error("The [" + actual + "] is not contains [" + expect + "]");
+			Assert.fail("The [" + actual + "] is not contains [" + expect + "]");
+		}
+		logger.info("The [" + actual + "] is contains [" + expect + "]");
+	}
+
+	/** 判断对应的图是不是存在 */
+	public void isImgExist(Screen s, String imgPath) {
+
+		if (s.exists(imgPath) != null) {
+			logger.info("找到了指定的UI图：[" + imgPath + "]并且一致");
+		} else {
+			logger.error("没有找到此UI图：[" + imgPath + "]");
+			Assert.fail("没有找到此UI图：[" + imgPath + "]");
+		}
+
+	}
+
+	/** 获得屏幕的分辨率 - 宽 */
+	public static double getScreenWidth() {
+		return java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+	}
+
+	/** 判断元素是不是存在 */
+	public boolean doesElementExist(By by) {
+		try {
+			driver.findElement(by);
+			logger.info("元素：" + getLocatorByElement(findElementBy(by), ">") + "存在");
+			return true;
+		} catch (org.openqa.selenium.NoSuchElementException ex) {
+			logger.error("元素：" + getLocatorByElement(findElementBy(by), ">") + "不存在");
+			return false;
+		}
+	}
+}
