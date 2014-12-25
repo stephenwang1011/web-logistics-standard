@@ -24,7 +24,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  */
 public class FindGoodsPagePublicGoods_004_ValidSendFromAndSendTo_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsValidSendTo(ITestContext context, Map<String, String> data) {
+	public void FindGoodsPagePublicGoodsValidSendToAndSendTo(ITestContext context, Map<String, String> data) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));

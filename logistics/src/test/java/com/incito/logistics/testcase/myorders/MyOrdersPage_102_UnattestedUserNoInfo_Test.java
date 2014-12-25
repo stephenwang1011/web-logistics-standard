@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.MyOrdersUnatestedFather;
 
 public class MyOrdersPage_102_UnattestedUserNoInfo_Test extends MyOrdersUnatestedFather {
 	@Test
-	public void myOrdersUiTest(ITestContext context) {
+	public void unattestedUserNoInfo(ITestContext context) {
 		MyOrdersUnatestedFather.UnattestedMyOrdersParpare(context, seleniumUtil);
 		
 		MyOrdersPageHelper.myOrdersNoInfo(seleniumUtil, MyOrdersPage.MOP_TEXT_NOINFO);;

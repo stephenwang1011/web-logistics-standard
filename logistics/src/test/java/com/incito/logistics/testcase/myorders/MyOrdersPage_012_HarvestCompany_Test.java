@@ -24,7 +24,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
 
 public class MyOrdersPage_012_HarvestCompany_Test extends BaseParpare {
 	@Test(dataProvider = "data")
-	public void HarvestCompany(ITestContext context, Map<String, String> data) {
+	public void harvestCompany(ITestContext context, Map<String, String> data) {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");

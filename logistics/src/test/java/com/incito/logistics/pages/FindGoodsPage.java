@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 public class FindGoodsPage {
 	//********以下元素是“公共货源”和“我的收藏”的tab*************************************
 	/** 公共货源按钮 */
-	public static final By FGP_BUTTON_PUBLICDOODS = By.linkText("公共货源");
+	public static final By FGP_BUTTON_PUBLICDOODS = By.xpath("//*[@class='nav nav-tabs in-form-navtabs']/li[1]");// By.linkText("公共货源");
 	/** 我的收藏按钮 */
 	public static final By FGP_BUTTON_MYFAVORITES = By.xpath("//*[@class='nav nav-tabs in-form-navtabs']/li[2]");
 	

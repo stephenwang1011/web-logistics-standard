@@ -16,7 +16,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
  */
 public class FindGoodsPagePrivateGoods_103_UnattestedUserSendFrom_Test extends FindGoodsUnatestedFather {
 	@Test(dataProvider = "data")
-	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context, Map<String, String> data) {
+	public void findGoodsPagePublicGoodsUnattestedUserSendFrom(ITestContext context, Map<String, String> data) {
 		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
 		
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
