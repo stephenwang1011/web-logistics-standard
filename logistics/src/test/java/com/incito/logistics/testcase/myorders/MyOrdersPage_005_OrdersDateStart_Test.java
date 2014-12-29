@@ -18,7 +18,6 @@ public class MyOrdersPage_005_OrdersDateStart_Test extends MyOrdersFather {
 	@Test(dataProvider = "data")
 	public void searchOrdersDateStart(ITestContext context, Map<String, String> data) {
 		MyOrdersFather.myOrdersParpare(context, seleniumUtil);
-		
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
 				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"),

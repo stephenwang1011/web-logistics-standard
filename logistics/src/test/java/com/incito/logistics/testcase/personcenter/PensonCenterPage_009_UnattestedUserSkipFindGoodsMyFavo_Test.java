@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.PensonCenterUnatestedFather;
 
 public class PensonCenterPage_009_UnattestedUserSkipFindGoodsMyFavo_Test extends PensonCenterUnatestedFather {
 	@Test
-	public void personCenterMyOrdersFindGoodsMyFavo(ITestContext context) {
+	public void unattestedUserSkipFindGoodsMyFavo(ITestContext context) {
 		PensonCenterUnatestedFather.UnattestedPensonCenterParpare(context, seleniumUtil);
 
 		int num = Integer.valueOf(seleniumUtil.findElementBy(PersonCenterPage.PCP_LINK_MYFAVOCARS_GOODS).findElements(By.tagName("p")).get(0).getText());

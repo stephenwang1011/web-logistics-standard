@@ -18,7 +18,7 @@ public class MyOrdersPage_009_GoodsName_Test extends MyOrdersFather {
 	@Test(dataProvider = "data")
 	public void searchGoodsName(ITestContext context, Map<String, String> data) {
 		MyOrdersFather.myOrdersParpare(context, seleniumUtil);
-		
+
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_ADSEARCH);
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),

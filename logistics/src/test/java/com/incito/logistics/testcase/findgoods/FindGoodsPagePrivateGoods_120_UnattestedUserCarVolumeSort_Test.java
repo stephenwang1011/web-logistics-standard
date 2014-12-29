@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
  */
 public class FindGoodsPagePrivateGoods_120_UnattestedUserCarVolumeSort_Test extends FindGoodsUnatestedFather {
 	@Test
-	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
+	public void unattestedUserCarVolumeSort(ITestContext context) {
 		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
 
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);

@@ -18,7 +18,6 @@ public class MyOrdersPage_002_SendFrom_Test extends MyOrdersFather {
 	@Test(dataProvider = "data")
 	public void searchSendFrom(ITestContext context, Map<String, String> data) {
 		MyOrdersFather.myOrdersParpare(context, seleniumUtil);
-		
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
 				data.get("MOP_INPUT_ORDERSTIME_START"), data.get("MOP_INPUT_ORDERSTIME_END"),

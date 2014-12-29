@@ -16,9 +16,9 @@ import com.incito.logistics.plugins.father.MyOrdersFather;
 
 public class MyOrdersPage_011_Receiver_Test extends MyOrdersFather {
 	@Test(dataProvider = "data")
+
 	public void searchReceiver(ITestContext context, Map<String, String> data) {
-		MyOrdersFather.myOrdersParpare(context, seleniumUtil);
-		
+		MyOrdersFather.myOrdersParpare(context, seleniumUtil);	
 		MyOrdersPageHelper.enterPage(seleniumUtil, MyOrdersPage.MOP_BUTTON_ADSEARCH);
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"),
