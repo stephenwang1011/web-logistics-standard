@@ -23,6 +23,7 @@ public class HomeNotLoginFather extends BaseParpare {
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
+		HomePageHelper.checkHomePageText(seleniumUtil);
 	
 	}
 
