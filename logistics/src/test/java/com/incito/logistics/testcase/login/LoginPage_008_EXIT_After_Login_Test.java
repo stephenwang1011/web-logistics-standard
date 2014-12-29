@@ -7,25 +7,20 @@ package com.incito.logistics.testcase.login;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
-import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.plugins.father.LoginFather;
 import com.incito.logistics.util.PropertiesDataProvider;
 
-public class LoginPage_008_EXIT_After_Login_Test extends BaseParpare {
+public class LoginPage_008_EXIT_After_Login_Test extends LoginFather {
 
 	@Test
 	public void exitLoginTest(ITestContext context) {
 		String configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
+		LoginFather.loginParpare(context, seleniumUtil);
 		LoginPageHelper.checkLoginPageText(seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
