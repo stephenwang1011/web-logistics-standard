@@ -14,9 +14,9 @@ import com.incito.logistics.pages.MyOrdersPage;
 import com.incito.logistics.pages.pageshelper.MyOrdersPageHelper;
 import com.incito.logistics.plugins.father.MyOrdersFather;
 
-public class MyOrdersPage_003_SendTo_Test extends MyOrdersFather {
+public class MyOrdersPage_004_SendFromAndSendTo_Test extends MyOrdersFather {
 	@Test(dataProvider = "data")
-	public void searchSendTo(ITestContext context, Map<String, String> data) {
+	public void searchFromAndTo(ITestContext context, Map<String, String> data) {
 		MyOrdersFather.myOrdersParpare(context, seleniumUtil);
 		
 		MyOrdersPageHelper.typeOrdersInfo(seleniumUtil, 
@@ -30,6 +30,5 @@ public class MyOrdersPage_003_SendTo_Test extends MyOrdersFather {
 		MyOrdersPageHelper.checkMyOrdersAddress(seleniumUtil, MyOrdersPage.MOP_TEXT_ORDERSINFOES,  MyOrdersPage.MOP_TEXT_ADDRESS,
 				data.get("MOP_INPUT_SENDFROMCITY"), data.get("MOP_INPUT_SENDTOCITY"));
 	}
-	
 
 }

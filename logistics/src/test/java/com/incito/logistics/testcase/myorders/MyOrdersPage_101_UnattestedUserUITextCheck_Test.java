@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.MyOrdersUnatestedFather;
 
 public class MyOrdersPage_101_UnattestedUserUITextCheck_Test extends MyOrdersUnatestedFather {
 	@Test
-	public void myOrdersUiTest(ITestContext context) {
+	public void unattestedMyOrdersUiTest(ITestContext context) {
 		MyOrdersUnatestedFather.UnattestedMyOrdersParpare(context, seleniumUtil);
 		MyOrdersPageHelper.checkMyOrdersPageText(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);

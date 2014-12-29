@@ -3,36 +3,19 @@ package com.incito.logistics.testcase.sendgoods;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
-import com.incito.logistics.base.BaseParpare;
-import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.SendGoodsPage;
-import com.incito.logistics.pages.pageshelper.HomePageHelper;
-import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
-import com.incito.logistics.util.PropertiesDataProvider;
+import com.incito.logistics.plugins.father.SendGoodsFather;
 
 /**
  * @author xy-incito-wy
  * @Description 测试用例：发布货源界面，检查所有的货源名称
  * */
-public class SendGoodsPage_015_CheckGoodsAllNames_Test extends BaseParpare {
+public class SendGoodsPage_015_CheckGoodsAllNames_Test extends SendGoodsFather {
 
 	@Test
 	public void sendAllValidDataForWeightSuccessTest(ITestContext context) {
-		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
-		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
-		LoginPageHelper.login(seleniumUtil, username, password);
-		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
-		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
-		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
+		SendGoodsFather.sendGoodsParpare(context, seleniumUtil);
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_INPUT_GOODSNAME);
 		SendGoodsPageHelper.checkReserveText(seleniumUtil, timeOut,SendGoodsPage.SGP_TEXT_GOODSNAMECHOICE, "原料 煤炭 矿产 建材"+"\n"+
 											"钢材 木材 化工产品 机械五金"+"\n"+"电子电工 数码电器 医药 危险品"+"\n"+
