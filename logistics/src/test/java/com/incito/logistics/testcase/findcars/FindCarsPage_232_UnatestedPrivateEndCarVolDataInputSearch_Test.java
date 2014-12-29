@@ -23,9 +23,5 @@ public class FindCarsPage_232_UnatestedPrivateEndCarVolDataInputSearch_Test exte
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
 				data.get("FCP_INPUT_ENDWEIGHT"), data.get("FCP_INPUT_STARTVOLUME"),  data.get("FCP_INPUT_ENDVOLUME"));
 		FindCarsPageHelper.checkCarVolume(seleniumUtil, data.get("FCP_INPUT_STARTVOLUME"), data.get("FCP_INPUT_ENDVOLUME"));
-
 	}
-
-
-
 }

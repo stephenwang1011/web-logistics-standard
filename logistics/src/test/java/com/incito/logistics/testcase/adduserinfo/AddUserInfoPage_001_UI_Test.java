@@ -30,7 +30,5 @@ public class AddUserInfoPage_001_UI_Test extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
 		AddUserInfoPagerHelper.checkAddUserInfoPageText(seleniumUtil);
-
 	}
-
 }
