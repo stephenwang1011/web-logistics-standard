@@ -30,7 +30,7 @@ public class AddUserInfoPage {
 	/** 返回按钮 */
 	public static final By AUIP_BUTTON_BACK = By.xpath("//button[text()='返回']");
 	/** 顶部title */
-	public static final By AUIP_TEXT_TITLE = By.xpath("//span[text()='请完善您的个人信息']");
+	public static final By AUIP_TEXT_TITLE = By.className("in-text-primary");
 	/** 姓名文本 */
 	public static final By AUIP_TEXT_NAME = By.xpath("//label[text()='姓名：']");
 	/** 联系电话文本 */
