@@ -17,6 +17,7 @@ public class FindCarsPage_030_Private_EndCarVolDataInputSearch_Test extends Find
 
 	@Test(dataProvider = "data")
 	public void endCarVolDataInputSearch(ITestContext context, Map<String, String> data) {
+		FindCarsFather.FindCarsParpare(context, seleniumUtil);
 		FindCarsPageHelper.enterPage(seleniumUtil, FindCarsPage.FCP_TAB_FAV);
 		FindCarsPageHelper.typeCarsInfo(seleniumUtil, data.get("FCP_INPUT_FROM"), data.get("FCP_INPUT_TO"), 
 				data.get("FCP_INPUT_STARTCARLEN"), data.get("FCP_INPUT_ENDCARLEN"), data.get("FCP_INPUT_CARTYPE"), data.get("FCP_INPUT_STARTWEIGHT"), 
