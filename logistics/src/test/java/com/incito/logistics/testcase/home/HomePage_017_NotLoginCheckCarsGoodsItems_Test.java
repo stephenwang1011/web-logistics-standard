@@ -15,7 +15,7 @@ public class HomePage_017_NotLoginCheckCarsGoodsItems_Test extends HomeNotLoginF
 	@Test
 	public void notLoginCheckGoodsCarsItems(ITestContext context) {
 
-
+		HomeNotLoginFather.homeNotLoginParpare(context, seleniumUtil);
 		HomePageHelper.checkCarsGoodsItems(seleniumUtil);
 		
 
