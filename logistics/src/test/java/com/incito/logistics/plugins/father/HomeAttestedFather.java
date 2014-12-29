@@ -1,11 +1,16 @@
 package com.incito.logistics.plugins.father;
 
+import java.io.IOException;
+import java.util.Iterator;
+
 import org.testng.ITestContext;
+import org.testng.annotations.DataProvider;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
+import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 import com.incito.logistics.util.SeleniumUtil;
 
@@ -35,4 +40,22 @@ public class HomeAttestedFather extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 	}
 
+	@DataProvider(name = "data")
+	public Iterator<Object[]> dataFortestMethod() throws IOException {
+		String moduleName = null; // 模块的名字
+		String caseNum = null; // 用例编号
+		String className = this.getClass().getName();
+		int dotIndexNum = className.indexOf("."); // 取得第一个.的index
+		int underlineIndexNum = className.indexOf("_"); // 取得第一个_的index
+
+		if (dotIndexNum > 0) {
+			moduleName = className.substring(30, className.lastIndexOf(".")); // 取到模块的名称
+		}
+
+		if (underlineIndexNum > 0) {
+			caseNum = className.substring(underlineIndexNum + 1, underlineIndexNum + 4); // 取到用例编号
+		}
+		// 将模块名称和用例的编号传给 ExcelDataProvider ，然后进行读取excel数据
+		return new ExcelDataProvider(moduleName, caseNum);
+	}
 }
