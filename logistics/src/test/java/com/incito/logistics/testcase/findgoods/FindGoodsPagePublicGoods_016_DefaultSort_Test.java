@@ -13,7 +13,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePublicGoods_016_DefaultSort_Test extends FindGoodsFather {
 	@Test
 	public void publicDefaultSort(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, true);
 		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "默认排序", timeOut);
 	}
 }

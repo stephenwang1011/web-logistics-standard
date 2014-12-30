@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePrivateGoods_021_CancelMyFavoriteGoods_Test extends FindGoodsFather {
 	@Test
 	public void CancelMyFavoriteGoods(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, false);
 		
 		FindGoodsPageHelper.FavoGoodsChangepublicGoods(seleniumUtil, FindGoodsPage.FGP_GOODS_BUTTON_CANCELMYFAVO);
 	}

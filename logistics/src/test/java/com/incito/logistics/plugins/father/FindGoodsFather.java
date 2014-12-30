@@ -20,7 +20,7 @@ public class FindGoodsFather extends BaseParpare {
 	protected static int sleepTime = 0;
 
 	/** 首页上未认证用户的登录操作以及相关数据准备 **/
-	public static void FindGoodsParpare(ITestContext context, SeleniumUtil seleniumUtil) {
+	public static void findGoodsParpare(ITestContext context, SeleniumUtil seleniumUtil, Boolean flag) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
@@ -34,7 +34,9 @@ public class FindGoodsFather extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_FINDGOODS);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
-		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
-		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+		if (!flag) {
+			FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
+			FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+		}
 	}
 }

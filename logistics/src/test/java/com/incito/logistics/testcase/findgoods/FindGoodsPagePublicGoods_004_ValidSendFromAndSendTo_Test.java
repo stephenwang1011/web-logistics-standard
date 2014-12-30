@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePublicGoods_004_ValidSendFromAndSendTo_Test extends FindGoodsFather {
 	@Test(dataProvider = "data")
 	public void FindGoodsPagePublicGoodsValidSendToAndSendTo(ITestContext context, Map<String, String> data) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, true);
 
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 
 				data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 

@@ -13,7 +13,8 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePrivateGoods_000_UITestCheck_Test extends FindGoodsFather {
 	@Test
 	public void UITestCheck(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, false);
+		
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 }

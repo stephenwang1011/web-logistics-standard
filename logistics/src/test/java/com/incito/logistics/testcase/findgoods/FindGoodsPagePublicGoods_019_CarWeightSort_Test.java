@@ -13,7 +13,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePublicGoods_019_CarWeightSort_Test extends FindGoodsFather {
 	@Test
 	public void publicCarWeightSort(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, true);
 		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "重量", timeOut);
 	}
 }

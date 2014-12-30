@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePrivateGoods_001_AddMyFavoriteGoods_Test extends FindGoodsFather {
 	@Test
 	public void AddMyFavoriteGoods(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, true);
 		
 		FindGoodsPageHelper.publicGoodsChangeFavoGoods(seleniumUtil, FindGoodsPage.FGP_GOODS_BUTTON_MYFAVO);
 	}

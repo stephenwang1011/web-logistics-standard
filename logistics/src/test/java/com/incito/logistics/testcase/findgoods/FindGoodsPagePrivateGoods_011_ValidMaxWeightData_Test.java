@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePrivateGoods_011_ValidMaxWeightData_Test extends FindGoodsFather {
 	@Test(dataProvider = "data")
 	public void ValidMaxWeightData(ITestContext context, Map<String, String> data) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, false);
 
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_ADVANCESEARCH);
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 

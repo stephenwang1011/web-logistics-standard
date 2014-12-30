@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePublicGoods_008_ValidCarType_Test extends FindGoodsFather {
 	@Test(dataProvider = "data")
 	public void FindGoodsPagePublicGoodsValidCarType(ITestContext context, Map<String, String> data) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, true);
 
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_ADVANCESEARCH);
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 

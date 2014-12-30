@@ -13,7 +13,7 @@ import com.incito.logistics.plugins.father.FindGoodsFather;
 public class FindGoodsPagePrivateGoods_020_CarVolumeSort_Test extends FindGoodsFather {
 	@Test
 	public void carVolumeSort(ITestContext context) {
-		FindGoodsFather.FindGoodsParpare(context, seleniumUtil);
+		FindGoodsFather.findGoodsParpare(context, seleniumUtil, false);
 		
 		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "体积", timeOut);
 	}
