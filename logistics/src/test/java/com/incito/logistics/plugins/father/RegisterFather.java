@@ -17,21 +17,20 @@ import com.incito.logistics.util.SeleniumUtil;
 public class RegisterFather extends BaseParpare {
 	protected static int timeOut = 0;
 	protected static int sleepTime = 0;
-	protected static  String password = null;
-	protected static  String  configFilePath =null;
+	protected static String password = null;
+	protected static String configFilePath = null;
+
 	/**
 	 * 注册的准备类
 	 * */
 	public static void registerParpare(ITestContext context, SeleniumUtil seleniumUtil) {
-	 timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-	 sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-	configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
-	 password = PropertiesDataProvider.getTestData(configFilePath, "password");
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		configFilePath = context.getCurrentXmlTest().getParameter("userInfoPath");
+		password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_REG);
 		RegisterPageHelper.waitRegisterPageToLoad(timeOut, seleniumUtil);
 		RegisterPageHelper.checkRegisterPageText(seleniumUtil);
-
 	}
-
 }

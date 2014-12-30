@@ -23,8 +23,8 @@ public class FindCarsFather extends BaseParpare {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
-		  timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		  sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);

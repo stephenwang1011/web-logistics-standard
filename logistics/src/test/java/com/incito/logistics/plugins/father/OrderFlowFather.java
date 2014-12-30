@@ -30,7 +30,5 @@ public class OrderFlowFather extends BaseParpare {
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
-
 	}
-
 }

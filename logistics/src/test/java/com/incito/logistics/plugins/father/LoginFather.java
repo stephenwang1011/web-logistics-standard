@@ -22,15 +22,12 @@ public class LoginFather extends BaseParpare {
 	 * 登录相关准备操作
 	 * */
 	public static void loginParpare(ITestContext context, SeleniumUtil seleniumUtil) {
-		 timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		 sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		 waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil); 
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN); 
-		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil); 
-		LoginPageHelper.checkLoginPageText(seleniumUtil); 
-
-
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		waitMillisecondsForAlert = Integer.valueOf(context.getCurrentXmlTest().getParameter("waitMillisecondsForAlert"));
+		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
+		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
+		LoginPageHelper.checkLoginPageText(seleniumUtil);
 	}
-
 }

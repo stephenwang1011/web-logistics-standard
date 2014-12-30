@@ -22,17 +22,18 @@ public class MyOrdersFather extends BaseParpare {
 	protected static String password = null;
 	protected static String username = null;
 	protected static String userInfoPath = null;
+
 	/**
 	 * 我的订单页面相关准备操作
 	 * */
 	public static void myOrdersParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 
-		 userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
-		 username = PropertiesDataProvider.getTestData(userInfoPath, "username");
-		 password = PropertiesDataProvider.getTestData(userInfoPath, "password");
-		 timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		 sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-		
+		userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
+		username = PropertiesDataProvider.getTestData(userInfoPath, "username");
+		password = PropertiesDataProvider.getTestData(userInfoPath, "password");
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.waitLoginPageToLoad(timeOut, seleniumUtil);
@@ -42,7 +43,5 @@ public class MyOrdersFather extends BaseParpare {
 		MyOrdersPageHelper.waitForMyOrdersPageToLoad(seleniumUtil, timeOut);
 		MyOrdersPageHelper.checkMyOrdersPageText(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
-
 	}
-
 }

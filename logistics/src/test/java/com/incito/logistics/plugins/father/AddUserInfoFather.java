@@ -23,8 +23,8 @@ public class AddUserInfoFather extends BaseParpare {
 	/** 为找车源模块，未认证用户的登录操作以及相关数据准备 **/
 	public static void AddUserInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		String registered_username = PropertiesDataProvider.getTestData(configFilePath, "registered_username");
 		String registered_password = PropertiesDataProvider.getTestData(configFilePath, "registered_password");
 		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };

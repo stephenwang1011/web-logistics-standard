@@ -22,8 +22,8 @@ public class FindGoodsFather extends BaseParpare {
 	/** 首页上未认证用户的登录操作以及相关数据准备 **/
 	public static void FindGoodsParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		String username = PropertiesDataProvider.getTestData(configFilePath, "registered_username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "registered_password");
 

@@ -27,7 +27,7 @@ public class SendGoodsFather extends BaseParpare {
 		String userInfoPath = context.getCurrentXmlTest().getParameter("userInfoPath");
 		String username = PropertiesDataProvider.getTestData(userInfoPath, "username");
 		String password = PropertiesDataProvider.getTestData(userInfoPath, "password");
-		 timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
@@ -38,7 +38,5 @@ public class SendGoodsFather extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		SendGoodsPageHelper.waitSendGoodsPageToLoad(timeOut, seleniumUtil);
 		SendGoodsPageHelper.checkSendGoodsPageText(seleniumUtil);
-
 	}
-
 }
