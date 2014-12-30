@@ -148,7 +148,7 @@ public class TestResultListener extends TestListenerAdapter {
 			Reporter.setCurrentTestResult(tr);
 			Reporter.log(filePath);
 			// 把截图写入到Html报告中方便查看
-			Reporter.log("<img src=\"../../" + filePath + "\"/>");
+			Reporter.log("<img src=\"../../../" + filePath + "\"/>");
 		}
 	}
 
