@@ -351,7 +351,7 @@ public class FindCarsPageHelper {
 				if (autualLicense.equals(license)) {
 
 					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击收藏按钮																
-					seleniumUtil.waitForElementToLoad(5, FindCarsPage.FCP_BUTTON_CFAV);
+					seleniumUtil.pause(500);
 					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
 					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));
 					break;
