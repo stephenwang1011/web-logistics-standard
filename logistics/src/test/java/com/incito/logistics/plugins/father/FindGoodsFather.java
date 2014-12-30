@@ -1,10 +1,6 @@
 package com.incito.logistics.plugins.father;
 
-import java.io.IOException;
-import java.util.Iterator;
-
 import org.testng.ITestContext;
-import org.testng.annotations.DataProvider;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.FindGoodsPage;
@@ -12,7 +8,6 @@ import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.FindGoodsPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.util.ExcelDataProvider;
 import com.incito.logistics.util.PropertiesDataProvider;
 import com.incito.logistics.util.SeleniumUtil;
 
