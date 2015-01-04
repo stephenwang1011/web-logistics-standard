@@ -30,7 +30,9 @@ public class SendGoodsPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_CARLENGTH);
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_CARTYPE);
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_COUNT);
-		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_FARE);
+		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_UNITPRICE);
+		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_SELECT_UNITNAME);
+		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_ALLPRICE);
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_DECLAREVALUE);
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_INPUT_INFOFARE);
 		seleniumUtil.waitForElementToLoad(timeOut, SendGoodsPage.SGP_BUTTON_GOODSDATE3);
@@ -89,16 +91,20 @@ public class SendGoodsPageHelper {
 		((JavascriptExecutor) seleniumUtil.driver).executeScript(carType);
 		// 信息费
 		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INFOFARE), info[8].toString());
-		// 运费
-		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_FARE), info[9].toString());
+		// 单价
+		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_UNITPRICE), info[9].toString());
+		//单价的单位
+		seleniumUtil.selectByText(SendGoodsPage.SGP_SELECT_UNITNAME, info[10].toString());
+		// 总价
+		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_ALLPRICE), info[11].toString());
 		// 声明价值
-		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_DECLAREVALUE), info[10].toString());
+		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_DECLAREVALUE), info[12].toString());
 		// 信息有效期
 		if (seleniumUtil.findElementBy(goodsDate).isSelected() == false) {
 			seleniumUtil.click(seleniumUtil.findElementBy(goodsDate));
 		}
 		// 货源说明
-		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INSTRUCTION), info[11].toString());
+		seleniumUtil.type(seleniumUtil.findElementBy(SendGoodsPage.SGP_INPUT_INSTRUCTION), info[13].toString());
 
 	}
 	
@@ -199,8 +205,13 @@ public class SendGoodsPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_CARLENGTH, "value"), inputs[6]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_CARTYPE, "value"), inputs[7]);
 		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_INFOFARE, "value"), inputs[8]);
-		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_FARE, "value"), inputs[9]);
-		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_DECLAREVALUE, "value"), inputs[10]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_UNITPRICE, "value"), inputs[9]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getCurrentSelectValue(SendGoodsPage.SGP_SELECT_UNITNAME).get(0).getText(), inputs[10]); //获得select的当前值
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_ALLPRICE, "value"), inputs[11]);
+		
+		
+		
+		seleniumUtil.isTextCorrect(seleniumUtil.getAttributeText(SendGoodsPage.SGP_INPUT_DECLAREVALUE, "value"), inputs[12]);
 		try{
 		Assert.assertTrue(seleniumUtil.findElementBy(goodsDate).isSelected());
 		}catch(AssertionError ae){
@@ -208,7 +219,7 @@ public class SendGoodsPageHelper {
 			Assert.fail("["+seleniumUtil.getLocatorByElement(seleniumUtil.findElementBy(goodsDate), ">")+"] : is not selected when edit this goods infos");	
 
 		}
-		seleniumUtil.isTextCorrect(seleniumUtil.getText(SendGoodsPage.SGP_INPUT_INSTRUCTION),inputs[11]);
+		seleniumUtil.isTextCorrect(seleniumUtil.getText(SendGoodsPage.SGP_INPUT_INSTRUCTION),inputs[13]);
 		logger.info("All infos for this goods are correct when try to edit it");
 		
 	}
