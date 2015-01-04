@@ -9,23 +9,27 @@ import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.pages.pageshelper.SendGoodsPageHelper;
 import com.incito.logistics.plugins.father.SendGoodsFather;
 
-
 /**
  * @author xy-incito-wy
- * @Description 测试用例：发布货源界面，不输入货物体积，其他都输入，点击发布货源按钮不能发布成功
+ * @Description 测试用例：发布货源，单价超过10000
  * */
-public class SendGoodsPage_012_Volume_Empty_Data_Fail_Test extends SendGoodsFather {
+public class SendGoodsPage_024_Beyond_UnitFare_Fail_Test extends SendGoodsFather {
 
-	@Test(dataProvider="data")
-	public void sendGoodsVolumeEmptyDataFailTest(ITestContext context,Map<String, String> data) {
+	@Test(dataProvider = "data")
+	public void sendBeyondFareFailTest(ITestContext context, Map<String, String> data) {
 		SendGoodsFather.sendGoodsParpare(context, seleniumUtil);
-		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_LIGHTGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE7, 
+		SendGoodsPageHelper.typeGoodsInfo(seleniumUtil, SendGoodsPage.SGP_BUTTON_LIGHTGOODS, SendGoodsPage.SGP_BUTTON_GOODSDATE3, 
 				data.get("SGP_INPUT_GOODSORIGINALCITY"), data.get("SGP_INPUT_GOODSRECEIPTCITY"), data.get("SGP_INPUT_GOODSNAME"), data.get("SGP_INPUT_GOODSDETAILS"),
 				data.get("SGP_INPUT_VOLUME"), data.get("SGP_INPUT_COUNT"), data.get("SGP_INPUT_CARLENGTH"), data.get("SGP_INPUT_CARTYPE"), 
-				data.get("SGP_INPUT_INFOFARE"),data.get("SGP_INPUT_UNITPRICE"),data.get("SGP_SELECT_UNITNAME"),data.get("SGP_INPUT_ALLPRICE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
+				data.get("SGP_INPUT_INFOFARE"), data.get("SGP_INPUT_UNITPRICE"),data.get("SGP_SELECT_UNITNAME"),data.get("SGP_INPUT_ALLPRICE"), data.get("SGP_INPUT_DECLAREVALUE"), data.get("SGP_INPUT_INSTRUCTION"));
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_BUTTON_SEND);
 		SendGoodsPageHelper.checkSendStatus(seleniumUtil);
 		
+		
+		
 	}
 	
-}
+
+	}
+
+
