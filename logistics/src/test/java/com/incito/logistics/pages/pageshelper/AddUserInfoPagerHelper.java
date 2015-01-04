@@ -29,7 +29,6 @@ public class AddUserInfoPagerHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_SELECT_PROVINCE);
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_INPUT_UPLOAD);
 
-
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_BUTTON_BACK);
 		seleniumUtil.waitForElementToLoad(timeOut, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
 		logger.info("Check addUserInfo page elements completed");
@@ -39,18 +38,21 @@ public class AddUserInfoPagerHelper {
 	/** 检查完善信息页面上的文本 */
 	public static void checkAddUserInfoPageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE_DES).getText(), "请完善认证信息，通过认证后让更多的司机关注到您的货源信息，并提升订单成交率。" + "\n" + "您还可以查看更详细的车源与货源。");
 
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE).getText(), "请完善您的个人信息");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_ADDRESS).getText(), "公司地址：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS).getAttribute("placeholder"), "街道地址");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_COMPANY).getText(), "公司名称：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_IDCARD).getText(), "身份证号：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_NAME).getText(), "姓名：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TEL).getText(), "联系电话：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_PHOTO).getText(), "证件照片：");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_BUTTON_SUBMIT).getText(), "提交");
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_BUTTON_BACK).getText(), "返回");
-
+		int size = seleniumUtil.findElementsBy(AddUserInfoPage.AUIP_TEXT_DES).size();
+		String tabs[] = { "姓名", "联系电话", "输入验证码", "身份证号", "公司名称", "公司地址", " ", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			if (i == 6)
+				continue;
+			String temp = seleniumUtil.findElementsBy(AddUserInfoPage.AUIP_TEXT_DES).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(1, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEL_PROVING).getText().replaceAll(" ", ""), "发送验证码至手机");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_BUTTON_SUBMIT).getText().replaceAll(" ", ""), "提交");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_BUTTON_BACK).getText().replaceAll(" ", ""), "返回");
 		logger.info("Check addUserInfo page text completed");
 	}
 
@@ -64,23 +66,27 @@ public class AddUserInfoPagerHelper {
 	public static void checkAddUserInfoPrompt(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
 
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE).getText(), "请完善您的个人信息");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_NAME_PROMPT).getText(), "请输入2-8个中文字符");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL_PROMPT).getText(), "请输入正确的电话号码");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY_PROMPT).getText(),"");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_IDCARD_PROMPT).getText(), "请输入正确的身份证号码");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS_PROMPT).getText(), "省 不能为空");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEXT_TITLE).getText(), "认证信息");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_NAME_PROMPT).getText(),
+		// "请输入2-8个中文字符");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL_PROMPT).getText(),
+		// "请输入正确的电话号码");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY_PROMPT).getText(),"");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_IDCARD_PROMPT).getText(),
+		// "请输入正确的身份证号码");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS_PROMPT).getText(),
+		// "省 不能为空");
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
-	
 
 	/** 检查完善信息页面：只填写姓名的提示语 */
 	public static void checkAddUserInfoPrompt_Name(int timeOut, SeleniumUtil seleniumUtil, Map<String, String> data) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
 
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_TEL_PROMPT).getText(), "请输入正确的电话号码");
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY_PROMPT).getText(), "");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY_PROMPT).getText(),
+		// "");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_IDCARD_PROMPT).getText(), "请输入正确的身份证号码");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_ADDRESS_PROMPT).getText(), "省 不能为空");
 

@@ -1,10 +1,14 @@
 package com.incito.logistics.testcase.adduserinfo;
 
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
-import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
+
 import com.incito.logistics.base.BaseParpare;
+import com.incito.logistics.pages.AddUserInfoPage;
 import com.incito.logistics.pages.HomePage;
+import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
@@ -29,6 +33,15 @@ public class AddUserInfoPage_001_UI_Test extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
+		String selected = seleniumUtil.findElementBy(AddUserInfoPage.AUIP_USERINFO_TAB).getAttribute("class");
+		try {
+			Assert.assertTrue(selected.equals("active"));//判断认证信息标签是否已经被选中
+		} catch (Exception e) {
+			Assert.fail("在完成个人信息页面中‘认证信息’没有被选中。");
+			e.printStackTrace();
+			throw e;
+		}
 		AddUserInfoPagerHelper.checkAddUserInfoPageText(seleniumUtil);
+		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 }

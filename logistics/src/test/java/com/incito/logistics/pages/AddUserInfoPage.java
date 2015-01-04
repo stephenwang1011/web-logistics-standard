@@ -26,23 +26,13 @@ public class AddUserInfoPage {
 	/** 上传图片按钮 */
 	public static final By AUIP_INPUT_UPLOAD = By.className("fileinput-new");
 	/** 提交按钮 */
-	public static final By AUIP_BUTTON_SUBMIT = By.xpath("//button[text()='提交']");
+	public static final By AUIP_BUTTON_SUBMIT = By.xpath("//button[text()='提 交']");
 	/** 返回按钮 */
-	public static final By AUIP_BUTTON_BACK = By.xpath("//button[text()='返回']");
-	/** 顶部title */
-	public static final By AUIP_TEXT_TITLE = By.className("in-text-primary");
-	/** 姓名文本 */
-	public static final By AUIP_TEXT_NAME = By.xpath("//label[text()='姓名：']");
-	/** 联系电话文本 */
-	public static final By AUIP_TEXT_TEL = By.xpath("//label[text()='联系电话：']");
-	/** 身份证号码文本 */
-	public static final By AUIP_TEXT_IDCARD = By.xpath("//label[text()='身份证号：']");
-	/** 公司地址文本 */
-	public static final By AUIP_TEXT_ADDRESS = By.xpath("//label[text()='公司地址：']");
-	/** 公司名称文本 */
-	public static final By AUIP_TEXT_COMPANY = By.xpath("//label[text()='公司名称：']");
-	/** 证件照片文本 */
-	public static final By AUIP_TEXT_PHOTO = By.xpath("//label[text()='证件照片：']");
+	public static final By AUIP_BUTTON_BACK = By.xpath("//button[text()='返 回']");
+	/** 顶部title：认证信息 */
+	public static final By AUIP_TEXT_TITLE = By.className("myInfo-right-title");
+	/** 认证信息说明 */
+	public static final By AUIP_TEXT_TITLE_DES = By.className("myInfo-auth-tip");
 	/** 姓名错误提示语： */
 	public static final By AUIP_INPUT_NAME_PROMPT = By.id("name_tip");
 	/** 联系电话错误提示语： */
@@ -57,4 +47,11 @@ public class AddUserInfoPage {
 	public static final By AUIP_POPUP_TRUE = By.xpath("//label[text()='您已成功提交个人信息，我们将在24小时内完成审核，您可以先发货了！如需优先认证，请致电']");
 	/** 完成信息成功弹出框下方确定按钮 */
 	public static final By AUIP_BUTTON_CONFIRM = By.xpath("//*[@id='authenticating']/div/div/div/div/button");
+	// **********************新改版页面元素，我是分割线进行隔开********************************
+	/** 认证信息tab栏 */
+	public static final By AUIP_USERINFO_TAB = By.xpath("//*[@class='myInfo-left']/li[2]");
+	/** 输入文本框左边文本说明，包括有：姓名、联系电话、输入验证码、身份证号、公司名称、公司地址、证件照片 */
+	public static final By AUIP_TEXT_DES = By.xpath("//*[@class='col-xs-2 myInfo-control-label']");
+	/** 发送验证码至手机 */
+	public static final By AUIP_TEL_PROVING = By.id("btn_code");
 }
