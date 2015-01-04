@@ -23,5 +23,11 @@ public class RegisterPage {
 	public static final By RP_INPUT_PASSWD_PROMPT = By.id("pwd1_p");
 	/** 注册页面上的密码不一致提示的提示语 */
 	public static final By RP_INPUT_REPASSWD_PROMPT = By.id("pwd2_p");
+	/**已经阅读 checkbox*/
+	public static final By RP_CHECKBOX_READ = By.id("read");
+	/**阅读协议这一行的文本*/
+	public static final By RP_TEXT_READAGGREMENT = By.className("register-agreement-checkbox");
+	/**协议链接*/
+	public static final By RP_LINK_AGGREMENT = By.xpath("//*[@href='/web/register/seeProtocol']");
 
 }
