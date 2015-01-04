@@ -26,8 +26,8 @@ public class RegisterPage {
 	/**已经阅读 checkbox*/
 	public static final By RP_CHECKBOX_READ = By.id("read");
 	/**阅读协议这一行的文本*/
-	public static final By RP_TEXT_READAGGREMENT = By.className("register-agreement-checkbox");
+	public static final By RP_TEXT_READAGREEMENT = By.className("register-agreement-checkbox");
 	/**协议链接*/
-	public static final By RP_LINK_AGGREMENT = By.xpath("//*[@href='/web/register/seeProtocol']");
+	public static final By RP_LINK_AGREEMENT = By.xpath("//*[@href='/web/register/seeProtocol']");
 
 }
