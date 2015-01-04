@@ -47,7 +47,7 @@ public class AddUserInfoPagerHelper {
 			if (i == 6)
 				continue;
 			String temp = seleniumUtil.findElementsBy(AddUserInfoPage.AUIP_TEXT_DES).get(i).getText().replaceAll(" ", "");
-			temp = temp.substring(1, temp.lastIndexOf("："));
+			temp = temp.substring(temp.indexOf("*") + 1, temp.lastIndexOf("："));
 			seleniumUtil.isTextCorrect(temp, tabs[i]);
 		}
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_TEL_PROVING).getText().replaceAll(" ", ""), "发送验证码至手机");
