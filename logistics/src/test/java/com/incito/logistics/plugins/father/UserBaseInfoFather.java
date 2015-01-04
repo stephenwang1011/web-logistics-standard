@@ -1,6 +1,5 @@
 package com.incito.logistics.plugins.father;
 
-import org.openqa.selenium.By;
 import org.testng.ITestContext;
 
 import com.incito.logistics.base.BaseParpare;
