@@ -30,8 +30,12 @@ public class SendGoodsPage {
 	public final static By SGP_INPUT_CARTYPE = By.name("fitcartype");
 	/** 件数 */
 	public final static By SGP_INPUT_COUNT = By.id("count");
-	/** 运费 */
-	public final static By SGP_INPUT_FARE = By.id("fare");
+	/**单价*/
+	public final static By SGP_INPUT_UNITPRICE = By.id("unitfare");
+	/**单价的单位Select*/
+	public static final By SGP_SELECT_UNITNAME = By.id("unitname");
+	/**总价*/
+	public final static By SGP_INPUT_ALLPRICE = By.id("fare");
 	/** 声明价值 */
 	public final static By SGP_INPUT_DECLAREVALUE = By.id("declaredvalue");
 	/** 信息费 */
