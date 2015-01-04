@@ -360,6 +360,16 @@ public class SeleniumUtil {
 		Select s = new Select(driver.findElement(by));
 		s.selectByVisibleText(text);
 	}
+	
+	/**
+	 * 获得当前select选择的值
+	 * */
+	public List<WebElement> getCurrentSelectValue(By by){
+		List<WebElement> options = null;
+		Select s = new Select(driver.findElement(by));
+			options =  s.getAllSelectedOptions();
+			return options;
+	}
 
 	/**
 	 * 执行JavaScript 方法
