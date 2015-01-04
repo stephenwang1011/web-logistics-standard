@@ -29,7 +29,7 @@ public class SendGoodsPage_019_All_Valid_Data_For_SpecialZone_Test extends SendG
 		SendGoodsSuccessPageHelper.waitSendGoodsSuccessPageToLoad(timeOut, seleniumUtil);
 		SendGoodsSuccessPageHelper.checkSendGoodsPageText(seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_TEXT_USERINFO);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_EXIT);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_EXIT);
 		
 		
 		

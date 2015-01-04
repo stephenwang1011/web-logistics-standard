@@ -12,7 +12,13 @@ public class HomePage {
 	/** 首页注册按钮 */
 	public static final By HP_BUTTON_REG = By.linkText("注册");
 	/** 首页登陆上的退出按钮 */
-	public static final By HP_BUTTON_EXIT = By.linkText("退出");
+	public static final By HP_LINK_EXIT = By.linkText("退出");
+	/** 首页我的投诉 */
+	public static final By HP_LINK_COMPLAINTS = By.linkText("我的投诉");
+	/** 首页上我的资料 */
+	public static final By HP_LINK_MYDATA= By.linkText("我的资料");
+	/** 首页 上认证状态 */
+	public static final By HP_LINK_STATUS= By.partialLinkText("认证");
 	/** tab首页 */
 	public static final By HP_LINK_HOME = By.linkText("首页");
 	/** tab找车源 */

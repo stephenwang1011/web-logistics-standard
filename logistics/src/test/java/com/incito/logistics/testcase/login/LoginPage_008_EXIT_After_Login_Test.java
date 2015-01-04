@@ -25,7 +25,7 @@ public class LoginPage_008_EXIT_After_Login_Test extends LoginFather {
 		LoginPageHelper.login(seleniumUtil, username, password);
 		LoginPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, username);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_TEXT_USERINFO);
-		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_EXIT));
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_EXIT));
 	}
 
 }
