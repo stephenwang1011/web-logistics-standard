@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePublicGoods_104_UnattestedUserSendTo_Test extends FindGoodsUnatestedFather {
 	@Test(dataProvider = "data")
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context, Map<String, String> data) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 		
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 
 				data.get("FGP_INPUT_GOODSORIGINALCITY"), data.get("FGP_INPUT_GOODSRECEIPTCITY"), 

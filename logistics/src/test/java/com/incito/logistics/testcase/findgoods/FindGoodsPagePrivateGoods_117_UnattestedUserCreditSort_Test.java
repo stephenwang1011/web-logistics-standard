@@ -15,7 +15,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePrivateGoods_117_UnattestedUserCreditSort_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void unattestedUserCreditSort(ITestContext context) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_MYFAVORITES);
 		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);

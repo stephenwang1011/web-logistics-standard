@@ -19,7 +19,7 @@ public class FindGoodsUnatestedFather extends BaseParpare {
 	protected static int sleepTime = 0;
 
 	/** 首页上未认证用户的登录操作以及相关数据准备 **/
-	public static void UnattestedFindGoodsParpare(ITestContext context, SeleniumUtil seleniumUtil) {
+	public static void unattestedFindGoodsParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));

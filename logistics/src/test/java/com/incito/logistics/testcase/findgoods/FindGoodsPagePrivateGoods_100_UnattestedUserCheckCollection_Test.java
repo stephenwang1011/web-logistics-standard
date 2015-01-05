@@ -15,7 +15,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePrivateGoods_100_UnattestedUserCheckCollection_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void findGoodsPagePublicGoodsUnattestedUserCheckCollection(ITestContext context) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 		String publicGoodsId = FindGoodsPageHelper.firstGoodsId(seleniumUtil, FindGoodsPage.FGP_ITEM_GOODS, FindGoodsPage.FGP_HIDE_ATTESTED);
 		String firstButtonTest = seleniumUtil.findElementsBy(FindGoodsPage.FGP_GOODS_BUTTON_MYFAVOANDCANCEL).get(0).getText();
 		if (firstButtonTest.equals("收藏")) {

@@ -15,7 +15,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePublicGoods_119_UnattestedUserCarWeightSort_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 		
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_ADVANCESEARCH);
 		FindGoodsPageHelper.checkCarsSort(seleniumUtil, "重量", timeOut);

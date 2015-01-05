@@ -15,7 +15,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePublicGoods_102_UnattestedUserInfoCheck_Test extends FindGoodsUnatestedFather {
 	@Test
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 		
 		FindGoodsPageHelper.unattestedUserChecked(seleniumUtil, FindGoodsPage.FGP_DISPLAY_SEARCH, FindGoodsPage.FGP_HIDE_ATTESTED);
 	}

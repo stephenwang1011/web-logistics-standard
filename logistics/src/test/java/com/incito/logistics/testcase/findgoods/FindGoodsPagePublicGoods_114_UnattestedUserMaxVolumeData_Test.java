@@ -17,7 +17,7 @@ import com.incito.logistics.plugins.father.FindGoodsUnatestedFather;
 public class FindGoodsPagePublicGoods_114_UnattestedUserMaxVolumeData_Test extends FindGoodsUnatestedFather {
 	@Test(dataProvider = "data")
 	public void FindGoodsPagePublicGoodsInfoCheck(ITestContext context, Map<String, String> data) {
-		FindGoodsUnatestedFather.UnattestedFindGoodsParpare(context, seleniumUtil);
+		FindGoodsUnatestedFather.unattestedFindGoodsParpare(context, seleniumUtil);
 		
 		FindGoodsPageHelper.enterPage(seleniumUtil, FindGoodsPage.FGP_BUTTON_ADVANCESEARCH);
 		FindGoodsPageHelper.typeFindGoodsInfo(seleniumUtil, 
