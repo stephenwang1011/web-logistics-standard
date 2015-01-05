@@ -613,6 +613,19 @@ public class SeleniumUtil {
 			Assert.fail("The element: [" + getLocatorByElement(element, ">") + "] is not displayed");
 		}
 	}
+	
+	/** 检查元素是否被勾选 */
+	public boolean isSelected(WebElement element) {
+		boolean flag = false;
+		if (element.isSelected() == true) {
+			logger.info("The element: [" + getLocatorByElement(element, ">") + "] is selected");
+			flag = true;
+		} else if (element.isSelected() == false) {
+			logger.info("The element: [" + getLocatorByElement(element, ">") + "] is not selected");
+			flag = false;
+		}
+		return flag;
+	}
 
 	/**
 	 * 判断实际文本时候包含期望文本
