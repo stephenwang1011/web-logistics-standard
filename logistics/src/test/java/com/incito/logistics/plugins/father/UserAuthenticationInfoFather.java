@@ -1,31 +1,33 @@
-package com.incito.logistics.testcase.adduserinfo;
+package com.incito.logistics.plugins.father;
 
-import org.testng.Assert;
+import org.openqa.selenium.By;
 import org.testng.ITestContext;
-import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.AddUserInfoPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
-import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
+import com.incito.logistics.util.SeleniumUtil;
 
 /**
  * @author xy-incito-wy
- * @Description 完善信息页面上的UI检查
- *
+ * @description 每个流程 开始之间的一个准备类，主要是做登录准备以及相关数据加载准备
  * */
-public class AddUserInfoPage_001_UI_Test extends BaseParpare {
-	@Test
-	public void addUserInfoPageUiTest(ITestContext context) {
+public class UserAuthenticationInfoFather extends BaseParpare {
+	protected static int timeOut = 0;
+	protected static int sleepTime = 0;
+
+	/** 为找车源模块，未认证用户的登录操作以及相关数据准备 **/
+	public static void userAuthenticationInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
-		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
+		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		String registered_username = PropertiesDataProvider.getTestData(configFilePath, "registered_username");
 		String registered_password = PropertiesDataProvider.getTestData(configFilePath, "registered_password");
-		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
@@ -33,15 +35,9 @@ public class AddUserInfoPage_001_UI_Test extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
-		String selected = seleniumUtil.findElementBy(AddUserInfoPage.AUIP_USERINFO_TAB).getAttribute("class");
-		try {
-			Assert.assertTrue(selected.equals("active"));//判断认证信息标签是否已经被选中
-		} catch (Exception e) {
-			Assert.fail("在完成个人信息页面中‘认证信息’没有被选中。");
-			e.printStackTrace();
-			throw e;
+		for (By by : bys) {
+			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
-		AddUserInfoPagerHelper.checkAddUserInfoPageText(seleniumUtil);
-		FooterPageHelper.checkFooterPageText(seleniumUtil);
+		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 	}
 }
