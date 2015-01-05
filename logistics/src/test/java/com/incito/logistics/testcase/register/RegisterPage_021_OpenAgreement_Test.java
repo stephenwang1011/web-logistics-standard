@@ -8,7 +8,7 @@ import com.incito.logistics.plugins.father.RegisterFather;
 
 /**
  * @author xy-incito-wy
- * @Description 注册页面，点击《智慧物流网站注册协议》链接打开一个新的窗口
+ * @Description 注册页面，点击《智慧物流网站注册协议》链接打开一个新的窗口，等待15秒之后，点击关闭可以关闭成功
  * */
 public class RegisterPage_021_OpenAgreement_Test extends RegisterFather {
 

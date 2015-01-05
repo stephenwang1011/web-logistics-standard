@@ -12,7 +12,7 @@ import com.incito.logistics.plugins.father.RegisterFather;
 
 /**
  * @author xy-incito-wk
- * @Description 注册失败：只输入用户名不输入密码 点击登陆会提示“密码长度为6-20个字符”
+ * @Description 注册失败：点击已经存在的用户去注册，不输入密码和确认密码，注册失败
  * */
 public class RegisterPage_102_Fail_RegisteredMembers_Username_Test extends RegisterFather {
 

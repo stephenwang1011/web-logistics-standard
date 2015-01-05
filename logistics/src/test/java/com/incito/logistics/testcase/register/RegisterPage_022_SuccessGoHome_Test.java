@@ -2,7 +2,7 @@ package com.incito.logistics.testcase.register;
 
 /**
  *@author  xy-incito-wy
- *@Description 测试用例：成功注册
+ *@Description 测试用例：成功注册以后，点击去首页，可以正常进入首页
  * */
 import java.util.Map;
 
