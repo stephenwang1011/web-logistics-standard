@@ -29,5 +29,7 @@ public class RegisterPage {
 	public static final By RP_TEXT_READAGREEMENT = By.className("register-agreement-checkbox");
 	/**协议链接*/
 	public static final By RP_LINK_AGREEMENT = By.xpath("//*[@href='/web/register/seeProtocol']");
+	/**阅读协议提示语*/
+	public static final By RP_TEXT_PROMPT = By.id("contract");
 
 }

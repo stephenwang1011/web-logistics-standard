@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
  * */
 public class RegisterSuccessPage {
 	/** 恭喜注册成功 title */
-	public static final By RSP_TEXT_SUCCESSTITLE = By.className("in-text-primary");
+	public static final By RSP_TEXT_SUCCESSTITLE = By.xpath("//*[text()='恭喜您注册成功！']");
 	/**注册成功相关提示信息*/
 	public static final By RSP_TEXT_PROMPT = By.className("register-prompt");
 	/**认证个人信息button*/
