@@ -1,7 +1,6 @@
 package com.incito.logistics.util;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -385,29 +384,6 @@ public class SeleniumUtil {
 	public void executeJS(String js, Object... args) {
 		((JavascriptExecutor) driver).executeScript(js, args);
 		logger.info("执行JavaScript语句：[" + js + "]");
-	}
-
-	/**
-	 * 取得弹窗
-	 * */
-	public void switchWindow(By by, int sleepTime) {
-		String currentWindows = driver.getWindowHandle();
-		driver.findElement(by).click();
-		pause(sleepTime);
-		Set<String> handles = driver.getWindowHandles();
-		Iterator<String> it = handles.iterator();
-		while (it.hasNext()) {
-
-			if (currentWindows == it.next())
-				continue;
-			window = driver.switchTo().window(it.next());
-			// 这里可以写做了什么操作，最后操作做完之后会关闭此弹窗
-			window.close();
-
-		}
-		// 切回到原来的窗口
-		driver.switchTo().window(currentWindows);
-
 	}
 
 	/**
