@@ -1,6 +1,5 @@
 package com.incito.logistics.plugins.father;
 
-import org.openqa.selenium.By;
 import org.testng.ITestContext;
 
 import com.incito.logistics.base.BaseParpare;
@@ -21,7 +20,7 @@ public class UserBaseInfoFather extends BaseParpare {
 	protected static int sleepTime = 0;
 
 	/** 为找车源模块，未认证用户的登录操作以及相关数据准备 **/
-	public static void AddUserInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
+	public static void userBaseInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
