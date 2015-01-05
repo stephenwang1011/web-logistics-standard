@@ -1,6 +1,8 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 
@@ -30,7 +32,7 @@ public class RegisterPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_INPUT_REPASSWD).getAttribute("placeholder"), "请再次输入登录密码");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER).getText(), "注册");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_BACK).getText(), "返回");
-		//此处不从excel中取数据
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(RegisterPage.RP_TEXT_READAGREEMENT).getText(), "我已阅读并同意《智慧物流网站注册协议》");
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 
@@ -138,4 +140,45 @@ public class RegisterPageHelper {
 		seleniumUtil.isDisplayed(seleniumUtil.findElementBy(RegisterPage.RP_BUTTON_REGISTER));
 	}
 	
+	/**请确认已阅读该协议 的提示语检测方法*/
+	public static void checkAgreementPrompt(SeleniumUtil seleniumUtil,int timeOut){
+		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_TEXT_PROMPT);
+		seleniumUtil.isTextCorrect(seleniumUtil.getText(RegisterPage.RP_TEXT_PROMPT), "请确认已阅读该协议");
+	}
+	/**勾选认证协议*/
+	public static void checkAgreement(SeleniumUtil seleniumUtil,int timeOut){
+		seleniumUtil.waitForElementToLoad(timeOut, RegisterPage.RP_CHECKBOX_READ);
+		if(seleniumUtil.isSelected(seleniumUtil.findElementBy( RegisterPage.RP_CHECKBOX_READ))==false){
+			
+			seleniumUtil.click(seleniumUtil.findElementBy( RegisterPage.RP_CHECKBOX_READ));
+			
+		}
+	}
+	
+
+	/**
+	 * 取得弹窗，进入协议页面
+	 * */
+	public static void switchWindow(SeleniumUtil seleniumUtil, int sleepTime,int timeOut) {
+		String currentWindows = seleniumUtil.driver.getWindowHandle();
+		seleniumUtil.click(seleniumUtil.findElementBy(RegisterPage.RP_LINK_AGREEMENT));
+		seleniumUtil.pause(sleepTime);
+		Set<String> handles = seleniumUtil.driver.getWindowHandles();
+		Iterator<String> it = handles.iterator();
+		while (it.hasNext()) {
+
+			if (currentWindows == it.next())
+				continue;
+			seleniumUtil.window = seleniumUtil.driver.switchTo().window(it.next());
+			// 这里可以写做了什么操作，最后操作做完之后会关闭此弹窗
+			AgreementPageHelper.waitAgreementPageToLoad(timeOut, seleniumUtil);
+			AgreementPageHelper.checkAgreementPageText(seleniumUtil);
+			AgreementPageHelper.click15TimesCloseButton(seleniumUtil);
+			seleniumUtil.window.close();
+
+		}
+		// 切回到原来的窗口
+		seleniumUtil.driver.switchTo().window(currentWindows);
+
+	}
 }
