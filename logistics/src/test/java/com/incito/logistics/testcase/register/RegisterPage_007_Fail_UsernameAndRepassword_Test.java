@@ -26,7 +26,7 @@ public class RegisterPage_007_Fail_UsernameAndRepassword_Test extends RegisterFa
 			RegisterPageHelper.clearText(seleniumUtil, by);
 		}
 		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_USERNAME, data, USERNAME);
-		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_PASSWD, data, REPASSWORD);
+		RegisterPageHelper.typeRegisterUserInfo(seleniumUtil, RegisterPage.RP_INPUT_REPASSWD, data, REPASSWORD);
 		RegisterPageHelper.enterPage(seleniumUtil, RegisterPage.RP_BUTTON_REGISTER);
 		RegisterPageHelper.checkRegistStatus(seleniumUtil);
 	}
