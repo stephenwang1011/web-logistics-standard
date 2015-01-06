@@ -17,7 +17,7 @@ public class UserPasswordPage_002_AuthenticatedNameCheck_Test extends UserPasswo
 	@Test
 	public void changePasswdPageUsernameTestForAuthenticatedUser(ITestContext context){
 		UserPasswordFather.userPasswordParpare(context, seleniumUtil);
-		UserPasswordPageHelper.checkUserName(UserPasswordFather.username, seleniumUtil);
+		UserPasswordPageHelper.checkUserName(UserPasswordFather.modifyusername, seleniumUtil);
 	}
 	
 	
