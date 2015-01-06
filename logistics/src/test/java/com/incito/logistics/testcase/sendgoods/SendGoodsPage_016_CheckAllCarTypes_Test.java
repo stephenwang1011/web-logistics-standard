@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.SendGoodsFather;
 public class SendGoodsPage_016_CheckAllCarTypes_Test extends SendGoodsFather {
 
 	@Test
-	public void sendAllValidDataForWeightSuccessTest(ITestContext context) {
+	public void checkAllCarTypes(ITestContext context) {
 		SendGoodsFather.sendGoodsParpare(context, seleniumUtil);
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_INPUT_CARTYPE);
 		SendGoodsPageHelper.checkReserveText(seleniumUtil,timeOut, SendGoodsPage.SGP_TEXT_CARTYPE, "不限 普通车 前四后四 前四后八"+"\n"+
