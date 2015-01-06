@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.AddUserInfoPage;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.UserAuthenticationInfoPagerHelper;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
@@ -32,7 +32,7 @@ public class UserAuthenticationInfoPage_001_Unauthenticated_UI_Test extends Base
 		LoginPageHelper.login(seleniumUtil, registered_username, registered_password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
-		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
+		UserAuthenticationInfoPagerHelper.waitUserAuthenticationInfoPageToLoad(timeOut, seleniumUtil);
 		String selected = seleniumUtil.findElementBy(AddUserInfoPage.AUIP_USERINFO_TAB).getAttribute("class");
 		try {
 			Assert.assertTrue(selected.equals("active"));//判断认证信息标签是否已经被选中
@@ -41,7 +41,7 @@ public class UserAuthenticationInfoPage_001_Unauthenticated_UI_Test extends Base
 			e.printStackTrace();
 			throw e;
 		}
-		AddUserInfoPagerHelper.checkAddUserInfoPageText(seleniumUtil);
+		UserAuthenticationInfoPagerHelper.checkUserAuthenticationInfoPageText(seleniumUtil);
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 }

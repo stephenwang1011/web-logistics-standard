@@ -4,7 +4,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.AddUserInfoPage;
-import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.UserAuthenticationInfoPagerHelper;
 import com.incito.logistics.plugins.father.UserAuthenticationInfoFather;
 
 /**
@@ -16,7 +16,7 @@ public class UserAuthenticationInfoPage_002_Unauthenticated_Fail_All_Test extend
 	@Test
 	public void addUserInfoPageFailAllTest(ITestContext context) {
 		UserAuthenticationInfoFather.userAuthenticationInfoParpare(context, seleniumUtil);
-		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil);
+		UserAuthenticationInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
+		UserAuthenticationInfoPagerHelper.checkUserAuthenticationInfoPrompt(timeOut, seleniumUtil);
 	}
 }

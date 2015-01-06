@@ -21,7 +21,7 @@ import com.incito.logistics.util.SeleniumUtil;
  * @description 查找货源页面帮助类
  */
 public class FindGoodsPageHelper {
-	public static Logger logger = Logger.getLogger(AddUserInfoPagerHelper.class.getName());
+	public static Logger logger = Logger.getLogger(UserAuthenticationInfoPagerHelper.class.getName());
 
 	/** 等待找货源页面元素加载出来 */
 	public static void waitFindGoodsPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
