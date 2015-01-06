@@ -13,7 +13,7 @@ import com.incito.logistics.plugins.father.SendGoodsFather;
 public class SendGoodsPage_017_CheckAllCarLength_Test extends SendGoodsFather {
 
 	@Test
-	public void sendAllValidDataForWeightSuccessTest(ITestContext context) {
+	public void checkAllCarLength(ITestContext context) {
 		SendGoodsFather.sendGoodsParpare(context, seleniumUtil);
 		SendGoodsPageHelper.enterPage(seleniumUtil, SendGoodsPage.SGP_INPUT_CARLENGTH);
 		SendGoodsPageHelper.checkReserveText(seleniumUtil,timeOut, SendGoodsPage.SGP_TEXT_CARLENGTH, "不限 4米 4.2米 4.3米"+"\n"+
