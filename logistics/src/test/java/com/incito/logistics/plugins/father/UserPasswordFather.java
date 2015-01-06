@@ -18,19 +18,19 @@ import com.incito.logistics.util.SeleniumUtil;
 public class UserPasswordFather extends BaseParpare {
 	protected static int timeOut = 0;
 	protected static int sleepTime = 0;
-	protected static String username = "";
-	protected static String password = "";
+	protected static String modifyusername = "";
+	protected static String modifypassword = "";
 
 	public static void userPasswordParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-		 username = PropertiesDataProvider.getTestData(configFilePath, "username");
-		 password = PropertiesDataProvider.getTestData(configFilePath, "password");
+		modifyusername = PropertiesDataProvider.getTestData(configFilePath, "modifyusername");
+		modifypassword = PropertiesDataProvider.getTestData(configFilePath, "modifypassword");
 	
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.login(seleniumUtil, username,password);
+		LoginPageHelper.login(seleniumUtil, modifyusername,modifypassword);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_YESAUTHOR);
 		UserPasswordPageHelper.enterPage(seleniumUtil, UserPasswordPage.USP_BUTTON_CHANGEPASSWD);
