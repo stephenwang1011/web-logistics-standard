@@ -573,7 +573,7 @@ public class SeleniumUtil {
 
 	/**
 	 * @Description 对于windows GUI弹出框，要求输入用户名和密码时，
-	 *              seleniumm不能直接操作，需要借助http://username:password@yoururl 这种方法
+	 *              seleniumm不能直接操作，需要借助http://modifyusername:modifypassword@yoururl 这种方法
 	 * 
 	 * */
 	public void loginOnWinGUI(String username, String password, String url) {
