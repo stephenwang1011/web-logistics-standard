@@ -66,13 +66,13 @@ public class SendGoodsPage {
 	/**货物的预留的几十个名称*/
 	public final static By SGP_TEXT_GOODSNAMECHOICE = By.id("goodsnamechoice");
 	/**车型的预留的几十个名称*/
-	public final static By SGP_TEXT_CARTYPE = By.xpath("//*[@id='publishForm']/div[4]/div[2]/table");
+	public final static By SGP_TEXT_CARTYPE = By.xpath("//*[@id='publishForm']/div[4]/div[1]/table");
 	/**车型的预留的几十个名称 企业版的- 发布到平台*/
 	public final static By SGP_TEXT_CARTYPETOPLATFORM = By.xpath("//*[@class='form-group'][4]/div[2]/table");
 	/**车型预留的几十个名称 企业版 - 发布到车队*/
 	public final static By SGP_TEXT_CARTYPETOCARS = By.xpath("//*[@class='col-xs-12']/div[3]/div[2]/table");
 	/**车长的预留的几十个名称 - 标准版*/
-	public final static By SGP_TEXT_CARLENGTH = By.xpath("//*[@id='publishForm']/div[4]/div[1]/table");
+	public final static By SGP_TEXT_CARLENGTH = By.xpath("//*[@id='publishForm']/div[4]/div[2]/table");
 	/**车长的预留的几十个名称 - 企业版  发布到平台*/
 	public final static By SGP_TEXT_CARLENGTHTOOPLATFORM = By.xpath("//*[@class='form-group'][4]/div[1]/table");
 	
