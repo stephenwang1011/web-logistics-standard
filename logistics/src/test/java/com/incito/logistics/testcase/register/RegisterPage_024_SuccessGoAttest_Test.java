@@ -20,7 +20,7 @@ import com.incito.logistics.plugins.father.RegisterFather;
 public class RegisterPage_024_SuccessGoAttest_Test extends RegisterFather {
 
 	@Test(dataProvider="data")
-	public void successGoHome_(ITestContext context,Map<String,String> data) {
+	public void successGoAttest(ITestContext context,Map<String,String> data) {
 		RegisterFather.registerParpare(context, seleniumUtil);
 		final String USERNAME = "USERNAME";
 		final String PASSWORD = "PASSWORD";
