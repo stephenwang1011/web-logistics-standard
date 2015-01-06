@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
  * @Description 已经认证用户登录之后，进入修改密码页面，检查修改密码页面UI
  *
  */
-public class UserPasswordPage_001_AuthenticatedUI_Test extends UserPasswordFather{
+public class UserPasswordPage_001_AttestedUI_Test extends UserPasswordFather{
 	
 	@Test
-	public void changePasswdPageUITestForAuthenticatedUser(ITestContext context){
+	public void changePasswdPageUITestForAttestedUser(ITestContext context){
 		UserPasswordFather.userPasswordParpare(context, seleniumUtil);
 	}
 	

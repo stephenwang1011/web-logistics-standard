@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
  * @Decription 已经认证用户登录之后，进入修改密码页面，检查用户名是不是登录的用户名
  *
  */
-public class UserPasswordPage_002_AuthenticatedNameCheck_Test extends UserPasswordFather{
+public class UserPasswordPage_002_AttestedNameCheck_Test extends UserPasswordFather{
 	
 	@Test
-	public void changePasswdPageUsernameTestForAuthenticatedUser(ITestContext context){
+	public void changePasswdPageUsernameTestForAttestedUser(ITestContext context){
 		UserPasswordFather.userPasswordParpare(context, seleniumUtil);
 		UserPasswordPageHelper.checkUserName(UserPasswordFather.modifyusername, seleniumUtil);
 	}

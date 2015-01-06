@@ -16,7 +16,7 @@ import com.incito.logistics.util.JdbcUtil;
  * @author xy-incito-wk
  * @Description 清空注册用户的信息
  */
-public class UserPasswordPage_016_ResetPassword_Test extends JdbcUtil {
+public class UserPasswordPage_016_AttestedResetPassword_Test extends JdbcUtil {
 	@Test(dataProvider="data")
 	public void jdbcUpdate(ITestContext context,Map<String,String> data){
 		String sql = "UPDATE smartdb.agent SET password  = "+"'"+data.get("RESTPASSWORD")+"'"+"where id = "+"'"+data.get("USERID")+"'";

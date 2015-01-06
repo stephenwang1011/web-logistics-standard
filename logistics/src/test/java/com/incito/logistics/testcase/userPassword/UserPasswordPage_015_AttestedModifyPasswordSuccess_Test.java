@@ -11,16 +11,16 @@ import com.incito.logistics.plugins.father.UserPasswordFather;
 /**
  * 
  * @author xy-incito-wy
- * @Decription 已经认证用户登录之后，进入修改密码页面，输入错误的当前密码，新密码为空,确认密码不为空，点击提交按钮，不能修改提交成功
+ * @Decription 已经认证用户登录之后，进入修改密码页面，前密码为空，新密码和确认密码不为空并且相同，点击提交按钮，不能修改提交成功
  */
-public class UserPasswordPage_005_AuthenticatedIncorrectOldPasswdNewEmpty_Test extends UserPasswordFather{
+public class UserPasswordPage_015_AttestedModifyPasswordSuccess_Test extends UserPasswordFather{
 	
 	@Test(dataProvider="data")
-	public void incorrectOldPasswdNewEmptyForAuthenticatedUser(ITestContext context,Map<String,String> data){
+	public void allEmptyForAttestedUser(ITestContext context,Map<String,String> data){
 		UserPasswordFather.userPasswordParpare(context, seleniumUtil);
 		UserPasswordPageHelper.typeChangePasswdInfo(seleniumUtil, data.get("OLD_PASSWORD"), data.get("NEW_PASSWORD"), data.get("CORFIRM_PASSWORD"));
 		UserPasswordPageHelper.enterPage(seleniumUtil, UserPasswordPage.USP_BUTTON_OK);
-		UserPasswordPageHelper.checkModifyPasswdFailed(seleniumUtil, modifyusername, modifypassword, timeOut,sleepTime);
+		UserPasswordPageHelper.checkModifyPasswdSuccessed(seleniumUtil, sleepTime, timeOut, modifyusername, data.get("NEW_PASSWORD"));
 
 	}
 	
