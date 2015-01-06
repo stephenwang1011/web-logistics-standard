@@ -11,6 +11,12 @@ public class AddUserInfoPage {
 	public static final By AUIP_INPUT_NAME = By.name("name");
 	/** 联系电话输入框 */
 	public static final By AUIP_INPUT_TEL = By.name("tel");
+	/** 图形码输入框 */
+	public static final By AUIP_INPUT_PHOTO = By.name("pic_validcode");
+	/** 短信验证码输入框 */
+	public static final By AUIP_INPUT_CHIT = By.name("code");
+	/** 发送验证码至手机 */
+	public static final By AUIP_BUTTON_CHIT = By.name("btn_code");
 	/** 公司名称输入框 */
 	public static final By AUIP_INPUT_COMPANY = By.name("company");
 	/** 身份证输入框 */

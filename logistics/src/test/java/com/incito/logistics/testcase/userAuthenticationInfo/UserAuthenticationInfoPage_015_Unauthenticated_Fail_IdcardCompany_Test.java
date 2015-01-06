@@ -6,7 +6,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.AddUserInfoPage;
-import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.UserAuthenticationInfoPagerHelper;
 import com.incito.logistics.plugins.father.UserAuthenticationInfoFather;
 
 /**
@@ -20,7 +20,7 @@ public class UserAuthenticationInfoPage_015_Unauthenticated_Fail_IdcardCompany_T
 		UserAuthenticationInfoFather.userAuthenticationInfoParpare(context, seleniumUtil);
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_IDCARD), data.get("ADD_IDCARD"));
 		seleniumUtil.type(seleniumUtil.findElementBy(AddUserInfoPage.AUIP_INPUT_COMPANY), data.get("ADD_COMPANY"));
-		AddUserInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
-		AddUserInfoPagerHelper.checkAddUserInfoPrompt(timeOut, seleniumUtil);
+		UserAuthenticationInfoPagerHelper.enterPage(seleniumUtil, AddUserInfoPage.AUIP_BUTTON_SUBMIT);
+		UserAuthenticationInfoPagerHelper.checkUserAuthenticationInfoPrompt(timeOut, seleniumUtil);
 	}
 }

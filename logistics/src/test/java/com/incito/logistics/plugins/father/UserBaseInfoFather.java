@@ -35,12 +35,19 @@ public class UserBaseInfoFather extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_YESAUTHOR);
 		UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.UBIP_TAB_BASEINFO);
-		if(flag){
+		if (flag) {
 			UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_REVISE);
 			seleniumUtil.waitForElementToLoad(timeOut, UserBaseInfoPage.UBIP_TITLE_USERINFO);
-			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_SEX_MAN_REVISE));
-			for (By by : bys)
-				seleniumUtil.clear(seleniumUtil.findElementBy(by));
+//			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_SEX_MAN_REVISE));
+//			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_DEL_BIRTHDAY_REVISE));
+			for (int i = 0; i < bys.length; i++) {
+//				if (i == 0) {
+//					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_DEL_BIRTHDAY_REVISE));
+//					continue;
+////					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE));
+//				}
+				seleniumUtil.clear(seleniumUtil.findElementBy(bys[i]));
+			}
 		}
 	}
 }

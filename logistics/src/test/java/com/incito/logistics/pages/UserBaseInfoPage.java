@@ -39,6 +39,8 @@ public class UserBaseInfoPage {
 	public static final By BUIP_INPUT_SEX_FEMALE_REVISE = By.xpath("//*[@name='sex' and @value='f']");
 	/** 修改基本信息中的生日 */
 	public static final By BUIP_INPUT_BIRTHDAY_REVISE = By.name("birthday");
+	/** 删除基本信息中的生日 */
+	public static final By BUIP_DEL_BIRTHDAY_REVISE = By.className("date_del");
 	/** 修改基本信息中的QQ */
 	public static final By BUIP_INPUT_QQ_REVISE = By.name("qq");
 	/** 修改基本信息中的邮箱 */

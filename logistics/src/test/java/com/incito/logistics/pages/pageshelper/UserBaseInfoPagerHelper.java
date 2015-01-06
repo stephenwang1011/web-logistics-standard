@@ -73,8 +73,11 @@ public class UserBaseInfoPagerHelper {
 				if (i == 1 && info[1] != "")
 					info[1] = info[1].toString().substring(0, info[1].toString().indexOf(" "));
 				Assert.assertTrue(values[i].equals(info[i]));
-			} catch (Exception e) {
-				Assert.fail("在基本信息页面中填写值和修改之后的值不相等");
+			}catch(AssertionError ae){
+				Assert.fail("在基本信息页面中填写值:"+values[i]+"和修改之后的值:"+info[i]+"不相等");
+			} 
+			catch (Exception e) {
+			
 				e.printStackTrace();
 				throw e;
 			}
