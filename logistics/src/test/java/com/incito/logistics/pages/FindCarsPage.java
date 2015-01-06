@@ -16,7 +16,7 @@ public class FindCarsPage {
 	/** 基本搜索按钮 */
 	public static final By FCP_BUTTON_SEARCH = By.id("search_submit_btn");
 	/**高级搜索按钮 */
-	public static final By FCP_BUTTON_ADVSEARCH = By.xpath("//button[2]");  
+	public static final By FCP_BUTTON_ADVSEARCHIMG = By.xpath("//*[@id='advanced_search_arrow']");  
 	/** 开始车长 */
 	public static final By FCP_INPUT_STARTCARLEN = By.name("startcarlong");
 	/** 结束车长*/
