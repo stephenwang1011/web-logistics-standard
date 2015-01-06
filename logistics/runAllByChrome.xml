@@ -43,6 +43,18 @@
 			<package name="com.incito.logistics.testcase.userAuthenticationInfo" />
 		</packages>
 	</test>
+	
+	<test name="修改密码" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.userPassword" />
+		</packages>
+	</test>
+	
+	<test name="基本信息" preserve-order="true">
+		<packages>
+			<package name="com.incito.logistics.testcase.userBaseInfo" />
+		</packages>
+	</test>
 
 	<test name="登录" preserve-order="true">
 		<packages>
