@@ -6,17 +6,17 @@ import org.openqa.selenium.By;
  * 定义完善用户信息页面元素
  * 
  * */
-public class AddUserInfoPage {
+public class UserAuthenticationInfoPage {
 	/** 姓名输入框 */
 	public static final By AUIP_INPUT_NAME = By.name("name");
 	/** 联系电话输入框 */
 	public static final By AUIP_INPUT_TEL = By.name("tel");
 	/** 图形码输入框 */
-	public static final By AUIP_INPUT_PHOTO = By.name("pic_validcode");
+	public static final By AUIP_INPUT_PHOTO = By.id("pic_validcode");
 	/** 短信验证码输入框 */
-	public static final By AUIP_INPUT_CHIT = By.name("code");
+	public static final By AUIP_INPUT_CHIT = By.id("code");
 	/** 发送验证码至手机 */
-	public static final By AUIP_BUTTON_CHIT = By.name("btn_code");
+	public static final By AUIP_BUTTON_CHIT = By.id("btn_code");
 	/** 公司名称输入框 */
 	public static final By AUIP_INPUT_COMPANY = By.name("company");
 	/** 身份证输入框 */
@@ -30,7 +30,8 @@ public class AddUserInfoPage {
 	/** 公司地址：“街道地址”文本框 */
 	public static final By AUIP_INPUT_ADDRESS = By.id("address");
 	/** 上传图片按钮 */
-	public static final By AUIP_INPUT_UPLOAD = By.className("fileinput-new");
+//	public static final By AUIP_INPUT_UPLOAD = By.className("fileinput-new");
+	public static final By AUIP_INPUT_UPLOAD = By.xpath("//button[@class='fileinput-new']");
 	/** 提交按钮 */
 	public static final By AUIP_BUTTON_SUBMIT = By.xpath("//button[text()='提 交']");
 	/** 返回按钮 */

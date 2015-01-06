@@ -5,7 +5,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
-import com.incito.logistics.pages.AddUserInfoPage;
+import com.incito.logistics.pages.UserAuthenticationInfoPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.UserAuthenticationInfoPagerHelper;
 import com.incito.logistics.pages.pageshelper.FooterPageHelper;
@@ -33,7 +33,7 @@ public class UserAuthenticationInfoPage_001_Unauthenticated_UI_Test extends Base
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		UserAuthenticationInfoPagerHelper.waitUserAuthenticationInfoPageToLoad(timeOut, seleniumUtil);
-		String selected = seleniumUtil.findElementBy(AddUserInfoPage.AUIP_USERINFO_TAB).getAttribute("class");
+		String selected = seleniumUtil.findElementBy(UserAuthenticationInfoPage.AUIP_USERINFO_TAB).getAttribute("class");
 		try {
 			Assert.assertTrue(selected.equals("active"));//判断认证信息标签是否已经被选中
 		} catch (Exception e) {

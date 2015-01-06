@@ -1,7 +1,5 @@
 package com.incito.logistics.testcase.userAuthenticationInfo;
 
-import java.util.Map;
-
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -11,14 +9,16 @@ import com.incito.logistics.plugins.father.UserAttestedInfoFather;
 
 /**
  * @author xy-incito-wk
- * @Description 填写信息身份证号提交
+ * @Description 填写信息全为空直接提交
  *
  * */
-public class UserAuthenticationInfoPage_005_Unauthenticated_Fail_Idcard_Test extends UserAttestedInfoFather {
-	@Test(dataProvider = "data")
-	public void addUserInfoPageFailIdcard(ITestContext context, Map<String, String> data) {
+public class UserAuthenticationInfoPage_036_Unauthenticated_Fail_Photo4_Test extends UserAttestedInfoFather {
+	@Test
+	public void addUserInfoPageFailAllTest(ITestContext context) {
 		UserAttestedInfoFather.userUnatestedInfoParpare(context, seleniumUtil);
-		seleniumUtil.type(seleniumUtil.findElementBy(UserAuthenticationInfoPage.AUIP_INPUT_IDCARD), data.get("ADD_IDCARD"));
+		
+		UserAuthenticationInfoPagerHelper.upLoadPhoto(seleniumUtil, UserAuthenticationInfoPage.AUIP_INPUT_UPLOAD, 1);
+		seleniumUtil.pause(5000);
 		UserAuthenticationInfoPagerHelper.enterPage(seleniumUtil, UserAuthenticationInfoPage.AUIP_BUTTON_SUBMIT);
 		UserAuthenticationInfoPagerHelper.checkUserAuthenticationInfoPrompt(timeOut, seleniumUtil);
 	}

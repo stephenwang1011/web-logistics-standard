@@ -55,10 +55,11 @@ public class BaseParpare {
 		}
 	}
 
-	@DataProvider(name = "data")
+	
 	/**
 	 * 测试数据提供者 - 方法
 	 * */
+	@DataProvider(name = "data")
 	public Iterator<Object[]> dataFortestMethod() throws IOException {
 		String moduleName = null; // 模块的名字
 		String caseNum = null; // 用例编号

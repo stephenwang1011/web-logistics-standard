@@ -33,6 +33,8 @@ public class UserBaseInfoPage {
 	// ******************修改页面中的元素**********************************************
 	/** 修改基本信息中的用户名 */
 	public static final By BUIP_TEXT_NAME_REVISE = By.xpath("//*[@class='myInfo-right-content']/div[1]/div");
+	/** 修改基本信息中的用户头像 */
+	public static final By BUIP_BUTTON_PHOTO = By.xpath("//*[@class='btn default btn-file']");
 	/** 修改基本信息中的性别：男 */
 	public static final By BUIP_INPUT_SEX_MAN_REVISE = By.xpath("//*[@name='sex' and @value='m']");
 	/** 修改基本信息中的性别：女 */

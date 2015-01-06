@@ -16,7 +16,7 @@ import com.incito.logistics.util.SeleniumUtil;
  * @author xy-incito-wy
  * @description 每个流程 开始之间的一个准备类，主要是做登录准备以及相关数据加载准备
  * */
-public class UserBaseInfoFather extends BaseParpare {
+public class UserBaseInfoAttestingFather extends BaseParpare {
 	protected static int timeOut = 0;
 	protected static int sleepTime = 0;
 
@@ -25,13 +25,13 @@ public class UserBaseInfoFather extends BaseParpare {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
-		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
+		String attestingUserName = PropertiesDataProvider.getTestData(configFilePath, "attesting_username");
+		String attestingPassword = PropertiesDataProvider.getTestData(configFilePath, "attesting_password");
 		By[] bys = { UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE, UserBaseInfoPage.BUIP_INPUT_QQ_REVISE, UserBaseInfoPage.BUIP_INPUT_EMAIL_REVISE };
-
+		
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.login(seleniumUtil, username, password);
+		LoginPageHelper.login(seleniumUtil, attestingUserName, attestingPassword);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_YESAUTHOR);
 		UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.UBIP_TAB_BASEINFO);
@@ -44,7 +44,7 @@ public class UserBaseInfoFather extends BaseParpare {
 //				if (i == 0) {
 //					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_DEL_BIRTHDAY_REVISE));
 //					continue;
-////					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE));
+//					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE));
 //				}
 				seleniumUtil.clear(seleniumUtil.findElementBy(bys[i]));
 			}

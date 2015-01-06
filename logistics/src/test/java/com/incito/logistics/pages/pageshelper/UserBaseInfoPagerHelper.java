@@ -1,9 +1,12 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+import org.testng.ITestContext;
 
 import com.incito.logistics.pages.UserBaseInfoPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -83,4 +86,18 @@ public class UserBaseInfoPagerHelper {
 			}
 		}
 	}
+	
+	/**
+	 * 上传照片
+	 * @param context
+	 * @param seleniumUtil
+	 * @param by  页面元素
+	 * @param filepath 文件路径
+	 */
+	public static void upLoadPhoto(ITestContext context, SeleniumUtil seleniumUtil, By by, String filepath) {
+		String browserName = context.getCurrentXmlTest().getParameter("browserName");
+		seleniumUtil.click(seleniumUtil.findElementBy(by));
+		seleniumUtil.handleUpload(browserName, new File(filepath));
+	}
+
 }
