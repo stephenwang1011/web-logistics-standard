@@ -2,7 +2,7 @@ package com.incito.logistics.testcase.register;
 
 /**
  *@author  xy-incito-wy
- *@Description 测试用例：成功注册
+ *@Description 测试用例：成功注册之后，点击认证个人信息按钮，进入认证页面
  * */
 import java.util.Map;
 

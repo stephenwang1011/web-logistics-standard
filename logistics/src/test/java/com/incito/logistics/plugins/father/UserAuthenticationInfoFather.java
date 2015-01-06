@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.testng.ITestContext;
 
 import com.incito.logistics.base.BaseParpare;
+import com.incito.logistics.pages.AddUserInfoPage;
 import com.incito.logistics.pages.HomePage;
-import com.incito.logistics.pages.UserBaseInfoPage;
+import com.incito.logistics.pages.pageshelper.AddUserInfoPagerHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
-import com.incito.logistics.pages.pageshelper.UserBaseInfoPagerHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
 import com.incito.logistics.util.SeleniumUtil;
 
@@ -16,31 +16,28 @@ import com.incito.logistics.util.SeleniumUtil;
  * @author xy-incito-wy
  * @description 每个流程 开始之间的一个准备类，主要是做登录准备以及相关数据加载准备
  * */
-public class UserBaseInfoFather extends BaseParpare {
+public class UserAuthenticationInfoFather extends BaseParpare {
 	protected static int timeOut = 0;
 	protected static int sleepTime = 0;
 
 	/** 为找车源模块，未认证用户的登录操作以及相关数据准备 **/
-	public static void userBaseInfoParpare(ITestContext context, SeleniumUtil seleniumUtil, boolean flag) {
+	public static void userAuthenticationInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
-		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
-		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
-		By[] bys = { UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE, UserBaseInfoPage.BUIP_INPUT_QQ_REVISE, UserBaseInfoPage.BUIP_INPUT_EMAIL_REVISE };
+		String registered_username = PropertiesDataProvider.getTestData(configFilePath, "registered_username");
+		String registered_password = PropertiesDataProvider.getTestData(configFilePath, "registered_password");
+		By[] bys = { AddUserInfoPage.AUIP_INPUT_NAME, AddUserInfoPage.AUIP_INPUT_TEL, AddUserInfoPage.AUIP_INPUT_COMPANY, AddUserInfoPage.AUIP_INPUT_IDCARD, AddUserInfoPage.AUIP_INPUT_ADDRESS };
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.login(seleniumUtil, username, password);
+		LoginPageHelper.login(seleniumUtil, registered_username, registered_password);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_YESAUTHOR);
-		UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.UBIP_TAB_BASEINFO);
-		if(flag){
-			UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_REVISE);
-			seleniumUtil.waitForElementToLoad(timeOut, UserBaseInfoPage.UBIP_TITLE_USERINFO);
-			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_SEX_MAN_REVISE));
-			for (By by : bys)
-				seleniumUtil.clear(seleniumUtil.findElementBy(by));
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
+		AddUserInfoPagerHelper.waitAddUserInfoPageToLoad(timeOut, seleniumUtil);
+		for (By by : bys) {
+			seleniumUtil.clear(seleniumUtil.findElementBy(by));
 		}
+		seleniumUtil.selectByIndex(AddUserInfoPage.AUIP_SELECT_PROVINCE, 0);
 	}
 }

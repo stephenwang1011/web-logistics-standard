@@ -38,9 +38,9 @@
 		</packages>
 	</test>
 
-	<test name="完善用户信息" preserve-order="true">
+	<test name="认证信息" preserve-order="true">
 		<packages>
-			<package name="com.incito.logistics.testcase.adduserinfo" />
+			<package name="com.incito.logistics.testcase.userAuthenticationInfo" />
 		</packages>
 	</test>
 

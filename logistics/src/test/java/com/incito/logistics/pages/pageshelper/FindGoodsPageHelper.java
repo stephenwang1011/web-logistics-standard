@@ -411,7 +411,7 @@ public class FindGoodsPageHelper {
 		int items = seleniumUtil.findElementsBy(cancelMyFavoBotton).size(); // 这个items指的是查询出来有多少条货源
 		for (int i = 0; i < items; i++) {
 			seleniumUtil.click(seleniumUtil.findElementsBy(cancelMyFavoBotton).get(0)); // 点击
-																						// 取消收藏按钮
+			// 取消收藏按钮
 			seleniumUtil.pause(800);
 			seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
 			seleniumUtil.pause(800);

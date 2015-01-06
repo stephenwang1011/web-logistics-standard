@@ -12,7 +12,7 @@ import com.incito.logistics.plugins.father.RegisterFather;
 
 /**
  * @author xy-incito-wy
- * @Description 注册失败：不输入用户名，只输入确认密码
+ * @Description 注册页面，只输入确认密码，用户名和密码都不输入并勾选用户协议checkbox,点击注册按钮，注册不成功
  * */
 public class RegisterPage_015_Fail_OnlyRepasswordWithAgreementChecked_Test extends RegisterFather {
 
