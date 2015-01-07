@@ -40,7 +40,7 @@
 
 	<test name="认证信息" preserve-order="true">
 		<packages>
-			<package name="com.incito.logistics.testcase.userAuthenticationInfo" />
+			<package name="com.incito.logistics.testcase.userAttestedInfo" />
 		</packages>
 	</test>
 	
