@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.RegisterPage;
 import com.incito.logistics.pages.RegisterSuccessPage;
-import com.incito.logistics.pages.pageshelper.UserAuthenticationInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.UserAttestedInfoPagerHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterSuccessPageHelper;
 import com.incito.logistics.plugins.father.RegisterFather;
@@ -42,8 +42,8 @@ public class RegisterPage_024_SuccessGoAttest_Test extends RegisterFather {
 		RegisterSuccessPageHelper.checkRegisterSuccessPageText(seleniumUtil, timeOut);
 		RegisterSuccessPageHelper.enterPage(seleniumUtil, RegisterSuccessPage.RSP_BUTTON_ATTESTINFO);
 		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, USERNAME, data);
-		UserAuthenticationInfoPagerHelper.waitUserAuthenticationInfoPageToLoad(timeOut, seleniumUtil);
-		UserAuthenticationInfoPagerHelper.checkUserAuthenticationInfoPageText(seleniumUtil);
+		UserAttestedInfoPagerHelper.waitUserAttestedInfoPageToLoad(timeOut, seleniumUtil);
+		UserAttestedInfoPagerHelper.checkUserAttestedInfoPageText(seleniumUtil);
 
 	}
 

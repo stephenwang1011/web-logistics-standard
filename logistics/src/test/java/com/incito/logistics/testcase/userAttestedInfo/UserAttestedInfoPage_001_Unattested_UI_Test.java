@@ -1,36 +1,31 @@
-package com.incito.logistics.plugins.father;
+package com.incito.logistics.testcase.userAttestedInfo;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.ITestContext;
+import org.testng.annotations.Test;
 
 import com.incito.logistics.base.BaseParpare;
 import com.incito.logistics.pages.UserAttestedInfoPage;
 import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.pageshelper.UserAttestedInfoPagerHelper;
+import com.incito.logistics.pages.pageshelper.FooterPageHelper;
 import com.incito.logistics.pages.pageshelper.HomePageHelper;
 import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.util.PropertiesDataProvider;
-import com.incito.logistics.util.SeleniumUtil;
 
 /**
  * @author xy-incito-wy
- * @description 每个流程 开始之间的一个准备类，主要是做登录准备以及相关数据加载准备
+ * @Description 完善信息页面上的UI检查
+ *
  * */
-public class UserAttestedInfoFather extends BaseParpare {
-	protected static int timeOut = 0;
-	protected static int sleepTime = 0;
-
-	/** 为找车源模块，未认证用户的登录操作以及相关数据准备 **/
-	public static void userUnatestedInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
+public class UserAttestedInfoPage_001_Unattested_UI_Test extends BaseParpare {
+	@Test
+	public void addUserInfoPageUiTest(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
-		timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
+		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
 		String registered_username = PropertiesDataProvider.getTestData(configFilePath, "registered_username");
 		String registered_password = PropertiesDataProvider.getTestData(configFilePath, "registered_password");
-		By[] bys = { UserAttestedInfoPage.UAIP_INPUT_NAME, UserAttestedInfoPage.UAIP_INPUT_TEL,
-				UserAttestedInfoPage.UAIP_INPUT_PHOTO, UserAttestedInfoPage.UAIP_INPUT_CHIT,
-				UserAttestedInfoPage.UAIP_INPUT_IDCARD, UserAttestedInfoPage.UAIP_INPUT_COMPANY,
-				UserAttestedInfoPage.UAIP_INPUT_ADDRESS };
+		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
@@ -38,9 +33,15 @@ public class UserAttestedInfoFather extends BaseParpare {
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_FREESEND);
 		UserAttestedInfoPagerHelper.waitUserAttestedInfoPageToLoad(timeOut, seleniumUtil);
-		for (By by : bys) {
-			seleniumUtil.clear(seleniumUtil.findElementBy(by));
+		String selected = seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_USERINFO_TAB).getAttribute("class");
+		try {
+			Assert.assertTrue(selected.equals("active"));//判断认证信息标签是否已经被选中
+		} catch (Exception e) {
+			Assert.fail("在完成个人信息页面中‘认证信息’没有被选中。");
+			e.printStackTrace();
+			throw e;
 		}
-		seleniumUtil.selectByIndex(UserAttestedInfoPage.UAIP_SELECT_PROVINCE, 0);
+		UserAttestedInfoPagerHelper.checkUserAttestedInfoPageText(seleniumUtil);
+		FooterPageHelper.checkFooterPageText(seleniumUtil);
 	}
 }
