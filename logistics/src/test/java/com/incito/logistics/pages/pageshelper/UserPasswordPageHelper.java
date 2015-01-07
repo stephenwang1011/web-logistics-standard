@@ -89,7 +89,30 @@ public class UserPasswordPageHelper {
 		
 	}
 	
-	
+	/**检查用户的认证状态*/
+	public static void checkUserAttestStatus(SeleniumUtil seleniumUtil,String attestStatus){
+		switch(attestStatus.toLowerCase()){
+		
+		case "attested":
+			seleniumUtil.isTextCorrect(seleniumUtil.getText(HomePage.HP_LINK_STATUS), "已认证 |");
+				break;
+				
+		case "attesting":
+			seleniumUtil.isTextCorrect(seleniumUtil.getText(HomePage.HP_LINK_STATUS), "认证审核中 |");
+				break;
+			
+		case "unattested":
+				seleniumUtil.isTextCorrect(seleniumUtil.getText(HomePage.HP_LINK_STATUS), "未认证 |");
+				break;
+			
+		
+		
+		
+		
+		}
+		
+		
+	}
 	
 
 }
