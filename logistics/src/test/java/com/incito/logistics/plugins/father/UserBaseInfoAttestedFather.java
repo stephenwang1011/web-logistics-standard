@@ -1,6 +1,7 @@
 package com.incito.logistics.plugins.father;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.ITestContext;
 
 import com.incito.logistics.base.BaseParpare;
@@ -27,7 +28,7 @@ public class UserBaseInfoAttestedFather extends BaseParpare {
 		sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 		String username = PropertiesDataProvider.getTestData(configFilePath, "username");
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
-		By[] bys = { UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE, UserBaseInfoPage.BUIP_INPUT_QQ_REVISE, UserBaseInfoPage.BUIP_INPUT_EMAIL_REVISE };
+		By[] bys = { UserBaseInfoPage.BUIP_INPUT_QQ_REVISE, UserBaseInfoPage.BUIP_INPUT_EMAIL_REVISE };
 		
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
@@ -38,14 +39,10 @@ public class UserBaseInfoAttestedFather extends BaseParpare {
 		if (flag) {
 			UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_REVISE);
 			seleniumUtil.waitForElementToLoad(timeOut, UserBaseInfoPage.UBIP_TITLE_USERINFO);
-//			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_SEX_MAN_REVISE));
-//			seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_DEL_BIRTHDAY_REVISE));
+			
+			String birthday = "document.getElementsByName('birthday')[0].setAttribute('value','');";
+			((JavascriptExecutor) seleniumUtil.driver).executeScript(birthday);
 			for (int i = 0; i < bys.length; i++) {
-//				if (i == 0) {
-//					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_DEL_BIRTHDAY_REVISE));
-//					continue;
-//					seleniumUtil.click(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_INPUT_BIRTHDAY_REVISE));
-//				}
 				seleniumUtil.clear(seleniumUtil.findElementBy(bys[i]));
 			}
 		}
