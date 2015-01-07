@@ -37,6 +37,7 @@ public class LoginPageHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_INPUT_PASSCODE);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_BUTTON_LOGIN);
 		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_LABEL_AUTO);
+		seleniumUtil.waitForElementToLoad(timeOut, LoginPage.LP_BUTTON_REGISTER);
 		logger.info("check login page elements completed");
 
 	}
@@ -48,6 +49,7 @@ public class LoginPageHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_INPUT_PASSCODE).getAttribute("placeholder"), "密码");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_LOGIN).getText(), "登录");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_LABEL_AUTO).getText(), "下次自动登录");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(LoginPage.LP_BUTTON_REGISTER).getText(), "注册");
 		logger.info("check login page text completed");
 
 	}
