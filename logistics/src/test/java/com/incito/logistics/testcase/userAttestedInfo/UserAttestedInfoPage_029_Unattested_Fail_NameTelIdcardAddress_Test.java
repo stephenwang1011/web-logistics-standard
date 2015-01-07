@@ -8,17 +8,17 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.UserAttestedInfoPage;
 import com.incito.logistics.pages.pageshelper.UserAttestedInfoPagerHelper;
-import com.incito.logistics.plugins.father.UserAttestedInfoFather;
+import com.incito.logistics.plugins.father.UserAttestedInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 填写姓名，电话，身份证号，公司地址点击提交
+ * @Description 认证信息界面，未认证用户，填写姓名，电话，身份证号，公司地址点击提交
  *
  * */
-public class UserAttestedInfoPage_029_Unattested_Fail_NameTelIdcardAddress_Test extends UserAttestedInfoFather {
+public class UserAttestedInfoPage_029_Unattested_Fail_NameTelIdcardAddress_Test extends UserAttestedInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void addUserInfoPageFailNameTelIdcardAddress(ITestContext context, Map<String, String> data) {
-		UserAttestedInfoFather.userUnatestedInfoParpare(context, seleniumUtil);
+	public void UserAttestedInfoPageUnattestedFailNameTelIdcardAddressTest(ITestContext context, Map<String, String> data) {
+		UserAttestedInfoUnattestedFather.userUnatestedInfoParpare(context, seleniumUtil);
 		
 		seleniumUtil.type(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_INPUT_NAME), data.get("ADD_NAME"));
 		By[] bys={UserAttestedInfoPage.UAIP_INPUT_TEL, UserAttestedInfoPage.UAIP_INPUT_PHOTO,

@@ -43,7 +43,7 @@ public class RegisterPage_024_SuccessGoAttest_Test extends RegisterFather {
 		RegisterSuccessPageHelper.enterPage(seleniumUtil, RegisterSuccessPage.RSP_BUTTON_ATTESTINFO);
 		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, USERNAME, data);
 		UserAttestedInfoPagerHelper.waitUserAttestedInfoPageToLoad(timeOut, seleniumUtil);
-		UserAttestedInfoPagerHelper.checkUserAttestedInfoPageText(seleniumUtil);
+		UserAttestedInfoPagerHelper.checkUserUnattestedInfoPageText(seleniumUtil);
 
 	}
 

@@ -8,17 +8,17 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.UserAttestedInfoPage;
 import com.incito.logistics.pages.pageshelper.UserAttestedInfoPagerHelper;
-import com.incito.logistics.plugins.father.UserAttestedInfoFather;
+import com.incito.logistics.plugins.father.UserAttestedInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 填写信息联系方式和身份证号提交
+ * @Description 认证信息界面，未认证用户，填写信息联系方式和身份证号提交
  *
  * */
-public class UserAttestedInfoPage_013_Unattested_Fail_TelCompany_Test extends UserAttestedInfoFather {
+public class UserAttestedInfoPage_013_Unattested_Fail_TelCompany_Test extends UserAttestedInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void addUserInfoPageFailTelCompany(ITestContext context, Map<String, String> data) {
-		UserAttestedInfoFather.userUnatestedInfoParpare(context, seleniumUtil);
+	public void UserAttestedInfoPageUnattestedFailTelCompanyTest(ITestContext context, Map<String, String> data) {
+		UserAttestedInfoUnattestedFather.userUnatestedInfoParpare(context, seleniumUtil);
 		
 		By[] bys={UserAttestedInfoPage.UAIP_INPUT_TEL, UserAttestedInfoPage.UAIP_INPUT_PHOTO,
 				UserAttestedInfoPage.UAIP_INPUT_CHIT, UserAttestedInfoPage.UAIP_BUTTON_CHIT };

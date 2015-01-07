@@ -11,16 +11,20 @@ import com.incito.logistics.plugins.father.UserAttestedInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 认证信息界面，未认证用户，填写姓名，公司名称，公司地址点击提交
+ * @Description 认证信息界面，未认证用户，填写信息姓名、上传证件照片
  *
  * */
-public class UserAttestedInfoPage_023_Unattested_Fail_NameCompanyAddress_Test extends UserAttestedInfoUnattestedFather {
+public class UserAttestedInfoPage_034_Unattested_Fail_NamePhoto_Test extends UserAttestedInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void UserAttestedInfoPageUnattestedFailNameCompanyAddressTest(ITestContext context, Map<String, String> data) {
+	public void UserAttestedInfoPageUnattestedFailNamePhotoTest(ITestContext context, Map<String, String> data) {
 		UserAttestedInfoUnattestedFather.userUnatestedInfoParpare(context, seleniumUtil);
+
 		seleniumUtil.type(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_INPUT_NAME), data.get("ADD_NAME"));
-		seleniumUtil.type(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_INPUT_COMPANY), data.get("ADD_COMPANY"));
-		seleniumUtil.address(UserAttestedInfoPage.UAIP_SELECT_PROVINCE, data.get("ADD_PROVINCE"), UserAttestedInfoPage.UAIP_SELECT_CITY, data.get("ADD_CITY"), UserAttestedInfoPage.UAIP_SELECT_REGION, data.get("ADD_REGION"), UserAttestedInfoPage.UAIP_INPUT_ADDRESS, data.get("ADD_ADDRESS"));
+		String[] filePath = { "res/img/userAuthenticationInfo/身份证正面.png",
+				"res/img/userAuthenticationInfo/身份证反面.png",
+				"res/img/userAuthenticationInfo/营业执照正面.png",
+				"res/img/userAuthenticationInfo/营业执照反面.png" };
+		UserAttestedInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserAttestedInfoPage.UAIP_INPUT_UPLOAD, filePath);
 		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_SUBMIT);
 		UserAttestedInfoPagerHelper.checkUserAuthenticationInfoPrompt(timeOut, seleniumUtil);
 	}

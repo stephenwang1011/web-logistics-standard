@@ -7,17 +7,17 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.UserAttestedInfoPage;
 import com.incito.logistics.pages.pageshelper.UserAttestedInfoPagerHelper;
-import com.incito.logistics.plugins.father.UserAttestedInfoFather;
+import com.incito.logistics.plugins.father.UserAttestedInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 填写信息身份证号和公司地址提交
+ * @Description 认证信息界面，未认证用户，填写信息身份证号和公司地址提交
  *
  * */
-public class UserAttestedInfoPage_015_Unattested_Fail_IdcardCompany_Test extends UserAttestedInfoFather {
+public class UserAttestedInfoPage_015_Unattested_Fail_IdcardCompany_Test extends UserAttestedInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void addUserInfoPageFailIdcardCompany(ITestContext context, Map<String, String> data) {
-		UserAttestedInfoFather.userUnatestedInfoParpare(context, seleniumUtil);
+	public void UserAttestedInfoPageUnattestedFailIdcardCompanyTest(ITestContext context, Map<String, String> data) {
+		UserAttestedInfoUnattestedFather.userUnatestedInfoParpare(context, seleniumUtil);
 		seleniumUtil.type(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_INPUT_IDCARD), data.get("ADD_IDCARD"));
 		seleniumUtil.type(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_INPUT_COMPANY), data.get("ADD_COMPANY"));
 		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_SUBMIT);

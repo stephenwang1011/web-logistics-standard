@@ -7,7 +7,7 @@ import com.incito.logistics.util.JdbcUtil;
 /**
  * 
  * @author xy-incito-wk
- * @Description 清空数据库中该用户的全部个人信息
+ * @Description 认证信息界面，未认证用户，认证成功之后，清空数据库中该用户的全部个人信息
  *
  */
 public class UserAttestedInfoPage_038_Unattested_JdbcUpdateDeleteAddUseInfo_Test extends JdbcUtil {

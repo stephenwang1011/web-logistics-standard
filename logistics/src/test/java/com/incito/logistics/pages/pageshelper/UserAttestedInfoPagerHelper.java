@@ -1,9 +1,11 @@
 package com.incito.logistics.pages.pageshelper;
 
+import java.io.File;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.testng.ITestContext;
 
 import com.incito.logistics.pages.UserAttestedInfoPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -32,11 +34,17 @@ public class UserAttestedInfoPagerHelper {
 		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_BUTTON_BACK);
 		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_BUTTON_SUBMIT);
 		logger.info("Check addUserInfo page elements completed");
-
+	}
+	
+	/** 等待完善信息页面元素加载出来 */
+	public static void waitUserAttestingInfoPageToLoad(int timeOut, SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page elements");
+		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_TEXT_TITLE);
+		logger.info("Check addUserInfo page elements completed");
 	}
 
 	/** 检查完善信息页面上的文本 */
-	public static void checkUserAttestedInfoPageText(SeleniumUtil seleniumUtil) {
+	public static void checkUserUnattestedInfoPageText(SeleniumUtil seleniumUtil) {
 		logger.info("Start checking addUserInfo page text");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE_DES).getText(), "请完善认证信息，通过认证后让更多的司机关注到您的货源信息，并提升订单成交率。" + "\n" + "您还可以查看更详细的车源与货源。");
@@ -62,16 +70,18 @@ public class UserAttestedInfoPagerHelper {
 	}
 
 	/** 认证用户信息界面完善信息页面上传照片 */
-	public static void upLoadPhoto(SeleniumUtil seleniumUtil, By elementLocator, int num) {
-		String[] photo = { "/res/img/userAuthenticationInfo/身份证正面.png", "/res/img/userAuthenticationInfo/身份证反面.png", "/res/img/userAuthenticationInfo/营业执照正面.png", "/res/img/userAuthenticationInfo/营业执照反面.png" };
-//		for (int i = 0; i < num; i++)
-//			seleniumUtil.findElementsBy(elementLocator).get(i).sendKeys(photo[i]);
-			seleniumUtil.findElementsBy(elementLocator).get(0).sendKeys(photo[0]);
+	public static void upLoadPhoto(ITestContext context, SeleniumUtil seleniumUtil, By by, String[] filepath) {
+		String browserName = context.getCurrentXmlTest().getParameter("browserName");
+		for (int i = 0; i < filepath.length; i++) {
+			seleniumUtil.click(seleniumUtil.findElementsBy(by).get(i));
+			seleniumUtil.handleUpload(browserName, new File(filepath[i]));
+		}
 	}
 
 	/** 认证用户信息界面完善用户信息中输入用户的手机号码和验证码的封装 */
 	public static void typeTelChit(SeleniumUtil seleniumUtil, By[] bys, String... info) {
 		seleniumUtil.type(seleniumUtil.findElementBy(bys[0]), info[0]);
+		seleniumUtil.waitForElementToLoad(15, bys[1]);
 		seleniumUtil.type(seleniumUtil.findElementBy(bys[1]), info[1]);
 		seleniumUtil.click(seleniumUtil.findElementBy(bys[3]));
 		seleniumUtil.pause(1500);
@@ -435,4 +445,67 @@ public class UserAttestedInfoPagerHelper {
 
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
+	//********************认证审核中的帮助类方法***********************************************
+	/** 检查认证信息页面上的文本（预览界面） */
+	public static void checkUserAttestingInfoPageText(SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE_ATTESTING).getText(), "您的资料正在审核中，请耐心等待！");
+
+		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).size();
+		String tabs[] = { "姓名", "联系电话", "身份证号", "公司名称", "公司地址", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(0, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		logger.info("Check addUserInfo page text completed");
+	}
+	//********************已认证的帮助类方法***********************************************
+	/** 检查认证信息页面上的文本（预览界面） */
+	public static void checkUserAttestedInfoPageText(SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE1_ATTESTED).getText(), "您的资料已通过认证！");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE2_ATTESTED).getText(), "恭喜您认证成功，现在您可以发布已认证的货源，货源信息更加可靠，司机会更加快速的找到您！");
+		
+		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).size();
+		String tabs[] = { "姓名", "联系电话", "身份证号", "公司名称", "公司地址", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(0, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		logger.info("Check addUserInfo page text completed");
+	}
+	/** 检查认证信息页面上的文本（修改界面） */
+	public static void checkUserAttestedInfoPageTextModify(SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE1_ATTESTED).getText(), "您的资料已通过认证！");
+		
+		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTED).size();
+		String tabs[] = { "姓名", "联系电话", "身份证号", "公司名称", "公司地址", " ", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			if (i == 5)
+				continue;
+			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTED).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(temp.indexOf("*") + 1, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		logger.info("Check addUserInfo page text completed");
+	}
+	
+	/** 检查认证修改信息页面上的修改未成功检查 */
+	public static void checkUserAttestedInfoPageModifyFail(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_BUTTON_CHIT).getText(), "发送验证码至手机");
+	}
+	/** 检查认证修改信息页面上的修改成功检查 */
+	public static void checkUserAttestedInfoPageModifySuccess(SeleniumUtil seleniumUtil) {
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE2_ATTESTED).getText(), "恭喜您认证成功，现在您可以发布已认证的货源，货源信息更加可靠，司机会更加快速的找到您！");
+	}
+
 }
