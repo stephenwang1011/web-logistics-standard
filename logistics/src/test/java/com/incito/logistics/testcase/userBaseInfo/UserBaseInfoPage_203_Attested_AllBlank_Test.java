@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoAttestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改全部为空
+ * @Description 认证用户，进入我的资料-基本信息模块，修改所有信息为空白并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_203_Attested_AllBlank_Test extends UserBaseInfoAttestedFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyAllBlankForAttestedUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoAttestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.typeUserBaseInfo(seleniumUtil, 

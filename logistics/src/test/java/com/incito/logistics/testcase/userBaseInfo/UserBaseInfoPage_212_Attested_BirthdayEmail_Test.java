@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoAttestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改修改：生日、Email
+ * @Description 认证用户，进入我的资料-基本信息模块，修改生日和电子邮件并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_212_Attested_BirthdayEmail_Test extends UserBaseInfoAttestedFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyBirthAndEmailForAttestedUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoAttestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.typeUserBaseInfo(seleniumUtil, 

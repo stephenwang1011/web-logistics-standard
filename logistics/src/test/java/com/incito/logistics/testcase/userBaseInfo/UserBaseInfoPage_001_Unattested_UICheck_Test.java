@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 填写电话，身份证号，公司名称，公司地址点击提交
+ * @Description 未认证的用户，进入我的资料-基本信息模块检查 基本信息的UI（包括编辑的时候和没编辑的时候）
  *
  * */
 public class UserBaseInfoPage_001_Unattested_UICheck_Test extends UserBaseInfoUnattestedFather {
 	@Test
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context) {
+	public void userBaseInfoPageUICheckForUnattestedUser(ITestContext context) {
 		UserBaseInfoUnattestedFather.userBaseInfoParpare(context, seleniumUtil, false);
 	
 		try {// 判断基本信息中用户名和右上角的用户名是否相等

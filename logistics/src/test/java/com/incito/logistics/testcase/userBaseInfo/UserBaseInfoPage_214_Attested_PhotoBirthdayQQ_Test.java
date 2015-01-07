@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoAttestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改修改：头像、生日、QQ
+ * @Description 认证用户，进入我的资料-基本信息模块,修改头像和生日以及qq并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_214_Attested_PhotoBirthdayQQ_Test extends UserBaseInfoAttestedFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyPhotoBirthdayQQForAttestedUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoAttestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_PHOTO, "res/img/userBaseInfo/自拍.png");

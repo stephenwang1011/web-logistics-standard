@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改修改：QQ、Email
+ * @Description 未认证的用户，进入我的资料-基本信息模块,修改qq和电子邮件并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_013_Unattested_QQEmail_Test extends UserBaseInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyQQAndEmailForUnattestedUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoUnattestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.typeUserBaseInfo(seleniumUtil, 

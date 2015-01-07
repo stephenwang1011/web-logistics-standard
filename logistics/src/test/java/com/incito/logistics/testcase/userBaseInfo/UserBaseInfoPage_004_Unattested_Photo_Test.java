@@ -1,7 +1,5 @@
 package com.incito.logistics.testcase.userBaseInfo;
 
-import java.util.Map;
-
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -11,12 +9,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改照片
+ * @Description 未认证的用户，进入我的资料-基本信息模块,只修改基本信息中的头像
  *
  * */
 public class UserBaseInfoPage_004_Unattested_Photo_Test extends UserBaseInfoUnattestedFather {
-	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	@Test
+	public void modifyUserPhotoForUnattestedUser(ITestContext context) {
 		UserBaseInfoUnattestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 		
 		UserBaseInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_PHOTO, "res/img/userBaseInfo/自拍.png");

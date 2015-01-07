@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoUnattestedFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改全部修改
+ * @Description 未认证的用户，进入我的资料-基本信息模块,点击修改按钮，修改所有的信息并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_002_Unattested_All_Test extends UserBaseInfoUnattestedFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyAllUserBasicInfoForUnattestedUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoUnattestedFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.typeUserBaseInfo(seleniumUtil, 

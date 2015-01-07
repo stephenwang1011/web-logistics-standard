@@ -11,12 +11,12 @@ import com.incito.logistics.plugins.father.UserBaseInfoAttestingFather;
 
 /**
  * @author xy-incito-wk
- * @Description 已认证用户修改修改：头像、QQ、Email
+ * @Description 认证中的用户，进入我的资料-基本信息模块,修改头像和qq以及电子邮件并检测是不是修改成功
  *
  * */
 public class UserBaseInfoPage_116_Attesting_PhotoQQEmail_Test extends UserBaseInfoAttestingFather {
 	@Test(dataProvider = "data")
-	public void userBaseInfoPageFailTelIdcardCompanyAddress(ITestContext context, Map<String, String> data) {
+	public void modifyQQPhotoAndEmailForAttestingUser(ITestContext context, Map<String, String> data) {
 		UserBaseInfoAttestingFather.userBaseInfoParpare(context, seleniumUtil, true);
 
 		UserBaseInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_PHOTO, "res/img/userBaseInfo/自拍.png");
