@@ -33,7 +33,7 @@ public class UserBaseInfoUnattestedFather extends BaseParpare {
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, unattestedUserName, unattestedPassword);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
-		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_YESAUTHOR);
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_NOAUTHOR);
 		UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.UBIP_TAB_BASEINFO);
 		if (flag) {
 			UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_REVISE);
