@@ -7,17 +7,17 @@ import org.testng.annotations.Test;
 
 import com.incito.logistics.pages.UserPasswordPage;
 import com.incito.logistics.pages.pageshelper.UserPasswordPageHelper;
-import com.incito.logistics.plugins.father.UserPasswordFather;
+import com.incito.logistics.plugins.father.UserPasswordAttestedFather;
 /**
  * 
  * @author xy-incito-wy
  * @Decription 已经认证用户登录之后，进入修改密码页面，输入错误的当前密码，新密码和确认密码为空，点击提交按钮，不能修改提交成功
  */
-public class UserPasswordPage_003_AttestedIncorrectOldPasswdOthersEmpty_Test extends UserPasswordFather{
+public class UserPasswordPage_003_AttestedIncorrectOldPasswdOthersEmpty_Test extends UserPasswordAttestedFather{
 	
 	@Test(dataProvider="data")
 	public void incorrectOldPasswdOthersEmptyForAttestedUser(ITestContext context,Map<String,String> data){
-		UserPasswordFather.userPasswordParpare(context, seleniumUtil);
+		UserPasswordAttestedFather.userPasswordParpare(context, seleniumUtil);
 		UserPasswordPageHelper.typeChangePasswdInfo(seleniumUtil, data.get("OLD_PASSWORD"), data.get("NEW_PASSWORD"), data.get("CORFIRM_PASSWORD"));
 		UserPasswordPageHelper.enterPage(seleniumUtil, UserPasswordPage.USP_BUTTON_OK);
 		UserPasswordPageHelper.checkModifyPasswdFailed(seleniumUtil, modifyusername, modifypassword, timeOut,sleepTime);
