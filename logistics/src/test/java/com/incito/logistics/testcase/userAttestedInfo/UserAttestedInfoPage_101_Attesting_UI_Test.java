@@ -19,7 +19,7 @@ import com.incito.logistics.util.PropertiesDataProvider;
  * @Description 认证信息界面，认证审核用户，认证页面上的UI检查
  *
  * */
-public class UserAttestingInfoPage_101_Attesting_UI_Test extends BaseParpare {
+public class UserAttestedInfoPage_101_Attesting_UI_Test extends BaseParpare {
 	@Test
 	public void UserAttestingInfoPageAttestingUITest(ITestContext context) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));

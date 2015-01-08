@@ -35,7 +35,8 @@ public class UserAttestedInfoPage_037_Unattested_Success_All_Test extends UserAt
 				"res/img/userAuthenticationInfo/营业执照反面.png" };
 		UserAttestedInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserAttestedInfoPage.UAIP_INPUT_UPLOAD, filePath);
 		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_SUBMIT);
-		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_BUTTON_CONFIRM);
-		UserAttestedInfoPagerHelper.enterPage(seleniumUtil,UserAttestedInfoPage.UAIP_BUTTON_CONFIRM );
+//		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_BUTTON_PUBLISH);
+		UserAttestedInfoPagerHelper.checkUserAttestedInfoPrompt_All(timeOut, seleniumUtil);
+		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_LATE);
 	}
 }

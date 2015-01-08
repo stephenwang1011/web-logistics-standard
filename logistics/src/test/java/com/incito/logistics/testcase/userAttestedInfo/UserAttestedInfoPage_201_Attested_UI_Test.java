@@ -14,7 +14,7 @@ import com.incito.logistics.plugins.father.UserAttestedInfoAttestedFather;
  * @Description 已认证用户页面上的UI检查
  *
  * */
-public class UserAttestingInfoPage_201_Attested_UI_Test extends UserAttestedInfoAttestedFather {
+public class UserAttestedInfoPage_201_Attested_UI_Test extends UserAttestedInfoAttestedFather {
 	@Test
 	public void UserAttestingInfoPageAttestedUITest(ITestContext context) {
 		UserAttestedInfoAttestedFather.userAtestedInfoParpare(context, seleniumUtil);

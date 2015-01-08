@@ -438,11 +438,11 @@ public class UserAttestedInfoPagerHelper {
 	}
 
 	/** 检查完善信息页面:必填项全部填写 */
-	public static void checkUserAuthenticationInfoPrompt_All(int timeOut, SeleniumUtil seleniumUtil) {
+	public static void checkUserAttestedInfoPrompt_All(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
-
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_POPUP_TRUE).getText(), "您已成功提交个人信息，我们将在24小时内完成审核，您可以先发货了！如需优先认证，请致电");
-
+		seleniumUtil.pause(1000);
+		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_POPUP_TRUE);
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_POPUP_TRUE).getText().trim(), "认证信息提交成功，我们将在24小时内完成审核，您现在可以去发布货源了！");
 		logger.info("Check checkAddUserInfoPrompt page text completed");
 	}
 	//********************认证审核中的帮助类方法***********************************************
