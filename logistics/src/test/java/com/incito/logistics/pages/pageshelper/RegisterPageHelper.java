@@ -174,7 +174,7 @@ public class RegisterPageHelper {
 			AgreementPageHelper.waitAgreementPageToLoad(timeOut, seleniumUtil);
 			AgreementPageHelper.checkAgreementPageText(seleniumUtil);
 			AgreementPageHelper.click15TimesCloseButton(seleniumUtil);
-			seleniumUtil.window.close();
+			//seleniumUtil.window.close();
 
 		}
 		// 切回到原来的窗口
