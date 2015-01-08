@@ -23,13 +23,13 @@ public class UserAttestedInfoAttestRejectFather extends BaseParpare {
 	public static void userAtestRejectInfoParpare(ITestContext context, SeleniumUtil seleniumUtil) {
 		String configFilePath = String.valueOf(context.getCurrentXmlTest().getParameter("userInfoPath"));
 		int timeOut = Integer.valueOf(context.getCurrentXmlTest().getParameter("timeOut"));
-		String baseInfoUserName = PropertiesDataProvider.getTestData(configFilePath, "baseInfoUserName");
-		String baseInfoPassWord = PropertiesDataProvider.getTestData(configFilePath, "baseInfoPassWord");
+		String attestedUserName3 = PropertiesDataProvider.getTestData(configFilePath, "attestedUserName3");
+		String attestedPassWord3 = PropertiesDataProvider.getTestData(configFilePath, "attestedPassWord3");
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
-		LoginPageHelper.login(seleniumUtil, baseInfoUserName, baseInfoPassWord);
+		LoginPageHelper.login(seleniumUtil, attestedUserName3, attestedPassWord3);
 		HomePageHelper.holdOn(seleniumUtil, sleepTime);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_LINK_NOAUTH);
 		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_USERINFO_TAB);

@@ -539,7 +539,7 @@ public class UserAttestedInfoPagerHelper {
 			temp = temp.substring(temp.indexOf("*") + 1, temp.lastIndexOf("："));
 			seleniumUtil.isTextCorrect(temp, tabs[i]);
 		}
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTEDREJECT).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
 		logger.info("Check addUserInfo page text completed");
 	}
 

@@ -65,7 +65,7 @@ public class UserAttestedInfoPage {
 	public static final By UAIP_TEXT_NOTE_ATTESTING = By.className("myInfo-auth-progCont");
 	/** 认证审核中，认证项目，包括有：姓名、联系电话、身份证号、公司名称、公司地址、证件照片 */
 	public static final By UAIP_TEXT_INFO_ATTESTING = By.xpath("//div[@class='form-group row']/label");
-	/** 认证审核中，认证项目，包括有：姓名、联系电话、身份证号、公司名称、公司地址、证件照片 */
+	/** 认证审核中，页面下方的说明：如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00) */
 	public static final By UAIP_TEXT_CONTACT_ATTESTING = By.xpath("//div[@class='myInfo-tip mt50 mb50']");
 	// ***********************新改版页面元素,“已认证”，我是分割线进行隔开*********************************************
 	/** 已认证，认证说明：“您的资料已通过认证！” */
@@ -82,5 +82,8 @@ public class UserAttestedInfoPage {
 	public static final By UAIP_INPUT_PASSWORD = By.id("password");
 	/** 已认证，修改界面中，确认密码输入框*/
 	public static final By UAIP_TEXT_PASSWORD = By.xpath("//*[text()='确认登陆密码：']");
+	// ***********************新改版页面元素,“已认证”，我是分割线进行隔开*********************************************
+	/** 认证为通过，页面下方的说明：如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)框*/
+	public static final By UAIP_TEXT_CONTACT_ATTESTEDREJECT = By.xpath("//div[@class='myInfo-tip mb20']");
 
 }
