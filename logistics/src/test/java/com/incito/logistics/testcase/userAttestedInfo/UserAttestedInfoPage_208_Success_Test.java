@@ -41,6 +41,6 @@ public class UserAttestedInfoPage_208_Success_Test extends UserAttestedInfoAttes
 		seleniumUtil.switchToPromptedAlertAfterWait(1000).accept();
 		seleniumUtil.pause(800);
 
-		UserAttestedInfoPagerHelper.checkUserAttestedInfoPageModifyFail(seleniumUtil);
+		UserAttestedInfoPagerHelper.checkUserAttestedInfoPageModifySuccess(seleniumUtil);
 	}
 }

@@ -1,7 +1,5 @@
 package com.incito.logistics.testcase.userBaseInfo;
 
-import java.util.Map;
-
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -15,8 +13,8 @@ import com.incito.logistics.plugins.father.UserBaseInfoAttestingFather;
  *
  * */
 public class UserBaseInfoPage_104_Attesting_Photo_Test extends UserBaseInfoAttestingFather {
-	@Test(dataProvider = "data")
-	public void modifyPhotoForAttestingUser(ITestContext context, Map<String, String> data) {
+	@Test
+	public void modifyPhotoForAttestingUser(ITestContext context) {
 		UserBaseInfoAttestingFather.userBaseInfoParpare(context, seleniumUtil, true);
 		
 		UserBaseInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_PHOTO, "res/img/userBaseInfo/自拍.png");

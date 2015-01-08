@@ -78,7 +78,9 @@ public class UserAttestedInfoPage {
 	public static final By UAIP_BUTTON_SAVE = By.xpath("//button[@class='btn btn-major' and @type='submit']");
 	/** 已认证，修改界面中，认证项目，包括有：姓名、联系电话、身份证号、公司名称、公司地址、证件照片 */
 	public static final By UAIP_TEXT_INFO_ATTESTED = By.xpath("//div[@class='form-group']/label");
-	/** 已认证，修改界面中，认证项目，包括有：姓名、联系电话、身份证号、公司名称、公司地址、证件照片 */
+	/** 已认证，修改界面中，确认密码输入框*/
 	public static final By UAIP_INPUT_PASSWORD = By.id("password");
+	/** 已认证，修改界面中，确认密码输入框*/
+	public static final By UAIP_TEXT_PASSWORD = By.xpath("//*[text()='确认登陆密码：']");
 
 }
