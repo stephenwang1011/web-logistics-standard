@@ -42,8 +42,7 @@ public class RegisterPage_022_SuccessGoHome_Test extends RegisterFather {
 		RegisterSuccessPageHelper.checkRegisterSuccessPageText(seleniumUtil, timeOut);
 		RegisterSuccessPageHelper.enterPage(seleniumUtil, RegisterSuccessPage.RSP_BUTTON_GOHOME);
 		RegisterPageHelper.checkUserInfo(timeOut, sleepTime, seleniumUtil, USERNAME, data);
-		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
-		HomePageHelper.checkHomePageText(seleniumUtil);
+		HomePageHelper.waitHomePageToLoadAfterRegister(timeOut, seleniumUtil);
 
 	}
 
