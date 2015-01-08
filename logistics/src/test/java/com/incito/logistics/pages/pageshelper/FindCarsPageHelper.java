@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.incito.logistics.pages.FindCarsPage;
+import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.util.SeleniumUtil;
 
 public class FindCarsPageHelper {
@@ -352,6 +353,10 @@ public class FindCarsPageHelper {
 					seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击收藏按钮																
 					seleniumUtil.pause(500);
 					seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_CFAV).get(i).getText(), "取消收藏");
+					if(seleniumUtil.findElementBy(HomePage.HP_BUTTON_BACK).isDisplayed()){
+						seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_BUTTON_BACK));
+						
+					}
 					seleniumUtil.click(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_FAV));
 					break;
 				}
@@ -377,6 +382,7 @@ public class FindCarsPageHelper {
 				String secondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(i).getText();
 				String secondInfos[] = secondInfo.split("，");
 				String autualLicense = secondInfos[0].trim();
+				logger.info("第"+(i+1)+"条车源车牌号："+autualLicense);
 
 				if (autualLicense.equals(license)) {
 
@@ -389,8 +395,8 @@ public class FindCarsPageHelper {
 					for (int j = 0; j < insize; j++) {
 						String insecondInfo = seleniumUtil.findElementsBy(FindCarsPage.FCP_DIV_CARINFO2).get(j).getText();
 						String insecondInfos[] = insecondInfo.split("，");
-						String inautualLicense = insecondInfos[0].trim();
-						if(inautualLicense!=license){
+						String inactualLicense = insecondInfos[0].trim();
+						if(inactualLicense!=license){
 							logger.info("剩下车源的第"+(j+1)+"条车源信息中车牌号不为"+license);
 							if(j==(insize-1)){
 								logger.info("取消收藏车牌号："+license+" 车源成功");
@@ -398,7 +404,7 @@ public class FindCarsPageHelper {
 				
 							continue;
 						}
-						if(inautualLicense.endsWith(license)){
+						if(inactualLicense.equals(license)){
 							logger.error("车牌号为："+license+"的车源没有被取消收藏成功");
 							Assert.fail("车牌号为："+license+"的车源没有被取消收藏成功");
 						}
@@ -409,16 +415,19 @@ public class FindCarsPageHelper {
 					
 					if(seleniumUtil.findElementBy(FindCarsPage.FCP_TAB_PUBLIC).getAttribute("class").equals("active")){
 						seleniumUtil.click(seleniumUtil.findElementsBy(byElement).get(i)); // 点击 取消收藏按钮
-						seleniumUtil.waitForElementToLoad(2, FindCarsPage.FCP_BUTTON_FAV);
+						seleniumUtil.pause(500);
 						seleniumUtil.isTextCorrect(seleniumUtil.findElementsBy(FindCarsPage.FCP_BUTTON_FAV).get(i).getText(), "收藏");
 						
 					}
 					
 					break;
 				}
-				if(autualLicense!=(license)){
-					logger.warn("你要取消的车辆：["+license+"]在我的我的车辆收藏中已经不存在，也许之前被手动取消收藏过，请检查！");
-					Assert.fail("你要取消的车辆：["+license+"]在我的我的车辆收藏中已经不存在，也许之前被手动取消收藏过，请检查！");
+				if(autualLicense!=license){
+					logger.info("当前车源的车牌号是："+autualLicense+"，不是你指定的车牌号："+license+"，继续查找下一条！");
+					if(i==size-1){
+						logger.error("你查找的车源的车牌号："+license+"不存在");
+						Assert.fail("你查找的车源的车牌号："+license+"不存在");
+					}
 				}
 			}
 
