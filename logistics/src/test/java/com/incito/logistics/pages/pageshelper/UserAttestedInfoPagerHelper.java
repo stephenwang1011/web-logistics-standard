@@ -50,9 +50,9 @@ public class UserAttestedInfoPagerHelper {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE_DES).getText(), "请完善认证信息，通过认证后让更多的司机关注到您的货源信息，并提升订单成交率。" + "\n" + "您还可以查看更详细的车源与货源。");
 
 		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_DES).size();
-		String tabs[] = { "姓名", "联系电话", "输入验证码", "身份证号", "公司名称", "公司地址", " ", "证件照片" };
+		String tabs[] = { "姓名", "联系电话", "图形码", "短信验证码", "身份证号", "公司名称", "公司地址", " ", "证件照片" };
 		for (int i = 0; i < size; i++) {
-			if (i == 6)
+			if (i == 7)
 				continue;
 			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_DES).get(i).getText().replaceAll(" ", "");
 			temp = temp.substring(temp.indexOf("*") + 1, temp.lastIndexOf("："));

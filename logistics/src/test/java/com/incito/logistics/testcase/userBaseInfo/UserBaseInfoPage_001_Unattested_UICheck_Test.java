@@ -18,10 +18,18 @@ public class UserBaseInfoPage_001_Unattested_UICheck_Test extends UserBaseInfoUn
 	@Test
 	public void userBaseInfoPageUICheckForUnattestedUser(ITestContext context) {
 		UserBaseInfoUnattestedFather.userBaseInfoParpare(context, seleniumUtil, false);
-	
+		//判断基本信息界面的基本信息的tab是否被选中
+		String selected = seleniumUtil.findElementBy(UserBaseInfoPage.UBIP_TAB_BASEINFO).getAttribute("class");
+		try {
+			Assert.assertTrue(selected.equals("aForLink active"));// 判断认证信息标签是否已经被选中
+		} catch (AssertionError e) {
+			Assert.fail("在基本信息页面中‘基本信息’没有被选中。");
+			e.printStackTrace();
+			throw e;
+		}
 		try {// 判断基本信息中用户名和右上角的用户名是否相等
 			Assert.assertTrue(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_TEXT_NAME).getText().equals(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_TEXT_NAME_R).getText()));
-		} catch (Exception e) {
+		} catch (AssertionError e) {
 			Assert.fail("在基本信息页面中两个用户名不相等");
 			e.printStackTrace();
 			throw e;
@@ -30,10 +38,18 @@ public class UserBaseInfoPage_001_Unattested_UICheck_Test extends UserBaseInfoUn
 		FooterPageHelper.checkFooterPageText(seleniumUtil);
 		UserBaseInfoPagerHelper.enterPage(seleniumUtil, UserBaseInfoPage.BUIP_BUTTON_REVISE);
 		seleniumUtil.waitForElementToLoad(timeOut, UserBaseInfoPage.UBIP_TITLE_USERINFO);
-		
+		//判断基本信息界面的基本信息的tab是否被选中
+		selected = seleniumUtil.findElementBy(UserBaseInfoPage.UBIP_TAB_BASEINFO).getAttribute("class");
+		try {
+			Assert.assertTrue(selected.equals("aForLink active"));// 判断认证信息标签是否已经被选中
+		} catch (AssertionError e) {
+			Assert.fail("在基本信息页面中‘基本信息’没有被选中。");
+			e.printStackTrace();
+			throw e;
+		}
 		try {// 判断基本信息中用户名和右上角的用户名是否相等
 			Assert.assertTrue(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_TEXT_NAME_REVISE).getText().trim().equals(seleniumUtil.findElementBy(UserBaseInfoPage.BUIP_TEXT_NAME_R).getText().trim()));
-		} catch (Exception e) {
+		} catch (AssertionError e) {
 			Assert.fail("在基本信息的修改页面中两个用户名不相等");
 			e.printStackTrace();
 			throw e;
