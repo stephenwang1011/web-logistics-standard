@@ -507,5 +507,40 @@ public class UserAttestedInfoPagerHelper {
 	public static void checkUserAttestedInfoPageModifySuccess(SeleniumUtil seleniumUtil) {
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE2_ATTESTED).getText(), "恭喜您认证成功，现在您可以发布已认证的货源，货源信息更加可靠，司机会更加快速的找到您！");
 	}
+	//********************认证驳回的帮助类方法***********************************************
+	/** 检查认证信息页面上的文本（预览界面） */
+	public static void checkUserAttestRejectInfoPageText(SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE1_ATTESTED).getText(), "您提交的认证资料被驳回，请参照驳回原因，修改后重新提交！");
+		
+		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).size();
+		String tabs[] = { "姓名", "联系电话", "身份证号", "公司名称", "公司地址", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTING).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(0, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		logger.info("Check addUserInfo page text completed");
+	}
+	/** 检查认证信息页面上的文本（修改界面） */
+	public static void checkUserAttestRejectInfoPageTextModify(SeleniumUtil seleniumUtil) {
+		logger.info("Start checking addUserInfo page text");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_TITLE).getText(), "认证信息");
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_NOTE1_ATTESTED).getText(), "您提交的认证资料被驳回，请参照驳回原因，修改后重新提交！");
+		
+		int size = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTED).size();
+		String tabs[] = { "姓名", "联系电话", "身份证号", "公司名称", "公司地址", " ", "证件照片" };
+		for (int i = 0; i < size; i++) {
+			if (i == 5)
+				continue;
+			String temp = seleniumUtil.findElementsBy(UserAttestedInfoPage.UAIP_TEXT_INFO_ATTESTED).get(i).getText().replaceAll(" ", "");
+			temp = temp.substring(temp.indexOf("*") + 1, temp.lastIndexOf("："));
+			seleniumUtil.isTextCorrect(temp, tabs[i]);
+		}
+		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_CONTACT_ATTESTING).getText(), "如您有任何疑问，请电话联系我们：400-860-3060(周一至周日9:00---18:00)");
+		logger.info("Check addUserInfo page text completed");
+	}
 
 }

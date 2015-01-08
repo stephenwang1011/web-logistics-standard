@@ -21,6 +21,8 @@ public class HomePage {
 	public static final By HP_LINK_STATUS= By.partialLinkText("认证");
 	/** 首页 上认证状态 - 已经认证 */
 	public static final By HP_LINK_YESAUTHOR= By.id("yesauth");
+	/** 首页 上认证状态 - 认证未通过 */
+	public static final By HP_LINK_NOAUTH= By.id("noauth");
 	/** 首页 上 认证未通过 (认证审核中)状态 */
 	public static final By HP_LINK_NOAUTHOR= By.id("noauth");
 	/** tab首页 */
