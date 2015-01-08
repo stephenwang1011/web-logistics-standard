@@ -104,7 +104,9 @@ public class UserPasswordPageHelper {
 		case "unattested":
 				seleniumUtil.isTextCorrect(seleniumUtil.getText(HomePage.HP_LINK_STATUS), "未认证 |");
 				break;
-			
+		case "attest reject":
+			seleniumUtil.isTextCorrect(seleniumUtil.getText(HomePage.HP_LINK_STATUS), "认证未通过 |");
+			break;
 		
 		
 		
