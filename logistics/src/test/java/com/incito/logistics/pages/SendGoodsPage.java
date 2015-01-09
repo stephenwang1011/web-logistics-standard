@@ -87,6 +87,10 @@ public class SendGoodsPage {
 	public final static By SGP_TEXT_VOLUMEPROMPT = By.xpath("//*[@id='input_volume']/label");
 	/**货物重量，超过重量提示语*/
 	public final static By SGP_TEXT_COUNTPROMPT = By.xpath("//*[@for='count']");
+	
+	/**是否允许公开声明价值checkbox*/
+	public final static By SGP_CHECKBOX_DELCAREVALUE = By.name("_chbox");
+	
 
 	
 }
