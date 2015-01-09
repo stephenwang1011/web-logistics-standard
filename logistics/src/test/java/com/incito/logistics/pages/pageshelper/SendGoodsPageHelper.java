@@ -3,8 +3,11 @@ package com.incito.logistics.pages.pageshelper;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import com.incito.logistics.pages.FindGoodsPage;
+import com.incito.logistics.pages.HomePage;
 import com.incito.logistics.pages.SendGoodsForEnterprisePage;
 import com.incito.logistics.pages.SendGoodsPage;
 import com.incito.logistics.util.SeleniumUtil;
@@ -221,6 +224,86 @@ public class SendGoodsPageHelper {
 		}
 		seleniumUtil.isTextCorrect(seleniumUtil.getText(SendGoodsPage.SGP_INPUT_INSTRUCTION),inputs[13]);
 		logger.info("All infos for this goods are correct when try to edit it");
+		
+	}
+	/**选择是否公开声明价值*/
+	public static void doesCheckDeclareValue(SeleniumUtil seleniumUtil ,String status){
+		WebElement e = seleniumUtil.findElementBy(SendGoodsPage.SGP_CHECKBOX_DELCAREVALUE);
+		switch(status.toLowerCase()){
+		
+		case "yes":
+			if(e.isSelected()){
+				seleniumUtil.click(e);
+			}
+		break;
+		
+		case "no":
+			if(e.isSelected()==false){
+				seleniumUtil.click(e);
+			}
+			break;
+		
+		}
+	}
+	
+	/**检查 找货源中的货源信息的声明价值是不是可见*/
+	public static void checkDeclareValueInGoods(SeleniumUtil seleniumUtil,String purview,String declare,String username,String password,int timeOut){
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_TEXT_USERINFO);
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_EXIT));
+		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
+		LoginPageHelper.login(seleniumUtil, username, password);
+		seleniumUtil.waitForElementToLoad(timeOut, HomePage.HP_LINK_FINDGOODS);
+		seleniumUtil.pause(800);
+		seleniumUtil.click(seleniumUtil.findElementBy(HomePage.HP_LINK_FINDGOODS));
+		FindGoodsPageHelper.waitFindGoodsPageToLoad(timeOut, seleniumUtil);
+		int size = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).size();
+		for (int i = 0; i < size; i++) {
+			String memo = seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).get(i).getText().trim();
+			switch(purview){
+			case "public":
+
+				if(memo.equals("说明：声明价值公开")){
+					seleniumUtil.click(seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).get(i));
+					seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_HIDE_INFO);
+					String details = seleniumUtil.findElementsBy(FindGoodsPage.FGP_HIDE_INFO).get(i).getText();
+					if(details.contains("声明价值："+declare)){
+						logger.info("在公开的声明价值的货源中，找到了公开声明价值"+declare+"PASSED");
+					}else{
+						logger.error("公开了声明价值的货源，没有在详细信息中找到 声明价值信息"+declare);
+						Assert.fail("公开了声明价值的货源，没有在详细信息中找到 声明价值信息"+declare);
+					}
+					return;
+				}
+				break;
+
+			case "private":
+				if(memo.equals("说明：声明价值私有")){
+					seleniumUtil.click(seleniumUtil.findElementsBy(FindGoodsPage.FGP_TEXT_MEMO).get(i));
+					seleniumUtil.waitForElementToLoad(timeOut, FindGoodsPage.FGP_HIDE_INFO);
+					String details = seleniumUtil.findElementsBy(FindGoodsPage.FGP_HIDE_INFO).get(i).getText();
+					if(details.contains("声明价值："+declare)){
+						logger.error("不公开声明价值的货源，在详细信息中找到 声明价值信息"+declare);
+						Assert.fail("不公开声明价值的货源，在详细信息中找到 声明价值信息"+declare);
+		
+					}else{
+						logger.info("不公开的声明价值的货源，在详细信息中 没有找到 声明价值！PASSED!");
+					}
+					return;
+				}
+			
+			break;
+			
+			}
+
+		}
+
+	
+
+			
+			
+			
+		
+		
 		
 	}
 
