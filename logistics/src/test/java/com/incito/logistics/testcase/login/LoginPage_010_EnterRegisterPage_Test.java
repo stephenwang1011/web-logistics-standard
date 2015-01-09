@@ -12,7 +12,7 @@ import com.incito.logistics.pages.pageshelper.LoginPageHelper;
 import com.incito.logistics.pages.pageshelper.RegisterPageHelper;
 import com.incito.logistics.plugins.father.LoginFather;
 
-public class LoginPage_010_Login_Success_Test extends LoginFather {
+public class LoginPage_010_EnterRegisterPage_Test extends LoginFather {
 
 	@Test
 	public void enterRegisterPage(ITestContext context) {
