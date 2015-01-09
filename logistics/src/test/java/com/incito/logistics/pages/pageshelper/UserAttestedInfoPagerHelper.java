@@ -506,7 +506,7 @@ public class UserAttestedInfoPagerHelper {
 
 	/** 检查认证修改信息页面上的修改未成功检查 */
 	public static void checkUserAttestedInfoPageModifyFail(SeleniumUtil seleniumUtil) {
-		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_PASSWORD).getText(), "*确认登陆密码：");
+//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_PASSWORD).getText(), "*确认登陆密码：");
 	}
 
 	/** 检查认证修改信息页面上的修改成功检查 */

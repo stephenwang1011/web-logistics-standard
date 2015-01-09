@@ -27,6 +27,7 @@ public class UserAttestedInfoPage_301_AttestReject_UI_Test extends BaseParpare {
 		String attestedPassWord3 = PropertiesDataProvider.getTestData(configFilePath, "attestedPassWord3");
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
+		UserAttestedInfoPagerHelper.userAtestRejectInfoSQLRestore();
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, attestedUserName3, attestedPassWord3);
