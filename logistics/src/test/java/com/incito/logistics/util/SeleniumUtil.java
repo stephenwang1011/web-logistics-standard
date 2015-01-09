@@ -568,6 +568,7 @@ public class SeleniumUtil {
 		selectByText(elementProvince, province);
 		selectByText(elementCity, city);
 		selectByText(elementRegion, region);
+		clear(findElementBy(elementAddress));
 		type(findElementBy(elementAddress), address);
 	}
 

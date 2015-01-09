@@ -14,7 +14,6 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-
 public class JdbcUtil {
 	public static Logger logger = Logger.getLogger(JdbcUtil.class.getName());
 	// 创建静态全局变量
@@ -29,7 +28,8 @@ public class JdbcUtil {
 		String jdbc_password = null;
 		try {
 			Properties prop = new Properties();
-//			InputStream inStream = JdbcUtil.class.getResourceAsStream("config/database.properties");
+			// InputStream inStream =
+			// JdbcUtil.class.getResourceAsStream("config/database.properties");
 			InputStream inStream = new FileInputStream(new File("config/database.properties"));
 			prop.load(inStream);
 			jdbc_url = prop.getProperty("jdbc_url");
@@ -45,7 +45,9 @@ public class JdbcUtil {
 		Connection con = null; // 创建用于连接数据库的Connection对象
 		try {
 			Class.forName(jdbc_driver);// 加载Mysql数据驱动
-			con = DriverManager.getConnection(jdbc_url + jdbc_db, jdbc_name, jdbc_password);// 创建数据连接
+			// con = DriverManager.getConnection(jdbc_url + jdbc_db, jdbc_name,
+			// jdbc_password);// 创建数据连接
+			con = DriverManager.getConnection(jdbc_url + jdbc_db + "?user=" + jdbc_name + "&password=" + jdbc_password + "&useUnicode=true&characterEncoding=utf-8");// 创建数据连接
 		} catch (Exception e) {
 			System.out.println("数据库连接失败" + e.getMessage());
 		}
