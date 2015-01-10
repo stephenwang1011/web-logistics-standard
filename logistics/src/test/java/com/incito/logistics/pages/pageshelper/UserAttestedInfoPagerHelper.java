@@ -85,7 +85,9 @@ public class UserAttestedInfoPagerHelper {
 		seleniumUtil.type(seleniumUtil.findElementBy(bys[0]), info[0]);
 		seleniumUtil.waitForElementToLoad(15, bys[1]);
 		seleniumUtil.type(seleniumUtil.findElementBy(bys[1]), info[1]);
-		seleniumUtil.click(seleniumUtil.findElementBy(bys[3]));
+		//页面元素被遮挡住了，使用js来直接点击页面元素
+		seleniumUtil.executeJS("arguments[0].click();", seleniumUtil.findElementBy(bys[3]));
+//		seleniumUtil.click(seleniumUtil.findElementBy(bys[3]));
 		seleniumUtil.pause(1500);
 		seleniumUtil.type(seleniumUtil.findElementBy(bys[2]), info[2]);
 	}
@@ -442,7 +444,7 @@ public class UserAttestedInfoPagerHelper {
 	/** 检查完善信息页面:必填项全部填写 */
 	public static void checkUserAttestedInfoPrompt_All(int timeOut, SeleniumUtil seleniumUtil) {
 		logger.info("Start checking checkAddUserInfoPrompt page text");
-		seleniumUtil.pause(1000);
+		seleniumUtil.pause(2000);
 		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_POPUP_TRUE);
 		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_POPUP_TRUE).getText().trim(), "认证信息提交成功，我们将在24小时内完成审核，您现在可以去发布货源了！");
 		logger.info("Check checkAddUserInfoPrompt page text completed");
@@ -506,7 +508,8 @@ public class UserAttestedInfoPagerHelper {
 
 	/** 检查认证修改信息页面上的修改未成功检查 */
 	public static void checkUserAttestedInfoPageModifyFail(SeleniumUtil seleniumUtil) {
-//		seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_PASSWORD).getText(), "*确认登陆密码：");
+		// seleniumUtil.isTextCorrect(seleniumUtil.findElementBy(UserAttestedInfoPage.UAIP_TEXT_PASSWORD).getText(),
+		// "*确认登陆密码：");
 	}
 
 	/** 检查认证修改信息页面上的修改成功检查 */
@@ -568,6 +571,12 @@ public class UserAttestedInfoPagerHelper {
 	/** 根据SQL语句清除“认证审核中”为“认证未通过” */
 	public static void userAtestRejectInfoSQLRestore() {
 		String sql = "UPDATE smartdb.agent SET name = '认证未通过叁叁叁', tel = '18986100333', icard = '474534235465766333', company = '灵动信息技术有限公司333', province = '湖北', city = '襄阳', region = '樊城区', address = '追日路2号创业服务中心B座202-333', picture = '/upload/certificate/dcc5786f4881474f93cda9e2de511354.png;/upload/certificate/55a22a817f284a199d8489220d397e93.png;/upload/certificate/5ffc9f3b1463490da235292bb5009dda.png;/upload/certificate/ac0e2898209a4666a8eacf0f2d706e4d.png', status = 3 , denynote = 'SQL审核不通过' WHERE username = 'attestedName3'";
+		JdbcUtil.update(sql);
+	}
+
+	/** 根据SQL语句清除“已认证”用户的手机号码 */
+	public static void userAtestedInfoSQLRestore() {
+		String sql = "UPDATE smartdb.agent SET tel = '18986100361' WHERE username = 'incito'";
 		JdbcUtil.update(sql);
 	}
 
