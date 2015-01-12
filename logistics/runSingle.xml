@@ -25,7 +25,7 @@
 
 	<test name="单例测试" preserve-order="true">
 		<classes>
-			<class name="com.incito.logistics.testcase.register.RegisterPage_021_OpenAgreement_Test" />
+			<class name="com.incito.logistics.testcase.login.LoginPage_001_UI_Test"/>
 		</classes>
 	</test>
 

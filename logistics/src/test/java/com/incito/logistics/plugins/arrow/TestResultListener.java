@@ -27,10 +27,12 @@ public class TestResultListener extends TestListenerAdapter {
 
 	private static Logger logger = Logger.getLogger(TestResultListener.class.getName());
 	protected ITestContext testContext = null; // 这里也是新加的
+	String  browser = null;
 
 	@Override
 	public void onStart(ITestContext testContext) { // 这里也是新加的，用于对context进行统一
 		this.testContext = testContext;
+		browser = String.valueOf(testContext.getCurrentXmlTest().getParameter("browserName"));
 		super.onStart(testContext);
 	}
 
@@ -39,7 +41,7 @@ public class TestResultListener extends TestListenerAdapter {
 		super.onTestFailure(tr);
 		logger.warn(tr.getName() + " 测试用例执行失败！");
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER"); // 这里就是取driver
-		saveScreenShot(tr, webDriver);
+		saveScreenShot(tr, webDriver,browser);
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class TestResultListener extends TestListenerAdapter {
 		super.onTestSkipped(tr);
 		WebDriver webDriver = (WebDriver) testContext.getAttribute("SELENIUM_DRIVER");
 		logger.warn(tr.getName() + " 测试用例由于某些原因被跳过！");
-		saveScreenShot(tr, webDriver);
+		saveScreenShot(tr, webDriver,browser);
 
 	}
 
@@ -126,7 +128,7 @@ public class TestResultListener extends TestListenerAdapter {
 		return id;
 	}
 
-	private void saveScreenShot(ITestResult tr, WebDriver driver) {
+	private void saveScreenShot(ITestResult tr, WebDriver driver, String browser) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 		String mDateTime = formatter.format(new Date());
 		String fileName = mDateTime + "_" + tr.getName();
@@ -134,7 +136,7 @@ public class TestResultListener extends TestListenerAdapter {
 		try {
 			// 这里可以调用不同框架的截图功能
 			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			filePath = "result/screenshot/" + fileName + ".jpg";
+			filePath = "result/screenshot/"+browser+"/"+ fileName + ".jpg";
 			File destFile = new File(filePath);
 			FileUtils.copyFile(screenshot, destFile);
 			logger.info("["+fileName + "] screenshot successfully，saved：" + "[ " + filePath + " ]");
@@ -149,6 +151,7 @@ public class TestResultListener extends TestListenerAdapter {
 			Reporter.log(filePath);
 			// 把截图写入到Html报告中方便查看
 			Reporter.log("<img src=\"../../../" + filePath + "\"/>");
+
 		}
 	}
 
