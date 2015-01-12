@@ -36,7 +36,7 @@ public class UserAttestedInfoPage_037_Unattested_Success_All_Test extends UserAt
 		UserAttestedInfoPagerHelper.upLoadPhoto(context, seleniumUtil, UserAttestedInfoPage.UAIP_INPUT_UPLOAD, filePath);
 		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_SUBMIT);
 //		seleniumUtil.waitForElementToLoad(timeOut, UserAttestedInfoPage.UAIP_BUTTON_PUBLISH);
-		UserAttestedInfoPagerHelper.checkUserAttestedInfoPrompt_All(timeOut, seleniumUtil);
-		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_LATE);
+//		UserAttestedInfoPagerHelper.checkUserAttestedInfoPrompt_All(timeOut, seleniumUtil);
+//		UserAttestedInfoPagerHelper.enterPage(seleniumUtil, UserAttestedInfoPage.UAIP_BUTTON_LATE);
 	}
 }

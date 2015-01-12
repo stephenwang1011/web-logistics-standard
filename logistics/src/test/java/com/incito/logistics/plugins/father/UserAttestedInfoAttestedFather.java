@@ -27,6 +27,7 @@ public class UserAttestedInfoAttestedFather extends BaseParpare {
 		String password = PropertiesDataProvider.getTestData(configFilePath, "password");
 		int sleepTime = Integer.valueOf(context.getCurrentXmlTest().getParameter("sleepTime"));
 
+		UserAttestedInfoPagerHelper.userAtestedInfoSQLRestore();
 		HomePageHelper.waitHomePageToLoad(timeOut, seleniumUtil);
 		HomePageHelper.enterPage(seleniumUtil, HomePage.HP_BUTTON_LOGIN);
 		LoginPageHelper.login(seleniumUtil, username, password);
