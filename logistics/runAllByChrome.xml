@@ -3,7 +3,7 @@
 <!-- thread-count 定义同时启动的浏览器数 、parallel="tests" 表明每个test都是平级的 -->
 <suite name="物流货代web自动化测试报告" parallel="tests" thread-count="2">
 	<!-- chrome,firefox和ie不区分大小写 -->
-	<parameter name="browserName" value="firefox" />
+	<parameter name="browserName" value="chrome" />
 	<!-- user的属性文件地址,此配置文件存储了用户名和密码等信息 -->
 	<parameter name="userInfoPath" value="config/user.properties" />
 	<!-- 货源信息 -->
